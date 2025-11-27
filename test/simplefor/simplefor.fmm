@@ -1,0 +1,13 @@
+# Very simple test for 'for' cycles in afmm.
+# We count from 2 to 19 (included) and we write
+# the results on a file.
+
+fopen "test_results.txt" "w"
+    let file=ans
+
+    for :myam 2 20 1
+        print myam
+        fprint file "test: " myam
+    next :myam
+
+fclose file

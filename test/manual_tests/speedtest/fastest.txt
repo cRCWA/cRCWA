@@ -1,0 +1,24 @@
+Linked to OpenBLAS
+
+[bucci@imep196-187-1 speedtest]$ ./speedtest.sh 
+1 -thread timing:  0m50.019s
+2 -threads timing: 0m48.321s
+3 -threads timing: 0m49.119s
+4 -threads timing: 0m49.269s
+5 -threads timing: 0m58.889s
+6 -threads timing: 1m1.085s
+
+Yuk! Yuk!  :-D
+
+New timings: 2015-2-10
+
+1 -thread timing:  0m36.231s
+2 -threads timing: 0m33.659s
+3 -threads timing: 0m31.106s
+4 -threads timing: 0m31.524s
+5 -threads timing: 0m36.283s
+6 -threads timing: 0m38.043s
+7 -threads timing: 0m42.127s
+8 -threads timing: 0m45.781s
+12-threads timing: 1m3.043s
+16-threads timing: 1m19.064s

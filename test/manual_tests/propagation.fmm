@@ -1,0 +1,24 @@
+size 2e-6 2e-6
+harmonics 11 11
+wavelength 1.55e-6
+substrate 1.0 0.0
+
+section 1e-6
+	substrate 1.44 0.0
+	rectangle 3.48 0.0 500e-9 200e-9 0 0
+
+section 2e-6
+	substrate 1.44 0.0
+	rectangle 3.48 0.0 200e-9 500e-9 0 0
+section 1e-6
+	substrate 1.44 0.0
+	rectangle 3.48 0.0 500e-9 200e-9 0 0
+
+wants propagation
+solve
+
+assemble 
+excitation f m 1.0 0.0 
+
+propagation Ex m 200e-9 128 128 prop.txt
+

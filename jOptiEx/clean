@@ -1,0 +1,9 @@
+#!/bin/sh
+
+rm bin/*.class
+rm bin/read/*.class
+rm bin/storage/*.class
+
+rm bin/timer/*.class
+rm bin/visualization/*.class
+rm bin/dialogs/*.class

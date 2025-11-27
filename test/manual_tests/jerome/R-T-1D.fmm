@@ -1,0 +1,61 @@
+size 8e-07 8e-07
+wavelength 6e-07
+harmonics 11 11
+carpet
+
+section 1e-06
+substrate 1 0
+
+section 1e-06
+# substrate 3.94726 0.0256728
+substrate 3.94726 0
+
+
+wants propagation
+solve
+assemble
+
+excitation f fx 1 0 8e-07 champ.txt
+
+propagation Ex m 5e-09 99 99 resu_RTA_1D_Ex600
+
+# print onde incidente:
+# select 1
+# norm f
+
+select 1
+print onde incidente:
+# select 1
+norm f
+print onde reflechie:
+# coefficient b 1
+norm b
+
+print onde transmise
+select 2
+# coefficient f 1
+norm f
+
+quit
+
+________________________________________________________________________________________
+
+
+onde incidente: 
+Norm calculation forward L2 norm: 0.0471281
+
+onde reflechie 
+Selected mode: (1,-1e-05)
+Backward mode coefficient: (0.295254,-0.515573)
+Squared module: 0.352991
+Norm calculation backward L2 norm: 0.0280737
+
+onde transmise 
+Selected mode: (0.982769,-0.103114)
+Forward mode coefficient: (5.27126e-17,-9.23425e-17)
+Squared module: 1.13057e-32
+Norm calculation forward L2 norm: 0.018886
+
+______________________________________________________________________________________
+analytiquement : R = 35.4901169 %, T = 64.5098831 %
+

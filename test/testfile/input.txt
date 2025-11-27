@@ -1,0 +1,12 @@
+# This is a comment line which can be skiped using fskip
+3 4 5 6
+7 8 9 10
+1e-12 5e-14 3e5
+2500    123.23e-23  15e24
+
+1
+2
+3
+4
+5
+

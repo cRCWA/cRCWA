@@ -1,0 +1,57 @@
+# Structure used as an example in M.G. Moharam and T.K. Gaylord, "Rigorous
+# coupled-wave analysis of metallic surface-relief gratings" J. Opt. Soc. Am
+# A, Vol. 13, No. 11, November 1986
+
+# Here we calculate the reflection of a bulk gold surface, as reported by
+# Table 1.
+
+# With AFMM, we get 0.981080391 for theta=0. This value is obtained by taking 
+# (column 6)^2+(column 7)^2 of bulk.txt
+
+
+# theta = 30
+# TE (4.956661e-01^2+ 3.290425e-01^2+8.268634e-01^2+ 5.489041e-01^2)/(1.000691e+00^2+ 2.816290e-15^2+5.998676e-01^2+1.934981e-14^2)
+
+# TM (5.642892e-01^2+ 3.085457e-01^2+5.175528e-01^2+ 2.829909e-01^2)/(6.501159e-01^2+ 2.580576e-15^2 +5.962710e-01^2 +2.661294e-15^2)
+
+
+
+print tot=2e-6
+print nr=0.220
+print ni=6.710
+print h=1e-6
+print theta=30
+
+system rm bulk.txt
+
+
+print nharm=101
+
+harmonics nharm 1
+size tot h
+wavelength 1e-6
+carpet
+
+section 1e-6
+	substrate 1 0
+
+section 1e-6
+	substrate nr ni
+
+wants propagation
+
+solve
+
+assemble
+
+excitation f cx 1 0 theta 0
+
+propagation Ex m 25e-9 250 1 propagation.txt
+
+select 1
+eigenvc a spectrum_bulk.txt
+
+system printf nharm >> bulk.txt
+system printf ' ' >> bulk.txt
+system sed '/^1.000000e+00/!d' spectrum_bulk.txt | tail -n 1 >>bulk.txt
+	

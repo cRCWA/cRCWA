@@ -1,0 +1,423 @@
+ ***************************************************************************
+ *      Aperiodic Fourier Modal Method full vectorial 3D propagation       *
+ *                            version 1.4.4                                *
+ *                                                                         *
+ *     Build date: Mar 27 2015                                             *
+ *     Source revision: 209:210M                                           *
+ *                                                                         *
+ *     Davide Bucci, IMEP-LAHC March 2008 - March 2015                     *
+ *     Jérôme Michallon, IMEP-LAHC May 2012 - February 2014                *
+ *     MINATEC-Grenoble INP, 3, parvis Louis Neel                          *
+ *     38016, Grenoble CEDEX, France                                       *
+ *                                                                         *
+ *     bucci@minatec.grenoble-inp.fr                                       *
+ *     jerome.michallon@minatec.grenoble-inp.fr                            *
+ *                                                                         *
+ ***************************************************************************
+Init semaphore.
+Reading file: test1.fmm
+Multithreading allowed with 1 threads.
+Wavelength set to: 7.749e-07 m.
+Calculation window size set to: 1.25e-06 m x 1.5e-06 m.
+Dust will be swept under the carpet.
+(All eigenvalues having a positive imaginary part will be forced to have it negative).
+Number of harmonics set to: 17 x 17
+
+Length of the section 1: 1e-07 m. 
+Substrate refractive index set to: (1,0)
+Structure represented with: 101 x 101 points
+Structure file written: superstrat.idx
+Matrix developments: nd; compact matrix development.
+
+Length of the section 2: 2e-08 m.
+Substrate refractive index set to: (0.174,-4.86)
+Matrix developments: nd; compact matrix development.
+Generated rectangular section waveguide with core refractive index: (1,0)
+Size 9.71753e-07 m x 1.17175e-06 m at location 0 m x 0 m
+Structure represented with: 101 x 101 points
+Structure file written: slices_0.idx
+
+Length of the section 3: 2e-08 m.
+Substrate refractive index set to: (0.174,-4.86)
+Matrix developments: nd; compact matrix development.
+Generated rectangular section waveguide with core refractive index: (1,0)
+Size 9.15259e-07 m x 1.11526e-06 m at location 0 m x 0 m
+Structure represented with: 101 x 101 points
+Structure file written: slices_1.idx
+
+Length of the section 4: 2e-08 m.
+Substrate refractive index set to: (0.174,-4.86)
+Matrix developments: nd; compact matrix development.
+Generated rectangular section waveguide with core refractive index: (1,0)
+Size 8.58765e-07 m x 1.05876e-06 m at location 0 m x 0 m
+Structure represented with: 101 x 101 points
+Structure file written: slices_2.idx
+
+Length of the section 5: 2e-08 m.
+Substrate refractive index set to: (0.174,-4.86)
+Matrix developments: nd; compact matrix development.
+Generated rectangular section waveguide with core refractive index: (1,0)
+Size 8.02271e-07 m x 1.00227e-06 m at location 0 m x 0 m
+Structure represented with: 101 x 101 points
+Structure file written: slices_3.idx
+
+Length of the section 6: 2e-08 m.
+Substrate refractive index set to: (0.174,-4.86)
+Matrix developments: nd; compact matrix development.
+Generated rectangular section waveguide with core refractive index: (1,0)
+Size 7.45777e-07 m x 9.45777e-07 m at location 0 m x 0 m
+Structure represented with: 101 x 101 points
+Structure file written: slices_4.idx
+
+Length of the section 7: 2e-08 m.
+Substrate refractive index set to: (0.174,-4.86)
+Matrix developments: nd; compact matrix development.
+Generated rectangular section waveguide with core refractive index: (1,0)
+Size 6.89283e-07 m x 8.89283e-07 m at location 0 m x 0 m
+Structure represented with: 101 x 101 points
+Structure file written: slices_5.idx
+
+Length of the section 8: 2e-08 m.
+Substrate refractive index set to: (0.174,-4.86)
+Matrix developments: nd; compact matrix development.
+Generated rectangular section waveguide with core refractive index: (1,0)
+Size 6.32789e-07 m x 8.32789e-07 m at location 0 m x 0 m
+Structure represented with: 101 x 101 points
+Structure file written: slices_6.idx
+
+Length of the section 9: 2e-08 m.
+Substrate refractive index set to: (0.174,-4.86)
+Matrix developments: nd; compact matrix development.
+Generated rectangular section waveguide with core refractive index: (1,0)
+Size 5.76295e-07 m x 7.76295e-07 m at location 0 m x 0 m
+Structure represented with: 101 x 101 points
+Structure file written: slices_7.idx
+
+ensureSize
+Length of the section 10: 2e-08 m.
+Substrate refractive index set to: (0.174,-4.86)
+Matrix developments: nd; compact matrix development.
+Generated rectangular section waveguide with core refractive index: (1,0)
+Size 5.19801e-07 m x 7.19801e-07 m at location 0 m x 0 m
+Structure represented with: 101 x 101 points
+Structure file written: slices_8.idx
+
+Length of the section 11: 2e-08 m.
+Substrate refractive index set to: (0.174,-4.86)
+Matrix developments: nd; compact matrix development.
+Generated rectangular section waveguide with core refractive index: (1,0)
+Size 4.63307e-07 m x 6.63307e-07 m at location 0 m x 0 m
+Structure represented with: 101 x 101 points
+Structure file written: slices_9.idx
+
+Length of the section 12: 2e-08 m.
+Substrate refractive index set to: (0.174,-4.86)
+Matrix developments: nd; compact matrix development.
+Generated rectangular section waveguide with core refractive index: (1,0)
+Size 4.06813e-07 m x 6.06813e-07 m at location 0 m x 0 m
+Structure represented with: 101 x 101 points
+Structure file written: slices_10.idx
+
+Length of the section 13: 2e-08 m.
+Substrate refractive index set to: (0.174,-4.86)
+Matrix developments: nd; compact matrix development.
+Generated rectangular section waveguide with core refractive index: (1,0)
+Size 3.50319e-07 m x 5.50319e-07 m at location 0 m x 0 m
+Structure represented with: 101 x 101 points
+Structure file written: slices_11.idx
+
+Length of the section 14: 2e-08 m.
+Substrate refractive index set to: (0.174,-4.86)
+Matrix developments: nd; compact matrix development.
+Generated rectangular section waveguide with core refractive index: (1,0)
+Size 2.93825e-07 m x 4.93825e-07 m at location 0 m x 0 m
+Structure represented with: 101 x 101 points
+Structure file written: slices_12.idx
+
+Length of the section 15: 2e-08 m.
+Substrate refractive index set to: (0.174,-4.86)
+Matrix developments: nd; compact matrix development.
+Generated rectangular section waveguide with core refractive index: (1,0)
+Size 2.37331e-07 m x 4.37331e-07 m at location 0 m x 0 m
+Structure represented with: 101 x 101 points
+Structure file written: slices_13.idx
+
+Length of the section 16: 2e-08 m.
+Substrate refractive index set to: (0.174,-4.86)
+Matrix developments: nd; compact matrix development.
+Generated rectangular section waveguide with core refractive index: (1,0)
+Size 1.80837e-07 m x 3.80837e-07 m at location 0 m x 0 m
+Structure represented with: 101 x 101 points
+Structure file written: slices_14.idx
+
+Length of the section 17: 1e-07 m.
+Substrate refractive index set to: (3.70476,0.003)
+Matrix developments: nd; compact matrix development.
+Structure represented with: 101 x 101 points
+Structure file written: substrat.idx
+Matrices will be retained to compute propagation.
+
+Now considering section 1 of 17, threads in parallel: 1 
+Creating the electric field propagation matrix
+Created DD, EE, FF, GG 
+Calculating eigenvalues and eigenvectors
+LAPACK ZGEEVX executed, info = 0
+Now considering section 2 of 17, threads in parallel: 1 
+Creating the electric field propagation matrix
+Created DD, EE, FF, GG 
+Calculating eigenvalues and eigenvectors
+LAPACK ZGEEVX executed, info = 0
+Now considering section 3 of 17, threads in parallel: 1 
+Creating the electric field propagation matrix
+Created DD, EE, FF, GG 
+Calculating eigenvalues and eigenvectors
+LAPACK ZGEEVX executed, info = 0
+Now considering section 4 of 17, threads in parallel: 1 
+Creating the electric field propagation matrix
+Created DD, EE, FF, GG 
+Calculating eigenvalues and eigenvectors
+LAPACK ZGEEVX executed, info = 0
+Now considering section 5 of 17, threads in parallel: 1 
+Creating the electric field propagation matrix
+Created DD, EE, FF, GG 
+Calculating eigenvalues and eigenvectors
+LAPACK ZGEEVX executed, info = 0
+Now considering section 6 of 17, threads in parallel: 1 
+Creating the electric field propagation matrix
+Created DD, EE, FF, GG 
+Calculating eigenvalues and eigenvectors
+LAPACK ZGEEVX executed, info = 0
+Now considering section 7 of 17, threads in parallel: 1 
+Creating the electric field propagation matrix
+Created DD, EE, FF, GG 
+Calculating eigenvalues and eigenvectors
+LAPACK ZGEEVX executed, info = 0
+Now considering section 8 of 17, threads in parallel: 1 
+Creating the electric field propagation matrix
+Created DD, EE, FF, GG 
+Calculating eigenvalues and eigenvectors
+LAPACK ZGEEVX executed, info = 0
+Now considering section 9 of 17, threads in parallel: 1 
+Creating the electric field propagation matrix
+Created DD, EE, FF, GG 
+Calculating eigenvalues and eigenvectors
+LAPACK ZGEEVX executed, info = 0
+Now considering section 10 of 17, threads in parallel: 1 
+Creating the electric field propagation matrix
+Created DD, EE, FF, GG 
+Calculating eigenvalues and eigenvectors
+LAPACK ZGEEVX executed, info = 0
+Now considering section 11 of 17, threads in parallel: 1 
+Creating the electric field propagation matrix
+Created DD, EE, FF, GG 
+Calculating eigenvalues and eigenvectors
+LAPACK ZGEEVX executed, info = 0
+Now considering section 12 of 17, threads in parallel: 1 
+Creating the electric field propagation matrix
+Created DD, EE, FF, GG 
+Calculating eigenvalues and eigenvectors
+LAPACK ZGEEVX executed, info = 0
+Now considering section 13 of 17, threads in parallel: 1 
+Creating the electric field propagation matrix
+Created DD, EE, FF, GG 
+Calculating eigenvalues and eigenvectors
+LAPACK ZGEEVX executed, info = 0
+Now considering section 14 of 17, threads in parallel: 1 
+Creating the electric field propagation matrix
+Created DD, EE, FF, GG 
+Calculating eigenvalues and eigenvectors
+LAPACK ZGEEVX executed, info = 0
+Now considering section 15 of 17, threads in parallel: 1 
+Creating the electric field propagation matrix
+Created DD, EE, FF, GG 
+Calculating eigenvalues and eigenvectors
+LAPACK ZGEEVX executed, info = 0
+Now considering section 16 of 17, threads in parallel: 1 
+Creating the electric field propagation matrix
+Created DD, EE, FF, GG 
+Calculating eigenvalues and eigenvectors
+LAPACK ZGEEVX executed, info = 0
+Now considering section 17 of 17, threads in parallel: 1 
+Creating the electric field propagation matrix
+Created DD, EE, FF, GG 
+Calculating eigenvalues and eigenvectors
+LAPACK ZGEEVX executed, info = 0
+Synchronization
+Thread joined
+Thread joined
+Thread joined
+Thread joined
+Thread joined
+Thread joined
+Thread joined
+Thread joined
+Thread joined
+Thread joined
+Thread joined
+Thread joined
+Thread joined
+Thread joined
+Thread joined
+Thread joined
+Thread joined
+Section 1 of 17.
+Searching for interesting modes: 1 < Re{n_eff} < 0
+                            -0.1 < Im{n_eff} < 0.1
+Section 2 of 17.
+Searching for interesting modes: 0.174 < Re{n_eff} < 1
+                            -0.1 < Im{n_eff} < 0.1
+Interesting mode found 0, effective index: (0.767008,-0.00456475)
+Interesting mode found 1, effective index: (0.843876,-0.0157699)
+Interesting mode found 2, effective index: (0.860875,-0.0111557)
+Interesting mode found 3, effective index: (0.892212,-0.0150051)
+Interesting mode found 4, effective index: (0.657171,-0.00651587)
+Interesting mode found 5, effective index: (0.643385,-0.0179906)
+Interesting mode found 6, effective index: (0.60167,-0.0194047)
+Interesting mode found 7, effective index: (0.551422,-0.0188324)
+Interesting mode found 8, effective index: (0.490955,-0.0124384)
+Interesting mode found 9, effective index: (0.297619,-0.0948448)
+Section 3 of 17.
+Searching for interesting modes: 0.174 < Re{n_eff} < 1
+                            -0.1 < Im{n_eff} < 0.1
+Interesting mode found 0, effective index: (0.992936,-0.0273141)
+Interesting mode found 1, effective index: (0.957261,-0.0091063)
+Interesting mode found 2, effective index: (0.966061,-0.00591953)
+Interesting mode found 3, effective index: (0.771754,-0.00819955)
+Interesting mode found 4, effective index: (0.661538,-0.0103336)
+Interesting mode found 5, effective index: (0.670359,-0.00544826)
+Interesting mode found 6, effective index: (0.593396,-0.0476726)
+Interesting mode found 7, effective index: (0.510257,-0.00751656)
+Interesting mode found 8, effective index: (0.18772,-0.0381042)
+Section 4 of 17.
+Searching for interesting modes: 0.174 < Re{n_eff} < 1
+                            -0.1 < Im{n_eff} < 0.1
+Interesting mode found 0, effective index: (0.995456,-0.0109822)
+Interesting mode found 1, effective index: (0.918089,-0.00824633)
+Interesting mode found 2, effective index: (0.810985,-0.0100829)
+Interesting mode found 3, effective index: (0.663277,-0.0123919)
+Interesting mode found 4, effective index: (0.656861,-0.0258984)
+Interesting mode found 5, effective index: (0.460567,-0.011925)
+Interesting mode found 6, effective index: (0.386285,-0.0263211)
+Section 5 of 17.
+Searching for interesting modes: 0.174 < Re{n_eff} < 1
+                            -0.1 < Im{n_eff} < 0.1
+Interesting mode found 0, effective index: (0.827911,-0.0299506)
+Interesting mode found 1, effective index: (0.746406,-0.01653)
+Interesting mode found 2, effective index: (0.790652,-0.0158527)
+Interesting mode found 3, effective index: (0.586159,-0.00771898)
+Interesting mode found 4, effective index: (0.214969,-0.0306645)
+Section 6 of 17.
+Searching for interesting modes: 0.174 < Re{n_eff} < 1
+                            -0.1 < Im{n_eff} < 0.1
+Interesting mode found 0, effective index: (0.955168,-0.0117629)
+Interesting mode found 1, effective index: (0.929767,-0.00764694)
+Interesting mode found 2, effective index: (0.816719,-0.0402067)
+Interesting mode found 3, effective index: (0.698139,-0.0178302)
+Interesting mode found 4, effective index: (0.41892,-0.00795395)
+Interesting mode found 5, effective index: (0.453447,-0.0412958)
+Interesting mode found 6, effective index: (0.32709,-0.0359783)
+Section 7 of 17.
+Searching for interesting modes: 0.174 < Re{n_eff} < 1
+                            -0.1 < Im{n_eff} < 0.1
+Interesting mode found 0, effective index: (0.928578,-0.0137327)
+Interesting mode found 1, effective index: (0.799316,-0.0184601)
+Interesting mode found 2, effective index: (0.697179,-0.0288484)
+Interesting mode found 3, effective index: (0.723144,-0.0198015)
+Interesting mode found 4, effective index: (0.330979,-0.0631588)
+Section 8 of 17.
+Searching for interesting modes: 0.174 < Re{n_eff} < 1
+                            -0.1 < Im{n_eff} < 0.1
+Interesting mode found 0, effective index: (0.942041,-0.00795127)
+Interesting mode found 1, effective index: (0.864448,-0.093808)
+Interesting mode found 2, effective index: (0.687747,-0.017128)
+Interesting mode found 3, effective index: (0.544587,-0.021256)
+Interesting mode found 4, effective index: (0.426669,-0.0800363)
+Section 9 of 17.
+Searching for interesting modes: 0.174 < Re{n_eff} < 1
+                            -0.1 < Im{n_eff} < 0.1
+Interesting mode found 0, effective index: (0.861398,-0.00947869)
+Interesting mode found 1, effective index: (0.746542,-0.0124042)
+Section 10 of 17.
+Searching for interesting modes: 0.174 < Re{n_eff} < 1
+                            -0.1 < Im{n_eff} < 0.1
+Interesting mode found 0, effective index: (0.749477,-0.0229829)
+Interesting mode found 1, effective index: (0.460467,-0.0231176)
+Section 11 of 17.
+Searching for interesting modes: 0.174 < Re{n_eff} < 1
+                            -0.1 < Im{n_eff} < 0.1
+Interesting mode found 0, effective index: (0.783834,-0.022605)
+Interesting mode found 1, effective index: (0.70772,-0.0321999)
+Interesting mode found 2, effective index: (0.369232,-0.0201599)
+Section 12 of 17.
+Searching for interesting modes: 0.174 < Re{n_eff} < 1
+                            -0.1 < Im{n_eff} < 0.1
+Interesting mode found 0, effective index: (0.661794,-0.016543)
+Section 13 of 17.
+Searching for interesting modes: 0.174 < Re{n_eff} < 1
+                            -0.1 < Im{n_eff} < 0.1
+Interesting mode found 0, effective index: (0.911465,-0.0122986)
+Section 14 of 17.
+Searching for interesting modes: 0.174 < Re{n_eff} < 1
+                            -0.1 < Im{n_eff} < 0.1
+Section 15 of 17.
+Searching for interesting modes: 0.174 < Re{n_eff} < 1
+                            -0.1 < Im{n_eff} < 0.1
+Section 16 of 17.
+Searching for interesting modes: 0.174 < Re{n_eff} < 1
+                            -0.1 < Im{n_eff} < 0.1
+Interesting mode found 0, effective index: (0.670219,-0.0293641)
+Section 17 of 17.
+Searching for interesting modes: 3.70476 < Re{n_eff} < 0
+                            -0.1 < Im{n_eff} < 0.1
+
+Assembling sections
+Fabricating V matrix, section: 0, threads in parallel: 1 
+Fabricating V matrix, section: 1, threads in parallel: 1 
+Fabricating V matrix, section: 2, threads in parallel: 1 
+Fabricating V matrix, section: 3, threads in parallel: 1 
+Fabricating V matrix, section: 4, threads in parallel: 1 
+Fabricating V matrix, section: 5, threads in parallel: 1 
+Fabricating V matrix, section: 6, threads in parallel: 1 
+Fabricating V matrix, section: 7, threads in parallel: 1 
+Fabricating V matrix, section: 8, threads in parallel: 1 
+Fabricating V matrix, section: 9, threads in parallel: 1 
+Fabricating V matrix, section: 10, threads in parallel: 1 
+Fabricating V matrix, section: 11, threads in parallel: 1 
+Fabricating V matrix, section: 12, threads in parallel: 1 
+Fabricating V matrix, section: 13, threads in parallel: 1 
+Fabricating V matrix, section: 14, threads in parallel: 1 
+Fabricating V matrix, section: 15, threads in parallel: 1 
+Fabricating V matrix, section: 16, threads in parallel: 1 
+Synchronization
+Thread joined
+Thread joined
+Thread joined
+Thread joined
+Thread joined
+Thread joined
+Thread joined
+Thread joined
+Thread joined
+Thread joined
+Thread joined
+Thread joined
+Thread joined
+Thread joined
+Thread joined
+Thread joined
+Thread joined
+Creating S matrix for interface 1 of 16.
+Creating S matrix for interface 2 of 16.
+Creating S matrix for interface 3 of 16.
+Creating S matrix for interface 4 of 16.
+Creating S matrix for interface 5 of 16.
+Creating S matrix for interface 6 of 16.
+Creating S matrix for interface 7 of 16.
+Creating S matrix for interface 8 of 16.
+Creating S matrix for interface 9 of 16.
+Creating S matrix for interface 10 of 16.
+Creating S matrix for interface 11 of 16.
+Creating S matrix for interface 12 of 16.
+Creating S matrix for interface 13 of 16.
+Creating S matrix for interface 14 of 16.
+Creating S matrix for interface 15 of 16.

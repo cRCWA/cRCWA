@@ -1,0 +1,32 @@
+Results matdev nd 
+mode:  2.33522 +j  -0.00982202 
+mode:  1.71046 +j  -0.00376197 
+mode:  1.51742 +j  -0.0039747 
+Results matdev an 
+mode:  2.33564 +j  -0.00983553 
+mode:  1.70897 +j  -0.00361421 
+mode:  1.50624 +j  -0.00266341 
+Results matdev af 
+mode:  2.33564 +j  -0.00983553 
+mode:  1.70897 +j  -0.00361421 
+mode:  1.50624 +j  -0.00266341 
+Results matdev be 
+mode:  2.33559 +j  -0.00983654 
+mode:  1.70877 +j  -0.00361413 
+mode:  1.50607 +j  -0.00265638 
+Results matdev la 1.0 
+mode:  1.78834 +j  -0.00364589 
+mode:  1.69898 +j  -0.00352019 
+mode:  1.4586 +j  -0.00320021 
+Results matdev la 0.0 
+mode:  2.33308 +j  -0.00982908 
+mode:  1.54129 +j  -0.000315344 
+mode:  1.49934 +j  -0.00361897 
+Results matdev nf 1e-6 rectangle_nvf_x rectangle_nvf_y 
+mode:  2.21768 +j  -0.00912114 
+mode:  1.59166 +j  -0.00192803 
+mode:  1.46551 +j  -0.00256728 
+Results matdev nfs 1e-6 rectangle_nvf_x rectangle_nvf_y 
+mode:  2.17614 +j  -0.00865757 
+mode:  1.5814 +j  -0.00120169 
+mode:  1.46437 +j  -0.0028256 

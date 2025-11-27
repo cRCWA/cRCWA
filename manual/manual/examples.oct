@@ -1,0 +1,9 @@
+A=[complex(0,0),complex(1,0),complex(2,0),complex(-2,0),complex(-1,0);
+   complex(0,1),complex(1,1),complex(2,1),complex(-2,1),complex(-1,1);
+   complex(0,2),complex(1,2),complex(2,2),complex(-2,2),complex(-1,2);
+   complex(0,-2),complex(1,-2),complex(2,-2),complex(-2,-2),complex(-1,-2);
+   complex(0,-1),complex(1,-1),complex(2,-1),complex(-2,-1),complex(-1,-1);]
+
+toeplitz_mod(ones(5),1,1,0,0,0,1)
+
+toeplitz_mod(A,1,1,0,0,0,1)

@@ -1,0 +1,34 @@
+# testing the field representation obtained for a cylindrical waveguide for several 
+# identical configurations.
+
+size 800e-09 800e-09
+wavelength 500e-09
+harmonics 21 21
+carpet
+
+section 2e-6
+	substrate 1 0
+	indfile 800e-9 wguide.f3d
+	lowindex 1 -1
+	highindex 4.3 0
+	matdev nf 800e-9 wguide.f3d_nvf_x wguide.f3d_nvf_y
+
+wants both
+solve
+
+outgmodes Ex m 400 400 cylinder_wguide_std.
+outgmodes Ey m 400 400 cylinder_wguide_std.
+outgmodes Ez m 400 400 cylinder_wguide_std.
+
+outgmodes Ex2 m 400 400 cylinder_wguide_std.
+outgmodes Ey2 m 400 400 cylinder_wguide_std.
+outgmodes Ez2 m 400 400 cylinder_wguide_std.
+
+outgmodes Dx m 400 400 cylinder_wguide_std.
+outgmodes Dy m 400 400 cylinder_wguide_std.
+outgmodes Dz m 400 400 cylinder_wguide_std.
+
+outgmodes Hx m 400 400 cylinder_wguide_std.
+outgmodes Hy m 400 400 cylinder_wguide_std.
+outgmodes Hz m 400 400 cylinder_wguide_std.
+

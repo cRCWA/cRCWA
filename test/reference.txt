@@ -1,0 +1,31 @@
+[bucci@imep196-187-1 test]$ time ./run_all_tests.sh 
+
+   A F M M
+
+   Automatic test suite
+   by Davide Bucci 2013-2014
+
+ NOTE: the following tests will run ../../afmm
+
+Testing for loops:            OK
+Testing for command (2 loops) OK
+Testing layer decomposition:  OK
+Testing if command            OK
+Testing simple calculations:  OK
+Testing simple mode search:   OK
+Testing Bloch mode calc. TE:  OK
+Testing Bloch mode calc. TM:  OK
+Testing pl. wave exc. angles  OK
+Testing symmetries:           OK
+Testing multithreading:       OK
+Testing madev strategies:     OK
+Testing multi-propagation:    OK
+Testing multi-propagation 2:  OK
+
+All is Ok! :-)
+ 
+real	1m27.069s
+user	2m2.270s
+sys	0m15.058s
+
+ATLAS

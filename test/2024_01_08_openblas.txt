@@ -1,0 +1,35 @@
+   A F M M
+
+   Automatic test suite
+   by Davide Bucci 2013-2020
+
+ NOTE: the following tests will run ../../afmm
+
+Testing for loops:            OK
+Testing for command (2 loops) OK
+Testing layer decomposition:  OK
+Testing if command            OK
+Testing load command          OK
+Testing simple calculations:  OK
+Testing simple mode search:   OK
+Testing Bloch mode calc. TE:  OK
+Testing Bloch mode calc. TM:  OK
+Testing pl. wave exc. angles  OK
+Testing symmetries:          0 0.863945
+ OK
+Testing multithreading:       OK
+Testing madev strategies:     OK
+Testing multi-propagation:    OK
+Testing multi-propagation 2: ./test_multiplepropagation2.sh : ligne 13 : 346843 Erreur de segmentation  (core dumped)$1 multiplepropagation2.fmm > test_output.txt
+ OK
+Testing monitor:              OK
+Testing orientation of fft:   OK
+Testing file read/write :     OK
+Testing do-while loops:       OK
+Testing Dz with symmetry:     OK
+
+All is Ok! :-)
+ 
+real	1m25,319s
+user	1m21,569s
+sys	0m1,997s

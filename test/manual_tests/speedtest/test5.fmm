@@ -1,0 +1,2 @@
+parallel 5
+load test_general.fmm

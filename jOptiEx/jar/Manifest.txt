@@ -1,0 +1,2 @@
+Main-Class: OptiExFrame
+Class-Path: JLargeArrays-1.2.jar JTransforms-3.0.jar 

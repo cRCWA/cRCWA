@@ -1,0 +1,20 @@
+#!/bin/bash
+
+
+rm bin/*.class
+rm bin/storage/*.class
+rm bin/visualization/*.class
+rm bin/read/*.class
+
+
+# Here we check if the user has chosen a compilation which should include the Macintosh
+# extensions
+
+unamestr=`uname`
+
+if [ "$unamestr" = 'Darwin' ]||[ "$1" = "mac" ]; then
+  echo "MacOSX detected: activated AppleSpecific classes."
+    javac  -g -Xlint:unchecked -O -sourcepath src -classpath bin:jar/JTransforms-3.0.jar:jar/JLargeArrays-1.2.jar ./src/AppleSpecific.java -d bin
+fi 
+
+javac  -g -Xlint:unchecked -O -sourcepath src -classpath bin:jar/JTransforms-3.0.jar:jar/JLargeArrays-1.2.jar ./src/OptiExFrame.java -d bin

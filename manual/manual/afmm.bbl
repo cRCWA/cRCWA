@@ -1,0 +1,212 @@
+\begin{thebibliography}{10}
+\providecommand{\url}[1]{#1}
+\csname url@rmstyle\endcsname
+\providecommand{\newblock}{\relax}
+\providecommand{\bibinfo}[2]{#2}
+\providecommand\BIBentrySTDinterwordspacing{\spaceskip=0pt\relax}
+\providecommand\BIBentryALTinterwordstretchfactor{4}
+\providecommand\BIBentryALTinterwordspacing{\spaceskip=\fontdimen2\font plus
+\BIBentryALTinterwordstretchfactor\fontdimen3\font minus
+  \fontdimen4\font\relax}
+\providecommand\BIBforeignlanguage[2]{{%
+\expandafter\ifx\csname l@#1\endcsname\relax
+\typeout{** WARNING: IEEEtran.bst: No hyphenation pattern has been}%
+\typeout{** loaded for the language `#1'. Using the pattern for}%
+\typeout{** the default language instead.}%
+\else
+\language=\csname l@#1\endcsname
+\fi
+#2}}
+
+\bibitem{atlas_site}
+\BIBentryALTinterwordspacing
+``Atlas website.'' [Online]. Available: \url{http://www.netlib.org/atlas/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{blas_site}
+\BIBentryALTinterwordspacing
+``Blas website.'' [Online]. Available: \url{http://www.netlib.org/blas/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{fftw_site}
+\BIBentryALTinterwordspacing
+``{FFTW} website.'' [Online]. Available: \url{http://www.fftw.org/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{gnuplot_site}
+\BIBentryALTinterwordspacing
+``Gnuplot website.'' [Online]. Available: \url{http://www.gnuplot.info/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{lapack_site}
+\BIBentryALTinterwordspacing
+``{LAPACK} website.'' [Online]. Available: \url{http://www.netlib.org/lapack/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{libf2c_site}
+\BIBentryALTinterwordspacing
+``libf2c website.'' [Online]. Available: \url{http://www.netlib.org/f2c/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{openblas_site}
+\BIBentryALTinterwordspacing
+``{OpenBLAS} website.'' [Online]. Available: \url{http://www.openblas.net/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{lapack}
+E.~Anderson, Z.~Bai, C.~Bischof, S.~Blackford, J.~Demmel, J.~Dongarra,
+  J.~Du~Croz, A.~Greenbaum, S.~Hammarling, A.~McKenney, and D.~Sorensen,
+  \emph{{LAPACK} Users' Guide}, 3rd~ed.\hskip 1em plus 0.5em minus 0.4em\relax
+  Philadelphia, PA: Society for Industrial and Applied Mathematics, 1999.
+
+\bibitem{bischoff2010formulation}
+J.~Bischoff, ``Formulation of the normal vector rcwa for symmetric crossed
+  gratings in symmetric mountings,'' \emph{JOSA A}, vol.~27, no.~5, pp.
+  1024--1031, 2010.
+
+\bibitem{blas}
+L.~Blackford, J.~Demmel, J.~Dongarra, I.~Duff, S.~Hammarling, G.~Henry,
+  M.~Heroux, L.~Kaufman, A.~Lumsdaine, A.~Petitet, and Others, ``{An Updated
+  Set of Basic Linear Algebra Subprograms ({BLAS})},'' \emph{ACM Transactions
+  on Mathematical Software}, vol.~28, no.~2, pp. 135--151, 2002.
+
+\bibitem{bucci2010study}
+D.~Bucci, B.~Martin, and A.~Morand, ``{Study of propagation modes of bent
+  waveguides and micro-ring resonators by means of the aperiodic {F}ourier
+  modal method},'' in \emph{Proceedings of SPIE}, vol. 7597, 2010, p. 75970U.
+
+\bibitem{bucci2012application}
+------, ``Application of the three-dimensional aperiodic fourier modal method
+  using arc elements in curvilinear coordinates,'' \emph{JOSA A}, vol.~29,
+  no.~3, pp. 367--373, 2012.
+
+\bibitem{cao2002stable}
+Q.~Cao, P.~Lalanne, and J.-P. Hugonin, ``Stable and efficient bloch-mode
+  computational method for one-dimensional grating waveguides,'' \emph{JOSA A},
+  vol.~19, no.~2, pp. 335--338, 2002.
+
+\bibitem{chang1980scattering}
+K.~Chang, V.~Shah, and T.~Tamir, ``Scattering and guiding of waves by
+  dielectric gratings with arbitrary profiles,'' \emph{JOSA}, vol.~70, no.~7,
+  pp. 804--813, 1980.
+
+\bibitem{cygwin_site}
+\BIBentryALTinterwordspacing
+``{Cygwin} website.'' [Online]. Available: \url{http://www.cygwin.com/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{dijkstra1968letters}
+E.~W. Dijkstra, ``Letters to the editor: go to statement considered harmful,''
+  \emph{Communications of the ACM}, vol.~11, no.~3, pp. 147--148, 1968.
+
+\bibitem{el2009photonic}
+O.~El~Daif, E.~Drouard, G.~Gomard, Y.~Park, A.~Kaminski, A.~Fave, M.~Lemiti,
+  X.~Letartre, P.~Viktorovitch, S.~Ahn, \emph{et~al.}, ``Photonic
+  band-engineering absorption enhancement of amorphous silicon for solar
+  cells,'' in \emph{Proc. SPIE}, vol. 7411, 2009, p. 74110O.
+
+\bibitem{FFTW05}
+M.~Frigo and S.~G. Johnson, ``The design and implementation of {FFTW3},''
+  \emph{Proceedings of the IEEE}, vol.~93, no.~2, pp. 216--231, 2005, special
+  issue on "Program Generation, Optimization, and Platform Adaptation".
+
+\bibitem{gray2006toeplitz}
+R.~Gray, \emph{{Toeplitz and circulant matrices: A review}}.\hskip 1em plus
+  0.5em minus 0.4em\relax Now Pub, 2006.
+
+\bibitem{hench2008rcwa}
+J.~Hench and Z.~Strako{\v{s}}, ``The {RCWA} method-a case study with open
+  questions and perspectives of algebraic computations,'' \emph{Electronic
+  Transactions on Numerical Analysis}, vol.~31, pp. 331--357, 2008.
+
+\bibitem{hewlett1995fdm}
+S.~Hewlett and F.~Ladouceur, ``{Fourier decomposition method applied to mapped
+  infinite domains: scalar analysis of dielectric waveguides down to modal
+  cutoff},'' \emph{Lightwave Technology, Journal of}, vol.~13, no.~3, pp.
+  375--383, 1995.
+
+\bibitem{hugonin2005pml}
+J.~Hugonin and P.~Lalanne, ``Perfectly matched layers as nonlinear coordinate
+  transforms: a generalized formalization,'' \emph{J. Opt. Soc. Am. A},
+  vol.~22, no.~9, september 2005.
+
+\bibitem{hugonin2005fourier}
+J.~Hugonin, P.~Lalanne, I.~Villar, and I.~Matias, ``Fourier modal methods for
+  modeling optical dielectric waveguides,'' \emph{Optical and quantum
+  electronics}, vol.~37, no.~1, pp. 107--119, 2005.
+
+\bibitem{lalanne1997improved}
+P.~Lalanne, ``{Improved formulation of the coupled-wave method for
+  two-dimensional gratings},'' \emph{Journal of the Optical Society of America
+  A}, vol.~14, no.~7, pp. 1592--1598, 1997.
+
+\bibitem{lalanne1998computation}
+P.~Lalanne and M.~Jurek, ``Computation of the near-field pattern with the
+  coupled-wave method for transverse magnetic polarization,'' \emph{Journal of
+  Modern Optics}, vol.~45, no.~7, pp. 1357--1374, 1998.
+
+\bibitem{lalanne1996hic}
+P.~Lalanne and G.~M. Morris, ``Highly improved convergence of the coupled-wave
+  method for {TM} polarization,'' \emph{Journal of the Optical Society of
+  America A}, vol.~13, no.~4, pp. 779--784, 1996.
+
+\bibitem{lalanne2000fmm}
+P.~Lalanne and E.~Silberstein, ``{Fourier-modal methods applied to waveguide
+  computational problems},'' \emph{Optics Letters}, vol.~25, no.~15, pp.
+  1092--1094, 2000.
+
+\bibitem{li1996formulation}
+L.~Li, ``{Formulation and comparison of two recursive matrix algorithms for
+  modeling layered diffraction gratings},'' \emph{Journal of the Optical
+  Society of America A}, vol.~14, no.~5, pp. 1024--1035, 1996.
+
+\bibitem{li1996ufs}
+------, ``{Use of {F}ourier series in the analysis of discontinuous periodic
+  structures},'' \emph{Journal of the Optical Society of America A}, vol.~13,
+  pp. 1870--1876, 1996.
+
+\bibitem{li2000recent}
+------, ``{Recent advances and present limitations of the electromagnetic
+  theory of diffraction gratings},'' \emph{Diffractive Optics and
+  Micro-Optics}, 2000.
+
+\bibitem{martin2009scoi}
+B.~Martin, ``Etude et r\'ealisation d'un spectrom\`etre compact en optique
+  int\'egr\'ee sur verre,'' Ph.D. dissertation, Grenoble INP, January 2009.
+
+\bibitem{michallon2015eoao}
+J.~Michallon, ``Etude et optimisation de l'absorption optique et du transport
+  \'electronique dans les cellules photovolta\"iques \`a base de nanofils,''
+  Ph.D. dissertation, Grenoble INP, January 2015.
+
+\bibitem{mingw_site}
+\BIBentryALTinterwordspacing
+``{MinGW} website.'' [Online]. Available: \url{http://www.mingw.org/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{moharam1981rigorous}
+M.~Moharam and T.~Gaylord, ``{Rigorous coupled-wave analysis of planar-grating
+  diffraction},'' \emph{JOSA}, vol.~71, no.~7, pp. 811--818, 1981.
+
+\bibitem{rlwrap_site}
+\BIBentryALTinterwordspacing
+``{rlwrap} website.'' [Online]. Available:
+  \url{http://utopia.knoware.nl/~hlub/uck/rlwrap/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{schuster2007normal}
+T.~Schuster, J.~Ruoff, N.~Kerwien, S.~Rafler, and W.~Osten, ``Normal vector
+  method for convergence improvement using the rcwa for crossed gratings,''
+  \emph{JOSA A}, vol.~24, no.~9, pp. 2880--2890, 2007.
+
+\bibitem{silberstein2001ugt}
+E.~Silberstein, P.~Lalanne, J.~Hugonin, and Q.~Cao, ``{Use of grating theories
+  in integrated optics},'' \emph{Journal of the Optical Society of America A},
+  vol.~18, no.~11, pp. 2865--2875, 2001.
+
+\bibitem{atlas}
+R.~Whaley, A.~Petitet, and J.~Dongarra, ``{Automated empirical optimizations of
+  software and the {ATLAS} project},'' \emph{Parallel Computing}, vol.~27, no.
+  1-2, pp. 3--35, 2001.
+
+\end{thebibliography}

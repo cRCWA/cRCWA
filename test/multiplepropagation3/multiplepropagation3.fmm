@@ -1,0 +1,29 @@
+wavelength 1.55e-6
+size 10e-6 10e-6
+harmonics 11 11
+parallel 4
+
+
+section 10e-6
+    substrate 1.0 0.0
+    rectangle 1.5 0 2e-6 3e-6 0 0
+
+wants propagation
+solve
+
+assemble
+
+excitation f cx 1 0 
+fopen "testout.txt" "w"
+let file=ans
+
+fprint file "This line should be present in testout.txt"
+# outdata "i" 0 0 1e-6 1e-6 outdata.txt
+propagation Hx,Hy m 100e-9 5 5 pippo_hx.txt,pippo_hy.txt
+fprint file "Field integral: " ans
+# outdata is still active.
+propagation Ex,Ey m 100e-9 5 5 pippo_ex.txt,pippo_ey.txt
+
+fprint file "This line should NOT be present in testout.txt, since the previous command contains an error."
+
+fclose file

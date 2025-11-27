@@ -1,0 +1,157 @@
+\contentsline {chapter}{\numberline {1}Technical background}{11}
+\contentsline {section}{\numberline {1.1}Calculation of the transverse fields}{11}
+\contentsline {section}{\numberline {1.2}Fourier series field development}{13}
+\contentsline {subsection}{\numberline {1.2.1}Developing terms}{13}
+\contentsline {subsection}{\numberline {1.2.2}Convolutions}{16}
+\contentsline {subsection}{\numberline {1.2.3}Derivatives}{17}
+\contentsline {subsection}{\numberline {1.2.4}A naive example}{18}
+\contentsline {subsection}{\numberline {1.2.5}Eigenvalues and eigenvectors as propagation modes}{18}
+\contentsline {section}{\numberline {1.3}Perfectly Matched Layers (PML)}{19}
+\contentsline {subsection}{\numberline {1.3.1}Anisotropic PMLs}{19}
+\contentsline {subsection}{\numberline {1.3.2}Coordinate transform PMLs}{20}
+\contentsline {section}{\numberline {1.4}Convergence and discontinuities}{21}
+\contentsline {subsection}{\numberline {1.4.1}Matdev an (obsolete)}{22}
+\contentsline {subsection}{\numberline {1.4.2}Matdev af (obsolete)}{23}
+\contentsline {subsection}{\numberline {1.4.3}Matdev be (obsolete)}{23}
+\contentsline {subsection}{\numberline {1.4.4}Matdev nd}{23}
+\contentsline {subsection}{\numberline {1.4.5}Matdev la (Lalanne-type developments)}{24}
+\contentsline {subsection}{\numberline {1.4.6}Matdev las (Lalanne developments, with symmetries)}{24}
+\contentsline {subsection}{\numberline {1.4.7}Matdev nf (Normal field)}{24}
+\contentsline {subsection}{\numberline {1.4.8}Matdev nfs (Normal-field development, with symmetries)}{25}
+\contentsline {section}{\numberline {1.5}Characteristics of bent waveguides}{25}
+\contentsline {section}{\numberline {1.6}From cylindrical to Cartesian coordinates}{26}
+\contentsline {section}{\numberline {1.7}Implementation of symmetries}{27}
+\contentsline {subsection}{\numberline {1.7.1}Symmetry and anti-symmetry}{28}
+\contentsline {section}{\numberline {1.8}Propagation}{28}
+\contentsline {subsection}{\numberline {1.8.1}Geometrical interpretation}{28}
+\contentsline {subsection}{\numberline {1.8.2}Continuity of the fields through two adjacent sections}{29}
+\contentsline {subsection}{\numberline {1.8.3}The scattering matrix formalism}{30}
+\contentsline {section}{\numberline {1.9}Bloch-mode calculation}{32}
+\contentsline {section}{\numberline {1.10}Conclusion}{33}
+\contentsline {chapter}{\numberline {2}Using \textsf {afmm}}{35}
+\contentsline {section}{\numberline {2.1}Compiling and installing \textsf {afmm}}{35}
+\contentsline {section}{\numberline {2.2}Conventions}{37}
+\contentsline {section}{\numberline {2.3}General structure-level commands}{38}
+\contentsline {subsection}{\numberline {2.3.1}SIZE: Set calculation window size}{39}
+\contentsline {subsection}{\numberline {2.3.2}HARMONICS: Set number of space harmonics to be used}{39}
+\contentsline {subsection}{\numberline {2.3.3}WAVELENGTH: Set the wavelength to be used}{40}
+\contentsline {subsection}{\numberline {2.3.4}SOLVE: Find propagation modes}{40}
+\contentsline {subsection}{\numberline {2.3.5}WANTS: Save information for later field calculations}{41}
+\contentsline {subsection}{\numberline {2.3.6}PROPAGATION: Propagate fields in the structure}{41}
+\contentsline {subsection}{\numberline {2.3.7}ASSEMBLE: Prepare all the matrices needed for the propagation}{42}
+\contentsline {subsection}{\numberline {2.3.8}EXCITATION: Define the excitation of the calculation region}{42}
+\contentsline {subsection}{\numberline {2.3.9}CARPET: Sweep some convergence problems under the carpet}{45}
+\contentsline {subsection}{\numberline {2.3.10}OUTDATA: Calculate additional output data during propagation}{45}
+\contentsline {subsection}{\numberline {2.3.11}SYMMETRY: Handle structure symmetries}{46}
+\contentsline {subsection}{\numberline {2.3.12}BLOCH: Calculate Bloch eigenmodes and eigenvectors}{47}
+\contentsline {subsection}{\numberline {2.3.13}ANGLES: Define excitation angles different from 0}{47}
+\contentsline {subsection}{\numberline {2.3.14}OUTBLOCH: Output the results of the Bloch mode calculation}{47}
+\contentsline {section}{\numberline {2.4}Section-level commands}{48}
+\contentsline {subsection}{\numberline {2.4.1}SECTION: Define a section of the given length}{48}
+\contentsline {subsection}{\numberline {2.4.2}SUBSTRATE: Chooses the refractive index of the substrate}{48}
+\contentsline {subsection}{\numberline {2.4.3}RECTANGLE: Add a rectangular waveguide to the structure}{48}
+\contentsline {subsection}{\numberline {2.4.4}PML: Add perfectly matched layers to the waveguide}{49}
+\contentsline {subsection}{\numberline {2.4.5}PML\_TRANSF: Adopt PML's with coordinate transform}{50}
+\contentsline {subsection}{\numberline {2.4.6}INDFILE: Reads refractive index distribution from an input file}{50}
+\contentsline {subsection}{\numberline {2.4.7}INPSTRUCT: Show the input structure}{50}
+\contentsline {subsection}{\numberline {2.4.8}OUTGMODES: Write on a file the interesting modes found}{51}
+\contentsline {subsection}{\numberline {2.4.9}SELMODES: output the modes using a rule}{52}
+\contentsline {subsection}{\numberline {2.4.10}LOWINDEX: Set the lowest value allowed for the effective index to be considered ``interesting''}{53}
+\contentsline {subsection}{\numberline {2.4.11}HIGHINDEX: Set the highest value allowed for the effective index to be considered ``interesting''}{53}
+\contentsline {subsection}{\numberline {2.4.12}BEND: Define the bending radius}{53}
+\contentsline {subsection}{\numberline {2.4.13}SPECTRUM: Obtain all calculated effective indices}{54}
+\contentsline {subsection}{\numberline {2.4.14}ORDER: Select the ``interesting'' modes on the basis of azimuthal order}{54}
+\contentsline {subsection}{\numberline {2.4.15}COEFFICIENT: Determine the transmission coefficient of a mode in the structure}{54}
+\contentsline {subsection}{\numberline {2.4.16}SELECT: Change the current section}{55}
+\contentsline {subsection}{\numberline {2.4.17}MATDEV: Choose the matrix development strategy}{55}
+\contentsline {subsection}{\numberline {2.4.18}NORM: Calculate the L2 norm of the vector of excitation}{56}
+\contentsline {subsection}{\numberline {2.4.19}EIGENVC: Report eigenvectors of the current section}{56}
+\contentsline {subsection}{\numberline {2.4.20}EIGENAM: Report eigenvalues of the current section}{57}
+\contentsline {subsection}{\numberline {2.4.21}POWER: Calculate propagated power}{57}
+\contentsline {subsection}{\numberline {2.4.22}POWERZ: Calculate all power flowing in a given quota}{57}
+\contentsline {subsection}{\numberline {2.4.23}MONITOR: Monitors power flow in a rectangular surface}{58}
+\contentsline {subsection}{\numberline {2.4.24}MODEPOS: Get mode position indices}{58}
+\contentsline {section}{\numberline {2.5}Other commands of general use}{58}
+\contentsline {subsection}{\numberline {2.5.1}\#: Start a comment}{58}
+\contentsline {subsection}{\numberline {2.5.2}HELP: List the supported commands}{59}
+\contentsline {subsection}{\numberline {2.5.3}LABEL and GOTO: Unconditional jumps}{59}
+\contentsline {subsection}{\numberline {2.5.4}IF, ELSE, ENDIF: Perform a conditional test}{59}
+\contentsline {subsection}{\numberline {2.5.5}FOR and NEXT: Define a cycle}{59}
+\contentsline {subsection}{\numberline {2.5.6}DO and WHILE: Define a cycle with an exit condition}{60}
+\contentsline {subsection}{\numberline {2.5.7}LOAD: Load (or includes) a new file}{60}
+\contentsline {subsection}{\numberline {2.5.8}QUIT: Exit immediately}{60}
+\contentsline {subsection}{\numberline {2.5.9}PRINT: Print a line at the output}{60}
+\contentsline {subsection}{\numberline {2.5.10}FOPEN: Open a file}{60}
+\contentsline {subsection}{\numberline {2.5.11}FCLOSE: Close a file}{61}
+\contentsline {subsection}{\numberline {2.5.12}FPRINT: Print a line on a file}{61}
+\contentsline {subsection}{\numberline {2.5.13}FSCAN read a number}{61}
+\contentsline {subsection}{\numberline {2.5.14}FCHECK checks if the last file read was successful}{61}
+\contentsline {subsection}{\numberline {2.5.15}FSKIP: Skip a line on the file}{62}
+\contentsline {subsection}{\numberline {2.5.16}ADDSPACE: Define the strategy for spaces and newlines in printing}{62}
+\contentsline {subsection}{\numberline {2.5.17}CLEAR: Reset the structure}{62}
+\contentsline {subsection}{\numberline {2.5.18}SYSTEM: Executes a system command}{62}
+\contentsline {subsection}{\numberline {2.5.19}LET: Perform numerical calculations}{63}
+\contentsline {subsection}{\numberline {2.5.20}MEMOCC: Report memory occupation}{63}
+\contentsline {subsection}{\numberline {2.5.21}PARALLEL: Try to parallelise calculations when possible}{63}
+\contentsline {section}{\numberline {2.6}Using variables in calculations}{64}
+\contentsline {section}{\numberline {2.7}Slab waveguide and matrix developments}{66}
+\contentsline {section}{\numberline {2.8}Example: rectangular waveguide}{69}
+\contentsline {section}{\numberline {2.9}Load refractive index distribution}{71}
+\contentsline {section}{\numberline {2.10}Modes of a 1D bent waveguide}{71}
+\contentsline {section}{\numberline {2.11}Propagation in a 2D structure}{72}
+\contentsline {section}{\numberline {2.12}Bloch-modes calculation}{74}
+\contentsline {section}{\numberline {2.13}Conclusion}{76}
+\contentsline {chapter}{\numberline {A}Matrix constructions}{77}
+\contentsline {section}{\numberline {A.1}The block-Toeplitz matrix}{77}
+\contentsline {section}{\numberline {A.2}The modified Toeplitz notation}{79}
+\contentsline {section}{\numberline {A.3}Unrolling vectors}{80}
+\contentsline {section}{\numberline {A.4}Creating bloc-Toeplitz matrix}{80}
+\contentsline {section}{\numberline {A.5}Modified matrices}{82}
+\contentsline {section}{\numberline {A.6}Conclusion}{83}
+\contentsline {chapter}{\numberline {B}Plotting modes profiles with Gnuplot}{85}
+\contentsline {section}{\numberline {B.1}Plotting a structure}{85}
+\contentsline {chapter}{\numberline {C}The \textsf {slice} utility}{87}
+\contentsline {section}{\numberline {C.1}Usage}{87}
+\contentsline {section}{\numberline {C.2}Examples}{88}
+\contentsline {section}{\numberline {C.3}Conclusion}{88}
+\contentsline {chapter}{\numberline {D}File formats used by \textsf {afmm}}{89}
+\contentsline {section}{\numberline {D.1}2D and 3D formats, compatible with Gnuplot}{89}
+\contentsline {subsection}{\numberline {D.1.1}Header}{89}
+\contentsline {subsection}{\numberline {D.1.2}Data section of the file}{89}
+\contentsline {subsection}{\numberline {D.1.3}Example}{89}
+\contentsline {section}{\numberline {D.2}OptiWave software compatible formats}{90}
+\contentsline {subsection}{\numberline {D.2.1}Refractive index distribution: rid}{90}
+\contentsline {subsubsection}{Header}{90}
+\contentsline {subsubsection}{Data section of the file}{90}
+\contentsline {subsubsection}{Example}{90}
+\contentsline {subsection}{\numberline {D.2.2}Electric fields: f3d}{91}
+\contentsline {section}{\numberline {D.3}Conversion utility: \texttt {o2g}}{91}
+\contentsline {chapter}{\numberline {E}Python interface}{93}
+\contentsline {section}{\numberline {E.1}Introduction}{93}
+\contentsline {section}{\numberline {E.2}Commands}{93}
+\contentsline {section}{\numberline {E.3}Commands operating with tables}{94}
+\contentsline {section}{\numberline {E.4}Python functions without an equivalent in the \textsf {afmm}\ script language}{94}
+\contentsline {section}{\numberline {E.5}Examples}{94}
+\contentsline {chapter}{\numberline {F}Version history and change-log}{97}
+\contentsline {section}{\numberline {F.1}Version 1.4.5}{97}
+\contentsline {section}{\numberline {F.2}Version 1.4.4}{97}
+\contentsline {section}{\numberline {F.3}Version 1.4.3}{97}
+\contentsline {section}{\numberline {F.4}Version 1.4.2}{97}
+\contentsline {section}{\numberline {F.5}Version 1.4.1}{98}
+\contentsline {section}{\numberline {F.6}Version 1.4}{98}
+\contentsline {section}{\numberline {F.7}Version 1.3.5}{98}
+\contentsline {section}{\numberline {F.8}Version 1.3.4}{98}
+\contentsline {section}{\numberline {F.9}Version 1.3.3}{98}
+\contentsline {section}{\numberline {F.10}Version 1.3.2}{98}
+\contentsline {section}{\numberline {F.11}Version 1.3.1}{98}
+\contentsline {section}{\numberline {F.12}Version 1.3}{98}
+\contentsline {section}{\numberline {F.13}Version 1.2.3}{99}
+\contentsline {section}{\numberline {F.14}Version 1.2.2}{99}
+\contentsline {section}{\numberline {F.15}Version 1.2.0}{99}
+\contentsline {section}{\numberline {F.16}Version 1.1.0}{99}
+\contentsline {section}{\numberline {F.17}Version 1.0.2}{99}
+\contentsline {section}{\numberline {F.18}Version 1.0.1}{99}
+\contentsline {section}{\numberline {F.19}Version 1.0}{99}
+\contentsline {chapter}{\numberline {G}List of publications related to \textsf {afmm}}{101}
+\contentsline {subsection}{\numberline {G.0.1}Proceedings of international meetings and workshops}{101}
+\contentsline {subsection}{\numberline {G.0.2}International reviews}{101}

@@ -1,0 +1,127 @@
+DEFAULT SOLVER
+
+default setup
+Interesting mode found 3, effective index: (1.59172,-0.010111)
+Interesting mode found 6, effective index: (2.13982,-0.00935881)
+Interesting mode found 2, effective index: (2.65314,-0.00741014)
+Interesting mode found 5, effective index: (3.08004,-0.00704083)
+Interesting mode found 1, effective index: (3.25367,-0.00650811)
+Interesting mode found 4, effective index: (3.53889,-0.00621776)
+Interesting mode found 0, effective index: (3.5771,-0.00611387)
+Lalanne developpement 0
+Interesting mode found 3, effective index: (1.59172,-0.010111)
+Interesting mode found 6, effective index: (2.13345,-0.00939637)
+Interesting mode found 2, effective index: (2.65314,-0.00741014)
+Interesting mode found 5, effective index: (3.07802,-0.00704712)
+Interesting mode found 1, effective index: (3.25367,-0.00650811)
+Interesting mode found 4, effective index: (3.53845,-0.00621878)
+Interesting mode found 0, effective index: (3.5771,-0.00611387)
+Lalanne developpement 1
+Interesting mode found 6, effective index: (1.59172,-0.010111)
+Interesting mode found 2, effective index: (2.13345,-0.00939637)
+Interesting mode found 5, effective index: (2.65314,-0.00741014)
+Interesting mode found 1, effective index: (3.07802,-0.00704712)
+Interesting mode found 4, effective index: (3.25367,-0.00650811)
+Interesting mode found 0, effective index: (3.53845,-0.00621878)
+Interesting mode found 3, effective index: (3.5771,-0.00611387)
+Normal field developpement
+Interesting mode found 6, effective index: (1.57976,-0.0101397)
+Interesting mode found 5, effective index: (2.11833,-0.00936691)
+Interesting mode found 4, effective index: (2.64729,-0.00741245)
+Interesting mode found 3, effective index: (3.06544,-0.00700009)
+Interesting mode found 1, effective index: (3.2504,-0.00650647)
+Interesting mode found 2, effective index: (3.53051,-0.00618576)
+Interesting mode found 0, effective index: (3.57506,-0.00611102)
+SYMMETRY SOLVER
+
+ without symmetry
+Lalanne developpement 0
+Interesting mode found 3, effective index: (1.59172,-0.010111)
+Interesting mode found 6, effective index: (2.13345,-0.00939637)
+Interesting mode found 2, effective index: (2.65314,-0.00741014)
+Interesting mode found 5, effective index: (3.07802,-0.00704712)
+Interesting mode found 1, effective index: (3.25367,-0.00650811)
+Interesting mode found 4, effective index: (3.53845,-0.00621878)
+Interesting mode found 0, effective index: (3.5771,-0.00611387)
+Lalanne developpement 1
+Interesting mode found 6, effective index: (1.59172,-0.010111)
+Interesting mode found 2, effective index: (2.13345,-0.00939637)
+Interesting mode found 5, effective index: (2.65314,-0.00741014)
+Interesting mode found 1, effective index: (3.07802,-0.00704712)
+Interesting mode found 4, effective index: (3.25367,-0.00650811)
+Interesting mode found 0, effective index: (3.53845,-0.00621878)
+Interesting mode found 3, effective index: (3.5771,-0.00611387)
+Normal field developpement
+Interesting mode found 6, effective index: (1.56498,-0.010103)
+Interesting mode found 5, effective index: (2.11747,-0.00935615)
+Interesting mode found 4, effective index: (2.63608,-0.00735882)
+Interesting mode found 3, effective index: (3.06363,-0.00698905)
+Interesting mode found 0, effective index: (3.24223,-0.00646257)
+Interesting mode found 2, effective index: (3.52859,-0.00617515)
+Interesting mode found 1, effective index: (3.56295,-0.00604521)
+
+ with symmetry a s
+Lalanne developpement 0
+Interesting mode found 2, effective index: (1.36472,-0.000153007)
+Interesting mode found 1, effective index: (2.65314,-0.00741014)
+Interesting mode found 3, effective index: (3.07802,-0.00704712)
+Interesting mode found 0, effective index: (3.5771,-0.00611387)
+Lalanne developpement 1
+Interesting mode found 4, effective index: (1.59172,-0.010111)
+Interesting mode found 1, effective index: (2.13345,-0.00939637)
+Interesting mode found 2, effective index: (2.69652,-0.00409417)
+Interesting mode found 3, effective index: (3.25367,-0.00650811)
+Interesting mode found 0, effective index: (3.53845,-0.00621878)
+Normal field developpement
+Interesting mode found 3, effective index: (1.8343,-0.0017575)
+Interesting mode found 1, effective index: (2.63608,-0.00756719)
+Interesting mode found 2, effective index: (3.06363,-0.00696848)
+Interesting mode found 0, effective index: (3.56295,-0.00606583)
+
+ with symmetry s a
+Lalanne developpement 0
+Interesting mode found 2, effective index: (1.59172,-0.010111)
+Interesting mode found 4, effective index: (2.13345,-0.00939637)
+Interesting mode found 0, effective index: (2.69652,-0.00409417)
+Interesting mode found 1, effective index: (3.25367,-0.00650811)
+Interesting mode found 3, effective index: (3.53845,-0.00621878)
+Lalanne developpement 1
+Interesting mode found 0, effective index: (1.36472,-0.000153007)
+Interesting mode found 3, effective index: (2.65314,-0.00741014)
+Interesting mode found 1, effective index: (3.07802,-0.00704712)
+Interesting mode found 2, effective index: (3.5771,-0.00611387)
+Normal field developpement
+Interesting mode found 4, effective index: (1.56498,-0.0104903)
+Interesting mode found 3, effective index: (2.11747,-0.00926968)
+Interesting mode found 1, effective index: (2.39708,-0.00333366)
+Interesting mode found 2, effective index: (3.24223,-0.00654379)
+Interesting mode found 0, effective index: (3.52859,-0.00617067)
+
+
+combining symmetry a s and symmetry s a
+some mode may not have the correct symmetry and thus will not propagate
+light but they are found !!!
+Lalanne developpement 0
+Interesting mode found 2, effective index: (1.59172,-0.010111)
+Interesting mode found 4, effective index: (2.13345,-0.00939637)
+Interesting mode found 1, effective index: (2.65314,-0.00741014)
+Interesting mode found 3, effective index: (3.07802,-0.00704712)
+Interesting mode found 1, effective index: (3.25367,-0.00650811)
+Interesting mode found 3, effective index: (3.53845,-0.00621878)
+Interesting mode found 0, effective index: (3.5771,-0.00611387)
+Lalanne developpement 1
+Interesting mode found 4, effective index: (1.59172,-0.010111)
+Interesting mode found 1, effective index: (2.13345,-0.00939637)
+Interesting mode found 3, effective index: (2.65314,-0.00741014)
+Interesting mode found 1, effective index: (3.07802,-0.00704712)
+Interesting mode found 3, effective index: (3.25367,-0.00650811)
+Interesting mode found 0, effective index: (3.53845,-0.00621878)
+Interesting mode found 2, effective index: (3.5771,-0.00611387)
+Normal field developpement
+Interesting mode found 4, effective index: (1.56498,-0.0104903)
+Interesting mode found 3, effective index: (2.11747,-0.00926968)
+Interesting mode found 1, effective index: (2.63608,-0.00756719)
+Interesting mode found 2, effective index: (3.06363,-0.00696848)
+Interesting mode found 2, effective index: (3.24223,-0.00654379)
+Interesting mode found 0, effective index: (3.52859,-0.00617067)
+Interesting mode found 0, effective index: (3.56295,-0.00606583)

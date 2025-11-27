@@ -1,0 +1,41 @@
+# We begin by defining the size of the calculation window
+# Every size and distance is specified in meters.
+# Here we choose a 2 microns by 200 nanometers window
+
+size 2e-6 200e-9
+
+# We then have to set the number of harmonics to be used.
+# Since we just have one harmonic in the y axis, we can
+# we can use a pretty high number of harmonics in the x
+# direction
+
+harmonics 201 1
+
+# We set now the substrate refractive index
+
+substrate 1.44 0
+
+# And we define a rectangular waveguide.
+# The center of the waveguide corresponds to the center
+# of the calculation window.
+
+rectangle 3.5 0 500e-9 200e-9 0 0
+
+# We define the wavelength
+
+wavelength 1550e-9
+
+# We introduce PMLs.
+# Note how the size of the y absorber is zero.
+# Thanks to the periodicity, we are indeed representing
+# a 1D slab waveguide.
+
+# pml 5 5 50e-9 0
+pml_transf 50e-9 0 .5 -.5
+
+matdev nd
+
+# And then, we launch the calculation!!!
+
+solve
+

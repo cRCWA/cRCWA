@@ -1,0 +1,47 @@
+wavelength 1.55e-6
+
+size 10e-6 10e-6
+harmonics 11 11
+carpet
+
+
+section 20e-6
+
+	#substrate 1.0 0.0
+	#rectangle 1.5 0.0 2e-6 1e-6 2.0e-6 2.0e-6
+	indfile 1e-6 refractive_index_imo.rid
+
+	inpstruct i 101 101 refractive_index.txt
+	inpstruct im 101 101 refractive_index_im.txt
+	# inpstruct imo 101 101 refractive_index_imo.rid
+	
+	# inpstruct ex 101 101 refractive_index_ex.txt
+	# inpstruct ey 101 101 refractive_index_ey.txt
+	# inpstruct ez 101 101 refractive_index_ez.txt
+	# inpstruct mux 101 101 refractive_index_mux.txt
+	# inpstruct muy 101 101 refractive_index_muy.txt
+	# inpstruct muz 101 101 refractive_index_muz.txt	
+
+wants propagation
+
+solve
+# outgmodes Ex o 101 101 asymmetric
+# outgmodes Ey o 101 101 asymmetric
+
+# outgmodes Ex2 o 101 101 asymmetric
+# outgmodes Ey2 o 101 101 asymmetric
+
+
+select 1
+modepos
+
+let pos1=ans(0)
+let pos2=ans(3)
+
+# Try the excitation via the mode position index
+excitation "f" "id" 1.0 0.0 pos1 0
+excitation "b" "id" 1.0 0.0 pos2 0
+
+assemble 
+
+propagation Ex m 300e-9 50 50 propag.txt

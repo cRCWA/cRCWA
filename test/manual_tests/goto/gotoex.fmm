@@ -1,0 +1,5 @@
+print First part
+goto skip
+print Second part
+label skip
+print Third part

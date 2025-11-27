@@ -1,0 +1,16 @@
+[bucci@imep196-187-1 speedtest]$ time ./speedtest.sh 
+1 -thread timing:  1m52.543s
+2 -threads timing: 1m35.941s
+3 -threads timing: 1m27.632s
+4 -threads timing: 1m25.347s
+5 -threads timing: 1m23.115s
+6 -threads timing: 1m21.050s
+7 -threads timing: 1m20.913s
+8 -threads timing: 1m19.061s
+12-threads timing: 1m17.024s
+16-threads timing: 1m21.310s
+rm: impossible de supprimer « test_results.txt »: Aucun fichier ou dossier de ce type
+
+real	14m23.947s
+user	22m8.454s
+sys	0m33.197s

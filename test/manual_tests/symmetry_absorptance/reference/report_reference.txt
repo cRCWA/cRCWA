@@ -1,0 +1,7 @@
+Report obtained for the calculation of absobed power in a nanowire of
+Silicon on a non absorbing substrate
+
+filename generation generation_averaged power powerZ monitor
+cylinder_nanowire_std 1.61793e-16 1.209729e-16 1.209079e-16 1.209079e-16
+cylinder_nanowire_symnn 1.16496e-16 1.217913e-16 1.2176e-16 1.2176e-16
+cylinder_nanowire_symas 1.16567e-16 1.223359e-16 1.221881e-16 1.221881e-16

@@ -1,0 +1,1739 @@
+desc: I1 cache:         32768 B, 64 B, 8-way associative
+desc: D1 cache:         32768 B, 64 B, 8-way associative
+desc: LL cache:         10485760 B, 64 B, 20-way associative
+cmd: ../../afmm simplemode.fmm
+events: Ir I1mr ILmr Dr D1mr DLmr Dw D1mw DLmw Bc Bcm Bi Bim
+fl=???
+fn=(below main)
+0 57 6 4 17 6 0 17 1 0 7 0 2 2
+fn=???
+0 333284452 45439 1258 67948758 9607364 121 20957440 295151 65 3493240 132695 542681 42740
+fn=ATL_DecGlobalAtomicCount
+0 43911 1159 4 11775 615 0 8133 552 11 4671 678 0 0
+fn=ATL_DoWorkMM
+0 7380 383 2 4182 771 0 1722 0 0 246 36 246 22
+fn=ATL_FreeAtomicCount
+0 276 160 1 0 0 0 0 0 0 0 0 0 0
+fn=ATL_FreeGlobalAtomicCount
+0 7046 373 2 1501 489 0 1256 0 0 521 63 0 0
+fn=ATL_SetAtomicCount
+0 4140 260 1 828 0 0 1104 269 0 276 4 0 0
+fn=ATL_SetGlobalAtomicCount
+0 18350 603 5 2788 0 0 4565 46 0 1011 79 0 0
+fn=ATL_ZupKBmm12_4_1_b1
+0 1548 74 7 486 144 0 522 54 0 0 0 0 0
+fn=ATL_ZupKBmm2_2_1_b1
+0 1548 106 6 486 123 0 522 44 0 0 0 0 0
+fn=ATL_ZupKBmm40_4_1_b1
+0 2494 84 8 783 226 0 841 41 1 0 0 0 0
+fn=ATL_ZupKBmm6_2_1_b1
+0 688 36 8 216 58 0 232 24 0 0 0 0 0
+fn=ATL_dasum
+0 2169 3 3 0 0 0 0 0 0 723 6 0 0
+fn=ATL_daxpy
+0 760 78 2 38 38 0 0 0 0 266 6 0 0
+fn=ATL_dcopy
+0 529686 363 3 0 0 0 0 0 0 155790 47 0 0
+fn=ATL_dcpsc
+0 46 6 3 4 2 0 0 0 0 18 8 0 0
+fn=ATL_dcpsc_xp1yp1aXbX
+0 4824 4 2 964 60 0 962 122 0 964 12 0 0
+fn=ATL_dgeadd_a1_b1
+0 7042 22 5 2606 187 0 1362 0 0 700 95 0 0
+fn=ATL_dnrm2
+0 484722 266 2 0 0 0 0 0 0 161574 162 0 0
+fn=ATL_dnrm2_xp1yp0aXbX
+0 3810595 512 4 441794 21390 0 53858 0 0 485671 11557 0 0
+fn=ATL_dscal
+0 5958 103 2 0 0 0 0 0 0 1986 5 0 0
+fn=ATL_dscal_xp0yp0aXbX
+0 97320 6 1 19440 0 0 19320 0 0 19440 138 0 0
+fn=ATL_dscal_xp1yp0aXbX
+0 2190717 160 3 723502 58650 0 722960 0 0 184432 611 0 0
+fn=ATL_dset
+0 306 6 2 0 0 0 0 0 0 102 1 0 0
+fn=ATL_dyntlaunch
+0 58221 1600 6 15993 2515 0 10861 1142 22 6869 993 630 120
+fn=ATL_dzasum
+0 2410 2 2 0 0 0 0 0 0 723 7 0 0
+fn=ATL_dznrm2
+0 538580 326 3 0 0 0 0 0 0 161574 44 0 0
+fn=ATL_goparallel
+0 18280 996 4 1470 245 0 6381 101 0 1044 114 0 0
+fn=ATL_idamax
+0 4347 78 2 0 0 0 0 0 0 1449 4 0 0
+fn=ATL_itlaenv
+0 18667 862 16 2526 119 3 1905 62 0 4259 476 314 128
+fn=ATL_izamax
+0 4356 88 2 0 0 0 0 0 0 1452 22 0 0
+fn=ATL_linearize_mmnodes
+0 8661 418 6 2595 0 0 2045 0 0 3391 305 0 0
+fn=ATL_rk2
+0 2925244 248 38 790978 25813 1 265536 59 0 40870 9574 0 0
+fn=ATL_rtrmmLLC
+0 1800 93 3 650 0 0 500 44 0 50 6 50 1
+fn=ATL_rtrmmLUC
+0 1800 179 3 750 0 0 600 100 0 50 1 50 1
+fn=ATL_rtrmmLUN
+0 2109 129 4 798 0 0 627 55 0 57 0 57 1
+fn=ATL_rtrmmRLC
+0 105 12 3 45 0 0 36 6 0 3 2 3 1
+fn=ATL_rtrmmRLN
+0 6512 480 4 2640 0 0 2112 255 0 176 18 176 2
+fn=ATL_rtrmmRUC
+0 111 12 4 45 0 0 36 6 0 3 2 3 3
+fn=ATL_rtrmmRUN
+0 6055 314 5 2595 0 0 2076 232 0 173 14 173 1
+fn=ATL_rtrsmLLN
+0 222 12 3 72 0 0 60 0 0 6 0 6 1
+fn=ATL_rtrsmLUN
+0 8640 8 4 3360 0 0 2640 0 0 240 2 240 1
+fn=ATL_rtrsmRLN
+0 8470 6 3 3388 0 0 2662 210 0 242 1 242 1
+fn=ATL_rtrsmRUN
+0 8880 6 3 3360 0 0 2640 4 0 240 2 240 2
+fn=ATL_thrdecompMM
+0 9277 611 7 1937 0 0 2242 272 0 408 49 0 0
+fn=ATL_thrdecompMM_rMN
+0 31131 1434 19 10158 0 0 9802 543 0 1431 203 0 0
+fn=ATL_thread_exit
+0 618 154 1 0 0 0 309 0 0 0 0 0 0
+fn=ATL_thread_join
+0 2205 393 2 490 0 0 245 0 0 245 245 0 0
+fn=ATL_thread_start
+0 45982 1038 7 4432 6 0 16066 743 1 12742 1065 0 0
+fn=ATL_thread_yield
+0 2281 169 1 0 0 0 0 0 0 0 0 0 0
+fn=ATL_trsmLLN
+0 558668 132 29 141566 2950 0 78740 185 33 61660 2400 0 0
+fn=ATL_trsmLUN
+0 711016 76 32 172348 2795 0 106102 236 0 81658 3676 0 0
+fn=ATL_zCNBmm_b0
+0 11248 769 5 3552 866 0 4144 542 3 0 0 0 0
+fn=ATL_zCNBmm_b1
+0 1368 103 7 468 122 0 504 64 0 0 0 0 0
+fn=ATL_zCombineMVN
+0 225054 264 4 74366 5112 0 37012 0 0 36974 217 0 0
+fn=ATL_zDOMVNWORK_cols
+0 11120 337 6 2584 304 0 2128 76 0 228 80 0 0
+fn=ATL_zDOMVTWORK_cols
+0 2000 70 3 720 40 0 320 0 0 60 22 0 0
+fn=ATL_zDoWorkgerc_cols
+0 5912 92 3 1798 148 0 696 0 0 174 124 0 0
+fn=ATL_zGemmWillThread
+0 9222 495 2 1398 871 1 0 0 0 1398 176 0 0
+fn=ATL_zGetNB
+0 646 54 1 323 0 0 0 0 0 0 0 0 0
+fn=ATL_zIBJBmm
+0 49587 1368 10 13399 2372 0 11786 191 0 3111 505 0 0
+fn=ATL_zIBNBmm
+0 24800 983 11 5298 1795 0 6035 556 1 1713 258 0 0
+fn=ATL_zInitTMMNodes
+0 17697 483 5 204 0 0 13056 2188 0 1032 109 0 0
+fn=ATL_zJIK0x0x0NN0x0x0_aX_bX
+0 17599336 2000 163 8076212 245061 3 430820 101 0 252904 10237 54264 501
+fn=ATL_zJIK0x0x0TN0x0x0_a1_bX
+0 315880 365 22 108880 1007 0 42116 54 0 20396 948 0 0
+fn=ATL_zJIK0x0x0TN0x0x0_aX_bX
+0 2287188 1286 142 1110280 18361 3 45800 54 3 67656 3630 17128 72
+fn=ATL_zJIK0x0x12TN12x12x0_a1_bX
+0 1496608 452 36 750848 6522 0 49832 0 0 13872 344 0 0
+fn=ATL_zJIK0x0x19TN19x19x0_a1_bX
+0 4932624 505 52 2569536 31582 0 106624 11 0 30020 941 0 0
+fn=ATL_zJIK0x0x21TN21x21x0_a1_bX
+0 1649176 64 56 851400 4741 0 33712 8 0 8008 122 0 0
+fn=ATL_zJIK0x0x22TN22x22x0_a1_bX
+0 906096 118 59 470736 3440 0 17592 4 1 4272 104 0 0
+fn=ATL_zJIK0x0x23TN23x23x0_a1_bX
+0 6022320 658 61 3135612 38465 0 112272 10 0 26052 341 0 0
+fn=ATL_zJIK0x0x25TN25x25x0_a1_bX
+0 8735212 913 66 4576116 54754 0 149388 14 0 37116 419 0 0
+fn=ATL_zJIK0x0x26TN26x26x0_a1_bX
+0 2940792 69 68 1549976 13274 0 47948 6 0 13144 193 0 0
+fn=ATL_zJIK0x0x27TN27x27x0_a1_bX
+0 77085412 6405 71 40731320 362930 0 1210152 55 0 336780 4419 0 0
+fn=ATL_zJIK0x0x29TN29x29x0_a1_bX
+0 1867612 165 76 988072 11521 0 27500 5 0 7160 268 0 0
+fn=ATL_zJIK0x0x30TN30x30x0_a1_bX
+0 3466332 94 78 1814656 19665 0 50792 7 0 11016 148 0 0
+fn=ATL_zJIK0x0x32TN32x32x0_a1_bX
+0 3973564 91 83 2094200 23458 0 54152 9 0 13040 156 0 0
+fn=ATL_zJIK0x0x33TN33x33x0_a1_bX
+0 108249760 7192 85 57066072 685204 0 1432656 124 3 331728 2780 0 0
+fn=ATL_zJIK0x0x34TN34x34x0_a1_bX
+0 70302296 2342 88 37140928 413102 0 902168 112 0 215844 2139 0 0
+fn=ATL_zJIK0x0x35TN35x35x0_a1_bX
+0 35511516 1269 90 18908676 206237 0 437052 52 0 115572 2405 0 0
+fn=ATL_zJIK0x0x37TN37x37x0_a1_bX
+0 293969972 8058 94 156512128 1799170 0 3444240 225 0 902180 9116 0 0
+fn=ATL_zJIK0x0x38TN38x38x0_a1_bX
+0 153614628 7867 98 81834880 935122 0 1755056 170 0 459484 5191 0 0
+fn=ATL_zJIK0x0x39TN39x39x0_a1_bX
+0 50963936 880 99 27401664 319208 0 558720 40 0 163040 7787 0 0
+fn=ATL_zJIK0x0x40NN0x0x0_aX_bX
+0 12438344 69 21 5820584 443361 0 191744 6 0 201864 20961 0 0
+fn=ATL_zJIK0x0x40TN0x0x0_aX_bX
+0 1814912 582 111 1042120 16188 0 26516 11 0 14560 1313 0 0
+fn=ATL_zJIK0x0x40TN40x40x0_a1_bX
+0 30661016 1085 103 16370172 185499 0 332712 33 1 87656 1837 0 0
+fn=ATL_zJIK0x0x44TN44x44x0_a1_bX
+0 30106032 6078 112 16039816 170611 0 301576 65 0 80408 1739 0 0
+fn=ATL_zJIK0x0x6TN6x6x0_a1_bX
+0 452512 120 22 210672 2400 0 25208 0 0 8520 249 0 0
+fn=ATL_zJIK0x44x44TN44x44x0_a1_b0
+0 13339478 5711 110 7133634 62537 0 134196 37567 1 39716 721 0 0
+fn=ATL_zJIK0x44x44TN44x44x0_a1_b1
+0 15053943 6893 110 8097505 97812 0 151662 0 0 40390 641 0 0
+fn=ATL_zJIK0x44x44TN44x44x0_a1_bX
+0 32037115 6952 112 17025561 212998 0 320790 28 0 81454 740 0 0
+fn=ATL_zJIK44x0x44TN44x44x0_a1_b0
+0 15292482 11310 179 8223824 52672 0 177974 45497 109 21228 451 0 0
+fn=ATL_zJIK44x0x44TN44x44x0_a1_b1
+0 16058764 13213 181 8722796 91494 0 183469 2593 0 22098 303 0 0
+fn=ATL_zJIK44x0x44TN44x44x0_a1_bX
+0 33076312 13359 183 17788892 209469 0 372433 5128 17 45066 601 0 0
+fn=ATL_zMBJBmm
+0 60444 1276 11 12916 4421 0 14767 337 2 4114 673 0 0
+fn=ATL_zNCmmIJK
+0 90557 1015 67 29943 779 0 19421 1835 0 8489 349 56 16
+fn=ATL_zNCmmIJK_c
+0 1308 89 28 366 18 0 300 4 0 96 18 0 0
+fn=ATL_zNCmmJIK
+0 234824 2673 101 89227 6197 0 56795 1967 0 13139 846 8396 202
+fn=ATL_zNCmmJIK_c
+0 19726 330 48 7234 55 0 5284 57 0 798 84 778 13
+fn=ATL_zaliased_gemmNN
+0 46655 2371 22 10416 1207 0 9982 990 0 4123 104 0 0
+fn=ATL_zaliased_gemmTN
+0 15028 772 21 3332 374 0 3128 204 0 1292 95 0 0
+fn=ATL_zaxpby
+0 3870 453 9 908 168 0 336 0 0 778 61 0 0
+fn=ATL_zaxpbyConj
+0 32880 329 6 7535 1134 0 2740 0 0 6850 128 0 0
+fn=ATL_zaxpy
+0 279785 259 5 20722 0 0 0 0 0 72565 481 0 0
+fn=ATL_zcol2blk2_a1
+0 30560 356 3 8188 52 0 8162 0 0 1382 94 0 0
+fn=ATL_zcol2blk2_aXi0
+0 88 8 4 24 0 0 24 0 0 4 4 0 0
+fn=ATL_zcol2blkConj2_a1
+0 6022 265 5 1626 5 0 1601 0 0 271 9 0 0
+fn=ATL_zcol2blkConj_a1
+0 2857704 660 6 681610 85246 0 645455 76671 2212 342989 9560 0 0
+fn=ATL_zcol2blk_a1
+0 18457799 1383 7 4921804 578164 0 4694928 551989 12111 2501373 72564 0 0
+fn=ATL_zcol2blk_aXi0
+0 7766 10 5 2084 14 0 1960 242 121 1102 82 0 0
+fn=ATL_zcopy
+0 590037 404 3 0 0 0 0 0 0 163712 124 0 0
+fn=ATL_zcopyConj
+0 600213 111 2 133046 15021 0 131540 14196 0 66523 936 0 0
+fn=ATL_zcopy_xp0yp0aXbX
+0 541374 171 1 132483 17045 0 130576 15592 702 67195 1544 0 0
+fn=ATL_zcplxinvert
+0 46962 14 3 8184 122 0 2728 457 76 6820 682 0 0
+fn=ATL_zcpsc
+0 39804 251 5 5586 20 0 0 0 0 11736 76 0 0
+fn=ATL_zcpsc_xp0yp0aXbX
+0 51550 8 2 7630 560 0 7072 188 0 3722 204 0 0
+fn=ATL_zdot_xp1yp1aXbX
+0 2011006 292 6 526689 29661 0 3138 149 0 69151 2425 0 0
+fn=ATL_zdotc_sub
+0 1020 6 2 0 0 0 0 0 0 300 0 0 0
+fn=ATL_zdotc_xp1yp1aXbX
+0 163680 20 5 43260 5490 0 120 0 0 5550 62 0 0
+fn=ATL_zdotu_sub
+0 26673 113 2 0 0 0 0 0 0 7845 78 0 0
+fn=ATL_zgeadd_a1_b1
+0 374 2 1 136 34 0 0 0 0 0 0 0 0
+fn=ATL_zgemm
+0 95048 3473 32 18182 1498 0 20431 2018 0 13963 825 819 158
+fn=ATL_zgemoveT
+0 21722 16 8 4120 8 0 2180 4 0 1770 159 0 0
+fn=ATL_zgemv
+0 92666 673 10 21456 0 0 18774 71 0 10126 255 0 0
+fn=ATL_zgemvCT_L1
+0 78059 521 18 17933 359 0 18911 162 0 6169 325 444 113
+fn=ATL_zgemvCT_L2
+0 46175 579 14 9644 1324 0 9892 515 0 3708 214 309 1
+fn=ATL_zgemvN_L1
+0 191132 747 25 35599 16 0 29770 93 0 29519 1569 1013 88
+fn=ATL_zgemvN_L2
+0 103423 1760 30 20110 1648 0 16975 971 0 15566 374 530 6
+fn=ATL_zgerc
+0 34104 224 3 9612 0 0 4122 0 0 2976 74 0 0
+fn=ATL_zgerc_L1
+0 262003 601 20 53396 237 0 50643 115 0 30198 1113 1355 1
+fn=ATL_zgerc_L2
+0 96085 1073 18 20044 2131 0 18325 557 0 10887 284 573 1
+fn=ATL_zgerck_Mlt16
+0 2562 25 1 996 0 0 570 0 0 332 2 0 0
+fn=ATL_zgerck_axpy
+0 98877 107 4 39030 0 0 15523 2 0 4217 446 0 0
+fn=ATL_zgerk_Mlt16
+0 210 3 1 81 0 0 48 0 0 27 6 0 0
+fn=ATL_zgerk_axpy
+0 137037 249 4 49674 511 0 27863 633 0 4981 2042 0 0
+fn=ATL_zgeru
+0 3146 8 2 968 0 0 242 0 0 242 24 0 0
+fn=ATL_zgeru_L1
+0 38486 90 22 7902 161 0 7198 24 0 4892 202 186 1
+fn=ATL_zgetf2
+0 19146 51 12 4040 146 1 2572 111 0 1710 151 0 0
+fn=ATL_zgetri
+0 26 2 1 4 0 0 0 0 0 4 0 0 0
+fn=ATL_zgetriC
+0 250612 120 18 31720 3815 0 62458 276 0 30500 288 0 0
+fn=ATL_zgezero
+0 4252614 3269 12 49634 1579 2 2856704 314026 0 331616 3768 43938 716
+fn=ATL_zgpKBmm
+0 242907 2203 13 84944 16593 6 72691 7139 15 2508 217 9868 2662
+fn=ATL_zgpMBmm_b0
+0 6278 511 7 1825 403 0 2044 270 4 0 0 0 0
+fn=ATL_zgpMBmm_b1
+0 4988 310 7 1450 432 0 1624 204 0 0 0 0 0
+fn=ATL_zgpNBmm_b0
+0 5418 441 7 1575 482 0 1764 303 2 0 0 0 0
+fn=ATL_zgpNBmm_b1
+0 4988 344 6 1450 464 0 1624 194 0 0 0 0 0
+fn=ATL_ziamax_xp1yp0aXbX
+0 673235 176 4 147620 1260 1 0 0 0 111155 2864 0 0
+fn=ATL_zlacgv
+0 720 3 1 120 0 0 0 0 0 120 1 0 0
+fn=ATL_zlarfb
+0 235377 75 21 77520 10032 0 39054 15 0 19584 165 0 0
+fn=ATL_zlarft
+0 24 9 3 9 0 0 0 0 0 6 0 0 0
+fn=ATL_zlarftFC
+0 10719 41 11 2823 250 0 2334 161 0 759 124 0 0
+fn=ATL_zlarft_blockFC
+0 35658 222 11 5700 680 0 7125 604 0 2970 167 0 0
+fn=ATL_zlaswp
+0 12352 25 6 1208 3 0 148 5 0 2962 91 0 0
+fn=ATL_zmmIJK
+0 75844 3131 21 19930 2511 0 19328 2281 15 5207 258 398 5
+fn=ATL_zmmIJK2
+0 121002 3016 33 55972 8843 0 27258 3895 10 10841 1118 1551 61
+fn=ATL_zmmJIK
+0 63711 4213 23 16457 2030 0 16664 2437 56 4627 539 302 7
+fn=ATL_zmmJIK2
+0 76257 4408 29 30831 5301 0 16073 1087 14 7327 700 939 22
+fn=ATL_zmmJKI
+0 800 24 12 304 0 0 240 0 0 56 19 0 0
+fn=ATL_zmm_axpy
+0 1274 30 15 388 0 0 228 8 0 84 17 0 0
+fn=ATL_zmoveConj
+0 1643841 176 4 279915 19085 0 266980 21931 0 141251 2891 0 0
+fn=ATL_zmvnk_Mlt16
+0 342 8 2 99 0 0 108 3 0 18 3 0 0
+fn=ATL_zmvnk_smallN
+0 140446 767 9 51772 864 0 22999 811 0 12153 1766 0 0
+fn=ATL_zmvtk_smallN
+0 62710 392 10 22475 173 0 10743 669 0 4549 1108 0 0
+fn=ATL_zpKBmm
+0 26150 797 3 8129 193 5 7743 0 0 3559 482 193 8
+fn=ATL_zpMBmm_b0
+0 4763 402 22 981 74 0 993 131 0 243 18 0 0
+fn=ATL_zpMBmm_b1
+0 2726 250 5 522 0 0 522 10 0 174 3 0 0
+fn=ATL_zpNBmm_b0
+0 6516 440 9 1782 95 0 1827 224 0 108 9 0 0
+fn=ATL_zpNBmm_b1
+0 4756 191 9 1334 261 0 1334 126 3 87 8 0 0
+fn=ATL_zrefgemv
+0 13068 82 4 2912 0 0 2184 2 0 2530 65 0 0
+fn=ATL_zrefgemvH
+0 1122096 211 8 279736 412 0 37072 49 0 85985 4431 0 0
+fn=ATL_zrefgemvN
+0 10163 14 8 3181 90 0 989 1 0 838 41 0 0
+fn=ATL_zrefgerc
+0 186021 115 5 63772 0 0 18784 0 0 13883 759 0 0
+fn=ATL_zrefgeru
+0 13499 15 5 4663 202 0 1387 0 0 1005 77 0 0
+fn=ATL_zreftrmm
+0 7328 401 14 1816 0 0 681 17 0 1621 155 0 0
+fn=ATL_zreftrmmLLCN
+0 4481280 96 6 1042384 6193 0 26160 10 0 261200 12767 0 0
+fn=ATL_zreftrmmLUCN
+0 2436144 112 7 572848 3476 0 19184 16 0 143280 8885 0 0
+fn=ATL_zreftrmmLUNN
+0 322599 52 7 109413 510 0 36420 39 0 20685 2015 0 0
+fn=ATL_zreftrmmRLNN
+0 3813966 84 7 1537830 4010 0 518922 12 0 276291 8996 0 0
+fn=ATL_zreftrmmRLNU
+0 253590 22 6 94044 236 0 33177 6 0 18621 1328 0 0
+fn=ATL_zreftrmmRUNN
+0 2307855 252 8 911685 3093 0 312387 12 0 167751 6238 0 0
+fn=ATL_zreftrsm
+0 21696 18 9 5424 0 0 2034 0 0 4746 229 0 0
+fn=ATL_zreftrsmLUNN
+0 108710 22 11 30276 0 0 10386 0 0 9586 1369 0 0
+fn=ATL_zreftrsmRLNU
+0 482790 320 6 120758 3995 0 61952 210 0 30250 270 0 0
+fn=ATL_zreftrsmRUNN
+0 111815 57 11 30876 0 0 10614 0 0 10198 1435 0 0
+fn=ATL_zreftrsv
+0 3904 307 4 488 0 0 0 0 0 976 16 0 0
+fn=ATL_zreftrsvUNN
+0 40372255 386 7 13970553 604409 0 4667222 122 0 2449889 44906 0 0
+fn=ATL_zrow2blkC2_aXi0
+0 300 14 7 66 9 0 51 0 0 15 2 0 0
+fn=ATL_zrow2blkC_a1
+0 1645 26 4 455 70 0 420 51 12 105 18 0 0
+fn=ATL_zrow2blkT2_a1
+0 2453393 1326 12 799783 106843 0 797386 108266 2906 204505 5261 0 0
+fn=ATL_zrow2blkT2_aXi0
+0 25934 70 11 8146 1078 0 8174 1033 450 2080 95 0 0
+fn=ATL_zrow2blkT_a1
+0 641280 543 8 205848 26917 0 203976 26868 975 52080 1692 0 0
+fn=ATL_zscal
+0 1042745 376 3 62778 6 0 0 0 0 260325 2470 0 0
+fn=ATL_zscal_xp0yp0aXbX
+0 840792 56 1 135189 1200 0 124350 0 0 65788 4138 0 0
+fn=ATL_zscal_xp1yp0aXbX
+0 6572698 655 5 972330 2173 0 787248 0 0 411845 28142 0 0
+fn=ATL_zset
+0 510 6 1 68 0 0 0 0 0 170 6 0 0
+fn=ATL_ztNumGemmThreads
+0 8190 0 0 876 0 0 0 0 0 1752 80 0 0
+fn=ATL_ztgemm
+0 74705 2412 13 15162 2448 0 19151 1647 0 7953 388 0 0
+fn=ATL_ztgemmCN
+0 2225 147 13 471 23 0 533 39 3 316 64 23 6
+fn=ATL_ztgemmNC
+0 1743 35 9 405 19 0 440 48 21 231 15 19 5
+fn=ATL_ztgemmNN
+0 19362 1312 10 4400 204 0 4750 378 9 2676 193 204 63
+fn=ATL_ztgemv
+0 232751 1211 16 39023 2227 0 44076 506 0 23090 359 0 0
+fn=ATL_ztgerc
+0 191898 661 8 32750 1654 0 51416 614 0 16415 177 0 0
+fn=ATL_ztgetrf
+0 18 2 1 0 0 0 0 0 0 2 1 0 0
+fn=ATL_ztgetrfC
+0 2490 53 10 452 43 0 328 55 0 314 45 0 0
+fn=ATL_zthreadMM
+0 3672 240 1 0 0 0 0 0 0 0 0 0 0
+fn=ATL_ztrcopyL2L_N
+0 1065688 116 3 146536 21632 0 284960 35672 0 142480 8205 0 0
+fn=ATL_ztrcopyL2L_U
+0 35391 12 4 4686 660 0 9603 1200 0 4803 332 0 0
+fn=ATL_ztrcopyL2Lc_N
+0 372368 136 3 47940 7106 0 93160 11662 0 46580 2794 0 0
+fn=ATL_ztrcopyL2Uc_U
+0 37851 12 4 4689 663 0 9603 1200 0 4803 306 0 0
+fn=ATL_ztrcopyU2Lc_N
+0 37998 15 5 4935 696 0 9609 1200 0 4803 309 0 0
+fn=ATL_ztrcopyU2U_N
+0 541736 173 4 78832 12272 0 151736 18928 0 75920 5998 0 0
+fn=ATL_ztrcopyU2Uc_N
+0 189992 112 4 25806 4046 0 49606 6188 0 24820 2010 0 0
+fn=ATL_ztrmm
+0 23252 616 15 4096 306 0 5632 734 0 3690 433 0 0
+fn=ATL_ztrmmLLCN
+0 2732 235 6 502 109 0 870 44 0 84 39 0 0
+fn=ATL_ztrmmLUCN
+0 2732 250 6 502 68 0 870 0 0 84 11 0 0
+fn=ATL_ztrmmLUNN
+0 2223 135 5 456 0 0 798 26 0 57 0 0 0
+fn=ATL_ztrmmRLCU
+0 186 15 5 33 12 0 57 6 0 6 2 0 0
+fn=ATL_ztrmmRLNN
+0 6916 329 6 1240 319 0 2144 0 0 220 14 0 0
+fn=ATL_ztrmmRLNU
+0 2409 25 6 489 12 0 855 6 0 63 7 0 0
+fn=ATL_ztrmmRUCN
+0 186 15 5 33 12 0 57 6 0 6 0 0 0
+fn=ATL_ztrmmRUNN
+0 9139 518 6 1696 208 0 2942 0 0 277 16 0 0
+fn=ATL_ztrsm
+0 36400 70 13 5824 12 0 10192 430 0 5096 42 0 0
+fn=ATL_ztrsmKL_rk2
+0 125196 116 24 21432 2425 0 21118 2230 21 20392 784 0 0
+fn=ATL_ztrsmKR_rk2
+0 427208 96 44 121494 5177 0 70816 2169 742 16648 736 0 0
+fn=ATL_ztrsmLLNU
+0 252 16 4 54 8 0 78 0 0 18 4 0 0
+fn=ATL_ztrsmLUNN
+0 8772 10 5 1942 8 0 2902 0 0 284 36 0 0
+fn=ATL_ztrsmRLNU
+0 8712 238 3 1936 0 0 2904 210 0 242 0 0 0
+fn=ATL_ztrsmRUNN
+0 8772 10 5 1942 4 0 2902 0 0 284 38 0 0
+fn=ATL_ztrsv
+0 8046 72 18 2467 357 0 2485 123 0 264 12 3 1
+fn=ATL_ztrtri
+0 1504 6 3 242 169 0 0 0 0 492 20 0 0
+fn=ATL_ztrtriCU
+0 26722 14 7 3614 18 0 7214 28 0 1204 248 0 0
+fn=ATL_ztsvgemmCN
+0 23 18 1 0 0 0 0 0 0 0 0 0 0
+fn=ATL_ztsvgemmNC
+0 19 3 0 0 0 0 0 0 0 0 0 0 0
+fn=ATL_ztsvgemmNN
+0 204 164 1 0 0 0 0 0 0 0 0 0 0
+fn=ATL_zttrmm
+0 56231 620 17 12606 1876 0 14813 1917 0 4159 264 0 0
+fn=ATL_zttrsm
+0 79675 82 16 17968 728 3 21128 883 0 5830 389 0 0
+fn=ATL_zzero
+0 374 2 1 34 0 0 102 0 0 0 0 0 0
+fn=_Exit
+0 8 2 2 1 1 0 0 0 0 0 0 0 0
+fn=_IO_cleanup
+0 167 7 7 52 2 1 30 0 0 34 15 2 1
+fn=_IO_default_finish
+0 98 6 2 28 0 0 7 0 0 21 7 0 0
+fn=_IO_default_setbuf
+0 62 3 2 14 0 0 22 0 0 4 2 2 1
+fn=_IO_default_uflow
+0 472 47 2 236 0 0 118 0 0 55 8 55 12
+fn=_IO_default_xsputn
+0 6390 67 6 1906 2 2 1314 2 1 661 60 82 1
+fn=_IO_do_write@@GLIBC_2.2.5
+0 2241 126 6 641 7 0 503 2 0 362 34 45 2
+fn=_IO_doallocbuf
+0 91 4 1 42 1 1 14 0 0 21 8 7 1
+fn=_IO_file_close
+0 14 1 0 7 0 0 0 0 0 0 0 0 0
+fn=_IO_file_close_it@@GLIBC_2.2.5
+0 308 15 5 63 2 0 112 0 0 21 3 7 1
+fn=_IO_file_doallocate
+0 291 20 5 58 3 1 35 0 0 36 4 7 1
+fn=_IO_file_finish@@GLIBC_2.2.5
+0 56 6 2 14 0 0 7 0 0 7 5 0 0
+fn=_IO_file_fopen@@GLIBC_2.2.5
+0 537 34 9 88 3 1 80 0 0 89 21 0 0
+fn=_IO_file_init@@GLIBC_2.2.5
+0 104 4 1 32 0 0 40 0 0 0 0 0 0
+fn=_IO_file_overflow@@GLIBC_2.2.5
+0 4477 51 7 1194 0 0 667 3 1 907 40 0 0
+fn=_IO_file_read
+0 84 0 0 28 0 0 0 0 0 14 0 0 0
+fn=_IO_file_seek
+0 12 6 1 6 0 0 0 0 0 0 0 0 0
+fn=_IO_file_seekoff@@GLIBC_2.2.5
+0 4594 70 13 1355 5 0 487 0 0 740 69 6 2
+fn=_IO_file_setbuf@@GLIBC_2.2.5
+0 30 1 1 6 0 0 16 0 0 2 0 0 0
+fn=_IO_file_stat
+0 28 5 1 7 0 0 0 0 0 0 0 0 0
+fn=_IO_file_sync@@GLIBC_2.2.5
+0 418 33 2 164 1 1 60 0 0 68 8 0 0
+fn=_IO_file_underflow@@GLIBC_2.2.5
+0 574 29 6 200 3 2 146 1 0 88 26 14 1
+fn=_IO_file_write@@GLIBC_2.2.5
+0 1575 48 3 360 1 0 225 2 1 225 34 0 0
+fn=_IO_file_xsputn@@GLIBC_2.2.5
+0 15048 206 12 2627 62 33 1318 19 1 3062 347 35 2
+fn=_IO_flush_all_lockp
+0 99 5 5 28 9 3 15 0 0 21 5 1 1
+fn=_IO_getline
+0 164 20 1 0 0 0 0 0 0 0 0 0 0
+fn=_IO_getline_info
+0 5000 36 6 1230 3 0 1065 0 0 500 50 0 0
+fn=_IO_link_in
+0 808 32 8 296 10 1 136 0 0 152 30 16 2
+fn=_IO_no_init
+0 4424 11 4 1080 0 0 1616 11 4 216 23 0 0
+fn=_IO_old_init
+0 4560 12 3 432 0 0 3480 11 5 216 37 0 0
+fn=_IO_seekoff_unlocked
+0 1173 8 2 275 2 0 88 0 0 188 21 88 1
+fn=_IO_setb
+0 3872 11 2 1142 0 0 911 1 0 455 60 0 0
+fn=_IO_sputbackc
+0 2355 9 2 942 0 0 314 0 0 314 18 0 0
+fn=_IO_str_init_static_internal
+0 7280 28 4 1040 0 0 2602 0 0 416 35 0 0
+fn=_IO_str_underflow
+0 615 18 1 205 0 0 0 0 0 123 2 0 0
+fn=_IO_switch_to_get_mode
+0 280 10 2 112 0 0 84 0 0 42 4 0 0
+fn=_IO_un_link
+0 801 28 9 303 0 0 119 0 0 157 45 14 3
+fn=_IO_unsave_markers
+0 35 3 1 21 0 0 0 0 0 14 8 0 0
+fn=_IO_vfscanf
+0 42229 916 105 11566 86 18 7352 22 8 7018 663 432 107
+fn=_Unwind_Find_FDE
+0 105678 1175 7 24102 564 0 31518 283 3 12978 83 0 0
+fn=_Unwind_ForcedUnwind
+0 21329 603 5 10818 282 0 13291 1181 0 9579 362 309 1
+fn=_Unwind_GetCFA
+0 15450 136 1 7725 0 0 0 0 0 1545 0 1545 10
+fn=__GI___rawmemchr
+0 2096 8 2 261 0 0 0 0 0 155 57 0 0
+fn=__GI_memset
+0 33870 1201 10 2216 763 3 9494 1847 11 3324 46 1108 57
+fn=__GI_strlen
+0 3025 83 4 406 16 12 0 0 0 406 70 0 0
+fn=__GI_strncmp
+0 192 20 12 20 4 2 0 0 0 32 19 4 4
+fn=__GI_strrchr
+0 51 3 3 3 0 0 0 0 0 6 3 0 0
+fn=__GI_strstr
+0 216 15 4 72 3 1 48 0 0 16 8 0 0
+fn=____strtod_l_internal
+0 4919 317 58 931 3 1 672 0 0 839 160 0 0
+fn=____strtol_l_internal
+0 1046 40 11 132 6 2 66 0 0 268 44 0 0
+fn=__close_nocancel
+0 35 4 1 7 0 0 0 0 0 7 0 0 0
+fn=__correctly_grouped_prefixmb
+0 180 21 3 70 0 0 70 0 0 10 8 0 0
+fn=__cxa_atexit
+0 400 4 3 80 0 0 128 8 8 16 0 0 0
+fn=__cxa_finalize
+0 389 6 6 100 2 1 40 0 0 78 17 2 2
+fn=__cxxabiv1::__si_class_type_info::__do_dyncast(long, __cxxabiv1::__class_type_info::__sub_kind, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__dyncast_result&) const
+0 3888 45 4 1188 0 0 972 0 0 216 13 0 0
+fn=__cxxabiv1::__vmi_class_type_info::__do_dyncast(long, __cxxabiv1::__class_type_info::__sub_kind, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__dyncast_result&) const
+0 3481 47 8 1357 10 1 1003 5 0 413 29 0 0
+fn=__default_morecore
+0 308 12 1 44 0 0 44 11 0 0 0 0 0
+fn=__determine_cpumask_size
+0 32 3 3 3 0 0 3 0 0 3 0 0 0
+fn=__divdc3
+0 252 6 3 18 3 1 0 0 0 27 8 0 0
+fn=__dubsin
+0 15541848 189 48 1350216 19 3 287280 0 0 689472 2054 0 0
+fn=__dynamic_cast
+0 7014 34 4 2004 49 2 2004 2 0 334 8 167 47
+fn=__exp1
+0 12294 105 10 2466 18 7 786 2 0 1482 19 0 0
+fn=__fopen_internal
+0 312 16 4 32 0 0 80 3 2 16 4 0 0
+fn=__fopen_maybe_mmap
+0 32 4 1 16 0 0 0 0 0 8 3 0 0
+fn=__fpclassify
+0 456169 66 2 61268 0 0 30634 0 0 80577 1431 0 0
+fn=__free_stacks
+0 1435 120 4 560 45 0 350 26 0 140 10 0 0
+fn=__free_tcb
+0 23373 1267 5 8310 312 0 6683 1129 0 4432 298 0 0
+fn=__gconv_btwoc_ascii
+0 640 1 1 128 0 0 0 0 0 0 0 0 0
+fn=__gnu_cxx::stdio_sync_filebuf<char, std::char_traits<char> >::overflow(int)
+0 200 6 2 25 1 0 0 0 0 25 1 0 0
+fn=__gnu_cxx::stdio_sync_filebuf<char, std::char_traits<char> >::sync()
+0 42 17 1 21 2 0 0 0 0 0 0 0 0
+fn=__gnu_cxx::stdio_sync_filebuf<char, std::char_traits<char> >::xsputn(char const*, long)
+0 500 20 1 100 16 0 0 0 0 0 0 0 0
+fn=__gnu_cxx::stdio_sync_filebuf<wchar_t, std::char_traits<wchar_t> >::sync()
+0 6 1 1 3 2 0 0 0 0 0 0 0 0
+fn=__ieee754_exp
+0 273420 12 3 52920 2 0 35280 0 0 35280 8 0 0
+fn=__ieee754_hypot
+0 8874556 303 11 1376288 537 0 1126822 0 0 746676 7431 0 0
+fn=__ieee754_log
+0 4343489 1173 21 885772 2330 8 314057 363 0 371383 158 0 0
+fn=__ieee754_log10
+0 13287 250 4 2472 303 1 1545 260 0 618 25 0 0
+fn=__ieee754_pow
+0 200396 299 35 42300 51 10 26842 8 0 27290 1011 0 0
+fn=__ieee754_sqrt
+0 260384 31 1 130192 0 0 0 0 0 0 0 0 0
+fn=__init_cpu_features
+0 57 6 6 3 1 1 11 0 0 9 4 0 0
+fn=__init_misc
+0 24 2 2 7 1 0 5 1 1 3 0 0 0
+fn=__libc_csu_init
+0 25 3 3 7 1 0 7 0 0 1 0 0 0
+fn=__libc_disable_asynccancel
+0 384 35 2 96 0 0 0 0 0 96 5 0 0
+fn=__libc_dl_error_tsd
+0 27 2 1 27 2 0 0 0 0 0 0 0 0
+fn=__libc_dlopen_mode
+0 20 3 3 6 2 0 4 0 0 2 1 1 1
+fn=__libc_dlsym
+0 104 2 2 36 0 0 16 0 0 12 3 4 1
+fn=__libc_enable_asynccancel
+0 352 20 1 96 12 0 0 0 0 96 9 0 0
+fn=__libc_fini
+0 6 1 0 3 0 0 1 0 0 1 1 0 0
+fn=__libc_global_ctors
+0 13 2 2 4 0 0 2 0 0 2 0 1 1
+fn=__libc_memalign
+0 1295 4 4 253 3 0 248 4 1 147 32 0 0
+fn=__libc_pthread_init
+0 393 3 3 110 8 7 58 8 8 54 10 0 0
+fn=__libc_sigaction
+0 128 7 7 38 0 0 38 1 0 8 2 0 0
+fn=__libc_thread_freeres
+0 15512 310 2 3878 564 2 3324 0 0 2770 20 2216 2216
+fn=__linkin_atfork
+0 9 1 1 4 2 0 1 0 0 2 1 0 0
+fn=__longjmp
+0 5562 258 1 3399 309 0 0 0 0 0 0 309 1
+fn=__lseek_nocancel
+0 22 0 0 2 0 0 0 0 0 5 1 0 0
+fn=__mpn_cmp
+0 88 3 1 24 0 0 0 0 0 16 2 0 0
+fn=__mpn_construct_double
+0 154 13 2 33 0 0 11 0 0 0 0 0 0
+fn=__mpn_divrem
+0 1008 21 7 312 0 0 280 1 1 96 28 0 0
+fn=__mpn_extract_double
+0 2208 59 3 192 0 0 480 0 0 131 42 0 0
+fn=__mpn_lshift
+0 2304 31 3 308 0 0 166 3 1 159 31 0 0
+fn=__mpn_mul
+0 1435 21 3 369 9 2 369 5 4 164 6 0 0
+fn=__mpn_mul_1
+0 11807 36 2 1561 0 0 880 5 1 880 59 0 0
+fn=__mpn_rshift
+0 986 23 2 118 0 0 80 0 0 80 10 0 0
+fn=__muldc3
+0 4375692 21 2 243094 0 0 0 0 0 486188 20 0 0
+fn=__new_exitfn
+0 590 7 5 160 14 4 49 1 0 128 15 0 0
+fn=__open_nocancel
+0 20 2 1 4 0 0 0 0 0 4 0 0 0
+fn=__overflow
+0 150 3 1 75 0 0 0 0 0 25 4 25 1
+fn=__powidf2
+0 907328 54 2 42531 27 1 0 0 0 269363 34 0 0
+fn=__printf_fp
+0 62167 1320 109 14124 38 7 9992 88 24 10816 1178 0 0
+fn=__pthread_cleanup_upto
+0 5871 470 2 2781 0 0 1545 0 0 309 3 0 0
+fn=__pthread_disable_asynccancel
+0 9588 394 2 2397 245 0 0 0 0 2397 25 0 0
+fn=__pthread_enable_asynccancel
+0 8789 89 1 2397 0 0 0 0 0 2397 3 0 0
+fn=__pthread_initialize_minimal
+0 186 17 17 25 4 0 68 13 5 24 13 1 1
+fn=__pthread_unwind
+0 2781 326 2 309 308 0 927 309 0 0 0 0 0
+fn=__read_nocancel
+0 40 0 0 8 0 0 0 0 0 8 0 0 0
+fn=__register_atfork
+0 60 5 5 12 3 3 10 0 0 8 3 0 0
+fn=__rpc_thread_destroy
+0 6094 563 3 2770 553 0 1108 0 0 554 2 0 0
+fn=__secure_getenv
+0 5 2 2 2 1 0 0 0 0 1 0 0 0
+fn=__sigjmp_save
+0 4995 149 1 1110 0 0 1110 0 0 555 11 0 0
+fn=__sigsetjmp
+0 10484 422 4 2350 304 0 4648 556 13 0 0 0 0
+fn=__strcmp_sse42
+0 14474 124 11 2946 41 3 0 0 0 1904 131 96 94
+fn=__strlen_sse42
+0 58005 540 3 7756 580 17 0 0 0 3896 132 0 0
+fn=__strtod_internal
+0 63 10 1 42 0 0 0 0 0 0 0 0 0
+fn=__strtol_internal
+0 18 4 1 12 0 0 0 0 0 0 0 0 0
+fn=__tls_get_addr
+0 8864 311 2 4432 1500 0 554 0 0 1108 2 0 0
+fn=__uflow
+0 1428 15 2 550 5 1 57 0 0 383 64 55 31
+fn=__unregister_atfork
+0 126 2 2 42 3 1 6 0 0 30 5 0 0
+fn=__write_nocancel
+0 135 0 0 27 0 0 0 0 0 27 0 0 0
+fn=_dl_add_to_namespace_list
+0 363 3 3 99 0 0 47 1 1 43 17 16 2
+fn=_dl_add_to_slotinfo
+0 48 4 4 18 4 0 12 2 0 2 2 0 0
+fn=_dl_addr
+0 59466 13 13 13369 1009 811 17 3 0 12536 1894 2 2
+fn=_dl_allocate_tls
+0 4826 196 7 1368 5 0 798 0 0 456 18 0 0
+fn=_dl_allocate_tls_init
+0 60489 622 6 18612 1467 0 9306 2 1 5687 95 0 0
+fn=_dl_allocate_tls_storage
+0 333 3 3 7 0 0 295 37 37 297 10 0 0
+fn=_dl_cache_libcmp
+0 5170 4 4 696 40 38 0 0 0 1274 72 0 0
+fn=_dl_catch_error
+0 936 6 3 312 2 0 442 6 3 26 5 52 8
+fn=_dl_check_all_versions
+0 154 2 2 23 0 0 13 0 0 28 11 0 0
+fn=_dl_check_caller
+0 151 11 11 67 9 2 12 0 0 60 19 0 0
+fn=_dl_check_map_versions
+0 5811 15 15 1873 29 22 695 48 44 714 123 0 0
+fn=_dl_count_modids
+0 5 3 3 3 0 0 0 0 0 1 1 0 0
+fn=_dl_deallocate_tls
+0 6895 91 3 1890 206 0 735 29 0 1715 72 0 0
+fn=_dl_debug_initialize
+0 104 4 2 33 3 1 4 0 0 31 14 0 0
+fn=_dl_debug_state
+0 3 0 0 3 0 0 0 0 0 0 0 0 0
+fn=_dl_determine_tlsoffset
+0 84 5 5 15 0 0 9 0 0 7 3 0 0
+fn=_dl_discover_osversion
+0 87 5 5 12 1 1 4 1 1 15 5 0 0
+fn=_dl_fini
+0 475 12 12 165 35 6 51 7 1 108 28 10 10
+fn=_dl_fixup
+0 17506 110 7 6755 938 139 2421 10 3 2243 146 9 9
+fn=_dl_get_tls_static_info
+0 5 0 0 3 0 0 2 1 1 0 0 0 0
+fn=_dl_higher_prime_number
+0 148 1 1 13 2 1 0 0 0 22 8 0 0
+fn=_dl_important_hwcaps
+0 254 16 16 49 0 0 39 4 4 33 16 0 0
+fn=_dl_init
+0 350 16 11 115 23 0 30 0 0 71 19 7 7
+fn=_dl_init_paths
+0 180 12 12 22 1 1 41 4 4 24 10 0 0
+fn=_dl_initial_error_catch_tsd
+0 40 0 0 20 0 0 0 0 0 0 0 0 0
+fn=_dl_load_cache_lookup
+0 1706 15 15 368 38 37 137 0 0 323 49 0 0
+fn=_dl_lookup_symbol_x
+0 599089 115 11 94827 1573 1190 32937 56 13 66239 1613 0 0
+fn=_dl_map_object
+0 4468 30 25 1131 14 0 609 22 17 1016 124 0 0
+fn=_dl_map_object_deps
+0 4853 59 31 961 35 1 365 10 4 1327 133 0 0
+fn=_dl_map_object_from_fd
+0 6078 44 44 1352 61 61 628 75 75 1215 209 0 0
+fn=_dl_mcount_wrapper_check
+0 512 1 1 384 0 0 0 0 0 128 2 0 0
+fn=_dl_name_match_p
+0 30708 45 3 8588 180 0 4922 16 4 4913 71 0 0
+fn=_dl_new_object
+0 1527 14 14 279 10 10 282 51 51 229 92 0 0
+fn=_dl_next_ld_env_entry
+0 186 2 2 65 13 13 1 0 0 61 21 0 0
+fn=_dl_next_tls_modid
+0 12 0 0 6 0 0 2 0 0 2 0 0 0
+fn=_dl_open
+0 54 4 4 14 1 0 20 0 0 4 1 2 2
+fn=_dl_protect_relro
+0 95 1 1 30 0 0 10 0 0 10 0 0 0
+fn=_dl_receive_error
+0 28 2 2 10 0 0 12 0 0 0 0 2 2
+fn=_dl_relocate_object
+0 194651 39 39 50812 3381 2485 14979 814 543 30247 743 2180 26
+fn=_dl_runtime_resolve
+0 4515 45 3 1935 0 0 1720 4 2 0 0 215 211
+fn=_dl_setup_hash
+0 216 2 2 63 13 13 54 0 0 9 0 0 0
+fn=_dl_sort_fini
+0 1017 6 5 243 7 3 34 0 0 256 46 0 0
+fn=_dl_start
+0 371 12 12 38 14 11 40 16 16 64 24 0 0
+fn=_dl_sysdep_read_whole_file
+0 42 3 3 6 0 0 9 0 0 3 1 0 0
+fn=_dl_sysdep_start
+0 345 12 12 92 15 14 27 2 2 69 26 17 14
+fn=_dl_sysdep_start_cleanup
+0 1 1 0 1 0 0 0 0 0 0 0 0 0
+fn=_dl_tls_get_addr_soft
+0 12 2 1 6 2 0 0 0 0 3 0 0 0
+fn=_dl_unload_cache
+0 17 2 1 5 2 0 2 0 0 2 1 0 0
+fn=_dl_vdso_vsym
+0 16 0 0 6 1 0 0 0 0 2 0 0 0
+fn=_fxstat
+0 180 6 2 18 0 0 0 0 0 36 0 0 0
+fn=_gfortran_compare_string
+0 45123 128 3 8427 56 1 0 0 0 9487 1263 0 0
+fn=_gfortran_concat_string
+0 3816 156 3 636 0 0 742 0 0 212 2 0 0
+fn=_gfortran_random_seed_i4
+0 93 5 5 17 1 1 15 2 0 15 7 0 0
+fn=_init
+0 52 6 6 13 1 0 18 4 2 2 2 0 0
+fn=_int_free
+0 655351 4319 25 195293 18764 2 78597 725 1 161772 6111 21 7
+fn=_int_malloc
+0 1206569 8720 62 150122 12168 1 174334 10461 125 171920 13117 23 3
+fn=_itoa_word
+0 342 16 3 30 1 0 21 0 0 30 12 0 0
+fn=_longjmp_unwind
+0 2472 309 1 927 564 0 0 0 0 309 43 309 1
+fn=_pthread_cleanup_pop
+0 1225 181 0 490 117 0 245 0 0 245 191 0 0
+fn=_pthread_cleanup_pop_restore
+0 1280 4 1 384 0 0 128 0 0 256 20 0 0
+fn=_pthread_cleanup_push
+0 1470 62 1 490 0 0 980 0 0 0 0 0 0
+fn=_pthread_cleanup_push_defer
+0 1536 11 2 384 5 0 640 0 0 128 2 0 0
+fn=_setjmp
+0 1110 81 1 0 0 0 0 0 0 0 0 0 0
+fn=_wordcopy_fwd_aligned
+0 66 7 5 18 1 1 12 0 0 3 2 3 3
+fn=access
+0 11 2 2 1 0 0 1 0 0 1 1 0 0
+fn=arena_get2
+0 23258 944 15 7238 928 0 2722 138 137 6076 293 0 0
+fn=arena_thread_freeres
+0 11634 498 3 4986 834 0 1662 256 0 3324 44 0 0
+fn=atl_f77wrap_dzasum_
+0 2892 1 1 1205 0 0 723 0 0 0 0 0 0
+fn=atl_f77wrap_dznrm2_
+0 646296 129 1 269290 1867 0 161574 1593 0 0 0 0 0
+fn=atl_f77wrap_idamax_
+0 4830 39 1 1932 0 0 1449 0 0 483 0 0 0
+fn=atl_f77wrap_ilaenv_
+0 4710 82 1 3140 111 1 942 0 0 0 0 0 0
+fn=atl_f77wrap_izamax_
+0 2420 38 0 968 197 0 726 0 0 242 0 0 0
+fn=atl_f77wrap_zcopy_
+0 248440 45 1 93165 3 0 0 0 0 62110 35 0 0
+fn=atl_f77wrap_zdscal_
+0 6776 76 0 2420 0 0 1452 0 0 0 0 0 0
+fn=atl_f77wrap_zgemm_
+0 27405 666 4 12789 0 0 7917 208 0 609 2 0 0
+fn=atl_f77wrap_zgemv_
+0 78126 171 3 36204 0 0 20688 0 0 7758 786 0 0
+fn=atl_f77wrap_zgerc_
+0 42210 159 2 21105 0 0 9380 0 0 4690 986 0 0
+fn=atl_f77wrap_zgetrf_
+0 1544 10 4 270 8 0 264 18 0 246 18 0 0
+fn=atl_f77wrap_zgetri_
+0 1578 10 5 274 4 0 274 2 0 252 9 0 0
+fn=atl_f77wrap_zlarfb_
+0 66 5 1 48 3 0 15 0 0 0 0 0 0
+fn=atl_f77wrap_zlarft_
+0 27 3 1 21 3 0 3 0 0 0 0 0 0
+fn=atl_f77wrap_zscal_
+0 455840 128 1 195360 235 0 0 0 0 0 0 0 0
+fn=atl_f77wrap_ztrmm_
+0 4316 29 0 3320 0 0 664 0 0 0 0 0 0
+fn=atl_f77wrap_ztrsv_
+0 3133 39 1 1928 0 0 482 0 0 241 0 0 0
+fn=bcmp
+0 265 9 9 65 2 2 18 0 0 54 19 0 0
+fn=bool std::has_facet<std::ctype<char> >(std::locale const&)
+0 361 8 2 171 6 0 57 0 0 38 4 0 0
+fn=bool std::has_facet<std::ctype<wchar_t> >(std::locale const&)
+0 76 2 2 36 0 0 12 0 0 8 3 0 0
+fn=bool std::has_facet<std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > > >(std::locale const&)
+0 361 12 2 171 6 0 57 0 0 38 3 0 0
+fn=bool std::has_facet<std::num_get<wchar_t, std::istreambuf_iterator<wchar_t, std::char_traits<wchar_t> > > >(std::locale const&)
+0 76 1 1 36 0 0 12 0 0 8 0 0 0
+fn=bool std::has_facet<std::num_put<char, std::ostreambuf_iterator<char, std::char_traits<char> > > >(std::locale const&)
+0 361 12 2 171 3 0 57 0 0 38 0 0 0
+fn=bool std::has_facet<std::num_put<wchar_t, std::ostreambuf_iterator<wchar_t, std::char_traits<wchar_t> > > >(std::locale const&)
+0 76 2 2 36 0 0 12 0 0 8 1 0 0
+fn=brk
+0 371 13 2 61 0 0 31 0 0 62 13 0 0
+fn=bsearch
+0 972 3 3 118 0 0 172 0 0 124 24 54 1
+fn=btowc
+0 8064 4 4 2432 4 4 1280 0 0 1408 11 128 1
+fn=cabs
+0 120321 30 1 0 0 0 0 0 0 0 0 0 0
+fn=calloc
+0 3295 225 9 797 1 0 304 26 0 553 78 0 0
+fn=cblas_izamax
+0 1210 8 1 0 0 0 0 0 0 484 32 0 0
+fn=cblas_zcopy
+0 1320 3 1 0 0 0 0 0 0 360 6 0 0
+fn=cblas_zdotc_sub
+0 660 5 1 0 0 0 0 0 0 180 8 0 0
+fn=cblas_zdotu_sub
+0 660 8 2 0 0 0 0 0 0 180 0 0 0
+fn=cblas_zgemm
+0 27753 218 15 8715 0 0 6489 218 0 5007 72 0 0
+fn=cblas_zscal
+0 1210 5 1 2 0 0 0 0 0 484 6 0 0
+fn=cblas_ztrmm
+0 15006 146 14 4083 0 0 3060 54 0 2463 60 0 0
+fn=cblas_ztrsm
+0 60660 389 14 16498 0 0 12376 14 0 9946 110 0 0
+fn=cexp
+0 299880 16 4 79380 0 0 79380 0 0 26460 2 0 0
+fn=checkKey(int, char*)
+0 308 14 7 42 0 0 26 0 0 34 17 0 0
+fn=check_match.12444
+0 74156 86 6 30629 651 213 8951 67 16 12993 246 0 0
+fn=checkint
+0 26082 6 3 2142 0 0 1428 0 0 6426 206 0 0
+fn=clone
+0 14958 542 2 2216 309 0 1662 554 12 3878 587 554 1
+fn=close
+0 40 1 1 8 0 0 0 0 0 8 0 0 0
+fn=commands::c_diesis(parsefile*, int, char**)
+0 42 5 1 21 0 0 0 0 0 0 0 0 0
+fn=commands::c_harmonics(parsefile*, int, char**)
+0 132 10 5 26 0 0 30 0 0 8 4 0 0
+fn=commands::c_rectangle(parsefile*, int, char**)
+0 489 49 48 164 9 0 140 5 0 9 2 0 0
+fn=commands::c_size(parsefile*, int, char**)
+0 66 7 7 14 0 0 17 1 0 4 2 0 0
+fn=commands::c_solve(parsefile*, int, char**)
+0 272 23 19 51 14 0 66 1 0 30 13 0 0
+fn=commands::c_substrate(parsefile*, int, char**)
+0 433 41 40 140 16 1 97 2 0 9 5 0 0
+fn=commands::c_wavelength(parsefile*, int, char**)
+0 74 6 6 16 1 0 18 1 0 5 2 0 0
+fn=commands::commands(structure&, numParser*)
+0 15 2 2 3 0 0 5 0 0 0 0 0 0
+fn=commands::init(structure&)
+0 1133 81 81 221 1 1 134 0 0 172 46 43 43
+fn=commands::wantedParameters(char*, int, int, parsefile*)
+0 175 21 3 42 0 0 42 0 0 21 3 0 0
+fn=commands::~commands()
+0 125 14 14 40 3 0 17 0 0 21 12 0 0
+fn=csqrt
+0 254672 299 10 75812 822 0 52650 0 0 30832 2481 0 0
+fn=db_matrix::createUnitMatrix(int, int)
+0 1472 3 3 5 0 0 368 105 0 243 4 0 0
+fn=db_matrix::db_matrix()
+0 2564 4 1 641 0 0 1923 156 156 0 0 0 0
+fn=db_matrix::db_matrix(db_matrix const&)
+0 1015355 44 4 290 23 0 169308 40563 7538 169163 60 0 0
+fn=db_matrix::db_matrix(int, int)
+0 9349666 53 4 667975 49 0 2003429 329892 24393 1335702 184 0 0
+fn=db_matrix::eig(db_matrix*)
+0 483361 19 18 33 8 1 150215 18813 14692 75406 35 0 0
+fn=db_matrix::hadamard(db_matrix const&, db_matrix const&)
+0 11492576 40 5 2811264 120570 0 1639904 60129 0 1877952 2017 0 0
+fn=db_matrix::invert()
+0 126 12 4 26 2 0 30 0 0 6 3 0 0
+fn=db_matrix::kill()
+0 1443 5 1 471 8 0 501 0 0 157 11 0 0
+fn=db_matrix::mergeMatrixQuad(db_matrix const&, db_matrix const&, db_matrix const&, db_matrix const&)
+0 1511111 12 12 439499 19159 0 175700 17986 0 235113 502 0 0
+fn=db_matrix::operator()(int, int)
+0 15705340 30 2 3141068 8 0 0 0 0 3926335 1934 0 0
+fn=db_matrix::operator*=(db_matrix const&)
+0 2929820 146 7 878780 94 0 586220 73248 7318 292920 64 0 0
+fn=db_matrix::operator*=(std::complex<double> const&)
+0 612 19 2 170 20 0 136 0 0 34 0 0 0
+fn=db_matrix::operator+=(db_matrix const&)
+0 1962150 33 3 713478 88536 0 356676 0 0 178428 57 0 0
+fn=db_matrix::operator=(db_matrix const&)
+0 1350954 48 4 312 41 0 225207 56249 32733 225111 82 0 0
+fn=db_matrix::rectangleFT(double, double, double, double, int, int, double, double)
+0 690210 27 14 219438 0 0 182916 0 0 40464 821 0 0
+fn=db_matrix::toeplitz_mod(double, double, int, int, int, int)
+0 6109920 89 14 2534040 1472 0 716808 32308 0 598408 11771 0 0
+fn=db_matrix::toeplitz_ones(double, double, int, int, int, int)
+0 6795928 147 27 2247460 73 0 1063358 59843 0 989180 23849 0 0
+fn=db_matrix::~db_matrix()
+0 5326 17 0 2196 147 29 934 5 0 732 36 0 0
+fn=disnan_
+0 352788 0 0 58798 0 0 58798 0 0 0 0 0 0
+fn=dl_iterate_phdr
+0 120722 1903 8 42699 2208 0 35300 879 23 7440 36 5571 31
+fn=dl_main
+0 1195 58 58 308 38 17 136 17 15 331 103 0 0
+fn=dl_open_worker
+0 270 17 17 85 2 0 21 0 0 61 25 1 1
+fn=dlabad_
+0 4326 142 1 1545 257 0 1236 78 0 309 1 0 0
+fn=dladiv1_
+0 2897492 379 4 780094 1 0 835815 1653 0 0 0 0 0
+fn=dladiv2_
+0 1498212 135 1 780094 0 0 0 0 0 445768 1609 0 0
+fn=dladiv_
+0 5405030 1252 11 1449744 0 0 1060602 3183 0 500085 1764 0 0
+fn=dlaisnan_
+0 411586 1 1 176394 0 0 0 0 0 0 0 0 0
+fn=dlamch_
+0 2322327 124 0 995283 7828 9 0 0 0 331761 93 0 0
+fn=dlapy3_
+0 1576530 332 3 321816 356 0 0 0 0 251905 13866 0 0
+fn=do_clone.clone.0
+0 26592 760 4 6094 154 0 3324 6 0 4432 702 0 0
+fn=do_dlopen
+0 18 2 2 10 3 0 4 0 0 0 0 1 1
+fn=do_dlsym
+0 72 1 1 24 0 0 24 0 0 0 0 4 1
+fn=do_lookup_x
+0 574127 291 32 187079 4238 769 80312 75 18 92897 4602 98 3
+fn=do_preload
+0 27 3 3 7 0 0 8 0 0 1 0 0 0
+fn=dzasum_
+0 2410 1 0 723 0 0 241 0 0 241 3 0 0
+fn=dznrm2_
+0 538718 250 1 161620 0 0 53858 1 0 53881 74 0 0
+fn=exit
+0 361 4 4 76 11 0 36 0 0 55 8 15 3
+fn=expand_dynamic_string_token
+0 33 3 3 6 0 0 9 1 1 2 0 0 0
+fn=fNFsym::fNFsym()
+0 650 5 5 70 0 0 280 0 0 0 0 0 0
+fn=fNFsym::~fNFsym()
+0 350 3 3 20 0 0 160 10 3 0 0 0 0
+fn=fPMLafterOPT::createX1(double, double, double, bool, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&)
+0 96 10 8 14 6 0 31 4 0 1 1 0 0
+fn=fPMLafterOPT::createX2(double, double, double, bool, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&)
+0 117 11 10 19 7 0 35 3 0 1 1 0 0
+fn=fPMLafterOPT::createX3(double, double, double, bool, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&)
+0 121 12 10 17 7 0 38 3 0 1 1 0 0
+fn=fPMLafterOPT::createX4(double, double, double, bool, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&)
+0 106 12 9 15 2 0 33 1 0 1 1 0 0
+fn=fPMLafterOPT::createY1(double, double, double, bool, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&)
+0 87 9 7 14 5 0 27 1 0 1 1 0 0
+fn=fPMLafterOPT::createY2(double, double, double, bool, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&)
+0 123 12 11 18 6 0 38 3 0 1 0 0 0
+fn=fPMLafterOPT::createY3(double, double, double, bool, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&)
+0 116 11 9 19 7 0 34 0 0 1 1 0 0
+fn=fPMLafterOPT::createY4(double, double, double, bool, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&)
+0 93 10 8 14 5 0 30 3 0 1 0 0 0
+fn=fclose@@GLIBC_2.2.5
+0 498 22 7 186 4 0 77 0 0 109 36 7 1
+fn=fedisableexcept
+0 15 1 1 5 0 0 3 0 0 0 0 0 0
+fn=fflush
+0 1026 59 4 429 15 1 120 0 0 237 22 24 6
+fn=fgets
+0 5892 53 5 1596 12 0 818 0 0 1022 181 0 0
+fn=finite
+0 910357 3 0 260102 0 0 130051 0 0 0 0 0 0
+fn=floor
+0 1824 34 3 240 44 0 96 0 0 240 45 0 0
+fn=fopen@@GLIBC_2.2.5
+0 16 4 1 0 0 0 0 0 0 0 0 0 0
+fn=fprintf
+0 84 3 2 4 0 0 36 0 0 0 0 4 1
+fn=fputc
+0 43 4 4 18 0 0 6 0 0 10 2 0 0
+fn=free
+0 107700 899 5 23926 8557 7 12 0 0 28150 956 0 0
+fn=fscanf
+0 42 6 3 2 0 0 18 0 0 0 0 2 2
+fn=fseek
+0 254 15 4 94 0 0 30 0 0 52 13 0 0
+fn=ftell
+0 3934 111 4 1270 0 0 410 0 0 942 33 0 0
+fn=fwrite
+0 6585 79 6 2143 96 5 801 7 1 1242 139 100 1
+fn=getc
+0 116086 8 4 53681 30 15 14510 0 0 27569 27 0 0
+fn=getenv
+0 3064 12 5 1036 46 12 116 0 0 896 60 0 0
+fn=getpagesize
+0 10608 168 1 5304 618 0 0 0 0 0 0 0 0
+fn=getrlimit
+0 5 1 1 1 0 0 0 0 0 1 0 0 0
+fn=global constructors keyed to commands::c_size(parsefile*, int, char**)
+0 8 1 1 0 0 0 1 0 0 0 0 0 0
+fn=global constructors keyed to commands::c_substrate(parsefile*, int, char**)
+0 8 2 2 0 0 0 1 0 0 0 0 0 0
+fn=global constructors keyed to commands::commands(structure&, numParser*)
+0 8 2 2 0 0 0 1 0 0 0 0 0 0
+fn=global constructors keyed to err
+0 8 2 2 0 0 0 1 0 0 0 0 0 0
+fn=global constructors keyed to fNonDevSymCart::createX1(double, double, double, bool, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&)
+0 8 1 1 0 0 0 1 0 0 0 0 0 0
+fn=global constructors keyed to fPMLbefore::createX1(double, double, double, bool, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&)
+0 8 2 2 0 0 0 1 0 0 0 0 0 0
+fn=global constructors keyed to finterface::createInterface(db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&)
+0 8 2 2 0 0 0 1 0 0 0 0 0 0
+fn=global constructors keyed to hashFile(char const*)
+0 8 2 2 0 0 0 1 0 0 0 0 0 0
+fn=global constructors keyed to parsefile::parsefile(numParser*)
+0 8 2 2 0 0 0 1 0 0 0 0 0 0
+fn=global constructors keyed to process(int, char* const*)
+0 8 2 2 0 0 0 1 0 0 0 0 0 0
+fn=global constructors keyed to section::section()
+0 8 1 1 0 0 0 1 0 0 0 0 0 0
+fn=global constructors keyed to structure::structure(numParser*)
+0 8 2 2 0 0 0 1 0 0 0 0 0 0
+fn=global constructors keyed to total_elements
+0 8 1 1 0 0 0 1 0 0 0 0 0 0
+fn=hack_digit.15673
+0 17002 69 7 5490 0 0 2662 4 1 1542 145 0 0
+fn=handle_intel
+0 92 3 3 14 0 0 26 0 0 6 4 0 0
+fn=hashFile(char const*)
+0 31994 6 2 10 0 0 2918 0 0 2908 6 0 0
+fn=hypot
+0 1684494 60 2 481284 171 0 601605 27 0 240642 22 0 0
+fn=idamax_
+0 4830 1 1 1449 0 0 483 0 0 483 0 0 0
+fn=ilaenv_
+0 53430 1424 32 6389 85 3 9822 183 0 5100 310 0 0
+fn=ilazlc_
+0 36195 193 4 7851 251 0 2040 0 0 2277 11 0 0
+fn=ilazlr_
+0 42400 183 3 9275 261 0 2650 0 0 2650 5 0 0
+fn=index
+0 937 4 2 82 18 15 0 0 0 83 28 0 0
+fn=init_cacheinfo
+0 146 10 10 9 0 0 9 2 2 24 6 0 0
+fn=init_tls
+0 90 3 3 24 5 1 14 1 1 22 17 0 0
+fn=intel_02_known_compare
+0 378 1 1 162 6 6 0 0 0 54 0 0 0
+fn=intel_check_word
+0 408 10 10 28 0 0 40 0 0 76 27 0 0
+fn=isalnum
+0 3168 5 1 1584 0 0 0 0 0 396 8 0 0
+fn=isalpha
+0 1312 6 1 656 0 0 0 0 0 164 24 0 0
+fn=isatty
+0 24 1 1 3 0 0 3 0 0 0 0 0 0
+fn=isinf
+0 1248 4 1 96 0 0 0 0 0 0 0 0 0
+fn=isnan
+0 214053 179 4 30579 0 0 0 0 0 0 0 0 0
+fn=isspace
+0 2992 6 1 1496 3 0 0 0 0 374 9 0 0
+fn=izamax_
+0 2420 76 0 726 234 0 242 0 0 242 1 0 0
+fn=local_strdup
+0 102 2 2 12 0 0 24 0 0 6 0 0 0
+fn=log
+0 623788 54 2 170124 0 0 113416 0 0 85062 10 0 0
+fn=log10
+0 6489 216 3 2163 545 0 1236 17 0 927 2 0 0
+fn=longjmp
+0 4635 368 1 309 0 0 1236 0 0 309 20 0 0
+fn=lsame_
+0 260682 289 2 55080 6977 13 0 0 0 18360 2040 0 0
+fn=lseek
+0 18 4 2 9 1 0 0 0 0 9 4 0 0
+fn=madvise
+0 3290 217 1 658 44 0 0 0 0 658 55 0 0
+fn=main
+0 130 11 10 18 1 1 33 0 0 3 2 1 1
+fn=malloc
+0 235126 1265 7 81344 12011 1 26041 971 4 50038 1537 1 1
+fn=malloc_consolidate
+0 35132 1082 9 9660 639 1 4039 153 31 8888 1284 0 0
+fn=malloc_hook_ini
+0 8 1 1 2 1 0 3 0 0 0 0 0 0
+fn=map_doit
+0 12 1 1 5 0 0 3 0 0 0 0 0 0
+fn=match_symbol
+0 3130 5 5 1179 37 36 333 0 0 698 55 0 0
+fn=memchr
+0 3297 84 3 294 18 7 0 0 0 479 109 0 0
+fn=memcpy
+0 47918 1308 11 11611 29 2 10544 541 43 8320 988 0 0
+fn=memmove
+0 19656 253 5 3539 85 3 3216 120 0 2893 98 0 0
+fn=mempcpy
+0 22936 536 11 2608 251 4 1425 912 30 7788 729 0 0
+fn=memset
+0 27862 405 11 2278 503 5 9405 482 147 2343 70 1140 1137
+fn=mmap
+0 486 26 3 81 0 0 0 0 0 81 3 0 0
+fn=mprotect
+0 275 32 2 55 0 0 0 0 0 55 2 0 0
+fn=multsum(db_matrix const&, db_matrix const&, db_matrix&)
+0 216 28 5 36 8 0 84 8 0 16 12 0 0
+fn=munmap
+0 260 30 0 52 0 0 0 0 0 52 40 0 0
+fn=new_heap
+0 223 22 6 24 4 0 43 7 6 24 6 0 0
+fn=newlocale
+0 42 5 5 13 1 1 8 0 0 7 4 0 0
+fn=numParser::calculate(char*, double&)
+0 3262 74 3 740 0 0 1480 15 1 151 2 0 0
+fn=numParser::error(int)
+0 124 9 3 47 2 2 9 0 0 31 10 3 2
+fn=numParser::expr()
+0 4974 26 7 1264 6 3 744 0 0 480 85 68 34
+fn=numParser::prim()
+0 8644 209 21 2221 12 5 1317 0 0 1369 146 254 166
+fn=numParser::sec()
+0 3566 9 3 1016 0 0 508 0 0 508 17 0 0
+fn=numParser::term()
+0 4299 15 6 1008 0 0 512 0 0 753 58 0 0
+fn=open
+0 56 5 2 16 0 0 0 0 0 16 2 0 0
+fn=open_verify
+0 1521 13 13 625 8 8 104 2 2 604 144 0 0
+fn=openaux
+0 323 4 2 152 0 0 57 0 0 0 0 0 0
+fn=operator delete(void*)
+0 1122 35 1 0 0 0 0 0 0 374 29 0 0
+fn=operator delete[](void*)
+0 228 46 1 0 0 0 0 0 0 0 0 0 0
+fn=operator new(unsigned long)
+0 5625 61 2 1125 0 0 1125 25 0 375 51 0 0
+fn=operator new[](unsigned long)
+0 916 28 1 229 0 0 229 14 0 0 0 0 0
+fn=operator*(std::complex<double>, db_matrix const&)
+0 156 2 2 24 0 0 60 0 0 0 0 0 0
+fn=parseTok::extractNumber(int)
+0 6364 63 10 1110 6 2 750 0 0 1112 171 0 0
+fn=parseTok::getToken()
+0 22544 155 21 4948 0 0 4900 0 0 3598 702 0 0
+fn=parseTok::insertArray(char const*, int, double*)
+0 66 3 2 17 0 0 15 0 0 8 1 0 0
+fn=parseTok::look(char const*, int)
+0 11991 138 6 2056 20 5 1125 0 0 1289 303 0 0
+fn=parseTok::parseTok()
+0 95 5 5 1 0 0 23 0 0 14 10 0 0
+fn=parseTok::searchNameOnTable(char)
+0 10242 69 4 2358 0 0 2612 4 1 1183 199 0 0
+fn=parseTok::~parseTok()
+0 258 3 2 51 3 0 21 0 0 69 21 0 0
+fn=parsefile::c_endif(parsefile*, int, char**)
+0 80 8 4 22 0 0 20 0 0 8 2 0 0
+fn=parsefile::c_fopen(parsefile*, int, char**)
+0 60 7 7 13 0 0 16 0 0 4 3 0 0
+fn=parsefile::c_for(parsefile*, int, char**)
+0 258 22 11 48 2 0 56 0 0 10 4 0 0
+fn=parsefile::c_fprint(parsefile*, int, char**)
+0 101 7 7 21 1 0 13 0 0 13 6 0 0
+fn=parsefile::c_if(parsefile*, int, char**)
+0 331 36 10 63 2 0 52 0 0 34 16 0 0
+fn=parsefile::c_next(parsefile*, int, char**)
+0 1156 91 26 299 5 1 88 0 0 285 85 0 0
+fn=parsefile::ht_find(char*)
+0 6512 20 2 696 13 0 632 0 0 616 47 64 2
+fn=parsefile::ht_hashing(char*)
+0 6547 25 1 936 0 0 0 0 0 803 205 0 0
+fn=parsefile::ht_insert(tag_interpreter)
+0 3546 3 3 1080 2 1 828 1 0 159 66 69 1
+fn=parsefile::insert_command(std::string, parsefile*, int (*)(parsefile*, int, char**))
+0 2967 4 4 1104 1 1 1173 0 0 138 19 69 1
+fn=parsefile::parsefile(numParser*)
+0 2882 61 61 202 0 0 684 272 219 332 61 0 0
+fn=parsefile::read(std::string, bool)
+0 39302 293 37 3344 45 1 2063 12 3 11232 694 106 28
+fn=parsefile::setBookmark(long)
+0 60 1 1 20 0 0 20 0 0 4 2 0 0
+fn=parsefile::~parsefile()
+0 92 11 11 34 8 2 16 0 0 12 3 0 0
+fn=pow
+0 29120 85 6 9100 10 0 7280 0 0 5460 42 0 0
+fn=printf
+0 25 4 3 3 0 0 10 0 0 0 0 1 1
+fn=process(int, char* const*)
+0 82 9 8 17 5 3 16 1 1 11 6 0 0
+fn=process_envvars
+0 121 6 6 36 3 3 14 3 3 37 19 1 1
+fn=pthread_attr_destroy
+0 3324 6 0 1108 0 0 554 0 0 0 0 0 0
+fn=pthread_attr_init@@GLIBC_2.2.5
+0 9972 245 1 1108 0 0 5540 0 0 3878 380 0 0
+fn=pthread_attr_setaffinity_np@@GLIBC_2.3.4
+0 19397 824 4 3881 246 0 3879 0 0 3325 62 0 0
+fn=pthread_attr_setdetachstate
+0 3260 314 2 1108 0 0 0 0 0 799 36 0 0
+fn=pthread_attr_setscope
+0 2770 225 1 1108 0 0 0 0 0 554 1 0 0
+fn=pthread_cancel_init
+0 56 5 5 10 0 0 14 0 0 6 2 0 0
+fn=pthread_create@@GLIBC_2.2.5
+0 123514 3296 25 35014 4175 0 29074 1494 97 17122 515 0 0
+fn=pthread_exit
+0 1545 200 1 927 309 0 618 309 0 309 22 0 0
+fn=pthread_join
+0 14455 741 5 3185 201 0 2695 245 0 1960 365 0 0
+fn=pthread_mutex_destroy
+0 27 2 2 9 1 1 3 0 0 6 2 0 0
+fn=pthread_mutex_lock
+0 78032 535 3 20437 1131 2 5573 0 0 14862 58 0 0
+fn=pthread_mutex_unlock
+0 76167 769 3 24151 2 0 5573 0 0 20435 54 0 0
+fn=pthread_once
+0 1454 280 3 718 5 2 8 0 0 359 37 2 2
+fn=ptmalloc_init
+0 258 11 9 83 29 2 31 9 6 65 16 0 0
+fn=putc
+0 1052 9 3 426 0 0 125 0 0 226 21 0 0
+fn=read
+0 63 6 2 21 0 0 0 0 0 21 4 0 0
+fn=realloc
+0 14426 705 5 4441 491 0 3330 363 0 1663 56 1 1
+fn=realloc_hook_ini
+0 16 2 2 4 0 0 5 0 0 0 0 0 0
+fn=res_thread_freeres
+0 6648 189 1 3324 554 12 1108 0 0 554 0 0 0
+fn=round_and_return
+0 264 21 3 55 0 0 55 1 0 33 10 0 0
+fn=row2blkT_KB
+0 17796037 587 12 4221360 572491 0 4219375 565910 2948 2237756 55926 0 0
+fn=rtld_lock_default_lock_recursive
+0 112 1 1 112 3 1 0 0 0 0 0 0 0
+fn=rtld_lock_default_unlock_recursive
+0 112 0 0 112 0 0 0 0 0 0 0 0 0
+fn=sbrk
+0 1124 43 6 313 76 2 164 5 0 222 42 0 0
+fn=sched_yield
+0 11405 161 1 2281 285 0 0 0 0 2281 51 0 0
+fn=section::calcWmatrix(double)
+0 446 58 38 154 79 2 121 13 0 13 7 8 8
+fn=section::find_interesting()
+0 19343 37 21 7073 248 1 6345 0 0 1954 31 0 0
+fn=section::modes_calculation()
+0 20 2 2 2 1 0 6 0 0 0 0 0 0
+fn=section::section()
+0 230 3 3 20 0 0 150 9 9 0 0 0 0
+fn=section::transfPML(section_data::transf_types)
+0 159290 47 37 54162 16 1 34151 7 0 15082 127 0 0
+fn=section::~section()
+0 10 1 0 0 0 0 0 0 0 0 0 0 0
+fn=section_data::section_data()
+0 2210 19 19 70 0 0 1090 35 35 0 0 0 0
+fn=section_data::~section_data()
+0 1193 11 11 51 4 2 551 44 15 11 2 0 0
+fn=sin
+0 4336668 180 68 849366 138 15 376740 0 0 498834 46280 0 0
+fn=sincos
+0 79380 8 2 17640 0 0 26460 0 0 8820 4 0 0
+fn=snprintf
+0 1615 71 3 77 0 0 691 0 0 0 0 77 6
+fn=sprintf
+0 84 8 2 4 0 0 36 0 0 0 0 4 2
+fn=sscanf
+0 2226 105 3 106 0 0 954 4 0 0 0 106 17
+fn=start_thread
+0 51341 2646 10 13541 1381 0 11080 2712 36 8864 459 554 1
+fn=std::_Deque_base<std::string, std::allocator<std::string> >::_M_initialize_map(unsigned long)
+0 432 4 4 72 0 0 144 3 3 16 0 0 0
+fn=std::_List_node_base::hook(std::_List_node_base*)
+0 7 1 1 3 1 0 4 0 0 0 0 0 0
+fn=std::_Rb_tree<double, std::pair<double const, _IO_FILE*>, std::_Select1st<std::pair<double const, _IO_FILE*> >, std::less<double>, std::allocator<std::pair<double const, _IO_FILE*> > >::_M_erase(std::_Rb_tree_node<std::pair<double const, _IO_FILE*> >*)
+0 48 3 3 16 0 0 13 2 0 4 1 0 0
+fn=std::_Rb_tree<double, std::pair<double const, _IO_FILE*>, std::_Select1st<std::pair<double const, _IO_FILE*> >, std::less<double>, std::allocator<std::pair<double const, _IO_FILE*> > >::_M_insert_(std::_Rb_tree_node_base const*, std::_Rb_tree_node_base co
+0 40 4 3 10 0 0 10 0 0 3 1 0 0
+fn=std::_Rb_tree<double, std::pair<double const, _IO_FILE*>, std::_Select1st<std::pair<double const, _IO_FILE*> >, std::less<double>, std::allocator<std::pair<double const, _IO_FILE*> > >::_M_insert_unique(std::pair<double const, _IO_FILE*> const&)
+0 37 4 4 10 0 0 8 0 0 2 1 0 0
+fn=std::_Rb_tree<double, std::pair<double const, _IO_FILE*>, std::_Select1st<std::pair<double const, _IO_FILE*> >, std::less<double>, std::allocator<std::pair<double const, _IO_FILE*> > >::_M_insert_unique_(std::_Rb_tree_const_iterator<std::pair<double const
+0 28 3 3 8 0 0 7 0 0 2 1 0 0
+fn=std::_Rb_tree<std::string, std::pair<std::string const, double>, std::_Select1st<std::pair<std::string const, double> >, std::less<std::string>, std::allocator<std::pair<std::string const, double> > >::_M_erase(std::_Rb_tree_node<std::pair<std::string con
+0 186 6 6 75 0 0 49 0 0 24 11 0 0
+fn=std::_Rb_tree<std::string, std::pair<std::string const, double>, std::_Select1st<std::pair<std::string const, double> >, std::less<std::string>, std::allocator<std::pair<std::string const, double> > >::_M_insert_(std::_Rb_tree_node_base const*, std::_Rb_t
+0 117 6 3 24 0 0 27 0 0 9 4 0 0
+fn=std::_Rb_tree<std::string, std::pair<std::string const, double>, std::_Select1st<std::pair<std::string const, double> >, std::less<std::string>, std::allocator<std::pair<std::string const, double> > >::_M_insert_unique(std::pair<std::string const, double>
+0 93 6 4 24 0 0 18 0 0 6 5 0 0
+fn=std::_Rb_tree<std::string, std::pair<std::string const, double>, std::_Select1st<std::pair<std::string const, double> >, std::less<std::string>, std::allocator<std::pair<std::string const, double> > >::_M_insert_unique_(std::_Rb_tree_const_iterator<std::p
+0 78 7 4 21 1 0 18 0 0 6 3 0 0
+fn=std::_Rb_tree<std::string, std::pair<std::string const, long>, std::_Select1st<std::pair<std::string const, long> >, std::less<std::string>, std::allocator<std::pair<std::string const, long> > >::_M_erase(std::_Rb_tree_node<std::pair<std::string const, lo
+0 106 4 4 33 0 0 22 0 0 16 10 0 0
+fn=std::_Rb_tree<std::string, std::pair<std::string const, long>, std::_Select1st<std::pair<std::string const, long> >, std::less<std::string>, std::allocator<std::pair<std::string const, long> > >::_M_insert_(std::_Rb_tree_node_base const*, std::_Rb_tree_no
+0 111 9 3 24 0 0 27 0 0 7 3 0 0
+fn=std::_Rb_tree<std::string, std::pair<std::string const, long>, std::_Select1st<std::pair<std::string const, long> >, std::less<std::string>, std::allocator<std::pair<std::string const, long> > >::_M_insert_unique(std::pair<std::string const, long> const&)
+0 31 4 4 8 0 0 6 0 0 2 2 0 0
+fn=std::_Rb_tree<std::string, std::pair<std::string const, long>, std::_Select1st<std::pair<std::string const, long> >, std::less<std::string>, std::allocator<std::pair<std::string const, long> > >::_M_insert_unique_(std::_Rb_tree_const_iterator<std::pair<st
+0 136 14 6 47 1 0 18 0 0 31 9 0 0
+fn=std::_Rb_tree_insert_and_rebalance(bool, std::_Rb_tree_node_base*, std::_Rb_tree_node_base*, std::_Rb_tree_node_base&)
+0 246 24 7 50 0 0 85 0 0 30 12 0 0
+fn=std::_Rb_tree_rotate_right(std::_Rb_tree_node_base*, std::_Rb_tree_node_base*&)
+0 13 1 1 5 0 0 5 0 0 2 2 0 0
+fn=std::__num_base::_S_format_float(std::ios_base const&, char*, char)
+0 567 13 2 42 0 0 105 0 0 105 17 0 0
+fn=std::__timepunct<char>::_M_initialize_timepunct(__locale_struct*)
+0 107 12 12 6 0 0 52 0 0 2 1 0 0
+fn=std::__timepunct<char>::__timepunct(std::__timepunct_cache<char>*, unsigned long)
+0 20 2 2 3 1 0 8 1 1 0 0 0 0
+fn=std::__timepunct<wchar_t>::_M_initialize_timepunct(__locale_struct*)
+0 105 13 13 5 0 0 51 0 0 2 2 0 0
+fn=std::__timepunct<wchar_t>::__timepunct(std::__timepunct_cache<wchar_t>*, unsigned long)
+0 20 2 2 3 1 0 8 1 1 0 0 0 0
+fn=std::basic_ios<char, std::char_traits<char> >::_M_cache_locale(std::locale const&)
+0 570 14 3 57 0 0 209 0 0 57 0 0 0
+fn=std::basic_ios<char, std::char_traits<char> >::imbue(std::locale const&)
+0 225 18 4 45 3 0 65 0 0 5 2 5 1
+fn=std::basic_ios<char, std::char_traits<char> >::init(std::basic_streambuf<char, std::char_traits<char> >*)
+0 308 12 2 42 0 0 140 0 0 0 0 0 0
+fn=std::basic_ios<wchar_t, std::char_traits<wchar_t> >::_M_cache_locale(std::locale const&)
+0 120 2 2 12 0 0 44 0 0 12 0 0 0
+fn=std::basic_ios<wchar_t, std::char_traits<wchar_t> >::init(std::basic_streambuf<wchar_t, std::char_traits<wchar_t> >*)
+0 88 2 2 12 0 0 40 0 0 0 0 0 0
+fn=std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long)
+0 4950 126 9 2141 35 0 964 9 2 451 37 117 13
+fn=std::basic_ostream<char, std::char_traits<char> >& std::operator<< <double, char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, std::complex<double> const&)
+0 1015 68 19 285 19 0 340 0 0 70 20 0 0
+fn=std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*)
+0 36 3 2 6 0 0 8 0 0 2 0 0 0
+fn=std::basic_ostream<wchar_t, std::char_traits<wchar_t> >::flush()
+0 48 2 2 21 10 0 6 0 0 6 0 3 1
+fn=std::basic_streambuf<char, std::char_traits<char> >::imbue(std::locale const&)
+0 5 5 1 5 0 0 0 0 0 0 0 0 0
+fn=std::basic_streambuf<char, std::char_traits<char> >::xsputn(char const*, long)
+0 865 11 3 235 0 0 150 0 0 80 26 5 2
+fn=std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(char const*, std::allocator<char> const&)
+0 1840 20 3 320 0 0 560 4 3 80 0 0 0
+fn=std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(std::string const&)
+0 589 13 2 248 1 0 62 5 0 124 27 0 0
+fn=std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(std::string const&, unsigned long, unsigned long)
+0 84 8 2 16 0 0 16 0 0 4 0 0 0
+fn=std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string<char*>(char*, char*, std::allocator<char> const&)
+0 60 9 1 10 0 0 20 0 0 0 0 0 0
+fn=std::basic_string<char, std::char_traits<char>, std::allocator<char> >::~basic_string()
+0 519 24 2 216 0 0 17 0 0 144 52 0 0
+fn=std::basic_stringbuf<char, std::char_traits<char>, std::allocator<char> >::_M_sync(char*, unsigned long, unsigned long)
+0 135 12 3 25 0 0 30 0 0 20 6 0 0
+fn=std::basic_stringbuf<char, std::char_traits<char>, std::allocator<char> >::overflow(int)
+0 365 27 7 125 2 0 65 0 0 50 18 0 0
+fn=std::codecvt<char, char, __mbstate_t>::codecvt(unsigned long)
+0 15 1 1 3 0 0 5 1 1 0 0 0 0
+fn=std::codecvt<wchar_t, char, __mbstate_t>::codecvt(unsigned long)
+0 15 2 2 3 0 0 5 1 1 0 0 0 0
+fn=std::ctype<char> const& std::use_facet<std::ctype<char> >(std::locale const&)
+0 760 10 2 360 7 0 120 0 0 120 0 0 0
+fn=std::ctype<char>::_M_widen_init() const
+0 1311 3 3 521 1 0 262 0 0 770 19 1 1
+fn=std::ctype<char>::ctype(unsigned short const*, bool, unsigned long)
+0 108 4 4 8 2 1 83 9 9 64 17 0 0
+fn=std::ctype<char>::do_widen(char const*, char const*, char*) const
+0 8 1 1 2 0 0 2 0 0 0 0 0 0
+fn=std::ctype<char>::do_widen(char) const
+0 2 1 1 1 0 0 0 0 0 0 0 0 0
+fn=std::ctype<wchar_t> const& std::use_facet<std::ctype<wchar_t> >(std::locale const&)
+0 76 2 2 36 0 0 12 0 0 12 0 0 0
+fn=std::ctype<wchar_t>::_M_convert_to_wmask(unsigned short) const
+0 129 5 5 12 0 0 0 0 0 58 19 0 0
+fn=std::ctype<wchar_t>::_M_initialize_ctype()
+0 2886 5 5 5 0 0 810 20 20 536 16 0 0
+fn=std::ctype<wchar_t>::ctype(unsigned long)
+0 18 1 1 3 1 0 7 0 0 0 0 0 0
+fn=std::ios_base::Init::Init()
+0 531 32 31 175 12 1 241 18 15 41 2 0 0
+fn=std::ios_base::Init::~Init()
+0 155 3 3 71 7 0 6 0 0 39 4 0 0
+fn=std::ios_base::_M_call_callbacks(std::ios_base::event)
+0 120 11 2 50 0 0 30 0 0 10 6 0 0
+fn=std::ios_base::_M_dispose_callbacks()
+0 80 6 2 30 0 0 25 0 0 5 2 0 0
+fn=std::ios_base::_M_init()
+0 324 9 2 54 0 0 144 0 0 0 0 0 0
+fn=std::ios_base::imbue(std::locale const&)
+0 120 8 2 25 0 0 35 0 0 0 0 0 0
+fn=std::ios_base::ios_base()
+0 754 16 3 13 3 0 351 31 15 104 43 0 0
+fn=std::ios_base::~ios_base()
+0 90 9 2 15 0 0 20 0 0 5 3 0 0
+fn=std::locale::_Impl::_Impl(unsigned long)
+0 810 66 66 133 26 1 406 44 44 39 20 0 0
+fn=std::locale::_Impl::_M_install_facet(std::locale::id const*, std::locale::facet const*)
+0 6664 5 5 1988 0 0 224 0 0 1736 39 0 0
+fn=std::locale::facet::_S_create_c_locale(__locale_struct*&, char const*, __locale_struct*)
+0 9 1 1 2 0 0 3 0 0 1 0 0 0
+fn=std::locale::facet::_S_get_c_locale()
+0 219 10 2 125 6 0 32 0 0 31 3 0 0
+fn=std::locale::facet::_S_get_c_name()
+0 10 1 1 10 1 0 0 0 0 0 0 0 0
+fn=std::locale::id::_M_id() const
+0 1354 8 1 564 14 2 28 0 0 282 26 0 0
+fn=std::locale::locale()
+0 924 14 3 462 5 0 252 2 0 126 11 0 0
+fn=std::locale::locale(std::locale const&)
+0 120 5 1 100 0 0 20 0 0 40 5 0 0
+fn=std::locale::operator=(std::locale const&)
+0 476 4 1 280 0 0 56 0 0 112 12 0 0
+fn=std::locale::~locale()
+0 480 6 1 288 0 0 48 0 0 144 9 0 0
+fn=std::map<std::string, double, std::less<std::string>, std::allocator<std::pair<std::string const, double> > >::operator[](std::string const&)
+0 220 9 5 50 5 0 24 0 0 38 24 0 0
+fn=std::map<std::string, long, std::less<std::string>, std::allocator<std::pair<std::string const, long> > >::operator[](std::string const&)
+0 1039 35 5 471 3 0 52 0 0 452 114 0 0
+fn=std::messages<char>::messages(unsigned long)
+0 17 1 1 3 0 0 7 1 1 0 0 0 0
+fn=std::messages<wchar_t>::messages(unsigned long)
+0 17 2 2 3 0 0 7 0 0 0 0 0 0
+fn=std::moneypunct<char, false>::_M_initialize_moneypunct(__locale_struct*, char const*)
+0 112 4 4 37 2 1 31 0 0 13 9 0 0
+fn=std::moneypunct<char, true>::_M_initialize_moneypunct(__locale_struct*, char const*)
+0 112 5 5 37 0 0 31 0 0 13 11 0 0
+fn=std::moneypunct<wchar_t, false>::_M_initialize_moneypunct(__locale_struct*, char const*)
+0 108 7 7 29 0 0 32 0 0 14 8 0 0
+fn=std::moneypunct<wchar_t, true>::_M_initialize_moneypunct(__locale_struct*, char const*)
+0 108 6 6 29 0 0 32 0 0 14 7 0 0
+fn=std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > > const& std::use_facet<std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > > >(std::locale const&)
+0 361 12 2 171 0 0 57 0 0 57 2 0 0
+fn=std::num_get<wchar_t, std::istreambuf_iterator<wchar_t, std::char_traits<wchar_t> > > const& std::use_facet<std::num_get<wchar_t, std::istreambuf_iterator<wchar_t, std::char_traits<wchar_t> > > >(std::locale const&)
+0 76 1 1 36 0 0 12 0 0 12 0 0 0
+fn=std::num_put<char, std::ostreambuf_iterator<char, std::char_traits<char> > > const& std::use_facet<std::num_put<char, std::ostreambuf_iterator<char, std::char_traits<char> > > >(std::locale const&)
+0 361 10 2 171 0 0 57 0 0 57 4 0 0
+fn=std::num_put<char, std::ostreambuf_iterator<char, std::char_traits<char> > >::do_put(std::ostreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, char, double) const
+0 210 10 2 42 0 0 84 1 0 0 0 0 0
+fn=std::num_put<char, std::ostreambuf_iterator<char, std::char_traits<char> > >::do_put(std::ostreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, char, long) const
+0 90 5 2 20 0 0 40 0 0 0 0 0 0
+fn=std::num_put<wchar_t, std::ostreambuf_iterator<wchar_t, std::char_traits<wchar_t> > > const& std::use_facet<std::num_put<wchar_t, std::ostreambuf_iterator<wchar_t, std::char_traits<wchar_t> > > >(std::locale const&)
+0 76 2 2 36 0 0 12 0 0 12 0 0 0
+fn=std::numpunct<char>::_M_initialize_numpunct(__locale_struct*)
+0 410 5 5 136 7 4 74 0 0 64 17 0 0
+fn=std::numpunct<wchar_t>::_M_initialize_numpunct(__locale_struct*)
+0 345 6 6 72 0 0 74 3 3 64 20 0 0
+fn=std::ostream& std::ostream::_M_insert<double>(double)
+0 1168 32 6 461 8 0 304 0 0 115 28 21 2
+fn=std::ostream& std::ostream::_M_insert<long>(long)
+0 550 26 5 210 3 0 140 0 0 50 7 10 1
+fn=std::ostream::flush()
+0 336 17 1 147 10 0 42 0 0 42 5 21 1
+fn=std::ostream::operator<<(int)
+0 90 6 1 27 0 0 0 0 0 18 1 0 0
+fn=std::ostream::put(char)
+0 70 8 4 34 0 0 12 0 0 8 3 2 2
+fn=std::ostream::sentry::sentry(std::ostream&)
+0 2667 38 2 889 49 0 635 1 0 254 67 0 0
+fn=std::ostreambuf_iterator<char, std::char_traits<char> > std::num_put<char, std::ostreambuf_iterator<char, std::char_traits<char> > >::_M_insert_float<double>(std::ostreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, char, char, double) cons
+0 2443 59 16 543 3 0 643 0 0 147 15 21 4
+fn=std::ostreambuf_iterator<char, std::char_traits<char> > std::num_put<char, std::ostreambuf_iterator<char, std::char_traits<char> > >::_M_insert_int<long>(std::ostreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, char, long) const
+0 928 32 12 230 0 0 230 0 0 82 11 10 1
+fn=std::string::_M_mutate(unsigned long, unsigned long, unsigned long)
+0 224 16 5 56 0 0 56 0 0 20 9 0 0
+fn=std::string::_M_replace_safe(unsigned long, unsigned long, char const*, unsigned long)
+0 108 7 2 28 0 0 24 0 0 8 5 0 0
+fn=std::string::_Rep::_M_clone(std::allocator<char> const&, unsigned long)
+0 565 25 4 150 0 0 131 0 0 46 22 0 0
+fn=std::string::_Rep::_M_destroy(std::allocator<char> const&)
+0 110 18 1 0 0 0 0 0 0 0 0 0 0
+fn=std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&)
+0 2078 37 3 220 0 0 440 2 1 328 43 0 0
+fn=std::string::append(char const*)
+0 28 2 1 4 0 0 6 0 0 0 0 0 0
+fn=std::string::append(char const*, unsigned long)
+0 658 27 4 168 0 0 122 0 0 92 39 0 0
+fn=std::string::assign(char const*, unsigned long)
+0 96 7 2 16 1 0 8 0 0 12 2 0 0
+fn=std::string::assign(std::string const&)
+0 140 11 2 50 0 0 10 0 0 30 8 0 0
+fn=std::string::find_first_of(char const*, unsigned long, unsigned long) const
+0 156 12 3 40 0 0 28 0 0 20 6 0 0
+fn=std::string::reserve(unsigned long)
+0 523 41 4 178 0 0 76 0 0 72 24 0 0
+fn=std::string::swap(std::string&)
+0 55 8 2 25 0 0 10 0 0 10 4 0 0
+fn=std::vector<double, std::allocator<double> >::_M_insert_aux(__gnu_cxx::__normal_iterator<double*, std::vector<double, std::allocator<double> > >, double const&)
+0 288 12 7 60 0 0 59 0 0 25 16 0 0
+fn=std::vector<double, std::allocator<double> >::operator=(std::vector<double, std::allocator<double> > const&)
+0 49 4 4 11 0 0 10 0 0 5 3 0 0
+fn=str_to_mpn
+0 744 24 4 189 6 1 117 0 0 67 36 0 0
+fn=strcasecmp
+0 7 2 2 3 1 1 1 0 0 2 1 0 0
+fn=strchrnul
+0 5308 7 1 462 6 3 0 0 0 232 22 0 0
+fn=strcmp
+0 186561 42 3 56552 618 151 0 0 0 49816 3251 0 0
+fn=strcpy
+0 7 1 1 3 0 0 0 0 0 2 1 0 0
+fn=strerror_thread_freeres
+0 3324 0 0 554 0 0 554 0 0 0 0 0 0
+fn=strlen
+0 1643 9 6 192 3 1 0 0 0 430 97 0 0
+fn=strncasecmp
+0 6 2 2 3 0 0 0 0 0 2 2 0 0
+fn=strncpy
+0 7 1 1 3 0 0 0 0 0 2 0 0 0
+fn=strsep
+0 947 3 3 153 0 0 1 0 0 248 9 0 0
+fn=structure::getEffectiveIndex(std::complex<double>)
+0 3388 1 0 1936 2 0 0 0 0 0 0 0 0
+fn=structure::getOmega()
+0 4 2 2 4 1 0 0 0 0 0 0 0 0
+fn=structure::getOrder(std::complex<double>, double)
+0 6292 4 2 2420 1 0 0 0 0 968 9 0 0
+fn=structure::getQuality(std::complex<double>)
+0 5324 4 1 2904 0 0 0 0 0 0 0 0 0
+fn=structure::reset()
+0 343 25 25 16 0 0 132 2 2 12 11 0 0
+fn=structure::structure(numParser*)
+0 61 7 7 7 0 0 35 4 4 0 0 0 0
+fn=structure::~structure()
+0 283 7 7 30 2 0 85 1 0 26 10 0 0
+fn=tcgetattr
+0 111 3 3 30 0 0 42 0 0 6 0 0 0
+fn=uname
+0 5 1 1 1 0 0 0 0 0 1 0 0 0
+fn=unwind_stop
+0 60564 520 4 21012 309 0 14214 0 0 6180 684 0 0
+fn=uselocale
+0 924 12 2 396 17 1 176 1 0 44 3 0 0
+fn=version_check_doit
+0 10 1 1 4 0 0 2 0 0 1 1 0 0
+fn=vfprintf
+0 28763 729 66 6648 29 6 7751 61 9 3424 279 417 78
+fn=vfscanf
+0 4 2 1 0 0 0 0 0 0 0 0 0 0
+fn=vsnprintf
+0 4312 157 5 784 0 0 1176 7 2 196 23 0 0
+fn=vsprintf
+0 152 8 3 28 0 0 40 0 0 4 0 0 0
+fn=vsscanf
+0 3498 92 3 530 0 0 954 2 0 0 0 0 0
+fn=wctob
+0 2432 2 2 768 0 0 640 0 0 256 1 0 0
+fn=wctype_l
+0 838 2 2 288 4 4 103 0 0 297 68 0 0
+fn=write
+0 90 18 1 45 0 0 0 0 0 45 5 0 0
+fn=zcopy_
+0 217385 132 2 62110 6 0 31055 6 0 31055 1 0 0
+fn=zdscal_
+0 3388 38 0 968 0 0 484 0 0 484 0 0 0
+fn=zgebak_
+0 92 11 10 19 1 0 14 0 0 13 8 0 0
+fn=zgebal_
+0 1277 9 9 18 0 0 256 33 0 249 6 0 0
+fn=zgeevx_
+0 716300 65 60 119926 36 0 60626 43 0 59084 275 0 0
+fn=zgehd2_
+0 82000 657 12 25412 2837 0 21630 473 0 922 105 0 0
+fn=zgehrd_
+0 10863 614 17 2383 9 0 2374 243 0 1145 133 0 0
+fn=zgemm_
+0 58716 1797 11 15834 1764 0 11907 245 0 5817 297 0 0
+fn=zgemv_
+0 189582 827 8 51720 1613 0 40830 590 0 20142 67 0 0
+fn=zgerc_
+0 65660 267 3 23450 2029 0 14070 187 0 11725 276 0 0
+fn=zgetrf_
+0 32 8 3 8 0 0 4 0 0 6 5 0 0
+fn=zgetri_
+0 42 8 3 12 0 0 8 0 0 6 6 0 0
+fn=zhseqr_
+0 398 38 26 94 8 0 79 3 0 49 26 0 0
+fn=zlacpy_
+0 30116978 2273 8 4973645 638261 0 4930732 640024 0 2541323 39592 0 0
+fn=zladiv_
+0 1170141 336 3 390047 0 0 278605 0 0 0 0 0 0
+fn=zlahqr_
+0 101031366 2698 94 21002552 108884 0 9953776 1416 0 2855565 114824 0 0
+fn=zlange_
+0 1706180 10 10 353837 29287 0 293811 0 0 235708 514 0 0
+fn=zlaqr0_
+0 191136 638 54 31171 4484 0 6418 48 0 14503 774 0 0
+fn=zlaqr1_
+0 17160 116 12 4180 281 0 1430 110 0 220 15 0 0
+fn=zlaqr2_
+0 3090 290 10 990 0 0 1080 112 0 60 0 0 0
+fn=zlaqr3_
+0 270606 2582 93 93442 3392 0 18349 928 0 21710 2374 0 0
+fn=zlaqr4_
+0 5324 419 15 1456 0 0 1454 0 0 93 3 0 0
+fn=zlaqr5_
+0 230984900 7639 224 55554455 1982631 0 17684320 26175 0 3297586 132595 0 0
+fn=zlarf_
+0 255300 734 12 56280 3253 0 56280 1215 0 16415 307 0 0
+fn=zlarfb_
+0 159 18 3 48 6 0 42 0 0 24 5 0 0
+fn=zlarfg_
+0 5792907 1049 11 1609145 5145 0 1716388 5084 0 214617 350 0 0
+fn=zlarft_
+0 78 10 3 21 6 0 18 1 0 12 6 0 0
+fn=zlartg_
+0 1878060 432 15 553042 36 0 432001 0 0 162504 7982 0 0
+fn=zlaset_
+0 4213885 1499 9 25057 522 0 1019032 134446 0 529764 10973 0 0
+fn=zlatrs_
+0 1650418 1053 30 189185 588 0 97846 720 0 209670 1211 0 0
+fn=zrot_
+0 34171296 243 9 4253185 39970 0 3872482 0 0 1087834 44173 0 0
+fn=zscal_
+0 455955 170 2 130286 112 0 65120 1 0 65143 80 0 0
+fn=ztrevc_
+0 1704396 442 39 448334 17300 0 183450 37274 0 119564 838 0 0
+fn=ztrexc_
+0 2044024 540 20 573404 2309 0 403091 0 0 60173 1576 0 0
+fn=ztrmm_
+0 37652 845 12 6640 737 0 7570 309 0 3586 43 0 0
+fn=ztrsv_
+0 18316 313 9 3374 353 0 3856 0 0 1687 6 0 0
+fn=zung2r_
+0 98548 48 12 5080 1186 0 22823 2787 0 10600 312 0 0
+fn=zunghr_
+0 587964 20 17 59077 7199 0 116678 7434 0 59303 537 0 0
+fn=zungqr_
+0 157389 62 29 156 44 0 38768 4953 0 19833 241 0 0
+fn=zunm2r_
+0 33972 396 18 11712 203 0 8870 0 0 1934 583 0 0
+fn=zunmhr_
+0 13160 912 20 4192 32 0 2632 56 0 1477 247 0 0
+fn=zunmqr_
+0 4172 484 21 1446 6 0 968 0 0 438 104 0 0
+summary: 2063164788 337701 10476 775722451 21905454 6628 112690055 3805075 112647 47913250 1122448 707694 52286

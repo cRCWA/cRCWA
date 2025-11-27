@@ -1,0 +1,38 @@
+
+[1m   A F M M
+
+   Automatic test suite
+   by Davide Bucci 2013-2020
+[0m
+ NOTE: the following tests will run ../../afmm
+
+Testing for loops:            [32mOK[0m
+Testing for command (2 loops) [32mOK[0m
+Testing layer decomposition:  [32mOK[0m
+Testing if command            [32mOK[0m
+Testing load command          [32mOK[0m
+Testing simple calculations:  [32mOK[0m
+Testing simple mode search:   [32mOK[0m
+Testing Bloch mode calc. TE:  [32mOK[0m
+Testing Bloch mode calc. TM:  [32mOK[0m
+Testing pl. wave exc. angles  [32mOK[0m
+Testing symmetries:          0 0.863945
+ [32mOK[0m
+Testing multithreading:       [32mOK[0m
+Testing madev strategies:     [32mOK[0m
+Testing multi-propagation:    [32mOK[0m
+Testing multi-propagation 2:  [32mOK[0m
+Testing monitor:              [32mOK[0m
+Testing orientation of fft:   [32mOK[0m
+Testing file read/write :     [32mOK[0m
+Testing do-while loops:       [32mOK[0m
+Testing Dz with symmetry:     [32mOK[0m
+
+[32mAll is Ok! :-)[0m
+
+
+real	2m32,276s
+user	2m38,188s
+sys	0m1,737s
+
+ 

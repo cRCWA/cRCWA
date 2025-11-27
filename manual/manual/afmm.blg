@@ -1,0 +1,65 @@
+This is BibTeX, Version 0.99d (TeX Live 2012)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: afmm.aux
+The style file: IEEEtranS.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: fmm.bib
+-- IEEEtranS.bst version 1.11 (2003/04/02) by Michael Shell.
+-- http://www.ctan.org/tex-archive/macros/latex/contrib/supported/IEEEtran/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+** Sorting version - not for use with work to be submitted to the IEEE.
+Warning--to sort, need author, organization, or key in lapack_site
+Warning--to sort, need author, organization, or key in blas_site
+Warning--to sort, need author, organization, or key in atlas_site
+Warning--to sort, need author, organization, or key in openblas_site
+Warning--to sort, need author, organization, or key in libf2c_site
+Warning--to sort, need author, organization, or key in fftw_site
+Warning--to sort, need author, organization, or key in gnuplot_site
+
+Done.
+You've used 38 entries,
+            4413 wiz_defined-function locations,
+            1077 strings with 13128 characters,
+and the built_in function-call counts, 30291 in all, are:
+= -- 2733
+> -- 747
+< -- 238
++ -- 403
+- -- 172
+* -- 1521
+:= -- 4607
+add.period$ -- 76
+call.type$ -- 38
+change.case$ -- 203
+chr.to.int$ -- 522
+cite$ -- 45
+duplicate$ -- 1986
+empty$ -- 2160
+format.name$ -- 191
+if$ -- 6759
+int.to.chr$ -- 0
+int.to.str$ -- 38
+missing$ -- 329
+newline$ -- 154
+num.names$ -- 56
+pop$ -- 884
+preamble$ -- 1
+purify$ -- 164
+quote$ -- 2
+skip$ -- 2272
+stack$ -- 0
+substring$ -- 1462
+swap$ -- 1566
+text.length$ -- 64
+text.prefix$ -- 0
+top$ -- 6
+type$ -- 320
+warning$ -- 7
+while$ -- 137
+width$ -- 40
+write$ -- 388
+(There were 7 warnings)

@@ -1,0 +1,18 @@
+# testing the eigenvalues obtained for a rectangular waveguide for several 
+# identical configurations.
+
+size 800e-09 800e-09
+wavelength 820e-09
+harmonics 61 1
+carpet
+symmetry n n
+
+section 2e-6
+	substrate 1 0
+	rectangle 3.68 -0.006 400e-9 800e-9 0 0
+	matdev las 1
+
+
+solve
+
+

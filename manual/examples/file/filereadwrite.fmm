@@ -1,0 +1,16 @@
+    fopen "test.txt" "w"
+        # ans now contains the handle to the file.
+        let fileo=ans
+            
+        fprint fileo "This is a test."
+        fprint fileo 42
+    fclose fileo
+    
+    fopen "test.txt" "r"
+    	let filei=ans
+    	# Skip the first line.
+        fskip filei
+        fscan filei
+        # Should print 42
+        print ans
+    fclose filei

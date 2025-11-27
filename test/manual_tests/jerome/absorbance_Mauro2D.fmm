@@ -1,0 +1,76 @@
+
+print im=1e-5
+
+# taille x y
+size 800e-09 800e-09
+# longueur d'onde
+wavelength 820e-09
+# nombre d'harmoniques en x y
+harmonics 1 121
+carpet
+
+# air
+section 1e-6
+substrate 1 im
+
+# nanofils
+section 2e-6
+substrate 1 im
+rectangle 3.68 0.006 800e-9 400e-9 0 0
+
+# substrat
+section 1e-6
+substrate 3.68 0.006
+
+# air
+section 1e-6
+substrate 1 im
+
+
+# on va sauvegarder la matrice de propagation
+wants propagation
+
+solve
+# prepare les matrices
+assemble
+
+# excitation
+# vient d'en face (front)
+# mode fondamental
+# partie reelle
+# partie imaginaire
+# coefficient multiplicatif pour les valeurs du fichier entree suivant (si on choisit fx ou fy en 2e argument)
+# le coeff s'applique sur la 3e ligne, où l'on renseigne les dimensions x et y => il faut que ce soit les bonnes
+# fichier du champ (si on choisit fx ou fy en 2e argument)
+excitation f fx 1 0 800e-9 champ.txt
+
+# propagation
+# on choisit Ex
+# magnitude en sortie
+# tranche dz
+# nombre de tranches en x
+# nombre de tranches en y
+# nom du fichier de sortie
+propagation Ex m 50e-9 9 9 resu_Mauro2D_61
+
+
+# extrait les coefficients de reflection et de transmission :
+# onde incidente :
+print onde incidente:
+select 1
+print norm
+norm f
+
+# reflection
+print onde reflechie
+select 1
+norm b
+
+# transmission
+print onde transmise
+select 4
+coefficient f 1
+norm f
+
+
+

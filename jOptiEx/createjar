@@ -1,0 +1,14 @@
+#!/bin/bash
+
+cd bin
+jar cvfm joptiex.jar ../jar/Manifest.txt  * **/*
+
+
+jar i joptiex.jar
+mv joptiex.jar ../jar
+
+
+cd ..
+
+
+

@@ -1,0 +1,56 @@
+# testing the absorptance obtained for a Si nanowire for several 
+# identical configurations.
+
+# height of the nanowire
+let h=250e-9
+let siz=400e-9
+
+size siz siz
+wavelength 400e-09
+harmonics 21 21
+carpet
+symmetry a s
+
+# air section
+section h
+	substrate 1 0
+
+# Si nanowire
+section h
+	indfile siz nanowire.f3d
+	matdev nfs siz nanowire.f3d_nvf_x nanowire.f3d_nvf_y
+
+# Si substrate
+section h
+	substrate 5.57 0
+#	substrate 5.57 -0.387
+
+
+wants propagation
+solve
+assemble
+excitation f fx 1 0 siz incident_field.f3d
+
+# using generation
+outdata g h h*2 siz/4 1e-9 cylinder_nanowire_symas.generation
+
+propagation Ex m 0.5e-9 1 1 cylinder_nanowire_symas.Ex_m
+
+
+# using power
+select 1
+power f 1e-4
+power b 1e-4
+select 3
+power f 1e-4
+
+# using powerZ
+powerZ h
+powerZ 2*h
+
+# using monitor
+monitor h siz siz 0 0 
+monitor 2*h siz siz 0 0 
+
+
+

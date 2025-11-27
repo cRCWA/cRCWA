@@ -1,0 +1,120 @@
+fopen "test_results.txt" "w"
+let file=ans
+
+# nd:
+	load structure.fmm
+
+	matdev nd
+
+	solve
+
+	fprint file "Results matdev nd"
+	for :t 0 size(ans) 2
+		fprint file "mode: " ans(t) "+j " ans(t+1)
+	next :t
+
+clear 
+# an:
+
+	load structure.fmm
+
+	matdev an
+
+	solve
+
+	fprint file "Results matdev an"
+
+	for :t 0 size(ans) 2
+		fprint file "mode: " ans(t) "+j " ans(t+1)
+	next :t
+
+clear
+# af:
+
+	load structure.fmm
+
+	matdev af
+
+	solve
+
+	fprint file "Results matdev af"
+
+	for :t 0 size(ans) 2
+		fprint file "mode: " ans(t) "+j " ans(t+1)
+	next :t
+
+clear 
+# be:
+	load structure.fmm
+
+	matdev be
+
+	solve
+
+	fprint file "Results matdev be"
+
+	for :t 0 size(ans) 2
+		fprint file "mode: " ans(t) "+j " ans(t+1)
+	next :t
+
+clear  
+# la 1.0
+	load structure.fmm
+
+	matdev la 1.0
+
+	solve
+
+	fprint file "Results matdev la 1.0"
+
+	for :t 0 size(ans) 2
+		fprint file "mode: " ans(t) "+j " ans(t+1)
+	next :t
+
+clear 
+# la 0.0
+
+	load structure.fmm
+
+	matdev la 0.0
+
+	solve
+
+	fprint file "Results matdev la 0.0"
+
+	for :t 0 size(ans) 2
+		fprint file "mode: " ans(t) "+j " ans(t+1)
+	next :t
+clear 
+# nf
+
+	load structure.fmm
+
+	matdev nf 1e-6 rectangle_nvf_x rectangle_nvf_y
+
+	solve
+
+	fprint file "Results matdev nf 1e-6 rectangle_nvf_x rectangle_nvf_y"
+
+	for :t 0 size(ans) 2
+		fprint file "mode: " ans(t) "+j " ans(t+1)
+	next :t
+
+clear 
+# nfs
+
+	symmetry n n
+	load structure.fmm
+
+	matdev nfs 1e-6 rectangle_nvf_x rectangle_nvf_y
+
+	solve
+
+	fprint file "Results matdev nfs 1e-6 rectangle_nvf_x rectangle_nvf_y"
+
+	for :t 0 size(ans) 2
+		fprint file "mode: " ans(t) "+j " ans(t+1)
+	next :t
+
+
+fclose file

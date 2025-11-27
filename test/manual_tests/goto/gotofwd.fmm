@@ -1,0 +1,18 @@
+label pippo
+
+print Questa è una bella giornata
+
+goto paperino
+
+label pluto
+
+print Sempre Liiiiiiibera!!!
+
+label topolino
+
+print Tu che di gel sei cinta.
+
+label paperino
+
+print fine del file
+# goto topolino

@@ -1,0 +1,33 @@
+let pi=3.141592654
+
+size 10e-6 1e-6
+harmonics 101 1
+wavelength 1.55e-6
+carpet
+angles 1.5 pi/4 0
+
+section 5e-6
+    substrate 1.5 0
+    matdev nd
+
+section 5e-6
+    substrate 1 0
+    matdev nd
+
+wants propagation
+solve
+assemble
+
+excitation f cx 1 0 0 0
+
+propagation Ex r 50e-9 201 1 propag.txt
+
+powerz 0
+let pin=ans
+powerz 10e-6
+let pout=ans
+
+select 1
+eigenvc a section1.txt
+select 2
+eigenvc a section2.txt

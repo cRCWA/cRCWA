@@ -1,0 +1,40 @@
+# We begin by defining the size of the calculation window
+# Every size and distance is specified in meters.
+# Here we choose a 1.5 microns by 1.5 microns window
+
+size 1.5e-6 1.5e-6
+
+# We then have to set the number of harmonics to be used
+# We need to be careful with this choice: matrices become painfully
+# memory consuming and the misuse of the virtual memory can slow 
+# down calculations.
+
+harmonics 25 25
+
+# We set now the substrate refractive index
+
+substrate 1.44 0
+
+# We define a rectangular waveguide
+# Note that all sizes are given in meters
+
+rectangle 3.5 0 200e-9 500e-9 0 0
+
+# We define the wavelength
+
+wavelength 1550e-9
+
+# We introduce PMLs
+
+pml_transf 50e-9 50e-9 .5 -.5
+
+# The longest side of the waveguide core is oriented vertically.
+# Probably, this may be a wise choice, but an optimized alpha 
+# parameter might be choosen.
+
+matdev la 1.0
+
+# And then, we launch the calculation!!!
+
+solve
+

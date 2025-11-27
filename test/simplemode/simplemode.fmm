@@ -1,0 +1,36 @@
+size 2e-6 2e-6
+harmonics 11 11
+wavelength 1.55e-6
+harmonics 11 11
+substrate 1.44 0.0
+rectangle 3.48 0.0 500e-9 200e-9 0 0
+
+solve
+
+# Just to init memory:
+let t=size(ans)-1
+let neff(t)=0
+
+let max=0
+let idx=-1
+
+# Copy the array
+for :t 0 size(ans) 2
+	let neff(t)=ans(t)
+	let neff(t+1)=ans(t+1)
+	
+	let v=neff(t) 
+	# Search for the maximum (fundamental mode)
+	if (v>max)
+		let max=v
+		let idx=t/2
+	endif
+next :t
+
+fopen "test_results.txt" "w"
+let file=ans
+
+fprint file "Fundamental mode:" neff(2*idx) "index:" idx
+
+outgmodes Ex2 r 101 101 test
+outgmodes Ey2 r 101 101 test

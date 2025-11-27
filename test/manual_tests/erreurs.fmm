@@ -1,0 +1,12 @@
+tize 4e-6 2e-6
+harmonics 11 11
+substrate 1.44 0
+rectangle 3.48 0 200e-9 300e-9 0 0
+pml_type be
+wavelength 1.3402e-6
+lowindex 1.5 -0.01
+highindex 5 0.01
+pml_transf 750e-9 100e-9 .5 -.5
+bend 1.1e-6
+solve
+

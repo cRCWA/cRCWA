@@ -1,0 +1,4 @@
+Power in substrate: 39.1128 % 
+Power in core: 58.1452 % 
+Power in superstrate: 2.74196 % 
+Sum:  100 % 

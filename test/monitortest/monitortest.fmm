@@ -1,0 +1,59 @@
+parallel 2
+harmonics 1 201
+wavelength 1.55e-6
+size 10e-6 30e-6
+
+let ss=1e-6
+print PML: ss
+
+let hh=1e-6
+
+carpet
+
+
+section 10e-6
+	substrate 1.331 0
+	rectangle 1.510 0 10e-6 (15e-6-hh) 0 (-7.5e-6-hh/2)
+	rectangle 1.570 0 10e-6 hh 0 -hh/2 
+	matdev la 0.0
+	pml_transf 0 ss 0.5 -0.5
+	lowindex 1.510 -.1
+	highindex 2 .1	
+
+wants both
+wants propagation
+solve
+assemble
+
+excitation f s 1 0 1.5620
+propagation Ex m 5e-6 2 100 prop.txt
+
+powerZ 0.5e-6
+
+monitor 5e-6 10e-6 30e-6 0 0e-6
+let Ptot=ans
+
+monitor 5e-6 10e-6 (15e-6-hh) 0 (-7.5e-6-hh/2)
+let Psub=ans
+
+monitor 5e-6 10e-6 hh 0 -hh/2
+let Pcore=ans
+
+monitor 5e-6 10e-6 15e-6 0 7.5e-6
+let Psup=ans
+
+print "Power in substrate:" 100*Psub/Ptot "%"
+print "Power in core:" 100*Pcore/Ptot "%"
+print "Power in superstrate:" 100*Psup/Ptot "%"
+
+print "Sum: " 100*(Psub+Psup+Pcore)/Ptot "%"
+
+fopen "test_results.txt" w
+let fout=ans
+
+	fprint fout "Power in substrate:" 100*Psub/Ptot "%"
+	fprint fout "Power in core:" 100*Pcore/Ptot "%"
+	fprint fout "Power in superstrate:" 100*Psup/Ptot "%"
+	fprint fout "Sum: " 100*(Psub+Psup+Pcore)/Ptot "%"
+
+fclose fout

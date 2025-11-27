@@ -1,0 +1,6 @@
+#!/bin/bash
+# Script for compiling and obtaining a pdf file
+#
+latex afmm.tex
+dvips afmm.dvi -o afmm.ps
+ps2pdf afmm.ps

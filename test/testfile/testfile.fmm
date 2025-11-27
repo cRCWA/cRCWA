@@ -1,0 +1,34 @@
+# Open the input file
+fopen "input.txt" "r"
+let ifile=ans
+
+let j=0
+
+fskip ifile
+
+# This is an infinite loop
+for :i 0 10 0
+	fscan ifile
+	let val=ans
+	
+	fcheck
+	if ans==0
+		goto exit:
+	endif
+	
+	let storage(j)=val
+	let j=j+1
+next
+
+label exit:
+fclose ifile
+
+# Print the read data on a second file
+fopen "output.txt" "w"
+let ofile=ans
+
+for :i 0 size(storage) 1
+	fprint ofile storage(i)
+next
+
+fclose ofile

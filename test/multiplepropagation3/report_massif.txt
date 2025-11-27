@@ -1,0 +1,6 @@
+==7256== Massif, a heap profiler
+==7256== Copyright (C) 2003-2012, and GNU GPL'd, by Nicholas Nethercote
+==7256== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
+==7256== Command: ../../afmm multiplepropagation3.fmm
+==7256== 
+==7256== 

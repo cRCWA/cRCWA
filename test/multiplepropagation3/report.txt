@@ -1,0 +1,124 @@
+==21200== Helgrind, a thread error detector
+==21200== Copyright (C) 2007-2012, and GNU GPL'd, by OpenWorks LLP et al.
+==21200== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
+==21200== Command: ../../afmm multiplepropagation3.fmm
+==21200== 
+==21200== ---Thread-Announcement------------------------------------------
+==21200== 
+==21200== Thread #1 is the program's root thread
+==21200== 
+==21200== ---Thread-Announcement------------------------------------------
+==21200== 
+==21200== Thread #2 was created
+==21200==    at 0x3A366E8B2E: clone (in /lib64/libc-2.12.so)
+==21200==    by 0x3A36A068BF: do_clone.clone.0 (in /lib64/libpthread-2.12.so)
+==21200==    by 0x3A36A06DA1: pthread_create@@GLIBC_2.2.5 (in /lib64/libpthread-2.12.so)
+==21200==    by 0x4A0BF3C: pthread_create_WRK (hg_intercepts.c:255)
+==21200==    by 0x4A0C04B: pthread_create@* (hg_intercepts.c:286)
+==21200==    by 0x4474EF: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:61)
+==21200==    by 0x429C73: commands::c_propagation(parsefile*, int, char**) (commands_propagation.cpp:202)
+==21200==    by 0x439DD3: parsefile::read(std::string, bool) (parsefile.cpp:783)
+==21200==    by 0x42B87F: process(int, char* const*) (main.cpp:51)
+==21200==    by 0x42BE02: main (main.cpp:126)
+==21200== 
+==21200== ----------------------------------------------------------------
+==21200== 
+==21200== Possible data race during write of size 8 at 0x89A820 by thread #1
+==21200== Locks held: none
+==21200==    at 0x447494: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:46)
+==21200==    by 0x429C73: commands::c_propagation(parsefile*, int, char**) (commands_propagation.cpp:202)
+==21200==    by 0x439DD3: parsefile::read(std::string, bool) (parsefile.cpp:783)
+==21200==    by 0x42B87F: process(int, char* const*) (main.cpp:51)
+==21200==    by 0x42BE02: main (main.cpp:126)
+==21200== 
+==21200== This conflicts with a previous read of size 8 by thread #2
+==21200== Locks held: none
+==21200==    at 0x4473A0: waitSemaphoreIO() (parallelize.cpp:87)
+==21200==    by 0x424FD4: commands::outputfield(db_matrix&, double, double, section&, double&, double&, double&, double&, _IO_FILE*, rimco_e_t, double&, double&, double&, double&, _IO_FILE*) (commands_propagation.cpp:1346)
+==21200==    by 0x428FB2: commands::process_section(double, double, double, section&, double&, double&, double&, _IO_FILE*, rimco_e_t, double&, double&, int&, db_matrix&, db_matrix&, bool, bool, int, int, int, int, _IO_FILE*, bool, db_matrix&, db_matrix&, db_matrix&, bool, bool, _IO_FILE*) (commands_propagation.cpp:563)
+==21200==    by 0x42A493: commands::propagation_structure(void*) (commands_propagation.cpp:438)
+==21200==    by 0x4A0C0D4: mythread_wrapper (hg_intercepts.c:219)
+==21200==    by 0x3A36A079D0: start_thread (in /lib64/libpthread-2.12.so)
+==21200==    by 0x3A366E8B6C: clone (in /lib64/libc-2.12.so)
+==21200== 
+==21200== Location 0x89a820 is 0 bytes inside global var "mutex_io_access"
+==21200== declared at parallelize.cpp:22
+==21200== 
+==21200== ----------------------------------------------------------------
+==21200== 
+==21200== Possible data race during read of size 8 at 0x89A820 by thread #2
+==21200== Locks held: none
+==21200==    at 0x447390: postSemaphoreIO() (parallelize.cpp:93)
+==21200==    by 0x425000: commands::outputfield(db_matrix&, double, double, section&, double&, double&, double&, double&, _IO_FILE*, rimco_e_t, double&, double&, double&, double&, _IO_FILE*) (commands_propagation.cpp:1360)
+==21200==    by 0x428FB2: commands::process_section(double, double, double, section&, double&, double&, double&, _IO_FILE*, rimco_e_t, double&, double&, int&, db_matrix&, db_matrix&, bool, bool, int, int, int, int, _IO_FILE*, bool, db_matrix&, db_matrix&, db_matrix&, bool, bool, _IO_FILE*) (commands_propagation.cpp:563)
+==21200==    by 0x42A493: commands::propagation_structure(void*) (commands_propagation.cpp:438)
+==21200==    by 0x4A0C0D4: mythread_wrapper (hg_intercepts.c:219)
+==21200==    by 0x3A36A079D0: start_thread (in /lib64/libpthread-2.12.so)
+==21200==    by 0x3A366E8B6C: clone (in /lib64/libc-2.12.so)
+==21200== 
+==21200== This conflicts with a previous write of size 8 by thread #1
+==21200== Locks held: none
+==21200==    at 0x447494: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:46)
+==21200==    by 0x429C73: commands::c_propagation(parsefile*, int, char**) (commands_propagation.cpp:202)
+==21200==    by 0x439DD3: parsefile::read(std::string, bool) (parsefile.cpp:783)
+==21200==    by 0x42B87F: process(int, char* const*) (main.cpp:51)
+==21200==    by 0x42BE02: main (main.cpp:126)
+==21200== 
+==21200== Location 0x89a820 is 0 bytes inside global var "mutex_io_access"
+==21200== declared at parallelize.cpp:22
+==21200== 
+==21200== ----------------------------------------------------------------
+==21200== 
+==21200== Possible data race during read of size 8 at 0x89A820 by thread #2
+==21200== Locks held: none
+==21200==    at 0x4473A0: waitSemaphoreIO() (parallelize.cpp:87)
+==21200==    by 0x424FD4: commands::outputfield(db_matrix&, double, double, section&, double&, double&, double&, double&, _IO_FILE*, rimco_e_t, double&, double&, double&, double&, _IO_FILE*) (commands_propagation.cpp:1346)
+==21200==    by 0x428FB2: commands::process_section(double, double, double, section&, double&, double&, double&, _IO_FILE*, rimco_e_t, double&, double&, int&, db_matrix&, db_matrix&, bool, bool, int, int, int, int, _IO_FILE*, bool, db_matrix&, db_matrix&, db_matrix&, bool, bool, _IO_FILE*) (commands_propagation.cpp:563)
+==21200==    by 0x42A493: commands::propagation_structure(void*) (commands_propagation.cpp:438)
+==21200==    by 0x4A0C0D4: mythread_wrapper (hg_intercepts.c:219)
+==21200==    by 0x3A36A079D0: start_thread (in /lib64/libpthread-2.12.so)
+==21200==    by 0x3A366E8B6C: clone (in /lib64/libc-2.12.so)
+==21200== 
+==21200== This conflicts with a previous write of size 8 by thread #1
+==21200== Locks held: none
+==21200==    at 0x447494: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:46)
+==21200==    by 0x429C73: commands::c_propagation(parsefile*, int, char**) (commands_propagation.cpp:202)
+==21200==    by 0x439DD3: parsefile::read(std::string, bool) (parsefile.cpp:783)
+==21200==    by 0x42B87F: process(int, char* const*) (main.cpp:51)
+==21200==    by 0x42BE02: main (main.cpp:126)
+==21200== 
+==21200== Location 0x89a820 is 0 bytes inside global var "mutex_io_access"
+==21200== declared at parallelize.cpp:22
+==21200== 
+==21200== ----------------------------------------------------------------
+==21200== 
+==21200== Possible data race during read of size 4 at 0x89A5B0 by thread #2
+==21200== Locks held: none
+==21200==    at 0x404A90: init_semaphore() (block_matrix.cpp:201)
+==21200==    by 0x404BA5: db_matrix::db_matrix(int, int) (block_matrix.cpp:235)
+==21200==    by 0x4252E8: commands::getPropagation(db_matrix&, double, double, db_matrix&, db_matrix&, bool) (commands_propagation.cpp:642)
+==21200==    by 0x428E3C: commands::process_section(double, double, double, section&, double&, double&, double&, _IO_FILE*, rimco_e_t, double&, double&, int&, db_matrix&, db_matrix&, bool, bool, int, int, int, int, _IO_FILE*, bool, db_matrix&, db_matrix&, db_matrix&, bool, bool, _IO_FILE*) (commands_propagation.cpp:547)
+==21200==    by 0x42A493: commands::propagation_structure(void*) (commands_propagation.cpp:438)
+==21200==    by 0x4A0C0D4: mythread_wrapper (hg_intercepts.c:219)
+==21200==    by 0x3A36A079D0: start_thread (in /lib64/libpthread-2.12.so)
+==21200==    by 0x3A366E8B6C: clone (in /lib64/libc-2.12.so)
+==21200== 
+==21200== This conflicts with a previous write of size 4 by thread #1
+==21200== Locks held: none
+==21200==    at 0x4047EB: db_matrix::~db_matrix() (block_matrix.cpp:303)
+==21200==    by 0x426C9D: commands::getField(section&, db_matrix&, bool, bool, int, int, int, int, bool, db_matrix&, db_matrix&, db_matrix&, bool, bool, bool, db_matrix&) (commands_propagation.cpp:1211)
+==21200==    by 0x428EED: commands::process_section(double, double, double, section&, double&, double&, double&, _IO_FILE*, rimco_e_t, double&, double&, int&, db_matrix&, db_matrix&, bool, bool, int, int, int, int, _IO_FILE*, bool, db_matrix&, db_matrix&, db_matrix&, bool, bool, _IO_FILE*) (commands_propagation.cpp:554)
+==21200==    by 0x42A493: commands::propagation_structure(void*) (commands_propagation.cpp:438)
+==21200==    by 0x447509: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+==21200==    by 0x429C73: commands::c_propagation(parsefile*, int, char**) (commands_propagation.cpp:202)
+==21200==    by 0x439DD3: parsefile::read(std::string, bool) (parsefile.cpp:783)
+==21200==    by 0x42B87F: process(int, char* const*) (main.cpp:51)
+==21200== 
+==21200== Location 0x89a5b0 is 0 bytes inside global var "matrix_counter"
+==21200== declared at block_matrix.cpp:193
+==21200== 
+==21200== 
+==21200== For counts of detected and suppressed errors, rerun with: -v
+==21200== Use --history-level=approx or =none to gain increased speed, at
+==21200== the cost of reduced accuracy of conflicting-access information
+==21200== ERROR SUMMARY: 25 errors from 4 contexts (suppressed: 339 from 60)

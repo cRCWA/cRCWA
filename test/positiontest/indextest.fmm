@@ -1,0 +1,39 @@
+wavelength 1.55e-6
+
+size 10e-6 10e-6
+harmonics 11 11
+carpet
+
+
+section 20e-6
+
+	substrate 1.0 0.0
+
+	rectangle 1.5 0.0 2e-6 1e-6 0.0 0.0
+
+wants propagation
+
+solve
+
+select 1
+modepos
+
+let pos1=ans(0)
+let pos2=ans(3)
+
+# Try the excitation via the mode position index
+excitation "f" "id" 1.0 0.0 pos1 0
+excitation "b" "id" 1.0 0.0 pos2 0
+
+# Try the selection via the mode position index
+coefficient f id pos2
+coefficient b id pos2
+
+# Try the selection via the real part of effective index
+coefficient b 1.2193
+
+assemble 
+
+propagation Ex m 300e-9 50 50 propag.txt
+
+eigenvc a toto.txt

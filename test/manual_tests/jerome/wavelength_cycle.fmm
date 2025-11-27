@@ -1,0 +1,31 @@
+print A=4
+print B=1e-14
+print C=1e-30
+
+for :lambda 200e-9 1700e-9 100e-9
+
+	size 8e-07 8e-07
+	wavelength lambda
+	harmonics 1 11
+	carpet
+
+	section 1e-06
+	substrate 1 0
+
+	section 1e-06
+	
+	print nre=A+B/lambda^2+C/lambda^4
+	substrate nre 0
+
+
+	wants propagation
+	solve
+	assemble
+
+	excitation f fx 1 0 8e-07 champ.txt
+
+	propagation Ex m 5e-09 20 20 resu_RTA_1D_Ex600
+
+	norm f
+	clear
+next :lambda

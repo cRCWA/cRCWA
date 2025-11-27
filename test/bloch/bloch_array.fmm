@@ -1,0 +1,138 @@
+# Study of the Bloch modes of the structure described in
+# Q. Cao, P. Lalanne, and J.-P. Hugonin
+# "Stable and efficient Bloch-mode computational method for one-dimensional
+# grating waveguides", JOSA A, Vol. 19, Issue 2, pp. 335-338 (2002)
+
+# Cas TM (tf=lambda/pi)
+
+
+harmonics 1 101
+
+print pi=3.14159265359
+
+print lambda=1e-6
+print totx=1
+print toty=3*lambda
+
+print "nsup=" nsup=1
+print "ng=" ng=sqr(3)
+print "nsub=" nsub=sqr(2.3)
+
+print "tg=" tg=lambda
+print "tf=" tf=lambda/pi
+
+print "y3=" y3=(tf+tg)/2
+print "y4=" y4=-y3
+print "y1=" y1=y3-tg/2
+print "y5=" y5=y3-tg
+print "y2=" y2=(y5+y4)/2
+print "y6=" y6=-toty/2
+print "th=" th=y4-y6
+print "y7=" y7=(y4+y6)/2
+
+# PML's definitions
+print gammar=0.5
+print gammai=-0.5
+print py=lambda/2
+
+# Lengths of the different sections.
+# try to change epsilon and see that the 
+# output n_eff will not change.
+print epsilon=lambda/8
+print l3=lambda/4-epsilon
+print l2=lambda/4
+print l1=epsilon
+
+print "alpha=" alpha=0.0
+
+# General definitions
+size totx toty
+wavelength lambda
+carpet
+
+# Definition of the structure and sections
+section l1
+	substrate nsup 0
+	rectangle ng 0 totx tf 0 y2
+	rectangle nsub 0 totx th 0 y7
+	
+	matdev la alpha
+	pml_transf 0 2*py gammar gammai
+
+	inpstruct i 1 301 sect_l1.txt
+
+section l2
+	substrate nsup 0
+	rectangle ng 0 totx tg 0 y1
+	rectangle ng 0 totx tf 0 y2
+	rectangle nsub 0 totx th 0 y7
+	
+	matdev la alpha
+	pml_transf 0 2*py gammar gammai
+	
+	inpstruct i 1 301 sect_l2.txt
+
+section l3
+	substrate nsup 0
+	rectangle ng 0 totx tf 0 y2
+	rectangle nsub 0 totx th 0 y7
+	
+	matdev la alpha
+	pml_transf 0 2*py gammar gammai
+	
+	inpstruct i 1 301 sect_l3.txt
+
+# Calculations of modal descriptions
+wants propagation
+
+solve
+assemble
+
+# Bloch-mode calculation
+bloch
+
+# Parameter for phase unwrapping
+let phase=1
+
+# Threshold for the selection of imaginary part of index
+let threshold=0.01
+
+# In the following code, we see how a for cycle is used to
+# analyze all the propagation constants to find the ones which are
+# interesting for us.
+let idx=0
+
+let pi=3.141592654
+let k0=2*pi/lambda
+let totlen=l1+l2+l3
+
+for :t 0 size(ans) 2
+	let real=ans(t)
+	let imag=ans(t+1)
+		
+	# Explicit calculation of the real and imaginary part of the 
+	# equivalent effective index of the Bloch-mode
+	let neffi=ln(sqr(real^2+imag^2))/(k0*totlen)
+	let neffr=-(arctan(imag/real)-2*pi*phase)/(k0*totlen)
+	
+	if (abs(neffi)<threshold)&&(neffr>nsub)
+		if neffr<ng
+			print neffr neffi
+			let bb(idx)=neffr
+			let idx=idx+1
+		endif
+	endif
+next
+
+outbloch 1 fi spectrum.bloch_TE
+
+# Uses the Bloch mode having n_eff the closest to 1.582 as an excitation
+# for the propagation. Note that in this case both forward and backward 
+# ecitations are automatically provided.
+excitation f bl 1 0 1 bb(0)
+
+# Output of the field.
+propagation Ex2 m 10e-9 1 201 propagEx.txt
+
+
+

@@ -1,0 +1,30 @@
+print "start"
+fopen "test_results.txt" "w"
+let file=ans
+
+fprint file "A first test:"
+
+for :i 0 4 1
+  for :t 2 5 1
+    fprint file i t
+  next :t
+next :i
+
+# This in some versions of afmm gives an infinite loop: the script is 
+# relaunched and new files are opened until the maximum number of open files
+# is reached and the fopen command fails.
+#
+# it should NOT print "toto"
+for :i 0 0 1
+   fprint file toto
+next :i
+
+fprint file "The following should give exactly the same results that above:"
+
+for :i 0 4 1
+  for :t 2 5 1
+    fprint file i t
+  next
+next
+
+fclose file

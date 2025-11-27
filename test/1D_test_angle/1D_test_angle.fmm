@@ -1,0 +1,81 @@
+# definie les constantes
+let pi=3.141592654
+
+# taille de la fenetre
+print xtot=5e-6
+print ytot=5e-6
+
+# indices optiques
+print n1=1.5
+print n2=5.0
+print lambda=700e-9
+
+# angle d'incidence
+print indexxz=0
+print indexyz=1
+
+# ouvre un fichier pour les résultats:
+fopen "test_results.txt" "w"
+let file=ans
+
+# réalise le calcul AFMM
+for :indexyz 1 10 1
+
+#	print xtot=1.0*lambda/(sin(angleyz*pi/180)*n1)
+#	print ytot=1.0*lambda/(sin(angleyz*pi/180)*n1)
+
+
+	clear
+	carpet
+	size xtot ytot
+	 
+	harmonics 1 51
+	wavelength lambda
+
+	symmetry n n
+	 
+	section 1e-06
+	substrate n1 -0
+
+	section 1e-06
+	substrate n2 -0
+
+	wants propagation
+	solve
+	assemble
+	# excitation f fx 1 0 xtot champ.txt
+	excitation f cx 1 0 indexxz indexyz
+	print anglexz=ans(0)
+	print angleyz=ans(1)
+	propagation Ex m 5e-07 1 1 resu
+
+	# calule les puissances
+	select 1
+	power f 1e-4
+	print Pinc=ans
+	powerZ 5e-07 
+	let P1=ans
+	powerZ 1.5e-06 
+	let P2=ans
+
+	# exploite les données
+
+
+	# calcule R, T et A:
+	print Reflexion
+	print R=(Pinc-P1)/Pinc
+	print theorie:
+	let angleyz2=arcsin(n1/n2*sin(angleyz*pi/180.0))
+	print Rth=((n1*cos(angleyz*pi/180.0)-n2*cos(angleyz2))/(n1*cos(angleyz*pi/180.0)+n2*cos(angleyz2)))^2
+
+	fprint file angleyz R Rth
+
+	print Transmission
+	print T=P2/Pinc
+
+	print Absorption
+	print A=(P1-P2)/Pinc
+
+next :indexyz
+
+fclose file

@@ -1,0 +1,99 @@
+wavelength 7.749e-07
+size 1.25e-06 1.5e-06
+carpet
+harmonics 11 11
+# parallel 4
+
+
+section 1e-07
+    substrate 1 0
+
+    matdev nd
+section 2e-08
+    substrate 0.174 -4.86
+    matdev nd
+    rectangle 1 0 9.71753e-07 1.17175e-06 0.0 0.0
+
+section 2e-08
+    substrate 0.174 -4.86
+    matdev nd
+    rectangle 1 0 9.15259e-07 1.11526e-06 0.0 0.0
+
+section 2e-08
+    substrate 0.174 -4.86
+    matdev nd
+    rectangle 1 0 8.58765e-07 1.05876e-06 0.0 0.0
+
+section 2e-08
+    substrate 0.174 -4.86
+    matdev nd
+    rectangle 1 0 8.02271e-07 1.00227e-06 0.0 0.0
+
+section 2e-08
+    substrate 0.174 -4.86
+    matdev nd
+    rectangle 1 0 7.45777e-07 9.45777e-07 0.0 0.0
+section 2e-08
+    substrate 0.174 -4.86
+    matdev nd
+    rectangle 1 0 6.89283e-07 8.89283e-07 0.0 0.0
+
+section 2e-08
+    substrate 0.174 -4.86
+    matdev nd
+    rectangle 1 0 6.32789e-07 8.32789e-07 0.0 0.0
+
+section 2e-08
+    substrate 0.174 -4.86
+    matdev nd
+    rectangle 1 0 5.76295e-07 7.76295e-07 0.0 0.0
+section 2e-08
+    substrate 0.174 -4.86
+    matdev nd
+    rectangle 1 0 5.19801e-07 7.19801e-07 0.0 0.0
+
+section 2e-08
+    substrate 0.174 -4.86
+    matdev nd
+    rectangle 1 0 4.63307e-07 6.63307e-07 0.0 0.0
+
+section 2e-08
+    substrate 0.174 -4.86
+    matdev nd
+    rectangle 1 0 4.06813e-07 6.06813e-07 0.0 0.0
+
+section 2e-08
+    substrate 0.174 -4.86
+    matdev nd
+    rectangle 1 0 3.50319e-07 5.50319e-07 0.0 0.0
+
+section 2e-08
+    substrate 0.174 -4.86
+    matdev nd
+    rectangle 1 0 2.93825e-07 4.93825e-07 0.0 0.0
+
+section 2e-08
+    substrate 0.174 -4.86
+    matdev nd
+    rectangle 1 0 2.37331e-07 4.37331e-07 0.0 0.0
+
+section 2e-08
+    substrate 0.174 -4.86
+    matdev nd
+    rectangle 1 0 1.80837e-07 3.80837e-07 0.0 0.0
+
+section 1e-07
+    substrate 3.70476 0.003
+    matdev nd
+
+wants propagation
+solve
+assemble
+excitation f cy 1 0 0 0
+propagation Ex2 m 5e-9 101 101 test_results_x.txt
+propagation Ey2 m 5e-9 101 101 test_results_y.txt
+propagation Ez2 m 5e-9 101 101 test_results_z.txt
+
+select 2
+eigenvc a spectral_2.txt
+selmodes Ey2 m exco f 3 101 101 modes_2

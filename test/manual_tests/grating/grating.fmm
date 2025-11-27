@@ -1,0 +1,52 @@
+# Structure used as an example in L. Li, C. Haggans "Convergence of
+# the coupled-wave method for metallic lamellar diffraction grating",
+# J. Opt. Soc. Am. A/Vol. 10, No. 6/June 1993
+
+print tot=1e-6
+print w=.5e-6
+print nr=0.220
+print ni=6.710
+print h=1e-6
+print eta=0.5
+print l=1.0
+
+system rm iterations.txt
+
+for :nharm 51 101 2
+
+	harmonics nharm 1
+	size tot h
+	wavelength 1e-6
+	carpet
+
+	section 1e-6
+		substrate 1 0
+
+#	section 1e-6
+#		substrate 1 0
+#		rectangle nr ni eta*tot h 0 0	
+#		matdev la l
+
+	section 1e-6
+		substrate nr ni
+
+	wants propagation
+
+	solve
+
+	assemble
+
+	excitation f cy 1 0 0 0
+	# excitation f s 1 0 8.660254e-01
+
+	propagation Ey m 25e-9 250 1 propagation.txt
+
+	select 1
+	eigenvc a spectrum.txt
+
+	system printf nharm >> iterations.txt
+	system printf ' ' >> iterations.txt
+	system sed '/^1.000000e+00/!d' spectrum.txt | tail -n 1 >>iterations.txt
+	
+	clear
+next :nharm

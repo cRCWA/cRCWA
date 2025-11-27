@@ -1,0 +1,31 @@
+# Write a message on a file
+
+fopen "test.dat" "w"
+	let file=ans
+
+	fprint file "This is a message"
+	fprint file "which should be contained in a file"
+	
+	# let's test a little cycle
+	
+	for :t 1 6 1
+		
+		fprint file "Counter" t
+		
+	next
+
+	fprint file "This should be all together"
+	addspace o
+	fprint file 1 2 3 4 5 6 7 8 9 
+	fprint file 1 2 3 4 5 6 7 8 9 
+	fprint file 1 2 3 4 5 6 7 8 9 
+	addspace i
+	
+	fprint file ""
+	fprint file "This should be separated"
+	
+	fprint file 1 2 3 4 5 6 7 8 9 
+	fprint file 1 2 3 4 5 6 7 8 9 
+	fprint file 1 2 3 4 5 6 7 8 9 
+	
+fclose file

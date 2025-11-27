@@ -1,0 +1,1 @@
+function abs(x){ return ((x < 0.0) ? -x : x) } BEGIN {comp=0; norm=0;} FNR==NR{a[FNR]=$4; norm+=$4*$4; next} a[FNR]!=$4{comp+=($4-a[FNR])*($4-a[FNR])} END{ norm=sqrt(norm/FNR); comp=sqrt(comp/FNR); print comp, norm; if (comp>1e-4*norm){ exit 1 } }

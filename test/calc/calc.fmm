@@ -1,0 +1,10 @@
+fopen "test_results.txt" "w"
+let file=ans
+
+fprint file 3*5
+fprint file i=13
+fprint file 2*i
+fprint file sqr(2)
+fprint file 2^4*5+2-cos(0)
+
+fclose file 

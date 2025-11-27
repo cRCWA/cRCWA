@@ -1,0 +1,33 @@
+ ***************************************************************************
+ *      Aperiodic Fourier Modal Method full vectorial 3D Mode Solver       *
+ *                           version 1.2.2                                 *
+ *                                                                         *
+ *     Davide Bucci, IMEP-LAHC march 2008 - october 2009                   *
+ *     MINATEC-INPG, 3, parvis Luis Neel                                   *
+ *     38016, Grenoble CEDEX, France                                       *
+ *                                                                         *
+ *     bucci@minatec.inpg.fr                                               *
+ *                                                                         *
+ ***************************************************************************
+Reading file: comparaison.fmm
+Substrate size set to: 4e-06 m x 2e-06 m.
+Number of harmonics set to: 31 x 31
+Substrate refractive index set to: (1.44,0)
+Generated rectangular section waveguide with core refractive index: (3.48,0)
+Size 2e-07 m x 3e-07 m at location 0 m x 0 m
+Wavelength set to: 1.3402e-06 m.
+Lowest index set to: (1.5,0) 
+Lowest imaginary part set to: -0.01
+Highest index set to: (5,0) 
+Highest imaginary part set to: 0.01 
+Size of the coordinates transform region: 7.5e-07 x 1e-07, complex factor: (0.5,-0.5)
+Bending radius set to: 1.1e-06 m.
+Multiplying matrices: start
+Multiplying matrices: end
+Searching for guided modes: 1.5 < Re{n_eff} < 5
+                            -0.01 < Im{n_eff} < 0.01
+Calculating eigenvalues and eigenvectors
+LAPACK ZGEEV executed, info = 0
+Guided mode found 0, effective index: (3.68172,-0.00828099) azimuthal order: 18.9869 Q = 222.299
+Guided mode found 1, effective index: (3.6806,-0.00838971) azimuthal order: 18.9811 Q = 219.352
+Guided mode found 2, effective index: (2.12429,-0.00213612) azimuthal order: 10.9551 Q = 497.23

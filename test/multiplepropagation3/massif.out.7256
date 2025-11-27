@@ -1,0 +1,1570 @@
+desc: (none)
+cmd: ../../afmm multiplepropagation3.fmm
+time_unit: i
+#-----------
+snapshot=0
+#-----------
+time=0
+mem_heap_B=0
+mem_heap_extra_B=0
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=1
+#-----------
+time=56238661
+mem_heap_B=1284063
+mem_heap_extra_B=673
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=2
+#-----------
+time=86329588
+mem_heap_B=1753575
+mem_heap_extra_B=745
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=3
+#-----------
+time=129641053
+mem_heap_B=1987831
+mem_heap_extra_B=753
+mem_stacks_B=0
+heap_tree=detailed
+n4: 1987831 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n4: 787440 0x408A25: db_matrix::operator=(db_matrix const&) (block_matrix.cpp:376)
+  n1: 234256 0x444178: section::calcWmatrix(double) (section.cpp:196)
+   n1: 234256 0x445034: section::modes_calculation() (section.cpp:1189)
+    n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+     n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+      n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+       n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+        n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+         n0: 234256 0x42BE01: main (main.cpp:126)
+  n1: 234256 0x4441B6: section::calcWmatrix(double) (section.cpp:202)
+   n1: 234256 0x445034: section::modes_calculation() (section.cpp:1189)
+    n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+     n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+      n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+       n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+        n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+         n0: 234256 0x42BE01: main (main.cpp:126)
+  n1: 234256 0x437A7A: fPMLafterOPT::createX4(double, double, double, bool, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&) (matrixDev.cpp:734)
+   n1: 234256 0x444347: section::calcWmatrix(double) (section.cpp:214)
+    n1: 234256 0x445034: section::modes_calculation() (section.cpp:1189)
+     n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+      n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+       n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+        n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+         n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+          n0: 234256 0x42BE01: main (main.cpp:126)
+  n0: 84672 in 14 places, all below massif's threshold (01.00%)
+ n4: 702768 0x4045D9: db_matrix::operator*=(db_matrix const&) (block_matrix.cpp:561)
+  n1: 234256 0x432DBB: fPMLafterOPT::createX2(double, double, double, bool, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&) (matrixDev.cpp:640)
+   n1: 234256 0x444288: section::calcWmatrix(double) (section.cpp:211)
+    n1: 234256 0x445034: section::modes_calculation() (section.cpp:1189)
+     n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+      n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+       n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+        n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+         n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+          n0: 234256 0x42BE01: main (main.cpp:126)
+  n1: 234256 0x43231E: fPMLafterOPT::createX1(double, double, double, bool, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&) (matrixDev.cpp:595)
+   n1: 234256 0x4443B1: section::calcWmatrix(double) (section.cpp:215)
+    n1: 234256 0x445034: section::modes_calculation() (section.cpp:1189)
+     n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+      n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+       n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+        n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+         n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+          n0: 234256 0x42BE01: main (main.cpp:126)
+  n1: 234256 0x43232E: fPMLafterOPT::createX1(double, double, double, bool, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&) (matrixDev.cpp:596)
+   n1: 234256 0x4443B1: section::calcWmatrix(double) (section.cpp:215)
+    n1: 234256 0x445034: section::modes_calculation() (section.cpp:1189)
+     n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+      n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+       n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+        n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+         n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+          n0: 234256 0x42BE01: main (main.cpp:126)
+  n0: 0 in 3 places, all below massif's threshold (01.00%)
+ n2: 468512 0x404BBA: db_matrix::db_matrix(int, int) (block_matrix.cpp:237)
+  n3: 468512 0x4066AE: db_matrix::toeplitz_mod(double, double, int, int, int, int) (block_matrix.cpp:1215)
+   n1: 234256 0x444201: section::calcWmatrix(double) (section.cpp:205)
+    n1: 234256 0x445034: section::modes_calculation() (section.cpp:1189)
+     n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+      n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+       n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+        n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+         n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+          n0: 234256 0x42BE01: main (main.cpp:126)
+   n1: 234256 0x4442DE: section::calcWmatrix(double) (section.cpp:212)
+    n1: 234256 0x445034: section::modes_calculation() (section.cpp:1189)
+     n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+      n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+       n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+        n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+         n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+          n0: 234256 0x42BE01: main (main.cpp:126)
+   n0: 0 in 2 places, all below massif's threshold (01.00%)
+  n0: 0 in 5 places, all below massif's threshold (01.00%)
+ n0: 29111 in 30 places, all below massif's threshold (01.00%)
+#-----------
+snapshot=4
+#-----------
+time=193115487
+mem_heap_B=2456343
+mem_heap_extra_B=769
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=5
+#-----------
+time=246947748
+mem_heap_B=2924855
+mem_heap_extra_B=785
+mem_stacks_B=0
+heap_tree=detailed
+n4: 2924855 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n7: 1405536 0x4045D9: db_matrix::operator*=(db_matrix const&) (block_matrix.cpp:561)
+  n1: 234256 0x432DBB: fPMLafterOPT::createX2(double, double, double, bool, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&) (matrixDev.cpp:640)
+   n1: 234256 0x444288: section::calcWmatrix(double) (section.cpp:211)
+    n1: 234256 0x445034: section::modes_calculation() (section.cpp:1189)
+     n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+      n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+       n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+        n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+         n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+          n0: 234256 0x42BE01: main (main.cpp:126)
+  n1: 234256 0x43232E: fPMLafterOPT::createX1(double, double, double, bool, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&) (matrixDev.cpp:596)
+   n1: 234256 0x4443B1: section::calcWmatrix(double) (section.cpp:215)
+    n1: 234256 0x445034: section::modes_calculation() (section.cpp:1189)
+     n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+      n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+       n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+        n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+         n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+          n0: 234256 0x42BE01: main (main.cpp:126)
+  n1: 234256 0x432B4A: fPMLafterOPT::createX3(double, double, double, bool, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&) (matrixDev.cpp:687)
+   n1: 234256 0x444417: section::calcWmatrix(double) (section.cpp:217)
+    n1: 234256 0x445034: section::modes_calculation() (section.cpp:1189)
+     n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+      n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+       n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+        n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+         n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+          n0: 234256 0x42BE01: main (main.cpp:126)
+  n1: 234256 0x433338: fPMLafterOPT::createY2(double, double, double, bool, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&) (matrixDev.cpp:796)
+   n1: 234256 0x4444E7: section::calcWmatrix(double) (section.cpp:222)
+    n1: 234256 0x445034: section::modes_calculation() (section.cpp:1189)
+     n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+      n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+       n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+        n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+         n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+          n0: 234256 0x42BE01: main (main.cpp:126)
+  n1: 234256 0x432086: fPMLafterOPT::createY1(double, double, double, bool, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&) (matrixDev.cpp:752)
+   n1: 234256 0x444552: section::calcWmatrix(double) (section.cpp:223)
+    n1: 234256 0x445034: section::modes_calculation() (section.cpp:1189)
+     n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+      n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+       n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+        n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+         n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+          n0: 234256 0x42BE01: main (main.cpp:126)
+  n1: 234256 0x4330BF: fPMLafterOPT::createY3(double, double, double, bool, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&) (matrixDev.cpp:843)
+   n1: 234256 0x4445C5: section::calcWmatrix(double) (section.cpp:226)
+    n1: 234256 0x445034: section::modes_calculation() (section.cpp:1189)
+     n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+      n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+       n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+        n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+         n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+          n0: 234256 0x42BE01: main (main.cpp:126)
+  n0: 0 in 7 places, all below massif's threshold (01.00%)
+ n5: 1021696 0x408A25: db_matrix::operator=(db_matrix const&) (block_matrix.cpp:376)
+  n1: 234256 0x4441B6: section::calcWmatrix(double) (section.cpp:202)
+   n1: 234256 0x445034: section::modes_calculation() (section.cpp:1189)
+    n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+     n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+      n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+       n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+        n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+         n0: 234256 0x42BE01: main (main.cpp:126)
+  n1: 234256 0x437A7A: fPMLafterOPT::createX4(double, double, double, bool, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&) (matrixDev.cpp:734)
+   n1: 234256 0x444347: section::calcWmatrix(double) (section.cpp:214)
+    n1: 234256 0x445034: section::modes_calculation() (section.cpp:1189)
+     n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+      n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+       n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+        n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+         n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+          n0: 234256 0x42BE01: main (main.cpp:126)
+  n1: 234256 0x444476: section::calcWmatrix(double) (section.cpp:220)
+   n1: 234256 0x445034: section::modes_calculation() (section.cpp:1189)
+    n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+     n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+      n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+       n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+        n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+         n0: 234256 0x42BE01: main (main.cpp:126)
+  n1: 234256 0x433036: fPMLafterOPT::createY3(double, double, double, bool, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&) (matrixDev.cpp:841)
+   n1: 234256 0x4445C5: section::calcWmatrix(double) (section.cpp:226)
+    n1: 234256 0x445034: section::modes_calculation() (section.cpp:1189)
+     n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+      n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+       n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+        n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+         n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+          n0: 234256 0x42BE01: main (main.cpp:126)
+  n0: 84672 in 18 places, all below massif's threshold (01.00%)
+ n2: 468512 0x404BBA: db_matrix::db_matrix(int, int) (block_matrix.cpp:237)
+  n3: 468512 0x4066AE: db_matrix::toeplitz_mod(double, double, int, int, int, int) (block_matrix.cpp:1215)
+   n1: 234256 0x444201: section::calcWmatrix(double) (section.cpp:205)
+    n1: 234256 0x445034: section::modes_calculation() (section.cpp:1189)
+     n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+      n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+       n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+        n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+         n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+          n0: 234256 0x42BE01: main (main.cpp:126)
+   n1: 234256 0x4442DE: section::calcWmatrix(double) (section.cpp:212)
+    n1: 234256 0x445034: section::modes_calculation() (section.cpp:1189)
+     n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+      n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+       n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+        n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+         n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+          n0: 234256 0x42BE01: main (main.cpp:126)
+   n0: 0 in 5 places, all below massif's threshold (01.00%)
+  n0: 0 in 5 places, all below massif's threshold (01.00%)
+ n0: 29111 in 30 places, all below massif's threshold (01.00%)
+#-----------
+snapshot=6
+#-----------
+time=306209479
+mem_heap_B=2690599
+mem_heap_extra_B=777
+mem_stacks_B=0
+heap_tree=detailed
+n4: 2690599 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n9: 1874048 0x4045D9: db_matrix::operator*=(db_matrix const&) (block_matrix.cpp:561)
+  n1: 234256 0x432DBB: fPMLafterOPT::createX2(double, double, double, bool, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&) (matrixDev.cpp:640)
+   n1: 234256 0x444288: section::calcWmatrix(double) (section.cpp:211)
+    n1: 234256 0x445034: section::modes_calculation() (section.cpp:1189)
+     n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+      n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+       n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+        n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+         n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+          n0: 234256 0x42BE01: main (main.cpp:126)
+  n1: 234256 0x43232E: fPMLafterOPT::createX1(double, double, double, bool, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&) (matrixDev.cpp:596)
+   n1: 234256 0x4443B1: section::calcWmatrix(double) (section.cpp:215)
+    n1: 234256 0x445034: section::modes_calculation() (section.cpp:1189)
+     n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+      n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+       n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+        n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+         n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+          n0: 234256 0x42BE01: main (main.cpp:126)
+  n1: 234256 0x432B4A: fPMLafterOPT::createX3(double, double, double, bool, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&) (matrixDev.cpp:687)
+   n1: 234256 0x444417: section::calcWmatrix(double) (section.cpp:217)
+    n1: 234256 0x445034: section::modes_calculation() (section.cpp:1189)
+     n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+      n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+       n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+        n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+         n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+          n0: 234256 0x42BE01: main (main.cpp:126)
+  n1: 234256 0x433338: fPMLafterOPT::createY2(double, double, double, bool, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&) (matrixDev.cpp:796)
+   n1: 234256 0x4444E7: section::calcWmatrix(double) (section.cpp:222)
+    n1: 234256 0x445034: section::modes_calculation() (section.cpp:1189)
+     n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+      n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+       n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+        n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+         n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+          n0: 234256 0x42BE01: main (main.cpp:126)
+  n1: 234256 0x432086: fPMLafterOPT::createY1(double, double, double, bool, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&) (matrixDev.cpp:752)
+   n1: 234256 0x444552: section::calcWmatrix(double) (section.cpp:223)
+    n1: 234256 0x445034: section::modes_calculation() (section.cpp:1189)
+     n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+      n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+       n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+        n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+         n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+          n0: 234256 0x42BE01: main (main.cpp:126)
+  n1: 234256 0x4330CF: fPMLafterOPT::createY3(double, double, double, bool, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&) (matrixDev.cpp:844)
+   n1: 234256 0x4445C5: section::calcWmatrix(double) (section.cpp:226)
+    n1: 234256 0x445034: section::modes_calculation() (section.cpp:1189)
+     n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+      n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+       n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+        n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+         n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+          n0: 234256 0x42BE01: main (main.cpp:126)
+  n1: 234256 0x431E74: fPMLafterOPT::createY4(double, double, double, bool, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&) (matrixDev.cpp:886)
+   n1: 234256 0x44462D: section::calcWmatrix(double) (section.cpp:228)
+    n1: 234256 0x445034: section::modes_calculation() (section.cpp:1189)
+     n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+      n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+       n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+        n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+         n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+          n0: 234256 0x42BE01: main (main.cpp:126)
+  n1: 234256 0x443E3B: section::calcWmatrix(double) (section.cpp:517)
+   n1: 234256 0x445034: section::modes_calculation() (section.cpp:1189)
+    n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+     n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+      n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+       n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+        n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+         n0: 234256 0x42BE01: main (main.cpp:126)
+  n0: 0 in 9 places, all below massif's threshold (01.00%)
+ n3: 553184 0x408A25: db_matrix::operator=(db_matrix const&) (block_matrix.cpp:376)
+  n1: 234256 0x4441B6: section::calcWmatrix(double) (section.cpp:202)
+   n1: 234256 0x445034: section::modes_calculation() (section.cpp:1189)
+    n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+     n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+      n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+       n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+        n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+         n0: 234256 0x42BE01: main (main.cpp:126)
+  n1: 234256 0x437A7A: fPMLafterOPT::createX4(double, double, double, bool, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&) (matrixDev.cpp:734)
+   n1: 234256 0x444347: section::calcWmatrix(double) (section.cpp:214)
+    n1: 234256 0x445034: section::modes_calculation() (section.cpp:1189)
+     n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+      n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+       n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+        n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+         n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+          n0: 234256 0x42BE01: main (main.cpp:126)
+  n0: 84672 in 21 places, all below massif's threshold (01.00%)
+ n2: 234256 0x408C4C: db_matrix::db_matrix(db_matrix const&) (block_matrix.cpp:270)
+  n1: 234256 0x443E2E: section::calcWmatrix(double) (section.cpp:516)
+   n1: 234256 0x445034: section::modes_calculation() (section.cpp:1189)
+    n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+     n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+      n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+       n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+        n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+         n0: 234256 0x42BE01: main (main.cpp:126)
+  n0: 0 in 14 places, all below massif's threshold (01.00%)
+ n0: 29111 in 30 places, all below massif's threshold (01.00%)
+#-----------
+snapshot=7
+#-----------
+time=355793677
+mem_heap_B=3159111
+mem_heap_extra_B=793
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=8
+#-----------
+time=404238847
+mem_heap_B=2224427
+mem_heap_extra_B=717
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=9
+#-----------
+time=472711453
+mem_heap_B=5033319
+mem_heap_extra_B=857
+mem_stacks_B=0
+heap_tree=detailed
+n6: 5033319 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n5: 1724464 0x408A25: db_matrix::operator=(db_matrix const&) (block_matrix.cpp:376)
+  n1: 937024 0x443FE8: section::calcWmatrix(double) (section.cpp:548)
+   n1: 937024 0x445034: section::modes_calculation() (section.cpp:1189)
+    n1: 937024 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+     n1: 937024 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+      n1: 937024 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+       n1: 937024 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+        n1: 937024 0x42B87E: process(int, char* const*) (main.cpp:51)
+         n0: 937024 0x42BE01: main (main.cpp:126)
+  n2: 234256 0x444178: section::calcWmatrix(double) (section.cpp:196)
+   n1: 234256 0x445066: section::modes_calculation() (section.cpp:1195)
+    n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+     n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+      n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+       n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+        n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+         n0: 234256 0x42BE01: main (main.cpp:126)
+   n0: 0 in 1 place, below massif's threshold (01.00%)
+  n2: 234256 0x4441B6: section::calcWmatrix(double) (section.cpp:202)
+   n1: 234256 0x445066: section::modes_calculation() (section.cpp:1195)
+    n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+     n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+      n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+       n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+        n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+         n0: 234256 0x42BE01: main (main.cpp:126)
+   n0: 0 in 1 place, below massif's threshold (01.00%)
+  n1: 234256 0x437A7A: fPMLafterOPT::createX4(double, double, double, bool, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&) (matrixDev.cpp:734)
+   n1: 234256 0x444347: section::calcWmatrix(double) (section.cpp:214)
+    n1: 234256 0x445034: section::modes_calculation() (section.cpp:1189)
+     n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+      n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+       n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+        n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+         n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+          n0: 234256 0x42BE01: main (main.cpp:126)
+  n0: 84672 in 20 places, all below massif's threshold (01.00%)
+ n4: 1405536 0x404BBA: db_matrix::db_matrix(int, int) (block_matrix.cpp:237)
+  n3: 468512 0x4066AE: db_matrix::toeplitz_mod(double, double, int, int, int, int) (block_matrix.cpp:1215)
+   n2: 234256 0x444201: section::calcWmatrix(double) (section.cpp:205)
+    n1: 234256 0x445066: section::modes_calculation() (section.cpp:1195)
+     n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+      n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+       n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+        n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+         n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+          n0: 234256 0x42BE01: main (main.cpp:126)
+    n0: 0 in 1 place, below massif's threshold (01.00%)
+   n2: 234256 0x4442DE: section::calcWmatrix(double) (section.cpp:212)
+    n1: 234256 0x445066: section::modes_calculation() (section.cpp:1195)
+     n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+      n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+       n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+        n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+         n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+          n0: 234256 0x42BE01: main (main.cpp:126)
+    n0: 0 in 1 place, below massif's threshold (01.00%)
+   n0: 0 in 6 places, all below massif's threshold (01.00%)
+  n3: 468512 0x406C4D: db_matrix::toeplitz_ones(double, double, int, int, int, int) (block_matrix.cpp:1041)
+   n1: 234256 0x4379E1: fPMLafterOPT::createX4(double, double, double, bool, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&) (matrixDev.cpp:734)
+    n2: 234256 0x444347: section::calcWmatrix(double) (section.cpp:214)
+     n1: 234256 0x445066: section::modes_calculation() (section.cpp:1195)
+      n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+       n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+        n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+         n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+          n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+           n0: 234256 0x42BE01: main (main.cpp:126)
+     n0: 0 in 1 place, below massif's threshold (01.00%)
+   n1: 234256 0x437A21: fPMLafterOPT::createX4(double, double, double, bool, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&) (matrixDev.cpp:734)
+    n2: 234256 0x444347: section::calcWmatrix(double) (section.cpp:214)
+     n1: 234256 0x445066: section::modes_calculation() (section.cpp:1195)
+      n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+       n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+        n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+         n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+          n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+           n0: 234256 0x42BE01: main (main.cpp:126)
+     n0: 0 in 1 place, below massif's threshold (01.00%)
+   n0: 0 in 14 places, all below massif's threshold (01.00%)
+  n3: 468512 0x407EE6: db_matrix::hadamard(db_matrix const&, db_matrix const&) (block_matrix.cpp:952)
+   n1: 234256 0x4379F3: fPMLafterOPT::createX4(double, double, double, bool, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&) (matrixDev.cpp:734)
+    n2: 234256 0x444347: section::calcWmatrix(double) (section.cpp:214)
+     n1: 234256 0x445066: section::modes_calculation() (section.cpp:1195)
+      n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+       n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+        n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+         n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+          n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+           n0: 234256 0x42BE01: main (main.cpp:126)
+     n0: 0 in 1 place, below massif's threshold (01.00%)
+   n1: 234256 0x437A37: fPMLafterOPT::createX4(double, double, double, bool, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&) (matrixDev.cpp:734)
+    n2: 234256 0x444347: section::calcWmatrix(double) (section.cpp:214)
+     n1: 234256 0x445066: section::modes_calculation() (section.cpp:1195)
+      n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+       n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+        n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+         n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+          n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+           n0: 234256 0x42BE01: main (main.cpp:126)
+     n0: 0 in 1 place, below massif's threshold (01.00%)
+   n0: 0 in 14 places, all below massif's threshold (01.00%)
+  n0: 0 in 4 places, all below massif's threshold (01.00%)
+ n6: 1171280 0x4045D9: db_matrix::operator*=(db_matrix const&) (block_matrix.cpp:561)
+  n1: 234256 0x432DBB: fPMLafterOPT::createX2(double, double, double, bool, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&) (matrixDev.cpp:640)
+   n2: 234256 0x444288: section::calcWmatrix(double) (section.cpp:211)
+    n1: 234256 0x445066: section::modes_calculation() (section.cpp:1195)
+     n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+      n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+       n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+        n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+         n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+          n0: 234256 0x42BE01: main (main.cpp:126)
+    n0: 0 in 1 place, below massif's threshold (01.00%)
+  n1: 234256 0x4379B9: fPMLafterOPT::createX4(double, double, double, bool, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&) (block_matrix.h:294)
+   n2: 234256 0x444347: section::calcWmatrix(double) (section.cpp:214)
+    n1: 234256 0x445066: section::modes_calculation() (section.cpp:1195)
+     n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+      n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+       n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+        n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+         n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+          n0: 234256 0x42BE01: main (main.cpp:126)
+    n0: 0 in 1 place, below massif's threshold (01.00%)
+  n1: 234256 0x437A6F: fPMLafterOPT::createX4(double, double, double, bool, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&) (block_matrix.h:294)
+   n2: 234256 0x444347: section::calcWmatrix(double) (section.cpp:214)
+    n1: 234256 0x445066: section::modes_calculation() (section.cpp:1195)
+     n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+      n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+       n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+        n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+         n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+          n0: 234256 0x42BE01: main (main.cpp:126)
+    n0: 0 in 1 place, below massif's threshold (01.00%)
+  n1: 234256 0x43232E: fPMLafterOPT::createX1(double, double, double, bool, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&) (matrixDev.cpp:596)
+   n1: 234256 0x4443B1: section::calcWmatrix(double) (section.cpp:215)
+    n1: 234256 0x445034: section::modes_calculation() (section.cpp:1189)
+     n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+      n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+       n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+        n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+         n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+          n0: 234256 0x42BE01: main (main.cpp:126)
+  n1: 234256 0x432B4A: fPMLafterOPT::createX3(double, double, double, bool, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&) (matrixDev.cpp:687)
+   n1: 234256 0x444417: section::calcWmatrix(double) (section.cpp:217)
+    n1: 234256 0x445034: section::modes_calculation() (section.cpp:1189)
+     n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+      n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+       n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+        n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+         n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+          n0: 234256 0x42BE01: main (main.cpp:126)
+  n0: 0 in 15 places, all below massif's threshold (01.00%)
+ n3: 468512 0x408C4C: db_matrix::db_matrix(db_matrix const&) (block_matrix.cpp:270)
+  n1: 234256 0x437A47: fPMLafterOPT::createX4(double, double, double, bool, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&) (block_matrix.h:283)
+   n2: 234256 0x444347: section::calcWmatrix(double) (section.cpp:214)
+    n1: 234256 0x445066: section::modes_calculation() (section.cpp:1195)
+     n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+      n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+       n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+        n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+         n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+          n0: 234256 0x42BE01: main (main.cpp:126)
+    n0: 0 in 1 place, below massif's threshold (01.00%)
+  n1: 234256 0x437A64: fPMLafterOPT::createX4(double, double, double, bool, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&) (block_matrix.h:293)
+   n2: 234256 0x444347: section::calcWmatrix(double) (section.cpp:214)
+    n1: 234256 0x445066: section::modes_calculation() (section.cpp:1195)
+     n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+      n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+       n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+        n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+         n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+          n0: 234256 0x42BE01: main (main.cpp:126)
+    n0: 0 in 1 place, below massif's threshold (01.00%)
+  n0: 0 in 16 places, all below massif's threshold (01.00%)
+ n2: 234288 0x4C9204: ATL_zmmJIK (in /home/bucci/afmm/trunk/afmm)
+  n1: 234288 0x48CDEF: ATL_ztgemmNN (in /home/bucci/afmm/trunk/afmm)
+   n1: 234288 0x4DE168: ATL_DoWorkMM (in /home/bucci/afmm/trunk/afmm)
+    n1: 234288 0x4DBAB5: ATL_dyntlaunch (in /home/bucci/afmm/trunk/afmm)
+     n1: 234288 0x3A36A079CF: start_thread (in /lib64/libpthread-2.12.so)
+      n0: 234288 0x3A366E8B6B: clone (in /lib64/libc-2.12.so)
+  n0: 0 in 1 place, below massif's threshold (01.00%)
+ n0: 29239 in 28 places, all below massif's threshold (01.00%)
+#-----------
+snapshot=10
+#-----------
+time=516905005
+mem_heap_B=3159111
+mem_heap_extra_B=785
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=11
+#-----------
+time=554814201
+mem_heap_B=2926711
+mem_heap_extra_B=721
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=12
+#-----------
+time=608834150
+mem_heap_B=3627623
+mem_heap_extra_B=801
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=13
+#-----------
+time=679584366
+mem_heap_B=3627623
+mem_heap_extra_B=801
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=14
+#-----------
+time=717533462
+mem_heap_B=3627751
+mem_heap_extra_B=809
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=15
+#-----------
+time=768324747
+mem_heap_B=3627623
+mem_heap_extra_B=785
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=16
+#-----------
+time=822927400
+mem_heap_B=3199187
+mem_heap_extra_B=781
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=17
+#-----------
+time=857098237
+mem_heap_B=3194159
+mem_heap_extra_B=729
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=18
+#-----------
+time=905186690
+mem_heap_B=3190975
+mem_heap_extra_B=721
+mem_stacks_B=0
+heap_tree=detailed
+n5: 3190975 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n3: 1255952 0x408A25: db_matrix::operator=(db_matrix const&) (block_matrix.cpp:376)
+  n2: 937024 0x443FE8: section::calcWmatrix(double) (section.cpp:548)
+   n1: 937024 0x445066: section::modes_calculation() (section.cpp:1195)
+    n1: 937024 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+     n1: 937024 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+      n1: 937024 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+       n1: 937024 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+        n1: 937024 0x42B87E: process(int, char* const*) (main.cpp:51)
+         n0: 937024 0x42BE01: main (main.cpp:126)
+   n0: 0 in 1 place, below massif's threshold (01.00%)
+  n1: 234256 0x437A7A: fPMLafterOPT::createX4(double, double, double, bool, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&) (matrixDev.cpp:734)
+   n2: 234256 0x444347: section::calcWmatrix(double) (section.cpp:214)
+    n1: 234256 0x445066: section::modes_calculation() (section.cpp:1195)
+     n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+      n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+       n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+        n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+         n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+          n0: 234256 0x42BE01: main (main.cpp:126)
+    n0: 0 in 1 place, below massif's threshold (01.00%)
+  n0: 84672 in 22 places, all below massif's threshold (01.00%)
+ n1: 937024 0x409C8A: db_matrix::eig(db_matrix*) (block_matrix.cpp:1608)
+  n1: 937024 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+   n1: 937024 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+    n1: 937024 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+     n1: 937024 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+      n1: 937024 0x42B87E: process(int, char* const*) (main.cpp:51)
+       n0: 937024 0x42BE01: main (main.cpp:126)
+ n4: 702768 0x4045D9: db_matrix::operator*=(db_matrix const&) (block_matrix.cpp:561)
+  n1: 234256 0x432DBB: fPMLafterOPT::createX2(double, double, double, bool, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&) (matrixDev.cpp:640)
+   n2: 234256 0x444288: section::calcWmatrix(double) (section.cpp:211)
+    n1: 234256 0x445066: section::modes_calculation() (section.cpp:1195)
+     n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+      n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+       n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+        n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+         n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+          n0: 234256 0x42BE01: main (main.cpp:126)
+    n0: 0 in 1 place, below massif's threshold (01.00%)
+  n1: 234256 0x43232E: fPMLafterOPT::createX1(double, double, double, bool, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&) (matrixDev.cpp:596)
+   n2: 234256 0x4443B1: section::calcWmatrix(double) (section.cpp:215)
+    n1: 234256 0x445066: section::modes_calculation() (section.cpp:1195)
+     n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+      n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+       n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+        n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+         n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+          n0: 234256 0x42BE01: main (main.cpp:126)
+    n0: 0 in 1 place, below massif's threshold (01.00%)
+  n1: 234256 0x432B4A: fPMLafterOPT::createX3(double, double, double, bool, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&) (matrixDev.cpp:687)
+   n2: 234256 0x444417: section::calcWmatrix(double) (section.cpp:217)
+    n1: 234256 0x445066: section::modes_calculation() (section.cpp:1195)
+     n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+      n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+       n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+        n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+         n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+          n0: 234256 0x42BE01: main (main.cpp:126)
+    n0: 0 in 1 place, below massif's threshold (01.00%)
+  n0: 0 in 17 places, all below massif's threshold (01.00%)
+ n1: 251680 0x409BDA: db_matrix::eig(db_matrix*) (block_matrix.cpp:1579)
+  n1: 251680 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+   n1: 251680 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+    n1: 251680 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+     n1: 251680 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+      n1: 251680 0x42B87E: process(int, char* const*) (main.cpp:51)
+       n0: 251680 0x42BE01: main (main.cpp:126)
+ n0: 43551 in 40 places, all below massif's threshold (01.00%)
+#-----------
+snapshot=19
+#-----------
+time=932356076
+mem_heap_B=3190975
+mem_heap_extra_B=721
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=20
+#-----------
+time=979660447
+mem_heap_B=3192023
+mem_heap_extra_B=785
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=21
+#-----------
+time=1048231639
+mem_heap_B=3242799
+mem_heap_extra_B=729
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=22
+#-----------
+time=1088259394
+mem_heap_B=3202671
+mem_heap_extra_B=729
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=23
+#-----------
+time=1153757699
+mem_heap_B=3190975
+mem_heap_extra_B=721
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=24
+#-----------
+time=1209033545
+mem_heap_B=3242799
+mem_heap_extra_B=729
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=25
+#-----------
+time=1249062116
+mem_heap_B=3202671
+mem_heap_extra_B=729
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=26
+#-----------
+time=1288081885
+mem_heap_B=3190975
+mem_heap_extra_B=721
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=27
+#-----------
+time=1353418980
+mem_heap_B=3191015
+mem_heap_extra_B=737
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=28
+#-----------
+time=1416095180
+mem_heap_B=3238991
+mem_heap_extra_B=737
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=29
+#-----------
+time=1466114609
+mem_heap_B=3202671
+mem_heap_extra_B=729
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=30
+#-----------
+time=1519016598
+mem_heap_B=3265599
+mem_heap_extra_B=729
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=31
+#-----------
+time=1583930119
+mem_heap_B=3190975
+mem_heap_extra_B=721
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=32
+#-----------
+time=1619430366
+mem_heap_B=3202671
+mem_heap_extra_B=729
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=33
+#-----------
+time=1672404948
+mem_heap_B=3202671
+mem_heap_extra_B=729
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=34
+#-----------
+time=1726313766
+mem_heap_B=3191983
+mem_heap_extra_B=729
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=35
+#-----------
+time=1795795821
+mem_heap_B=3190975
+mem_heap_extra_B=721
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=36
+#-----------
+time=1848913528
+mem_heap_B=3191379
+mem_heap_extra_B=773
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=37
+#-----------
+time=1905654265
+mem_heap_B=3202671
+mem_heap_extra_B=729
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=38
+#-----------
+time=1975798101
+mem_heap_B=3190975
+mem_heap_extra_B=721
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=39
+#-----------
+time=2010780003
+mem_heap_B=3190975
+mem_heap_extra_B=721
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=40
+#-----------
+time=2066310229
+mem_heap_B=3202671
+mem_heap_extra_B=729
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=41
+#-----------
+time=2101791743
+mem_heap_B=3191263
+mem_heap_extra_B=729
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=42
+#-----------
+time=2153137085
+mem_heap_B=3202671
+mem_heap_extra_B=729
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=43
+#-----------
+time=2190232349
+mem_heap_B=3190975
+mem_heap_extra_B=721
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=44
+#-----------
+time=2256763102
+mem_heap_B=3199187
+mem_heap_extra_B=781
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=45
+#-----------
+time=2323931115
+mem_heap_B=3189039
+mem_heap_extra_B=713
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=46
+#-----------
+time=2357515146
+mem_heap_B=3868267
+mem_heap_extra_B=789
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=47
+#-----------
+time=2417860447
+mem_heap_B=3867863
+mem_heap_extra_B=721
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=48
+#-----------
+time=2476369330
+mem_heap_B=5312447
+mem_heap_extra_B=857
+mem_stacks_B=0
+heap_tree=detailed
+n6: 5312447 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n5: 1639792 0x4045D9: db_matrix::operator*=(db_matrix const&) (block_matrix.cpp:561)
+  n1: 937024 0x43FDC9: section::assembleVmatrix() (section.cpp:817)
+   n1: 937024 0x41BDD9: commands::calcV(void*) (commands_structure.cpp:417)
+    n1: 937024 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+     n1: 937024 0x41DFCC: commands::c_assemble(parsefile*, int, char**) (commands_structure.cpp:476)
+      n1: 937024 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+       n1: 937024 0x42B87E: process(int, char* const*) (main.cpp:51)
+        n0: 937024 0x42BE01: main (main.cpp:126)
+  n1: 234256 0x432DBB: fPMLafterOPT::createX2(double, double, double, bool, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&) (matrixDev.cpp:640)
+   n2: 234256 0x444288: section::calcWmatrix(double) (section.cpp:211)
+    n1: 234256 0x445066: section::modes_calculation() (section.cpp:1195)
+     n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+      n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+       n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+        n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+         n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+          n0: 234256 0x42BE01: main (main.cpp:126)
+    n0: 0 in 1 place, below massif's threshold (01.00%)
+  n1: 234256 0x43232E: fPMLafterOPT::createX1(double, double, double, bool, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&) (matrixDev.cpp:596)
+   n2: 234256 0x4443B1: section::calcWmatrix(double) (section.cpp:215)
+    n1: 234256 0x445066: section::modes_calculation() (section.cpp:1195)
+     n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+      n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+       n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+        n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+         n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+          n0: 234256 0x42BE01: main (main.cpp:126)
+    n0: 0 in 1 place, below massif's threshold (01.00%)
+  n1: 234256 0x432B4A: fPMLafterOPT::createX3(double, double, double, bool, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&) (matrixDev.cpp:687)
+   n2: 234256 0x444417: section::calcWmatrix(double) (section.cpp:217)
+    n1: 234256 0x445066: section::modes_calculation() (section.cpp:1195)
+     n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+      n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+       n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+        n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+         n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+          n0: 234256 0x42BE01: main (main.cpp:126)
+    n0: 0 in 1 place, below massif's threshold (01.00%)
+  n0: 0 in 17 places, all below massif's threshold (01.00%)
+ n3: 1255952 0x408A25: db_matrix::operator=(db_matrix const&) (block_matrix.cpp:376)
+  n2: 937024 0x443FE8: section::calcWmatrix(double) (section.cpp:548)
+   n1: 937024 0x445066: section::modes_calculation() (section.cpp:1195)
+    n1: 937024 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+     n1: 937024 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+      n1: 937024 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+       n1: 937024 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+        n1: 937024 0x42B87E: process(int, char* const*) (main.cpp:51)
+         n0: 937024 0x42BE01: main (main.cpp:126)
+   n0: 0 in 1 place, below massif's threshold (01.00%)
+  n1: 234256 0x437A7A: fPMLafterOPT::createX4(double, double, double, bool, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&) (matrixDev.cpp:734)
+   n2: 234256 0x444347: section::calcWmatrix(double) (section.cpp:214)
+    n1: 234256 0x445066: section::modes_calculation() (section.cpp:1195)
+     n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+      n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+       n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+        n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+         n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+          n0: 234256 0x42BE01: main (main.cpp:126)
+    n0: 0 in 1 place, below massif's threshold (01.00%)
+  n0: 84672 in 22 places, all below massif's threshold (01.00%)
+ n2: 937024 0x404BBA: db_matrix::db_matrix(int, int) (block_matrix.cpp:237)
+  n2: 937024 0x408052: db_matrix::mergeMatrixQuad(db_matrix const&, db_matrix const&, db_matrix const&, db_matrix const&) (block_matrix.cpp:915)
+   n1: 937024 0x43FDB2: section::assembleVmatrix() (section.cpp:814)
+    n1: 937024 0x41BDD9: commands::calcV(void*) (commands_structure.cpp:417)
+     n1: 937024 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+      n1: 937024 0x41DFCC: commands::c_assemble(parsefile*, int, char**) (commands_structure.cpp:476)
+       n1: 937024 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+        n1: 937024 0x42B87E: process(int, char* const*) (main.cpp:51)
+         n0: 937024 0x42BE01: main (main.cpp:126)
+   n0: 0 in 1 place, below massif's threshold (01.00%)
+  n0: 0 in 6 places, all below massif's threshold (01.00%)
+ n1: 937024 0x409C8A: db_matrix::eig(db_matrix*) (block_matrix.cpp:1608)
+  n1: 937024 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+   n1: 937024 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+    n1: 937024 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+     n1: 937024 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+      n1: 937024 0x42B87E: process(int, char* const*) (main.cpp:51)
+       n0: 937024 0x42BE01: main (main.cpp:126)
+ n2: 511136 0x4C9204: ATL_zmmJIK (in /home/bucci/afmm/trunk/afmm)
+  n1: 511136 0x48CDEF: ATL_ztgemmNN (in /home/bucci/afmm/trunk/afmm)
+   n1: 511136 0x4DE168: ATL_DoWorkMM (in /home/bucci/afmm/trunk/afmm)
+    n1: 511136 0x4DBAB5: ATL_dyntlaunch (in /home/bucci/afmm/trunk/afmm)
+     n1: 511136 0x3A36A079CF: start_thread (in /lib64/libpthread-2.12.so)
+      n0: 511136 0x3A366E8B6B: clone (in /lib64/libc-2.12.so)
+  n0: 0 in 5 places, all below massif's threshold (01.00%)
+ n0: 31519 in 59 places, all below massif's threshold (01.00%)
+#-----------
+snapshot=49
+#-----------
+time=2514740866
+mem_heap_B=4801055
+mem_heap_extra_B=833
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=50
+#-----------
+time=2542326307
+mem_heap_B=4817327
+mem_heap_extra_B=865
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=51
+#-----------
+time=2587317838
+mem_heap_B=4910783
+mem_heap_extra_B=753
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=52
+#-----------
+time=2614993015
+mem_heap_B=4814991
+mem_heap_extra_B=745
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=53
+#-----------
+time=2642475581
+mem_heap_B=4814991
+mem_heap_extra_B=745
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=54
+#-----------
+time=2669891675
+mem_heap_B=4814991
+mem_heap_extra_B=745
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=55
+#-----------
+time=2672477739
+mem_heap_B=5923383
+mem_heap_extra_B=737
+mem_stacks_B=0
+heap_tree=peak
+n6: 5923383 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n4: 2192976 0x408A25: db_matrix::operator=(db_matrix const&) (block_matrix.cpp:376)
+  n2: 937024 0x443FE8: section::calcWmatrix(double) (section.cpp:548)
+   n1: 937024 0x445066: section::modes_calculation() (section.cpp:1195)
+    n1: 937024 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+     n1: 937024 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+      n1: 937024 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+       n1: 937024 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+        n1: 937024 0x42B87E: process(int, char* const*) (main.cpp:51)
+         n0: 937024 0x42BE01: main (main.cpp:126)
+   n0: 0 in 1 place, below massif's threshold (01.00%)
+  n1: 937024 0x41BDE9: commands::calcV(void*) (commands_structure.cpp:417)
+   n1: 937024 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+    n1: 937024 0x41DFCC: commands::c_assemble(parsefile*, int, char**) (commands_structure.cpp:476)
+     n1: 937024 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+      n1: 937024 0x42B87E: process(int, char* const*) (main.cpp:51)
+       n0: 937024 0x42BE01: main (main.cpp:126)
+  n1: 234256 0x437A7A: fPMLafterOPT::createX4(double, double, double, bool, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&) (matrixDev.cpp:734)
+   n2: 234256 0x444347: section::calcWmatrix(double) (section.cpp:214)
+    n1: 234256 0x445066: section::modes_calculation() (section.cpp:1195)
+     n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+      n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+       n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+        n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+         n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+          n0: 234256 0x42BE01: main (main.cpp:126)
+    n0: 0 in 1 place, below massif's threshold (01.00%)
+  n0: 84672 in 22 places, all below massif's threshold (01.00%)
+ n3: 1874048 0x408C4C: db_matrix::db_matrix(db_matrix const&) (block_matrix.cpp:270)
+  n1: 937024 0x442F19: section::create_excitation_const(bool, double, std::complex<double>, int, int) (section.cpp:1061)
+   n1: 937024 0x41F95A: commands::c_excitation(parsefile*, int, char**) (commands_structure.cpp:832)
+    n1: 937024 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+     n1: 937024 0x42B87E: process(int, char* const*) (main.cpp:51)
+      n0: 937024 0x42BE01: main (main.cpp:126)
+  n1: 937024 0x442F34: section::create_excitation_const(bool, double, std::complex<double>, int, int) (block_matrix.h:293)
+   n1: 937024 0x41F95A: commands::c_excitation(parsefile*, int, char**) (commands_structure.cpp:832)
+    n1: 937024 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+     n1: 937024 0x42B87E: process(int, char* const*) (main.cpp:51)
+      n0: 937024 0x42BE01: main (main.cpp:126)
+  n0: 0 in 18 places, all below massif's threshold (01.00%)
+ n1: 937024 0x409C8A: db_matrix::eig(db_matrix*) (block_matrix.cpp:1608)
+  n1: 937024 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+   n1: 937024 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+    n1: 937024 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+     n1: 937024 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+      n1: 937024 0x42B87E: process(int, char* const*) (main.cpp:51)
+       n0: 937024 0x42BE01: main (main.cpp:126)
+ n4: 706640 0x4045D9: db_matrix::operator*=(db_matrix const&) (block_matrix.cpp:561)
+  n1: 234256 0x432DBB: fPMLafterOPT::createX2(double, double, double, bool, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&) (matrixDev.cpp:640)
+   n2: 234256 0x444288: section::calcWmatrix(double) (section.cpp:211)
+    n1: 234256 0x445066: section::modes_calculation() (section.cpp:1195)
+     n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+      n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+       n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+        n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+         n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+          n0: 234256 0x42BE01: main (main.cpp:126)
+    n0: 0 in 1 place, below massif's threshold (01.00%)
+  n1: 234256 0x43232E: fPMLafterOPT::createX1(double, double, double, bool, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&) (matrixDev.cpp:596)
+   n2: 234256 0x4443B1: section::calcWmatrix(double) (section.cpp:215)
+    n1: 234256 0x445066: section::modes_calculation() (section.cpp:1195)
+     n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+      n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+       n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+        n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+         n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+          n0: 234256 0x42BE01: main (main.cpp:126)
+    n0: 0 in 1 place, below massif's threshold (01.00%)
+  n1: 234256 0x432B4A: fPMLafterOPT::createX3(double, double, double, bool, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&) (matrixDev.cpp:687)
+   n2: 234256 0x444417: section::calcWmatrix(double) (section.cpp:217)
+    n1: 234256 0x445066: section::modes_calculation() (section.cpp:1195)
+     n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+      n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+       n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+        n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+         n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+          n0: 234256 0x42BE01: main (main.cpp:126)
+    n0: 0 in 1 place, below massif's threshold (01.00%)
+  n0: 3872 in 19 places, all below massif's threshold (01.00%)
+ n2: 174272 0x4CA31C: ATL_zmmIJK (in /home/bucci/afmm/trunk/afmm)
+  n1: 174272 0x4BE5CC: ATL_zgemm (in /home/bucci/afmm/trunk/afmm)
+   n2: 174272 0x48A47F: ATL_ztgemm (in /home/bucci/afmm/trunk/afmm)
+    n2: 174272 0x47B8E2: zgemm_ (in /home/bucci/afmm/trunk/afmm)
+     n1: 174272 0x404678: db_matrix::operator*=(db_matrix const&) (block_matrix.cpp:577)
+      n1: 174272 0x442F3F: section::create_excitation_const(bool, double, std::complex<double>, int, int) (block_matrix.h:294)
+       n1: 174272 0x41F95A: commands::c_excitation(parsefile*, int, char**) (commands_structure.cpp:832)
+        n1: 174272 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+         n1: 174272 0x42B87E: process(int, char* const*) (main.cpp:51)
+          n0: 174272 0x42BE01: main (main.cpp:126)
+     n0: 0 in 8 places, all below massif's threshold (01.00%)
+    n0: 0 in 2 places, all below massif's threshold (01.00%)
+  n0: 0 in 5 places, all below massif's threshold (01.00%)
+ n0: 38423 in 59 places, all below massif's threshold (01.00%)
+#-----------
+snapshot=56
+#-----------
+time=2699899141
+mem_heap_B=4877103
+mem_heap_extra_B=9025
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=57
+#-----------
+time=2727306628
+mem_heap_B=4877103
+mem_heap_extra_B=9025
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=58
+#-----------
+time=2754710436
+mem_heap_B=4877103
+mem_heap_extra_B=9025
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=59
+#-----------
+time=2782071351
+mem_heap_B=4877103
+mem_heap_extra_B=9025
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=60
+#-----------
+time=2809542607
+mem_heap_B=4877103
+mem_heap_extra_B=9025
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=61
+#-----------
+time=2836905929
+mem_heap_B=4877103
+mem_heap_extra_B=9025
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=62
+#-----------
+time=2864358976
+mem_heap_B=4877103
+mem_heap_extra_B=9025
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=63
+#-----------
+time=2891721069
+mem_heap_B=4877103
+mem_heap_extra_B=9025
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=64
+#-----------
+time=2919147798
+mem_heap_B=4877103
+mem_heap_extra_B=9025
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=65
+#-----------
+time=2946542380
+mem_heap_B=4877103
+mem_heap_extra_B=9025
+mem_stacks_B=0
+heap_tree=detailed
+n6: 4877103 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n4: 2200720 0x408A25: db_matrix::operator=(db_matrix const&) (block_matrix.cpp:376)
+  n2: 937024 0x443FE8: section::calcWmatrix(double) (section.cpp:548)
+   n1: 937024 0x445066: section::modes_calculation() (section.cpp:1195)
+    n1: 937024 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+     n1: 937024 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+      n1: 937024 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+       n1: 937024 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+        n1: 937024 0x42B87E: process(int, char* const*) (main.cpp:51)
+         n0: 937024 0x42BE01: main (main.cpp:126)
+   n0: 0 in 1 place, below massif's threshold (01.00%)
+  n1: 937024 0x41BDE9: commands::calcV(void*) (commands_structure.cpp:417)
+   n1: 937024 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+    n1: 937024 0x41DFCC: commands::c_assemble(parsefile*, int, char**) (commands_structure.cpp:476)
+     n1: 937024 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+      n1: 937024 0x42B87E: process(int, char* const*) (main.cpp:51)
+       n0: 937024 0x42BE01: main (main.cpp:126)
+  n1: 234256 0x437A7A: fPMLafterOPT::createX4(double, double, double, bool, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&) (matrixDev.cpp:734)
+   n2: 234256 0x444347: section::calcWmatrix(double) (section.cpp:214)
+    n1: 234256 0x445066: section::modes_calculation() (section.cpp:1195)
+     n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+      n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+       n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+        n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+         n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+          n0: 234256 0x42BE01: main (main.cpp:126)
+    n0: 0 in 1 place, below massif's threshold (01.00%)
+  n0: 92416 in 27 places, all below massif's threshold (01.00%)
+ n2: 937424 0x408C4C: db_matrix::db_matrix(db_matrix const&) (block_matrix.cpp:270)
+  n1: 937024 0x4263DC: commands::getFourierField(section&, db_matrix&, bool, bool, db_matrix&, db_matrix&, db_matrix&, bool) (block_matrix.h:293)
+   n1: 937024 0x426BB1: commands::getField(section&, db_matrix&, bool, bool, int, int, int, int, bool, db_matrix&, db_matrix&, db_matrix&, bool, bool, bool, db_matrix&) (commands_propagation.cpp:940)
+    n1: 937024 0x428EEC: commands::process_section(double, double, double, section&, double&, double&, double&, _IO_FILE*, rimco_e_t, double&, double&, int&, db_matrix&, db_matrix&, bool, bool, int, int, int, int, _IO_FILE*, bool, db_matrix&, db_matrix&, db_matrix&, bool, bool, _IO_FILE*) (commands_propagation.cpp:554)
+     n2: 937024 0x42A492: commands::propagation_structure(void*) (commands_propagation.cpp:438)
+      n1: 937024 0x3A36A079CF: start_thread (in /lib64/libpthread-2.12.so)
+       n0: 937024 0x3A366E8B6B: clone (in /lib64/libc-2.12.so)
+      n0: 0 in 1 place, below massif's threshold (01.00%)
+  n0: 400 in 21 places, all below massif's threshold (01.00%)
+ n1: 937024 0x409C8A: db_matrix::eig(db_matrix*) (block_matrix.cpp:1608)
+  n1: 937024 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+   n1: 937024 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+    n1: 937024 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+     n1: 937024 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+      n1: 937024 0x42B87E: process(int, char* const*) (main.cpp:51)
+       n0: 937024 0x42BE01: main (main.cpp:126)
+ n4: 706640 0x4045D9: db_matrix::operator*=(db_matrix const&) (block_matrix.cpp:561)
+  n1: 234256 0x432DBB: fPMLafterOPT::createX2(double, double, double, bool, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&) (matrixDev.cpp:640)
+   n2: 234256 0x444288: section::calcWmatrix(double) (section.cpp:211)
+    n1: 234256 0x445066: section::modes_calculation() (section.cpp:1195)
+     n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+      n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+       n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+        n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+         n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+          n0: 234256 0x42BE01: main (main.cpp:126)
+    n0: 0 in 1 place, below massif's threshold (01.00%)
+  n1: 234256 0x43232E: fPMLafterOPT::createX1(double, double, double, bool, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&) (matrixDev.cpp:596)
+   n2: 234256 0x4443B1: section::calcWmatrix(double) (section.cpp:215)
+    n1: 234256 0x445066: section::modes_calculation() (section.cpp:1195)
+     n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+      n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+       n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+        n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+         n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+          n0: 234256 0x42BE01: main (main.cpp:126)
+    n0: 0 in 1 place, below massif's threshold (01.00%)
+  n1: 234256 0x432B4A: fPMLafterOPT::createX3(double, double, double, bool, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&) (matrixDev.cpp:687)
+   n2: 234256 0x444417: section::calcWmatrix(double) (section.cpp:217)
+    n1: 234256 0x445066: section::modes_calculation() (section.cpp:1195)
+     n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+      n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+       n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+        n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+         n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+          n0: 234256 0x42BE01: main (main.cpp:126)
+    n0: 0 in 1 place, below massif's threshold (01.00%)
+  n0: 3872 in 20 places, all below massif's threshold (01.00%)
+ n1: 52840 0x58E213: fftw_malloc_plain (in /home/bucci/afmm/trunk/afmm)
+  n0: 52840 in 10 places, all below massif's threshold (01.00%)
+ n0: 42455 in 63 places, all below massif's threshold (01.00%)
+#-----------
+snapshot=66
+#-----------
+time=2974009797
+mem_heap_B=4877103
+mem_heap_extra_B=9025
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=67
+#-----------
+time=3001373619
+mem_heap_B=4877103
+mem_heap_extra_B=9025
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=68
+#-----------
+time=3028824572
+mem_heap_B=4877103
+mem_heap_extra_B=9025
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=69
+#-----------
+time=3056121990
+mem_heap_B=4877103
+mem_heap_extra_B=9025
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=70
+#-----------
+time=3083798170
+mem_heap_B=4872919
+mem_heap_extra_B=9033
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=71
+#-----------
+time=3111177478
+mem_heap_B=4872919
+mem_heap_extra_B=9033
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=72
+#-----------
+time=3138434532
+mem_heap_B=4877191
+mem_heap_extra_B=9049
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=73
+#-----------
+time=3165703077
+mem_heap_B=4877191
+mem_heap_extra_B=9049
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=74
+#-----------
+time=3193078582
+mem_heap_B=4877191
+mem_heap_extra_B=9049
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=75
+#-----------
+time=3220374985
+mem_heap_B=4877191
+mem_heap_extra_B=9049
+mem_stacks_B=0
+heap_tree=detailed
+n6: 4877191 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n4: 2200720 0x408A25: db_matrix::operator=(db_matrix const&) (block_matrix.cpp:376)
+  n2: 937024 0x443FE8: section::calcWmatrix(double) (section.cpp:548)
+   n1: 937024 0x445066: section::modes_calculation() (section.cpp:1195)
+    n1: 937024 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+     n1: 937024 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+      n1: 937024 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+       n1: 937024 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+        n1: 937024 0x42B87E: process(int, char* const*) (main.cpp:51)
+         n0: 937024 0x42BE01: main (main.cpp:126)
+   n0: 0 in 1 place, below massif's threshold (01.00%)
+  n1: 937024 0x41BDE9: commands::calcV(void*) (commands_structure.cpp:417)
+   n1: 937024 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+    n1: 937024 0x41DFCC: commands::c_assemble(parsefile*, int, char**) (commands_structure.cpp:476)
+     n1: 937024 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+      n1: 937024 0x42B87E: process(int, char* const*) (main.cpp:51)
+       n0: 937024 0x42BE01: main (main.cpp:126)
+  n1: 234256 0x437A7A: fPMLafterOPT::createX4(double, double, double, bool, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&) (matrixDev.cpp:734)
+   n2: 234256 0x444347: section::calcWmatrix(double) (section.cpp:214)
+    n1: 234256 0x445066: section::modes_calculation() (section.cpp:1195)
+     n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+      n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+       n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+        n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+         n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+          n0: 234256 0x42BE01: main (main.cpp:126)
+    n0: 0 in 1 place, below massif's threshold (01.00%)
+  n0: 92416 in 28 places, all below massif's threshold (01.00%)
+ n2: 937424 0x408C4C: db_matrix::db_matrix(db_matrix const&) (block_matrix.cpp:270)
+  n1: 937024 0x42613D: commands::getFourierField(section&, db_matrix&, bool, bool, db_matrix&, db_matrix&, db_matrix&, bool) (block_matrix.h:293)
+   n1: 937024 0x426BB1: commands::getField(section&, db_matrix&, bool, bool, int, int, int, int, bool, db_matrix&, db_matrix&, db_matrix&, bool, bool, bool, db_matrix&) (commands_propagation.cpp:940)
+    n1: 937024 0x428EEC: commands::process_section(double, double, double, section&, double&, double&, double&, _IO_FILE*, rimco_e_t, double&, double&, int&, db_matrix&, db_matrix&, bool, bool, int, int, int, int, _IO_FILE*, bool, db_matrix&, db_matrix&, db_matrix&, bool, bool, _IO_FILE*) (commands_propagation.cpp:554)
+     n2: 937024 0x42A492: commands::propagation_structure(void*) (commands_propagation.cpp:438)
+      n1: 937024 0x3A36A079CF: start_thread (in /lib64/libpthread-2.12.so)
+       n0: 937024 0x3A366E8B6B: clone (in /lib64/libc-2.12.so)
+      n0: 0 in 1 place, below massif's threshold (01.00%)
+  n0: 400 in 22 places, all below massif's threshold (01.00%)
+ n1: 937024 0x409C8A: db_matrix::eig(db_matrix*) (block_matrix.cpp:1608)
+  n1: 937024 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+   n1: 937024 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+    n1: 937024 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+     n1: 937024 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+      n1: 937024 0x42B87E: process(int, char* const*) (main.cpp:51)
+       n0: 937024 0x42BE01: main (main.cpp:126)
+ n4: 706640 0x4045D9: db_matrix::operator*=(db_matrix const&) (block_matrix.cpp:561)
+  n1: 234256 0x432DBB: fPMLafterOPT::createX2(double, double, double, bool, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&) (matrixDev.cpp:640)
+   n2: 234256 0x444288: section::calcWmatrix(double) (section.cpp:211)
+    n1: 234256 0x445066: section::modes_calculation() (section.cpp:1195)
+     n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+      n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+       n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+        n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+         n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+          n0: 234256 0x42BE01: main (main.cpp:126)
+    n0: 0 in 1 place, below massif's threshold (01.00%)
+  n1: 234256 0x43232E: fPMLafterOPT::createX1(double, double, double, bool, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&) (matrixDev.cpp:596)
+   n2: 234256 0x4443B1: section::calcWmatrix(double) (section.cpp:215)
+    n1: 234256 0x445066: section::modes_calculation() (section.cpp:1195)
+     n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+      n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+       n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+        n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+         n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+          n0: 234256 0x42BE01: main (main.cpp:126)
+    n0: 0 in 1 place, below massif's threshold (01.00%)
+  n1: 234256 0x432B4A: fPMLafterOPT::createX3(double, double, double, bool, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&, db_matrix&) (matrixDev.cpp:687)
+   n2: 234256 0x444417: section::calcWmatrix(double) (section.cpp:217)
+    n1: 234256 0x445066: section::modes_calculation() (section.cpp:1195)
+     n1: 234256 0x41BE96: commands::calc_eigenvalues(void*) (commands_structure.cpp:267)
+      n1: 234256 0x447508: parallelize(thread_data*, void* (*)(void*), int, int, int) (parallelize.cpp:54)
+       n1: 234256 0x41DADE: commands::c_solve(parsefile*, int, char**) (commands_structure.cpp:314)
+        n1: 234256 0x439DD2: parsefile::read(std::string, bool) (parsefile.cpp:783)
+         n1: 234256 0x42B87E: process(int, char* const*) (main.cpp:51)
+          n0: 234256 0x42BE01: main (main.cpp:126)
+    n0: 0 in 1 place, below massif's threshold (01.00%)
+  n0: 3872 in 21 places, all below massif's threshold (01.00%)
+ n1: 52840 0x58E213: fftw_malloc_plain (in /home/bucci/afmm/trunk/afmm)
+  n0: 52840 in 10 places, all below massif's threshold (01.00%)
+ n0: 42543 in 63 places, all below massif's threshold (01.00%)
+#-----------
+snapshot=76
+#-----------
+time=3247732790
+mem_heap_B=4877191
+mem_heap_extra_B=9049
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=77
+#-----------
+time=3275008605
+mem_heap_B=4877191
+mem_heap_extra_B=9049
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=78
+#-----------
+time=3302342583
+mem_heap_B=4877191
+mem_heap_extra_B=9049
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=79
+#-----------
+time=3329687432
+mem_heap_B=4877191
+mem_heap_extra_B=9033
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=80
+#-----------
+time=3357193242
+mem_heap_B=4877191
+mem_heap_extra_B=9033
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=81
+#-----------
+time=3384582967
+mem_heap_B=4877191
+mem_heap_extra_B=9033
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=82
+#-----------
+time=3412044116
+mem_heap_B=4877191
+mem_heap_extra_B=9033
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=83
+#-----------
+time=3439393394
+mem_heap_B=4877191
+mem_heap_extra_B=9033
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=84
+#-----------
+time=3466999756
+mem_heap_B=4872919
+mem_heap_extra_B=9033
+mem_stacks_B=0
+heap_tree=empty

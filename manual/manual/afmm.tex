@@ -1,0 +1,99 @@
+\documentclass[10pt, a4paper]{book}
+
+\usepackage{graphicx}
+\def\pdfshellescape{1}
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{longtable}
+\usepackage{pgf}
+
+% Gigahertz symbol in math mode, with correct spacing
+\newcommand{\GHz}{\,\mathrm{GHz}}
+% nanometer symbol
+\newcommand{\nm}{\,\mathrm{nm}}
+% micron symbol
+\newcommand{\micron}{\,\mathrm{\mu m}}
+\newcommand{\afmm}{\textsf{afmm}}
+\newcommand{\Afmm}{\textsf{Afmm}}
+
+
+% dB symbol in math mode
+\newcommand{\dB}{\,\mathrm{dB}}
+% A roman j used for imaginary unit
+\newcommand{\junit}{\mathrm{j}}
+% Neper constant
+\newcommand{\e}{\mathrm{e}}
+% It meant to indicate a double bar, but it is too heavy!!!
+\newcommand{\dbar}[1]{#1}
+% Toeplitz matrix
+\newcommand{\indT}{\mathrm{T}}
+% Roman indices in mathematical mode
+\newcommand{\ped}[1]{_\mathrm{#1}}
+
+\usepackage{xcolor}
+
+\newcommand{\marginpars}[1]{%
+  \marginpar{\footnotesize{\it #1}}}
+
+\lstdefinelanguage{AFMM} 
+	{morekeywords={size,solve,wavelength, rectangle, substrate, harmonics, pml,inpstruct,outgmodes, lowindex, highindex, indfile, pml_transf, bend, wants,spectrum,propagation,assemble,section,order,excitation,quit,help,
+	load, print, select, coefficient, carpet, outdata, matdev, norm, clear, system, goto, label, for, next, eigenvc, eigenam, memocc, symmetry,monitor, power, powerz, let, bloch, outbloch, if, else, endif, size, lg, ln, sin, cos, tan, sqr, abs,arctan,arcsin,arccos,sinh, cosh,tanh,fopen,fclose,
+	fprint,addspace,parallel, selmodes, modepos, fscan, fskip, fcheck, do,
+	while, angles, indmatrix, parsescript}, 
+	sensitive=false,  
+	morecomment=[l][\color{blue}]{\#},
+} 
+\lstset{language=AFMM,%
+	basicstyle=\footnotesize\ttfamily,
+	keywordstyle=\color{violet}} 
+
+
+\begin{document}
+\title{The \afmm\ 1.4.5 user manual\\[2em]
+A 3D full vectorial mode solver and propagator}
+
+
+\author{Davide Bucci\\[3em] 
+\vspace{5em}
+\includegraphics[width=6cm]{logo}}
+
+\maketitle
+\tableofcontents
+\chapter*{Acknowledgments}
+I am deeply thankful to Bruno Martin for his friendly help through the detailed comprehension of the Aperiodic Fourier Modal Method. The philosophy of \afmm\ as well as this manual were initially shaped during the frequent discussions we had during the last months of his Ph.D. at IMEP-LAHC, and during his post-doc at IPAG, in Grenoble, France. Alain Morand also participated to intensive comparison sessions with FDTD simulations. 
+
+Another person to whom I am deeply indebted is J\'er\^ome Michallon, who carefully checked all my calculations and corrected several of the mistakes I did. He developed a very detailed understanding of the implementation details, and this allowed him to be active in the code development. Thanks to his work, \afmm\ can now take into account symmetries present in the calculated structure. J\'er\^ome also participated to an accurate revision of this document. Kudos to Elise Ghibaudo; she provided a very detailed feedback and spotted some bugs and errors in this manual.
+
+I would also thank all the colleagues and the students who provided a very welcomed feedback about this software: Thomas Nappez, Marco Casale, Elsa Jardinier, Sandie de Bonnault.
+
+\chapter*{Introduction}
+\textsf{
+One of the most important things to be considered while studying photonic devices is knowing of their electromagnetic field propagation characteristics. For this reason, several numerical methods have been implemented, in order to study more or less arbitrary wave-guiding or scattering structures. An interesting development is the Aperiodic Fourier Modal Method (AFMM), proposed by Lalanne and Silberstein\cite{lalanne2000fmm,silberstein2001ugt}, in order to apply to waveguides the Rigorous Coupled Wave Method (RCWA), originally developed for the study of diffraction gratings\cite{moharam1981rigorous, li2000recent}. Thanks to the refinements proposed through the years, this method has proven to be effective to treat in a very general way waveguides made with different technologies. It considers structures composed by successive sections of a given length, inside which the refractive index distribution is invariant in the propagation axis. The approach used by the AFMM consists in applying an artificial transverse spatial periodisation to each section. Its effects on the fields are then represented thanks an operator based on a truncated Fourier development and this truncation is the sole approximation done for solving Maxwell equations. Derivatives thus become algebraic operations and the propagation modes are identified as the eigenvectors of a matrix. The complete 3D propagation can finally be studied by imposing the fields continuity conditions at each interface between different sections.}
+
+\textsf{
+Afmm is a 3D full vectorial mode solver and propagator based on the Aperiodic Fourier Modal Method. 
+The \afmm\ propagator is able to consider the case of straight and bent waveguides, since all the developments can be carried out in rectangular and in cylindrical coordinates as well. It should be noted that, even if the AFMM has  been initially intended for the study of waveguides, the implemented method is quite general and can be used to study diffraction gratings, micro-structured solar cells \cite{el2009photonic} and many other things. 
+}
+
+\textsf{
+This manual begins with chapter~\ref{chap_implementation}, containing a detailed description of the technical and mathematical background. Even if a comprehension of each detail is probably not needed to use \afmm, it is useful to have a global understanding of the Aperiodic Fourier Modal Method. In fact, the user must clearly know how to cope with the limitations of the method when treating a particular problem.
+Chapter~\ref{chap_using} describes how to install and use \afmm\, as well as the  syntax used in the input and output files. A few examples are finally provided, in order to ease the understanding of the structure definition mechanism provided by \afmm.
+In the annexes, examples of construction are given for several important matrices used by \afmm\ calculations, the program interaction with Gnuplot is discussed, a description of the file formats used by \afmm , a detailed change-log of this software is given and we list all publications related to \afmm .
+}
+
+\chapter{Technical background}
+\label{chap_implementation}
+\input{afmm_background.tex}
+
+\chapter[Using \afmm]{Installing and using \afmm}
+\label{chap_using}
+\input{afmm_commands.tex}
+
+\appendix
+
+\input{afmm_appendix.tex}
+
+\bibliography{fmm}{} 
+\bibliographystyle{IEEEtran}
+\end{document}

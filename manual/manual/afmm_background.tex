@@ -1,0 +1,1147 @@
+\newcommand{\vectorD}[1]{\mathbf{#1}}
+
+\textsf{In this chapter, we present the mathematical development of the Fourier Modal Method in cylindrical coordinates which is the core of \afmm . 
+At first, we manipulate Maxwell equations to describe the longitudinal evolution of transverse magnetic and electric fields as the effect of a differential propagation operator. 
+We begin by discussing a 2D mode solver, well suited even for bent waveguides having an high core/substrate index contrast. 
+We then see how to deal with convergence issues appearing when discontinuities in the refractive index distribution affects the fields for the transverse magnetic (TM) polarisation.
+ The Cartesian coordinate calculations can be then seen as a special case of the more general cylindrical coordinates analysis. For this reason, only in a second time we see how the Cartesian coordinates can be treated with a simple limit.
+The complete 3D propagation is tackled, via the formalism of the S matrix. We finally extend calculations to Bloch/Floquet modes of periodical structures.
+}
+
+\section{Calculation of the transverse fields}
+We consider a structure composed by several sections, through which we want to propagate electromagnetic fields. {\em Each section has a refractive index distribution which is invariant along the propagation axis.}\marginpars{What is a structure and a section in \afmm .}
+The aim of this paragraph is rewrite curl Maxwell equations in such a way we obtain a (differential) propagation operator which can be applied to the transverse components of the electromagnetic fields in a given section. The developments are done in cylindrical coordinates, following the approach described in~\cite{bucci2012application}.
+When the components of the electric and magnetic fields $\vectorD{E}$ and $\vectorD{H}$ have an harmonic time dependance, developing time derivatives can be done in a simple way. First, we consider a structure whose cross section in the propagation direction does not change.
+Curl Maxwell equations can thus be written as follows, using the complex representation of $\vectorD{E}$ and $\vectorD{H}$ vectors, in an uncharged dielectric material:
+\begin{equation}
+\left \{
+\begin{aligned}
+\nabla \wedge \vectorD{E} &=& -\junit \omega \dbar{\mu} \vectorD{H}
+\\
+\nabla \wedge \vectorD{H} &=& \junit \omega \dbar{\epsilon} \vectorD{E}
+\end{aligned}
+\right.
+\label{eq_curl_max}
+\end{equation}
+where $\omega=2\pi f$ and $f$ is the time frequency of the fields,  $\dbar{\epsilon}$ and $\dbar{\mu}$ are respectively the tensors of permittivity and permeability. For simplicity we consider them both diagonal in our analysis, and spatially varying inside the region of interest.
+\begin{figure}
+\centering
+\input{cyl_coordinates.pgf}
+\caption{The cylindrical coordinate system.}
+\label{fig_cyl_coordinates}
+\end{figure}
+Considering the cylindrical coordinate system shown in figure~\ref{fig_cyl_coordinates}, we consider that the propagation axis is $\theta$. Separating the $r$, $z$ and $\theta$ components in equations \eqref{eq_curl_max}, we obtain what follows:
+\begin{equation}
+\left \{
+\begin{aligned}
+\frac{1}{r}\frac{\partial E_z}{\partial \theta}-\frac{\partial E_\theta}{\partial z}&=&-\mu_r\junit\omega H_r
+\\
+\frac{\partial E_r}{\partial z}-\frac{\partial E_z}{\partial r}&=&-\mu_\theta\junit\omega H_\theta
+\\
+\frac{1}{r}\left(\frac{\partial(r E_\theta)}{\partial r}-\frac{\partial E_r}{\partial \theta}\right)&=&-\mu_z\junit\omega H_z
+\\
+\frac{1}{r}\frac{\partial H_z}{\partial \theta}-\frac{\partial H_\theta}{\partial z}&=&\epsilon_r\junit\omega E_r
+\\
+\frac{\partial H_r}{\partial z}-\frac{\partial H_z}{\partial r}&=&\epsilon_\theta\junit\omega E_\theta
+\\
+\frac{1}{r}\left(\frac{\partial(r H_\theta)}{\partial r}-\frac{\partial H_r}{\partial \theta}\right)&=&\epsilon_z\junit\omega E_z
+\end{aligned}
+\right.
+\label{eq_fields_components}
+\end{equation}
+
+Each one of the sections composing the structure must have the bending radius and the transverse distribution of the refractive index invariant along the propagation axis $\theta$. We notice that the radial coordinate $r$ appears in equations \eqref{eq_fields_components} and it is a spatially variable term. This implies that it should be treated in the same way as the other spatially variable terms, such as the permeabilities and permittivities.
+
+The terms $H_\theta$ and $E_\theta$ can be extracted from equations \eqref{eq_fields_components}  and injected again in the remaining expressions, to obtain a system of only 4 equations instead of 6, which describe the behaviour of the fields components transverse to the propagation axis ($E_r$, $E_z$, $H_r$ and $H_z$). Those equations constitute a propagation operator giving the evolution of the fields while propagation. 
+Regrouping in the first member the derivatives calculated with respect to $\theta$ yields the following equations:
+\begin{equation}
+\left \{
+\begin{aligned}
+\frac{\partial E_r}{\partial \theta} &=& \frac{\partial}{\partial r}\left [ \frac{r}{\junit \omega \epsilon_\theta}\left(\frac{\partial H_r}{\partial z} - \frac{\partial H_z}{\partial r}\right)\right]+\junit\omega\mu_z r H_z 
+\\
+\frac{\partial E_z}{\partial \theta} &=& r\frac{\partial}{\partial z}\left [ \frac{1}{\junit \omega \epsilon_\theta}\left(\frac{\partial H_r}{\partial z} - \frac{\partial H_z}{\partial r}\right)\right]-\junit\omega\mu_r r H_r 
+\\
+\frac{\partial H_r}{\partial \theta} &=& \frac{\partial}{\partial r}\left [ -\frac{r}{\junit \omega \mu_\theta}\left(\frac{\partial E_r}{\partial z} - \frac{\partial E_z}{\partial r}\right)\right]-\junit\omega\epsilon_z r E_z
+\\
+\frac{\partial H_z}{\partial \theta} &=& r\frac{\partial}{\partial z}\left [ -\frac{1}{\junit \omega \mu_\theta}\left(\frac{\partial E_r}{\partial z} - \frac{\partial E_z}{\partial r}\right)\right]+\junit\omega\epsilon_r r E_r.
+\end{aligned}
+\right. 
+\label{eq_propag_cyl}
+\end{equation}
+Those equations may be used in this form, or alternatively some derivatives may be developed further, in this way:
+{\footnotesize
+\begin{equation}
+\left \{
+\begin{aligned}
+\frac{\partial E_r}{\partial \theta} = \junit \omega\mu_z r H_z + \frac{1}{\junit \omega}\frac{1}{\epsilon_\theta}\left (\frac{\partial H_r}{\partial z}-\frac{\partial H_z}{\partial r}\right)+\frac{1}{\junit \omega}r\frac{\partial}{\partial r}\left (\frac{1}{\epsilon_\theta}\right)\left(\frac{\partial H_r}{\partial z}-\frac{\partial H_z}{\partial r}\right)+\\
++\frac{1}{\junit \omega}\frac{r}{\epsilon_\theta}\left( \frac{\partial^2 H_r}{\partial r\partial z}-\frac{\partial^2 H_z}{\partial r^2}\right)\\
+%
+\frac{\partial E_z}{\partial \theta} = -\junit \omega\mu_r r H_r + \frac{1}{\junit \omega}r \frac{\partial}{\partial z}\left(\frac{1}{\epsilon_\theta}\right)\left (\frac{\partial H_r}{\partial z}-\frac{\partial H_z}{\partial r}\right)+\frac{1}{\junit \omega}r \frac{1}{\epsilon_\theta}\left( \frac{\partial^2 H_r}{\partial z^2}-\frac{\partial^2 H_z}{\partial z\partial r}\right)\\
+%
+\frac{\partial H_r}{\partial \theta} =- \junit \omega\epsilon_z r E_z - \frac{1}{\junit \omega}\frac{1}{\mu_\theta}\left (\frac{\partial E_r}{\partial z}-\frac{\partial E_z}{\partial r}\right)-\frac{1}{\junit \omega}r\frac{\partial}{\partial r}\left (\frac{1}{\mu_\theta}\right)\left(\frac{\partial E_r}{\partial z}-\frac{\partial E_z}{\partial r}\right)+\\
+-\frac{1}{\junit \omega}\frac{r}{\mu_\theta}\left( \frac{\partial^2 E_r}{\partial r\partial z}-\frac{\partial^2 E_z}{\partial r^2}\right)\\
+%
+\frac{\partial H_z}{\partial \theta} = -\junit \omega\epsilon_r r E_r - \frac{1}{\junit \omega}r \frac{\partial}{\partial z}\left(\frac{1}{\mu_\theta}\right)\left (\frac{\partial E_r}{\partial z}-\frac{\partial E_z}{\partial r}\right)-\frac{1}{\junit \omega}r \frac{1}{\mu_\theta}\left( \frac{\partial^2 E_r}{\partial z^2}-\frac{\partial^2 E_z}{\partial z\partial r}\right)
+\end{aligned}
+\right.
+\label{eq_propag_cyl_dev}
+\end{equation}}
+
+In this context, a propagation mode might be seen as a configuration of the electromagnetic field propagating without changing its shape, but {\em it can also be seen as an eigenfunction of the differential operator described by equations~\eqref{eq_propag_cyl}}. \marginpars{What is a mode in \afmm .} We try to represent fields via a base constituted by eigenfunctions, whose propagation is therefore relatively simple to being taken into account. Before doing that, we must represent all fields and spatially varying terms in a convenient way to perform algebraic calculations instead of calculating space derivatives. This can be done by exploiting the properties of the Fourier series, as it is described in the next paragraphs. 
+
+\section{Fourier series field development}
+\label{sec_periodization}
+\subsection{Developing terms}
+\begin{figure}
+\centering
+\footnotesize
+\input{periodization.pgf}
+\caption{The periodization technique applied to develop the permittivity and permeability in Fourier series.}
+\label{fig_periodisation}
+\end{figure}
+\begin{figure}
+\centering
+\input{periodicized_r.pgf}
+\caption{The effect of the periodization on the radius: it becomes a sawtooth.}
+\label{fig_periodicized_r}
+\end{figure}
+
+The Fourier Modal Method is based on the {\em application of a periodization of the transverse permeability, permittivity and field distributions, by replicating a chosen calculation window, whose span is $T_r$ and $T_z$ in the $r$ and $z$ directions.} \marginpars{Fourier series and \afmm .}
+This is represented schematically in figure~\ref{fig_periodisation} and allows to describe each spatially varying term by means of Fourier series.
+Of course, this may give an infinite number of terms to be considered for solving equation~\eqref{eq_propag_cyl}.
+
+By taking into account only $2S_r-1$ complex Fourier coefficients in the $r$ axis and $2S_z-1$ in the $z$ axis, the expansion is truncated to a finite number of harmonics. \marginpars{Truncation.}
+Taking for example $\epsilon_r$, the $r$ component of the permittivity, we can write:
+\begin{equation}
+\epsilon_r(r,z) = \sum_{m=-(S_r-1)}^{S_r-1} \sum_{n=-(S_z-1)}^{S_z-1} P_{m,n}\e^{\junit(m\nu_r r+ n\nu_z z)},
+\label{eq_epsilon_series}
+\end{equation}
+where $\nu_r=2\pi / T_r$ is the fundamental spatial frequency on the $r$ axis, $\nu_z=2\pi / T_z$ is the fundamental space frequency on the $z$ axis and $P_{m,n}$ is the $m$-order along $r$ and $n$-order along $z$ Fourier coefficient of the $\epsilon_r$ expansion.
+
+In the same way, by developing in complex Fourier series all space variable terms of equations~\eqref{eq_propag_cyl}, over the periods $T_r=1/\nu_r$ and $T_z=1/\nu_z$:
+\begin{equation}
+E_r=\sum_{a_r}\sum_{a_z} A_{a_r,a_z} \e^{\junit (a_r \nu_r r+a_z \nu_z z)}
+\end{equation}
+\begin{equation}
+E_z=\sum_{b_r}\sum_{b_z} B_{b_r,b_z} \e^{\junit (b_r \nu_r r+b_z \nu_z z)}
+\end{equation}
+\begin{equation}
+H_r=\sum_{c_r}\sum_{c_z} C_{c_r,c_z} \e^{\junit (c_r \nu_r r+c_z \nu_z z)}
+\label{eq_fourier_dev_hz}
+\end{equation}
+\begin{equation}
+H_z=\sum_{d_r}\sum_{d_z} D_{d_r,d_z} \e^{\junit (d_r \nu_r r+d_z \nu_z z)}
+\end{equation}
+%
+\begin{equation}
+\mu_r=\sum_{m_r}\sum_{m_z} M_{m_r,m_z} \e^{\junit (m_r \nu_r r+m_z \nu_z z)}
+\end{equation}
+\begin{equation}
+\mu_z=\sum_{n_r}\sum_{n_z} N_{n_r,n_z} \e^{\junit (n_r \nu_r r+n_z \nu_z z)}
+\end{equation}
+\begin{equation}
+\frac{1}{\mu_\theta}=\sum_{o_r}\sum_{o_z} O_{o_r,o_z} \e^{\junit (o_r \nu_r r+o_z \nu_z z)}
+\end{equation}
+%
+\begin{equation}
+\epsilon_r=\sum_{p_r}\sum_{p_z} P_{p_r,p_z} \e^{\junit (p_r \nu_r r+p_z \nu_z z)}
+\end{equation}
+\begin{equation}
+\epsilon_z=\sum_{q_r}\sum_{q_z} Q_{q_r,q_z} \e^{\junit (q_r \nu_r r+q_z \nu_z z)}
+\end{equation}
+\begin{equation}
+\frac{1}{\epsilon_\theta}=\sum_{r_r}\sum_{r_z} R_{r_r,r_z} \e^{\junit (r_r \nu_r r+r_z \nu_z z)}
+\end{equation}
+Here, symbols $A$, $B$, $C$ and $D$ represent the complex amplitudes of the transverse electric and magnetic fields, while $M$, $N$, $O$, $P$, $Q$ and $R$ are related to the permeability and permittivity. 
+
+Thanks to the artificial periodisation, the evolution of the radial coordinate $r\ped{p}(r)$ appears to be a sawtooth wave, as shown in figure~\ref{fig_periodicized_r}. Its Fourier $m$-th order term $r_m$ can hence be analytically calculated as follows:
+\begin{equation}
+r_m=
+\begin{cases}
+r_0 & \text{if $m=0$,}\\
+\junit\frac{T_r}{2\pi m} & \text{if $m\ne 0$.}
+\end{cases}
+\label{eq_radius_develop}
+\end{equation}
+where $r_0$ and $T_r$ are respectively the bending radius of the centre and the total size in $r$ of the calculation window. 
+
+
+Considering as usual $\theta$ as propagation axis, the modal fields have a  dependance on $\theta$ on the form $\exp ( -\junit \beta\ped{s} \theta)$, where $\beta\ped{s} $ is unknown and should be determined. This is advantageous to calculate all the partial derivatives with respect to $\theta$ appearing in equation~\ref{eq_propag_cyl}. Equations~\eqref{eq_propag_cyl} being linear, it is possible to exploit that with Fourier series, and translate equations term by term into matrix operations in the Fourier space. The goal of the following paragraphs will be to write equations~\eqref{eq_propag_cyl} as an operator applicable to the fields as a matrix vector multiplication.
+
+\subsection{Convolutions}
+\label{subsec_convolution}
+In equations~\eqref{eq_propag_cyl}, written in the spatial domain, some terms  contain a product between space-varying quantities. If we consider the last part of the very first equation:
+\begin{equation}
+\mathrm{j}\omega \mu_z r H_z,
+\label{eq_space_product_term}
+\end{equation}
+the $\mathrm{j}\omega$ does not pose any problem, since it is a constant (the wavelength at which the calculation is done, hence $\omega$, is chosen at the very beginning). More complex is the product between $\mu$, $r$ and $H_z$, since all those terms are space-varying. The well-known convolution theorem states that they must be handled with convolutions in the Fourier domain. Hence, the problem is knowing how to translate that into convenient matrix operations.
+
+Let us in particular focus on how the product $r$ times $H_z$ may be written. The first thing to do is calculate the Fourier coefficients for $r$, from equation~\eqref{eq_radius_develop}. Then, we arrange them in a block-Toeplitz matrix which we will call $S\ped{T}$, constructed with the rules shown in equations~\eqref{eq_block_toeplitz1} and \eqref{eq_block_toeplitz2}, as described in paragraph~\ref{sec_toeplitz}. At the same time, the harmonics $D_{dr,dz}$ constituting the $z$ component of the magnetic field (still unknown, for the moment) are arranged\footnote{Packing them into a usable column vector is a little tricky. Details are given in paragraph~\ref{sec_toeplitz} in Appendix~\ref{chap_matrix_examples}.} in a column vector which will be called $[H_z]$.
+It can be shown that the convolution corresponding to the two last terms of equation~\eqref{eq_space_product_term} is written as follows in the Fourier domain:
+\begin{equation}
+S\ped{T}[H_z]
+\end{equation}
+More complicated is now to consider the double convolution resulting by the presence of a $\mu_z$. If possible, the product $\mu_z r$ can be calculated in the spatial domain, before taking the Fourier transform of the result. In some cases, however, an approximate result of the convolution can be conveniently written directly in the Fourier domain, in the following way:
+\begin{equation}
+\junit \omega N\ped{T}S\ped{T}[H_x].
+\end{equation}
+In other words, the convolution between coefficients for representing $\mu_z$ and $r$ is translated (quite brutally, indeed, as this is only asymptotically true \cite{gray2006toeplitz}) into a product of Block-Toeplitz matrix. If this strategy is adopted, the matrix product being non commutative, there is not an unique way to write matrix order. For this and other more subtile reasons presented below, \afmm\ offers a choice of different strategies via the \lstinline!matdev! command.
+
+\subsection{Derivatives}
+\label{subsec_derivatives}
+The reason for which each space-varying term has been represented as a Fourier series is that derivatives are translated into a purely algebrical operator.
+Let us consider the following derivative:
+\begin{equation}
+\frac{\partial H_r}{\partial z},
+\end{equation}
+which can be thought as a differential operator applied to the $H_z$ component of the field. In Fourier developments, it is well known that taking the derivatives translates into a multiplication with a frequency term. If $D_{d_r, d_z}$ is the term corresponding to the $d_r$ harmonics in $r$ and $d_z$ harmonics in $z$ (see equation~\eqref{eq_fourier_dev_hz}), the corresponding term of the $r$ derivative of $H_z$ is $\junit d_r\nu_r D_{d_r, d_z}$.
+The situation becomes more intricate when dealing with terms which are more complicated.
+
+Two different strategies are applied in \afmm :
+
+\begin{itemize}
+\item The one which is a legacy of the beginnings consists in preparing appropriate bloc-matrices containing the derivative terms ($ d_r\nu_r$) and perform Hadamard multiplications (term by term, not line by column) with the other terms needing to be derived. Considering the propagation operator in the developed form, from equation \eqref{eq_propag_cyl_dev}, we have terms such as the following:
+\begin{equation}
+\frac{1}{\junit\omega} \frac{\partial}{\partial r}\left(\frac{1}{\epsilon_\theta}\right)\frac{\partial H_r}{\partial z}.
+\end{equation}
+A convolution is represented between the terms coming from the development of $r$, the derivative of $\epsilon_\theta^{-1}$ and the $z$ derivative of $H_r$. In matrix form, this may be written with a modified-Toeplitz matrix formalism, as follows\footnote{The modified-Toeplitz formalism has been invented during the development of \afmm\ and it is used in \cite{bucci2010study}. No one seems to understand it and it is undeniably heavy. The description is still in this document, because of the traces it has left in the source code. In the future, we will probably work more with the compact matrix notation which is commonly found in the literature\dots}:
+\begin{equation}
+-\frac{1}{\junit\omega}R_{\mathrm{T},r}^{(z)}[H_z].
+\end{equation}
+The minus sign comes from the two multiplications by the imaginary unit $\junit$ coming out from the derivatives. All terms can be written using this notation. For example:
+\begin{equation}
+\frac{1}{\junit\omega\epsilon_\theta}\frac{\partial^2 H_r}{\partial z^2} \leftrightarrow   -\frac{1}{\junit\omega}R_{\mathrm{T}}^{(zz)}[H_r],
+\end{equation}
+\begin{equation}
+-\frac{1}{\junit\omega}r \frac{\partial}{\partial z}\left(\frac{1}{\mu_\theta}\right)\frac{\partial E_z}{\partial r} \leftrightarrow   \frac{1}{\junit\omega}S\ped{T}O_{\mathrm{T},r}^{(r)}[E_z].
+\end{equation}
+Paragraph \ref{sec_block_toeplitz_examples} gives some details about how the modified bloc-Toeplitz matrices are constructed.
+\item The second possibility, much more widespread in the literature, as well as probably cleaner yet equivalent, is to observe that the matrix times vector multiplication leads to a derivative representation, if the matrix contains only appropriate terms such as $ d_r\nu_r$ in its diagonal. Most of the times, this is applied to equations~\eqref{eq_propag_cyl}. Matrices constructed in such a way ($K_r$ stands for a $r$-derivative, $K_z$ for a $z$-derivative) can be seen as operator which derive what it is put at their right. Things are probably clearer with an example of how a term in equation~\eqref{eq_propag_cyl} can be translated:
+\begin{equation}
+\frac{\partial}{\partial r}\frac{r}{\epsilon_\theta}\frac{\partial H_r}{\partial z}  \leftrightarrow K_r S\ped{T}R\ped{T} K_z [H_r]
+\end{equation}
+\end{itemize}
+\subsection{A naive example}
+Considering the development rules described in paragraphs \ref{subsec_convolution} and \ref{subsec_derivatives}, we give an example of how equations~\eqref{eq_propag_cyl} can be written with Fourier coefficients in a matrix form, using the second strategy for developing derivatives. We will see in a second time that those developments are a little bit naive, but they help understanding the general picture. Proceeding mechanically, we can write:
+\begin{equation}
+\left \{
+\begin{aligned}
+\frac{\partial}{\partial\theta}[E_r]=\frac{1}{\junit\omega}\junit K_rS\ped{T}R\ped{T}(\junit K_z[H_r]-\junit K_r[H_z]) + \junit\omega N\ped{T} S\ped{T}[H_z]\\
+%
+\frac{\partial}{\partial\theta}[E_z]=\frac{1}{\junit\omega}S\ped{T}\junit K_zR\ped{T}(\junit K_z[H_r]-\junit K_r[H_z]) - \junit\omega M\ped{T} S\ped{T}[H_r]\\
+%
+\frac{\partial}{\partial\theta}[H_r]=-\frac{1}{\junit\omega}\junit K_rS\ped{T}O\ped{T}(\junit K_z[E_r]-\junit K_r[E_z]) - \junit\omega Q\ped{T} S\ped{T}[H_r]\\
+%
+\frac{\partial}{\partial\theta}[H_z]=-\frac{1}{\junit\omega}S\ped{T}\junit K_zO\ped{T}(\junit K_z[E_r]-\junit K_r[E_z]) + \junit\omega R\ped{T} S\ped{T}[H_r]\\
+\end{aligned}
+\right .
+\label{eq_naive_direct_developments}
+\end{equation}
+Apart from the introduction of coordinate-transform PML's, this development corresponds to the one set by the \ \lstinline!matdev nd! command in \afmm 's jargon.
+\subsection{Eigenvalues and eigenvectors as propagation modes}
+In equations~\eqref{eq_naive_direct_developments}, a derivative towards the $\theta$ propagation axis still appears. If the field configuration is the one corresponding to a particular propagation mode, the derivative becomes just a phase term:
+\begin{equation}
+\frac{\partial}{\partial \theta} \leftrightarrow -\junit\beta\ped{s}
+\end{equation}
+It is now possible to rewrite equations~\eqref{eq_propag_cyl} using the Fourier developments in a compact matrix notation, as follows:
+\begin{equation}
+\frac{\omega \beta\ped{s}}{r_0}
+\begin{pmatrix}
+[E_r] \\
+[E_z] \\
+[H_r] \\
+[H_z]
+\end{pmatrix}
+=
+A_\theta
+\begin{pmatrix}
+[E_r] \\
+[E_z] \\
+[H_r] \\
+[H_z]
+\end{pmatrix}
+\label{eq_operator_a}
+\end{equation}
+where each vector $[E_r]$, $[E_z]$, $[H_r]$ and $[H_z]$ is formed by unrolling the $r$ and $z$ space harmonics in order to obtain a column vector from $S_r S_z$ coefficients. The matrix $A_\theta$ can be seen as an algebraic operator which can be written:
+\begin{equation}
+A_\theta = 
+\begin{pmatrix}
+0		&	0		&	X_1		& 	X_2 \\
+0		&	0		&	X_3		& 	X_4 \\
+Y_1		&	Y_2		&	0		&	0	\\
+Y_3		&	Y_4		&	0		&	0
+\end{pmatrix}
+\end{equation}
+In fact, all space derivatives become algebraic operations which might be represented using the standard matrix product. As seen previously, there is not an univoque way of writing $X_1$\dots\ $X_4$ and $Y_1$\dots\ $Y_4$ and \afmm\ offers several different strategies which can be chosen by the user. However, me we just have to know that \emph{the matrix $A_\theta$ can be written}. In paragraph~\ref{sec_conv}, we will see the details of alternative developments.
+
+
+In fact, the problem of finding the modes of the waveguide is thus strongly related to the search of eigenvectors and eigenvalues of $\dbar{A}$. This is computationally intensive. In order to reduce the size of the matrices, it can be convenient to solve the equivalent second order problem, as follows:
+\begin{equation}
+\label{eq_propagation_matrix_2}
+\frac{\omega^2\beta_s^2}{r_0^2}
+\begin{pmatrix}
+[E_r] \\
+[E_z]
+\end{pmatrix}
+= \dbar{B}
+\begin{pmatrix}
+[E_r] \\
+[E_z]
+\end{pmatrix}
+\end{equation}
+where $\dbar{B}$ is the following block matrix:
+\begin{equation}
+\dbar{B}=
+\begin{pmatrix}
+\dbar{X}_1\dbar{Y}_1+\dbar{X}_2\dbar{Y}_3 & \dbar{X}_1\dbar{Y}_2+\dbar{X}_2\dbar{Y}_4 \\
+\dbar{X}_3\dbar{Y}_1+\dbar{X}_4\dbar{Y}_3 & \dbar{X}_3\dbar{Y}_2+\dbar{X}_4\dbar{Y}_4 
+\end{pmatrix}
+\label{eq_B_matrix_def}
+\end{equation}
+Working on the second order problem implies a more compact representation of the propagation operator, using the $\dbar{B}$ matrix.
+Finding eigenvalues and eigenvectors of that matrix is considerably faster than for the $\dbar{A}$ matrix. Furthermore, this technique allows to reduce the memory occupation of the matrices, which is one of the main practical limitations to the number of spatial harmonics which can be taken into account.
+
+\section{Perfectly Matched Layers (PML)}
+\label{sec_pml}
+A practical consequence of the periodisation described in section~\ref{sec_periodization} is that we cannot consider each single structure comprised in the calculation window as completely independent to its neighbouring copies.
+For this reason, the introduction of Periodically Matched Layers has been proposed in order to reduce (or ideally eliminate) the influence of each repetition of the calculation window.
+
+We will describe two different kinds of PML's:
+\begin{itemize}
+\item The first one implies the definition of an anisotropic material able to 
+perfectly (or quite so\dots) absorb field. 
+\item The second one makes use of a coordinate transform eventually coupled with an absorbing layer, mapping the finite calculation region into an infinite domain.
+\end{itemize}
+
+\subsection{Anisotropic PMLs}
+\label{subsec_pml_anisotropic}
+
+\begin{figure}
+\centering
+%\includegraphics[width=.6\textwidth]{structure_pml}
+\input{pml.pgf}
+\caption{A representation of the calculation window completed with perfectly mathed layers, as proposed in \cite{silberstein2001ugt}.}
+\label{fig_structure_pml}
+\end{figure}
+
+The strategy adopted in the mode solver is to introduce layers of a certain thickness of a lossy and anisotropic material, in order to absorb as much as possible the radiated fields\cite{silberstein2001ugt}. Those layers are placed at the borders of the calculation window, as it can be seen in figure~\ref{fig_structure_pml}
+The structure of the PMLs differs depending on their position. There are three different types of PMLs:
+\begin{itemize}
+\item{PMLs of type 1, placed parallel to the $y$ direction, having a thickness of $w\ped{px}$ and the following relative permeability and permittivity tensors:
+\begin{equation}
+\dbar{\epsilon_r}=\dbar{\mu_r}=
+\begin{pmatrix}
+1/\alpha & 0 & 0 \\
+0 & \alpha & 0 \\
+0 & 0 & \alpha
+\end{pmatrix}
+\end{equation}
+}
+\item{PMLs of type 2, placed parallel to the $x$ direction, having a thickness of $w\ped{py}$ and the following relative permeability and permittivity tensors:
+\begin{equation}
+\dbar{\epsilon_r}=\dbar{\mu_r}=
+\begin{pmatrix}
+\alpha & 0 & 0 \\
+0 & 1/\alpha & 0 \\
+0 & 0 & \alpha
+\end{pmatrix}
+\end{equation}
+}
+\item{PMLs placed on the corners, with relative permeability and permittivity tensors:
+\begin{equation}
+\dbar{\epsilon_r}=\dbar{\mu_r}=
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & \alpha^2
+\end{pmatrix}
+\end{equation}
+}
+\end{itemize}
+Each PML layer thus depends on the complex parameter $\alpha$ which should be empirically chosen in order to achieve a good convergence speed.
+
+\subsection{Coordinate transform PMLs}
+\label{subsec_pml_transform}
+Introduced by S.J. Hewlett and F. Ladouceur \cite{hewlett1995fdm} and extended by J.P. Hugonin and P. Lalanne \cite{hugonin2005pml, hugonin2005fourier} for the case of a vectorial mode solver, the idea consists in using a nonlinear coordinate transform in order to map the finite calculation window in an infinite region.
+The main advantages of this technique consists in achieving a better extinction of the field far from the waveguide, thus allowing to obtain useful results even with a smaller calculation window in comparison with the anisotropic PMLs as described in \ref{subsec_pml_anisotropic}.
+
+\newcommand{\sinc}{\mathrm{sinc}}
+Using the same mapping described in detail by Hugonin and Lalanne in \cite{hugonin2005pml}, for the $r$ axis we might define a matrix $F$, which is a block-Toeplitz matrix formed by the Fourier coefficients given by:
+\begin{equation}
+\begin{aligned}
+f_m=\delta_m-\frac{q_r}{2 T_r}\left [\left (1+\frac{\gamma}{4}\right ) \sinc{\frac{mq_r}{T_r}}+\frac{1}{2}\sinc{\frac{mq_r}{T_r}-1}\right .\\
+\left . +\frac{1}{2}\sinc{\frac{mq_r}{T_r}+1}-\frac{\gamma}{8}\sinc{\frac{mq_r}{T_r}-2}-\frac{\gamma}{8}\sinc{\frac{mq_r}{T_r}+2}\right ],
+\end{aligned}
+\label{eq_transf_coeff}
+\end{equation}
+where $m$ is the order of the Fourier coefficient to be calculated, $\gamma$ is a complex parameter, $q_r$ is the total thickness of the PML in the $r$ axis, $\delta_m$ is equal to $1$ if $m=0$ and to zero otherwise and $\sinc{x}=\sin(x)/x$. In an equivalent way, we can define a $G$ matrix built with the same coefficients \eqref{eq_transf_coeff}, but transposed on the $z$ axis.
+
+\section{Convergence and discontinuities}
+\label{sec_conv}
+Several strategies of writing the blocks $\dbar{X}_1$\dots\ $\dbar{X}_4$ and $\dbar{Y}_1$\dots\ $\dbar{Y}_4$ exist, showing different convergence behaviours. Two problems must be taken into account. The first one is how to develop derivatives and convolutions in the truncated case. As seen in paragraph~\ref{subsec_derivatives}, the very first versions of \afmm\ employed a special notation, which we called modified Toeplix matrices. Successively, we adopted diagonal matrices $K_r$ and $K_z$ and ordinary matrix product. In our observations, no relevant difference could be pointed out in the convergence behaviour. The latter solution is however much simpler to be applied, leading to shorter and much more readable equations. On these, it is easier to implement what the solutions proposed below, improving the convergence in delicate cases.
+
+The second problem is more serious and concerns the way the convolution is done when there are permittivity discontinuities in the structure being calculated.
+In the literature, it is well known that a naive development of the equations  leads to an unsatisfactory convergence for modes in which the electric field is not continuous at interfaces (this is sometimes called a ``TM'' case).\marginpars{Discontinuity of TM fields.} This affects equations~\eqref{eq_naive_direct_developments}.
+While this has long been considered as a Gibbs effect intrinsic to the truncated Fourier series, in reality it has ben observed that a wise development of the matrix leads to a far better convergence \cite{lalanne1996hic, li1996ufs}.
+
+Let's consider the case of a discontinuous $\epsilon_z$ term in equation \eqref{eq_propag_cyl}. In this equation, $\epsilon_z$ appears to be multiplied times $E_z$ in the term $\junit\omega\epsilon_z r E_z$ of $\partial H_z/\partial \theta$. Let neglect here the $r$ term, considering that it is almost a constant in this context. The naive approach consists in writing matrices as follows (direct, or Laurent's rule):
+\begin{equation}
+\epsilon_zE_z \leftrightarrow Q\ped{T}[E_z]
+\label{eq_direct_rule}
+\end{equation}
+This yield to unsatisfactory convergence when $E_z$ is discontinuous. In fact, Maxwell equations require that $\epsilon_zE_z$ remains continuous. In this case, an alternative approach may be used (inverse, or Li's rule\cite{lalanne1996hic, li1996ufs}):
+\begin{equation}
+\epsilon_zE_z \leftrightarrow Q\ped{T,\mathrm{m1}}^{-1}[E_z]
+\label{eq_inverse_rule}
+\end{equation}
+where $Q\ped{T,\mathrm{m1}}$ is the Toeplitz matrix formed by the Fourier coefficients of $1/\epsilon_z$:
+\begin{equation}
+\frac{1}{\epsilon_z}=\sum_{q_r}\sum_{q_z} Q_{\mathrm{m1},q_r,q_z} \e^{\junit (q_r \nu_r r+q_z \nu_z z)}
+\end{equation}
+This formulation ensures that the term $\epsilon_zE_z$ is continuous, even if, taken separately, terms $\epsilon_z$ and $E_z$ are not.
+
+ \marginpars{Dealing with the orientation of discontinuities requires different developments via the ``matdev'' command}  While it can be shown that for an infinite number of Fourier coefficients the  formulations of equations \eqref{eq_direct_rule} and \eqref{eq_inverse_rule} are equivalent\cite{gray2006toeplitz}, the differences in the truncated case can be relevant.
+{\em There is not a unique way in which a problem can be formulated using the direct or inverse rule just presented. Therefore, the appropriate strategy must be chosen by the user on a case-by-case basis.}
+The calculation core of \afmm\ lets the user choose which matrix development should be used, in order that the convergence is optimum for the particular problem treated. In the following paragraphs, we describe the development strategy followed for the matrices. The title of the paragraphs reflects the terminology used by the \afmm\ commands. Matdev an, af and be reflects a study which has been done to determine whether the multiplication order of the matrix when taking into account the PML's yielded different results\footnote{I could not find a remarkable difference in the convergence rates. The big difference comes instead from the application of the Li's rule.}.
+\subsection{Matdev an (obsolete)}
+\label{subsec_matdev_an}
+
+This development strategy indicates a multiplication after matrix construction. This was the standard in in \afmm\ up to version 1.2.3. 
+A modified-Toeplitz matrix notation is used in the developments in order to calculate them in the Fourier space. For more information about the modified-Toeplitz notation, see paragraph~\ref{subsec_derivatives}. No attempt at coding the Li's rule has been done.
+The matrix definitions are the following:
+
+\begin{equation}
+\begin{aligned}
+\dbar{X}_1 &=& \junit \dbar{R}_{\textrm{i},\indT}^{(z)}G-\dbar{S}_{\indT}\left( \dbar{R}_{\textrm{i},\indT r}^{-1,(z)}+\dbar{R}_{\textrm{i},\indT }^{-1,(rz)}\right)FG \\
+%
+\dbar{X}_2 &=&-\junit \dbar{R}_{\textrm{i},\indT}^{-1,(r)}F+
+\dbar{S}_{\indT}\left[ -\omega^2\dbar{N}_{\indT }+
+\left(\dbar{R}_{\textrm{i},\indT r}^{-1,(r)}+\dbar{R}_{\textrm{i},\indT }^{-1,(rr)}\right)F^2\right] \\
+%
+\dbar{X}_3 &=&\dbar{S}_{\indT}\left[ \omega^2\dbar{M}_{\indT }-
+\left(\dbar{R}_{\textrm{i},\indT z}^{-1,(z)}+
+\dbar{R}_{\textrm{i},\indT }^{-1,(zz)}\right)G^2\right] \\
+%
+\dbar{X}_4 &=& \dbar{S}_{\indT}\left(\dbar{R}_{\indT z}^{-1,(r)}+\dbar{R}_{\textrm{i},\indT }^{-1,(zr)}\right)FG \\
+%
+\dbar{Y}_1 &=& -\junit \dbar{O}_{\indT}^{(z)}G+\dbar{S}_{\indT}\left( \dbar{O}_{\indT r}^{(z)}+\dbar{O}_{\indT }^{(rz)}\right)FG \\
+%
+\dbar{Y}_2 &=&\junit \dbar{O}_{\indT}^{(r)}F+
+\dbar{S}_{\indT}\left[ \omega^2\dbar{Q}_{\indT }-
+\left(\dbar{O}_{\indT r}^{(r)}+
+\dbar{O}_{\indT }^{(rr)}\right)F^2\right] \\
+%
+\dbar{Y}_3 &=&\dbar{S}_{\indT}\left[-\omega^2\dbar{P}_{\indT }
++\left(\dbar{O}_{\indT z}^{(z)}+
+\dbar{O}_{\indT }^{(zz)}\right)G^2\right] \\
+%
+\dbar{Y}_4 &=& -\dbar{S}_{\indT}\left(\dbar{O}_{\indT z}^{(r)}+\dbar{O}_{\indT }^{(zr)}\right)FG \\
+\end{aligned}
+\label{eq_matdev_an}
+\end{equation} 
+
+The developments \lstinline!matdev an! are very similar to \lstinline!matdev af!, except that some minor tweaking and optimisations have been implemented in \lstinline!matdev af!.
+\subsection{Matdev af (obsolete)}
+\label{subsec_matdev_af}
+This development strategy indicates still a multiplication after construction as in \afmm\ versions up to 1.2.3. Second order derivatives are developed as equations \eqref{eq_propag_cyl_dev} and matrix developments are the same as those shown in equations~\eqref{eq_matdev_an}. No attempt at coding the Li's rule has been done. Some optimizations have been put in place and the global memory occupation should be more efficient than \lstinline!matdev an!.
+
+\subsection{Matdev be (obsolete)}
+\label{subsec_matdev_be}
+This development strategy indicates still a multiplication before construction as in \afmm\ versions up to 1.3. Second order derivatives are developed as equation \eqref{eq_propag_cyl_dev} and a modified-Toeplitz matrix notation is used in the developments in order to calculate them in the Fourier space. No attempt at coding the Li's rule has been done. For more information about the modified-Toeplitz notation, see paragraph~\ref{subsec_derivatives}.
+
+\begin{equation}
+\begin{aligned}
+\dbar{X}_1 &=& \junit G\dbar{R}_{\mathrm{i,T}}^{-1,(z)}- S_\indT FG\left(\dbar{R}_{\mathrm{i,T}r}^{-1,(z)}+ \dbar{R}_{\mathrm{i,T}}^{-1,(rz)}\right)\\
+%
+\dbar{X}_2 &=& -\junit F\dbar{R}_{\mathrm{i,T}}^{-1,(r)} + S_\indT\left[-\omega^2\dbar{N}+F^2 
+\left(\dbar{R}_{\mathrm{i,T}r}^{-1,(r)}+
+\dbar{R}_{\mathrm{i,T}}^{-1,(rr)}\right)\right]\\
+%
+\dbar{X}_3 &=& S_\indT\left[\omega^2\dbar{M}-G^2\left(\dbar{R}_{\mathrm{i,Tz}}^{-1,(z)}+
+\dbar{R}_{\mathrm{i,T}}^{-1,(zz)}\right)\right]\\
+%
+\dbar{X}_4 &=& S_\indT FG\left(\dbar{R}_{\mathrm{i,T}z}^{(r)}+\dbar{R}_{\mathrm{i,T}}^{(rz)}\right)\\
+%
+\dbar{Y}_1 &=& -\junit G\dbar{O}^{(z)}+S_\indT FG\left(\dbar{O}_{\indT r}^{(z)}+\dbar{O}_\indT^{(rz)}\right)\\
+%
+\dbar{Y}_2 &=& \junit F\dbar{O}^{(r)}+S_\indT\left[\omega^2\dbar{Q}_\indT-F^2\left(\dbar{O}_{\indT r}^{(r)}+
+\dbar{O}_\indT^{(rr)}\right)\right]\\
+%
+\dbar{Y}_3 &=& S_\indT\left[-\omega^2\dbar{P}_\indT+
+G^2\left(\dbar{O}_{\indT z}^{(z)}+
+\dbar{O}_{\indT }^{(zz)}\right)\right]\\
+%
+\dbar{Y}_4 &=& -S_\indT FG\left(\dbar{O}_{\indT z}^{(r)}+\dbar{O}_\indT^{(rz)}\right)
+\end{aligned}
+\end{equation}
+
+\subsection{Matdev nd}
+\label{subsec_matdev_nd}
+In this strategy, double derivative are not developed, thus less terms are present in the developments, done directly from equation \eqref{eq_propag_cyl}. Derivatives are calculated via the matrix multiplication by diagonal matrices $K_r$ and $K_z$. In the \lstinline!nd! strategy, {\em no form of inverse-rule formulation is used for improved convergence of the TM (discontinuous) field components}. On the other hand, this formulation is perfectly symmetrical: rotating the structure of multiples of 90 degrees does not yield different results.
+
+\begin{equation}
+\begin{aligned}
+\dbar{X}_1 &=& - FK_rS\ped{T}\dbar{R}_{\textrm{i},\indT}GK_z \\
+\dbar{X}_2 &=& FK_rS\ped{T}\dbar{R}_{\textrm{i},\indT}FK_r-\omega^2S\ped{T}\dbar{N} \\
+\dbar{X}_3 &=& - S\ped{T}GK_z\dbar{R}_{\textrm{i},\indT}GK_z +\omega^2S\ped{T}\dbar{M}\\
+\dbar{X}_4 &=& S\ped{T}GK_z\dbar{R}_{\textrm{i},\indT}FK_r\\
+\dbar{Y}_1 &=& FK_rS\ped{T}\dbar{O}GK_z\\
+\dbar{Y}_2 &=& -FK_rS\ped{T}\dbar{O}FK_r+\omega^2S\ped{T}\dbar{Q}\\
+\dbar{Y}_3 &=& S\ped{T}GK_z\dbar{O}GK_z-\omega^2S\ped{T}\dbar{P}\\
+\dbar{Y}_4 &=& -S\ped{T}FK_r\dbar{O}GK_z\\
+\end{aligned}
+\end{equation}
+
+\subsection{Matdev la (Lalanne-type developments)}
+\label{subsec_matdev_la}
+In this strategy, like the one described in paragraph~\ref{subsec_matdev_nd}, double derivative are not developed. Derivatives are calculated via the matrix multiplication by diagonal matrices $K_r$ and $K_z$. The issue concerning the poor convergence behaviour for discontinuous electric field components is tackled thanks to the strategy Philippe Lalanne developed in \cite{lalanne1997improved}. Even if it is not adapted to represent arbitrarily oriented index discontinuities, this approach is well fit to situations where an interface is either horizontal or vertical in the calculation window. A practical example (propagation modes in a slab waveguides) is discussed in paragraph~\ref{sec_guide1D}.
+\begin{equation}
+\begin{aligned}
+\dbar{X}_1 &=& - FK_rS\ped{T}\dbar{R}_{\textrm{i},\indT}GK_z \\
+\dbar{X}_2 &=& FK_rS\ped{T}\dbar{R}_{\textrm{i},\indT}FK_x-\omega^2S\ped{T}\dbar{N} \\
+\dbar{X}_3 &=& - S\ped{T}GK_z\dbar{R}_{\textrm{i},\indT}GK_z +\omega^2S\ped{T}\dbar{M}\\
+\dbar{X}_4 &=& S\ped{T}GK_z\dbar{R}_{\textrm{i},\indT}FK_r\\
+\dbar{Y}_1 &=& FK_rS\ped{T}\dbar{O}GK_z\\
+\dbar{Y}_2 &=& -FK_rS\ped{T}\dbar{O}FK_r+\omega^2S\ped{T}[\alpha\dbar{Q}+(1-\alpha )\dbar{Q_\textrm{m1}}]\\
+\dbar{Y}_3 &=& S\ped{T}GK_z\dbar{O}GK_z-\omega^2S\ped{T}[(1-\alpha )\dbar{P}+\alpha\dbar{P_\textrm{m1}}]\\
+\dbar{Y}_4 &=& -S\ped{T}FK_r\dbar{O}GK_z\\
+\end{aligned}
+\end{equation}
+The case of $\alpha=0$ works well when a single dielectric discontinuity is present parallel with the $x$ axis., whereas $\alpha=1$ works well when a single dielectric discontinuity is present parallel with the $y$ axis (see paragraph \ref{sec_guide1D}).
+
+\subsection{Matdev las (Lalanne developments, with symmetries)}
+\label{subsec_matdev_las}
+This development is equivalent to the one described in paragraph~\ref{subsec_matdev_la}, but the presence of symmetries is taken into account. The implementation of symmetries is available only in the Cartesian coordinates.
+
+
+\subsection{Matdev nf (Normal field)}
+\label{subsec_matdev_nf}
+This type of development let the user take into account a normal vector field which describe in each point of the section the orientation of those index discontinuities potentially leading to non continuous fields. So the correct development rule can be followed in each point of the section. 
+
+\begin{equation}
+\begin{aligned}
+\dbar{X}_1 &=& - FK_rS\ped{T}\dbar{R}_{\textrm{i},\indT}GK_z \\
+\dbar{X}_2 &=& FK_rS\ped{T}\dbar{R}_{\textrm{i},\indT}FK_x-\omega^2S\ped{T}\dbar{N} \\
+\dbar{X}_3 &=& - S\ped{T}GK_z\dbar{R}_{\textrm{i},\indT}GK_z +\omega^2S\ped{T}\dbar{M}\\
+\dbar{X}_4 &=& S\ped{T}GK_z\dbar{R}_{\textrm{i},\indT}FK_r\\
+\dbar{Y}_1 &=& FK_rS\ped{T}\dbar{O}GK_z-\omega^2\Delta_z[N_rN_z]S\ped{T}\\
+\dbar{Y}_2 &=& -FK_rS\ped{T}\dbar{O}FK_r+\omega^2S\ped{T}(\dbar{Q}-\Delta_z[N_z^2])\\
+\dbar{Y}_3 &=& S\ped{T}GK_z\dbar{O}GK_z-\omega^2S\ped{T}(\dbar{P}-\Delta_r[N_r^2])\\
+\dbar{Y}_4 &=& -S\ped{T}FK_r\dbar{O}GK_z+\omega^2\Delta_r[N_rN_z]S\ped{T}\\
+\end{aligned}
+\end{equation}
+where:
+
+\begin{equation}
+\Delta_r = \dbar{P}-\dbar{P_\textrm{m1}^{-1}}
+\end{equation}
+\begin{equation}
+\Delta_z = \dbar{Q}-\dbar{Q_\textrm{m1}^{-1}}
+\end{equation}
+and $N_r$ and $N_z$ are respectively the Toeplitz matrix of the $r$ and $z$ components of the normal vector field. Normal field developments offer a considerable freedom, coming with the additional cost of generating the normal field descriptions.
+Two additional files describing the $x$ and $y$ orientation of the normal field components must be specified to \afmm .
+
+\subsection{Matdev nfs (Normal-field development, with symmetries)}
+\label{subsec_matdev_nfs}
+This development is equivalent to the one described in paragraph~\ref{subsec_matdev_nf}, but the presence of symmetries is taken into account.
+The implementation of symmetries is available only in the Cartesian coordinates.
+
+\section{Characteristics of bent waveguides}
+While in the rectangular case it is straightforward to define an effective index, this definition in cylindrical coordinates is somewhat arbitrary. Our choice has been to normalise the propagation constant on $r_0$, the bending radius of the centre of the calculation window. The following definition of the effective index of bent waveguides is therefore adopted:
+\begin{equation}
+n\ped{eff}=\frac{\lambda\ped{s}}{r_0 k_0}
+\label{eq_neff_def}
+\end{equation}
+where $k_0=2\pi/\lambda$ is the wave number in the vacuum.
+
+A micro-ring resonator can be seen as a guide having a constant bending radius which makes an angle of $2\pi$. There is an interesting interpretation which relates the resonances of such a structure\cite{bucci2010study}. The real part of the complex effective index $n\ped{eff}$ calculated for a guided mode allows to calculate the azimuthal order $m$ at a given wavelength $\lambda$:
+\begin{equation}
+m=\frac{2\pi}{\lambda}r_0 \mathbb{R}\{n\ped{eff}\}
+\label{eq_order}
+\end{equation}
+where $r_0$ is the bending radius of the centre of our calculation window. If the azimuthal order $m$ is integer, there is a resonance at that particular wavelength. The quality factor $Q$ associated to this resonance can also be determined from the complex effective index:
+\begin{equation}
+Q=-\frac{\mathbb{R}\{n\ped{eff}\}}{2\mathbb{I}\{n\ped{eff}\}}
+\label{eq_quality}
+\end{equation}
+
+Since bent waveguides are intrinsically lossy, the ability of calculating correctly a quality coefficient depends strongly on the correct setup of the calculation window and the PMLs\cite{bucci2010study}.
+
+\section{From cylindrical to Cartesian coordinates}
+Rectangular coordinates can be seen as a particular case of cylindrical coordinates, when the bending radius is sufficiently high to be considered infinite. There is however a small price to pay: the rectangular coordinate system which can be obtained in this way is left-handed.
+It can thus be interesting to see if our physical intuition is confirmed by our mathematical developments. In other terms, we want to see how equations are transformed when the average bending radius $r_0$ tends towards infinity.
+
+Equation\eqref{eq_radius_develop} shows an interesting thing. If the average bending radius $r_0$ increases, only the very first term of the Fourier development changes. The higher order harmonics depend from the width of the calculation region, but not from $r_0$.
+Thanks to the Toeplitz matrix structure, this means that the principal diagonal of the matrix $\dbar{S}\ped{T}$ tends to become preponderant as $r_0$ increases. In other words, if we take a matrix norm, we can write:
+\begin{equation}
+\lim_{r_0\leftrightarrow +\infty} \frac{\left \| \dbar{S}\ped{T} - r_0 I \right \|}{r_0} = 0
+\label{eq_radius_limit}
+\end{equation}
+where $I$ is the unit matrix with the same size of $\dbar{S}\ped{T}$.
+These considerations allow us to substitute $\dbar{S}\ped{T}$ with $r_0 I$ into equations, when the radius $r_0$ is sufficiently large. By simplifying the $r_0$ which comes from our definition of effective index, we can write: 
+\begin{equation}
+\begin{aligned}
+\frac{\dbar{X}_1}{r_0} &=& \frac{\junit \dbar{R}_{\textrm{i},\indT}^{(z)}}{r_0}-\left( \dbar{R}_{\textrm{i},\indT r}^{-1,(z)}+\dbar{R}_{\textrm{i},\indT }^{-1,(rz)}\right) \\
+%
+\frac{\dbar{X}_2}{r_0} &=&-\frac{\junit \dbar{R}_{\textrm{i},\indT}^{-1,(r)}}{r_0}+\left( -\omega^2\dbar{N}_{\indT }+\dbar{R}_{\textrm{i},\indT r}^{-1,(r)}+\dbar{R}_{\textrm{i},\indT }^{-1,(rr)}\right) \\
+%
+\frac{\dbar{X}_3}{r_0} &=&  \omega^2\dbar{M}_{\indT }+\dbar{R}_{\textrm{i},\indT z}^{-1,(z)}-\dbar{R}_{\textrm{i},\indT }^{-1,(zz)} \\
+%
+\frac{\dbar{X}_4}{r_0} &=& \dbar{R}_{\indT z}^{-1,(r)}+\dbar{R}_{\textrm{i},\indT }^{-1,(zr)}\\
+%
+\frac{\dbar{Y}_1}{r_0} &=& -\frac{\junit \dbar{O}_{\indT}^{(z)}}{r_0}+\left( \dbar{O}_{\indT r}^{(z)}+\dbar{O}_{\indT }^{(rz)}\right) \\
+%
+\frac{\dbar{Y}_2}{r_0} &=&\frac{\junit \dbar{O}_{\indT}^{(r)}}{r_0}+\left( \omega^2\dbar{Q}_{\indT }-\dbar{O}_{\indT r}^{(r)}-\dbar{O}_{\indT }^{(rr)}\right) \\
+%
+\frac{\dbar{Y}_3}{r_0} &=& -\omega^2\dbar{P}_{\indT }+\dbar{O}_{\indT z}^{(z)}+\dbar{O}_{\indT }^{(zz)} \\
+%
+\frac{\dbar{Y}_4}{r_0} &=& \dbar{O}_{\indT z}^{(r)}+\dbar{O}_{\indT }^{(zr)}\\
+\end{aligned}
+\label{eq_circ_submatrices_infnradius}
+\end{equation} 
+By injecting these equations in the definition of the $\dbar{A}$ matrix, and by adopting the definition of effective index proposed in equation~\eqref{eq_neff_def}, the bending radius $r_0$ can be simplified. By the way, this is why we put a term $1/r_0$ in front of the first term of equation~\eqref{eq_operator_a}.
+If the radius $r_0$ is big enough, an analogy between axis in rectangular and cylindrical coordinates can be traced and it is shown in table~\ref{tab_corresp}. Unfortunately, the coordinate system which come out is left handed, hence the minus signs appearing.
+
+\begin{table}
+\centering
+\begin{tabular}{cc}
+\hline
+Cylindrical & Rectangular\\
+\hline
+$r$	& $-x$ \\ 
+$z$ & $y$ \\
+$\theta$ & $z$\\
+\hline
+\end{tabular}
+\caption{Correspondance between the axis between the cylindrical and a right-hand rectangular coordinates systems.}
+\label{tab_corresp}
+\end{table}
+
+\section{Implementation of symmetries}
+Maxwell equations have a certain degree of symmetry conservation. The case which is interesting in our context is to calculate electromagnetic field propagation into a structure whose cross section is symmetrical. In fact, if the excitation is symmetrical (respectively anti-symmetrical), the resulting field components will be symmetrical (respectively anti-symmetrical). Dealing only with these fields is advantageous, since their spatial Fourier transform can truncated to a certain frequency contains less terms. We develop here the theoretical background of the symmetry implementation in \afmm\, as done by \cite{bischoff2010formulation}.
+\subsection{Symmetry and anti-symmetry}
+This section is yet to be completed\dots
+
+A detailed description of the implementation of symmetries can be found in \cite{michallon2015eoao}.
+
+% Actually, I should check what follows!!!
+%If we consider a generic term $A^{(\mathrm{e})}$ with an even symmetry towards the $x$ axis, we can write (for simplicity, only a 1D Fourier expansion is written):
+%\begin{equation}
+%\begin{aligned}
+%A^{(\mathrm{e})}&=&\sum_{a_x=-N}^{N}&A_{a_x}&\exp (\junit a_x \nu_x x) &\\
+%	&=&A_0+\sum_{a_x=1}^{N}&A_{a_x}& [\exp (\junit a_x \nu_x x)&+\exp (-\junit a_x \nu_x x) ].
+%\end{aligned}
+%\label{eq_symmetry}
+%\end{equation}
+%If $A^{(\mathrm{o})}$ is an anti-symmetrical term, we can write:
+%\begin{equation}
+%\begin{aligned}
+%A^{(\mathrm{o})}&=&\sum_{a_x=-N}^{N}&A_{a_x}&\exp (\junit a_x \nu_x x)& \\
+%	&=&A_0+\sum_{a_x=1}^{N}&A_{a_x}& [\exp (\junit a_x \nu_x x)&-\exp (-\junit a_x \nu_x x) ].
+%\end{aligned}
+%\label{eq_antisymmetry}
+%\end{equation}
+%Let's consider a convolution in the general case, and let's separate terms coming from positive and negative frequencies, as well as the constant term. Calculating $C_i$ where $-N\leq i \geq N$ we get:
+%\begin{equation}
+%\begin{aligned}
+%C_i&=&\sum_{a_x=-N}^{N}B_{i-a_x}A_{a_x}&\\
+%&=&\sum_{a_x=1}^{N}B_{i-a_x}A_{a_x}&+\sum_{a_x=-N}^{-1}B_{i-a_x}A_{a_x}+B_{i}A_{0}.
+%\end{aligned}
+%\end{equation}
+
+%Continuing on the same direction, we can separate $C_i$ into several contributions, as follows:
+%\begin{equation}
+%\begin{aligned}
+%C_j^+&=&B_{j}A_{0}+\sum_{a_x=1}^{N}(B_{j-a_x}+B_{j+a_x})A_{a_x}\\
+%C_k^-&=&B_{k}A_{0}+\sum_{a_x=1}^{N}(B_{k-a_x}+B_{k+a_x})A_{a_x}\\
+%C_0&=&B_{0}A_{0}+\sum_{a_x=1}^{N}(B_{-a_x}+B_{a_x})A_{a_x}
+%\end{aligned}
+%\end{equation}
+%where $j\in \{ 1, N\}$ and $k\in \{ -N, 1\}$. In other words, $C^+$ indicates the terms corresponding to positive frequencies, $C^-$ to negative frequencies and $C_0$ is the continuous term.
+%This way, symmetries expressed by equations \eqref{eq_symmetry} and \eqref{eq_antisymmetry} can be introduced directly in the result of the convolution. In fact:
+%\begin{equation}
+%A^{(\mathrm{e})}_{a_x}=A^{(\mathrm{e})}_{-a_x}
+%\end{equation}
+%\begin{equation}
+%A^{(\mathrm{o})}_{a_x}=-A^{(\mathrm{o})}_{-a_x}.
+%\end{equation}
+%In fact, the product of two symmetrical (or anti-symmetrical) functions gives a symmetrical functions, whereas the product if anti-symmetrical if the two functions are of opposite type:
+%\begin{equation}
+%\begin{aligned}
+%C^{(\mathrm{e})}=A^{(\mathrm{e})}B^{(\mathrm{e})} &;& C^{(\mathrm{o})}=A^{(\mathrm{o})}B^{(\mathrm{e})} &;&
+%C^{(\mathrm{o})}=A^{(\mathrm{e})}B^{(\mathrm{o})} &;&
+%C^{(\mathrm{e})}=A^{(\mathrm{o})}B^{(\mathrm{o})}\\
+%\end{aligned}
+%\end{equation}
+%In the following paragraph, we will see how these terms are expanded.
+%\subsection{Expanding terms}
+%\subsubsection{Case $C^{(\mathrm{e})}=A^{(\mathrm{e})}B^{(\mathrm{e})}$}
+%Thanks to the symmetry of the two terms, we can write:
+%\begin{equation}
+%C_j=C_{-j},
+%\end{equation}
+%and therefore:
+%\begin{equation}
+%\begin{aligned}
+%C_i=B_iA_0+&\sum_{a_x=1}^{N}&(B_{|i-a_x|}&+B_{j+a_x})A_{a_x}, & i\neq 0\\
+%C_0=A_0B_0+2&\sum_{a_x=1}^{N}&B_{a_x}A_{a_x},& i=0
+%\end{aligned}
+%\end{equation}
+
+%\subsubsection{Case $C^{(\mathrm{o})}=A^{(\mathrm{e})}B^{(\mathrm{o})}$}
+%We write:
+%\begin{equation}
+%C_{-j}=-C_{j},
+%\end{equation}
+%and therefore:
+%\begin{equation}
+%\begin{aligned}
+%C_i=B_iA_0+&\sum_{a_x=1, a_x\leq i}^{N}&(B_{i-a_x}&+B_{j+a_x})A_{a_x} + \sum_{a_x=1, a_x>i}^{N}&(-B_{|i-a_x|}&+B_{j+a_x})A_{a_x}, && i\neq 0\\
+%C_0=A_0B_0,&& & i=0
+%\end{aligned}
+%\end{equation}
+
+%\subsubsection{Case $C^{(\mathrm{o})}=A^{(\mathrm{o})}B^{(\mathrm{e})}$}
+%We write:
+%\begin{equation}
+%C_{-j}=-C_{j},
+%\end{equation}
+%This is true uniquely if $A_0=0$
+%and therefore:
+%\begin{equation}
+%\begin{aligned}
+%C_i=&\sum_{a_x=1}^{N}&(B_{|i-a_x|}&-B_{i+a_x})A_{a_x} & i\neq 0\\
+%C_0=A_0B_0,&& & i=0
+%\end{aligned}
+%\end{equation}
+
+%\subsubsection{Case $C^{(\mathrm{o})}=A^{(\mathrm{o})}B^{(\mathrm{o})}$}
+%We write:
+%\begin{equation}
+%C_{-j}=C_{j},
+%\end{equation}
+%This is true uniquely if $A_0=0$
+%and therefore:
+%\begin{equation}
+%\begin{aligned}
+%C_i=B_iA_0+&\sum_{a_x=1, a_x\leq i}^{N}&(B_{i-a_x}&-B_{j+a_x})A_{a_x} + \sum_{a_x=1, a_x>i}^{N}&(-B_{|i-a_x|}&-B_{j+a_x})A_{a_x}, && i\neq 0\\
+%C_0=A_0B_0-2&\sum_{a_x=1}^{N}&B_{a_x}A_{a_x},& i=0
+%\end{aligned}
+%\end{equation}
+%\subsection{Matrix notations}
+%In order to write equations in a compact way, we define a certain number of matrices. The first one is matrix $\dbar{B}_-$:
+%\begin{equation}
+%\dbar{B}_-=
+%\begin{pmatrix}
+%B_0 	& B_{-1}	& 	B_{-2}	& \cdots		&	B_{-N}\\
+%B_1 	& B_0		& 	B_{-1}	& \cdots		&	B_{-N+1}\\
+%\vdots 	&  			& 			& 			&		\\
+%B_N 	& B_{N-1}	& 	B_{N-2}	& \cdots		&	B_{0}\\
+%\end{pmatrix}.
+%\end{equation}
+%Then, the matrix $B_+$:
+%\begin{equation}
+%\dbar{B}_+=
+%\begin{pmatrix}
+%B_0 	& B_{1}	& 	B_{2}	& \cdots		&	B_{N}\\
+%B_1 	& B_2		& 	B_{3}	& \cdots		&	B_{N+1}\\
+%\vdots 	&  			& 			& 			&		\\
+%B_N 	& B_{N+1}	& 	B_{N+2}	& \cdots		&	B_{2N}\\
+%\end{pmatrix}.
+%\end{equation}
+%If the term $B$ is symmetrical or anti-symmetrical, those matrices will have a more detailed structure and can be written using only positive frequencies, for example:
+%\begin{equation}
+%\dbar{B}_-^{(e)}=
+%\begin{pmatrix}
+%B_0 	& B_{1}		& 	B_{2}	& \cdots		&	B_{N}\\
+%B_1 	& B_0		& 	B_{1}	& \cdots		&	B_{N-1}\\
+%\vdots 	&  			& 			& 				&		\\
+%B_N 	& B_{N-1}	& 	B_{N-2}	& \cdots		&	B_{0}\\
+%\end{pmatrix},
+%\end{equation}
+%and:
+%\begin{equation}
+%\dbar{B}_-^{(o)}=
+%\begin{pmatrix}
+%B_0 	& -B_{1}	& 	-B_{2}	& \cdots		&	-B_{N}\\
+%B_1 	& B_0		& 	-B_{1}	& \cdots		&	-B_{N-1}\\
+%\vdots 	&  			& 			& 				&		\\
+%B_N 	& B_{N-1}	& 	B_{N-2}	& \cdots		&	B_{0}\\
+%\end{pmatrix}.
+%\end{equation}
+%We then define the following composed matrices $\dbar{B}_{\indT,\pm}$ and $\dbar{B}_{\indT,\pm}$, where the continuous term must be tackled separately, owing to its definition:
+%\begin{equation}
+%\dbar{B}_{\indT,\pm}=
+%\left\{
+%\begin{aligned}
+%&\frac{1}{2}(\dbar{B}_-\pm\dbar{B}_+) & i=0\\
+%&\dbar{B}_-\pm\dbar{B}_+& i\neq 0
+%\end{aligned}
+%\right. .
+%\end{equation}
+%A second matrix which deserves attention is the derivative matrix which is used in matrix developments of paragraphs \ref{subsec_matdev_nd} and \ref{subsec_matdev_la} and \ref{subsec_matdev_nf}. In fact, when symmetry or anti-symmetry is present, we only store positive frequencies:
+%\begin{equation}
+%K_x=
+%\begin{pmatrix}
+%0 & 0 & 0 &\cdots &0 \\
+%0 & 1 & 0 &\cdots &0 \\
+%0 & 0 & 2 &\cdots &0 \\
+%\vdots & & & & &\\
+%0 &\cdots  & & &N
+%\end{pmatrix}.
+%\end{equation}
+
+\section{Propagation}
+The developments shown in the previous paragraphs have shown how to treat one section with a constant finite or infinite curvature radius. At first, we begin by giving a geometrical interpretation of the discussion seen above. Then, we adopt it in order to propagate the fields by imposing the continuity conditions at the interfaces between sections. \marginpars{A structure is a sequence of sections with specific characteristics.}
+{\em All sections of the structure share the number of harmonics retained in the calculations as well as the size of the calculation window, but can have different bending radiuses, PMLs, as well as a different refractive index distribution.}
+
+\subsection{Geometrical interpretation}
+The equation~\eqref{eq_propagation_matrix_2} represents an eigenvalue problem.  The diagonalisation of the propagation operator in the Fourier space allows to change the base for the representation of the fields. Through the eigenvalues and eigenvectors (physically, the propagation modes of the structure), we can switch from the Fourier base to the modal base and vice versa. The former base is convenient to express the continuity of fields at the interface between two sections of the structure. The latter base is useful for the propagation, since the propagation operator is diagonal and each mode is associated to an eigenvector that can be propagated knowing its propagation constant.
+
+In a given section of the structure, if we call $\dbar{W}$ the matrix formed by the eigenvectors and $\dbar{B}$ is the matrix representing the truncated propagation operator in the Fourier space, we can write:
+\begin{equation}
+\dbar{B}=\dbar{W} \dbar{D} \dbar{W}^{-1}
+\label{eq_def_W}
+\end{equation}
+where $\dbar{D}$ is the diagonal matrix formed by the eigenvalues. Each eigenvalue is associated to a propagative and a counter-propagative mode. In a given point of the section, at a given coordinate $\theta_0$, we can thus write:
+\begin{equation}
+\bar{s}\ped{w} = \dbar{P}^+_{\theta_0}\bar{s}\ped{w}^+ + \dbar{P}^-_{\theta_0}\bar{s}\ped{w}^-
+\end{equation}
+where $\bar{s}\ped{w}$ is vector containing the amplitudes of the total field represented in the modal base, $\bar{s}\ped{w}^+$ is the vector of amplitudes of the propagative modes, $\bar{s}\ped{w}^-$ is the vector of amplitudes of the counter-propagative modes. We use the the letter w as an index, in order to indicate that we are dealing with the modal base. The matrices $\dbar{P}^+$ and $\dbar{P}^-$ are the matrices representing the phase shifts for the propagation in the two directions. We indicate with $\theta_0$ the origin of the propagation axis and with $\theta$ the point considered inside the section.
+\begin{equation}
+\dbar{P}^+_{\theta_0}(\theta)=
+\begin{pmatrix}
+\e^{-\junit \beta_0(\theta-\theta_0)} & 0 & 0 & \cdots \\
+0  & \e^{-\junit \beta_1(\theta-\theta_0)} & 0 & \cdots \\
+0 & 0 & \e^{-\junit \beta_2(\theta-\theta_0)} & \cdots \\
+\cdots &  &  & \cdots\\
+\end{pmatrix}
+\end{equation}
+\begin{equation}
+\dbar{P}^-_{\theta_0}(\theta)=
+\begin{pmatrix}
+\e^{\junit \beta_0(\theta-\theta_0)} & 0  & 0 & \cdots \\
+0  & \e^{\junit \beta_1(\theta-\theta_0)} & 0 & \cdots \\
+0 & 0 & \e^{\junit \beta_2(\theta-\theta_0)} & \cdots \\
+\cdots &  &  & \cdots\\
+\end{pmatrix}
+\end{equation}
+
+Expressed in the Fourier base, the total field amplitude vector is thus given by a simple coordinate change:
+\begin{equation}
+\label{eq_total_field_fourier}
+\begin{pmatrix}
+[E_r]\\
+[E_z]\\
+\end{pmatrix}
+=\dbar{W}\bar{s}\ped{w}=
+\dbar{W}\left(\dbar{P}^+_{\theta_0}\bar{s}\ped{w}^+ + \dbar{P}^-_{\theta_0}\bar{s}\ped{w}^-\right)
+\end{equation}
+To summarise, in each section of our structure we have a vector space represented by the field of the structure and we use two orthogonal bases which are the Fourier representation and the modal representation. Once the eigenvalues and eigenvectors of the propagation matrix $\dbar{B}$ are calculated, we can switch from the former representation to the latter by simple matrix algebra.
+
+\subsection{Continuity of the fields through two adjacent sections}
+\label{subsec_continuity}
+If we consider two adjacent sections $t$ and $t+1$, they share an interface in which the transverse electric and magnetic fields must be continuous.
+In other words, we have:
+\begin{equation}
+\begin{pmatrix}
+[E_r]\\
+[E_z]\\
+[H_r]\\
+[H_z]\\
+\end{pmatrix}
+(\theta_{t+1})
+=
+\begin{pmatrix}
+[E_r]\\
+[E_z]\\
+[H_r]\\
+[H_z]\\
+\end{pmatrix}
+(\theta_{t})
+\label{eq_A_matrix}
+\end{equation}
+Since as we have seen in paragraph~\ref{sec_periodization} we express our problem for the electric field components $\hat{A}$ and $\hat{B}$, we must find a way to reconstruct the magnetic fields.
+From equation~\eqref{eq_A_matrix}, we can write:
+\begin{equation}
+\frac{\partial}{\partial \theta}
+\begin{pmatrix}
+[E_r]\\
+[E_z]\\
+\end{pmatrix}
+=
+\begin{pmatrix}
+\dbar{X_1} & \dbar{X_2}\\
+\dbar{X_3} & \dbar{X_4}\\
+\end{pmatrix}
+\begin{pmatrix}
+[H_r]\\
+[H_z]\\
+\end{pmatrix}
+\end{equation}
+and thus:
+\begin{equation}
+\begin{pmatrix}
+[H_r]\\
+[H_z]\\
+\end{pmatrix}
+=
+\begin{pmatrix}
+\dbar{X_1} & \dbar{X_2}\\
+\dbar{X_3} & \dbar{X_4}\\
+\end{pmatrix}^{-1}
+\frac{\partial}{\partial \theta}
+\begin{pmatrix}
+[E_r]\\
+[E_z]\\
+\end{pmatrix}
+\end{equation}
+The derivative can be explicitly calculated by using equation~\eqref{eq_total_field_fourier}:
+\begin{equation}
+\begin{pmatrix}
+[H_r]\\
+[H_z]\\
+\end{pmatrix}
+=
+\begin{pmatrix}
+\dbar{X_1} & \dbar{X_2}\\
+\dbar{X_3} & \dbar{X_4}\\
+\end{pmatrix}^{-1}
+\dbar{W}\dbar{\Lambda}\left(\dbar{P}^+_{\theta_0}\bar{s}\ped{w}^+ - \dbar{P}^-_{\theta_0}\bar{s}\ped{w}^-\right)
+\end{equation}
+where:
+\begin{equation}
+\dbar{\Lambda} =
+\begin{pmatrix}
+-\junit\beta_0 & 0 & \cdots & 0\\
+0 & -\junit\beta_1 & \cdots & 0\\
+\cdots\\
+0 & 0 & \cdots & -\junit\beta_{N-1}
+\end{pmatrix}
+\end{equation}
+where $\beta_i$, $i \in \{0,\cdots,N-1\}$ are the propagation constants of the modes of the section being considered.
+We can define the matrix of the eigenvectors of the magnetic field, as follows:
+\begin{equation}
+\dbar{V}=
+\begin{pmatrix}
+\dbar{X_1} & \dbar{X_2}\\
+\dbar{X_3} & \dbar{X_4}\\
+\end{pmatrix}^{-1}
+\dbar{W}
+\dbar{\Lambda}
+\label{eq_def_V}
+\end{equation}
+At the interface, the continuity of the transverse electric field can be expressed as follows:
+\begin{equation}
+\dbar{W}^{[t]}\left(\dbar{P}_{\theta_t}^{+[t]}(\theta_{t+1})\bar{s}\ped{w}^{+[t]}+\dbar{P}_{\theta_t}^{-[t]}(\theta_{t+1})\bar{s}\ped{w}^{-[t]}\right)=
+\dbar{W}^{[t+1]}\left(\bar{s}\ped{w}^{+[t+1]}+\bar{s}\ped{w}^{-[t+1]}\right)
+\label{eq_continuity_e}
+\end{equation}
+While for the transverse magnetic field we can write:
+\begin{equation}
+\dbar{V}^{[t]}\left(\dbar{P}_{\theta_t}^{+[t]}(\theta_{t+1})\bar{s}\ped{w}^{+[t]}-\dbar{P}_{\theta_t}^{-[t]}(\theta_{t+1})\bar{s}\ped{w}^{-[t]}\right)=
+\dbar{V}^{[t+1]}\left(\bar{s}\ped{w}^{+[t+1]}-\bar{s}\ped{w}^{-[t+1]}\right)
+\label{eq_continuity_h}
+\end{equation}
+The idea is that the Fourier base is very practical when imposing continuity conditions at the interfaces between two adjacent section, while the modal base is useful when dealing with propagation. The continuity conditions expressed in the modal base are given by equations \eqref{eq_continuity_e} and \eqref{eq_continuity_h}. We must now find a way to calculate the different contributions given by propagative and counter-propagative fields, by avoiding the convergence problems which may arise.
+
+\subsection{The scattering matrix formalism}
+\label{subsec_scattering}
+An useful strategy for calculating all the propagative and counter-propagative components of the field at each interface (and then propagate them through the sections) is given by the scattering matrix (often called S-matrix) formalism.
+We follow here the notations used by \cite{martin2009scoi} and \cite{li1996formulation}.
+Our structure is composed by several adjacent sections and in each one the refractive index distribution is invariant through all the length of the section.
+For each section, we define the following matrix:
+\begin{equation}
+\begin{pmatrix}
+\bar{s}\ped{w}^{+[t+1]}\\
+\bar{s}\ped{w}^{-[t]}\\
+\end{pmatrix}
+=
+\begin{pmatrix}
+\dbar{t}^{[t]}_{++} & \dbar{r}^{[t]}_{+-} \\
+\dbar{r}^{[t]}_{-+} & \dbar{t}^{[t]}_{--}
+\end{pmatrix}
+\begin{pmatrix}
+\bar{s}\ped{w}^{+[t]}\\
+\bar{s}\ped{w}^{-[t+1]}\\
+\end{pmatrix}
+=
+\dbar{S}^{[t]}
+\begin{pmatrix}
+\bar{s}\ped{w}^{+[t]}\\
+\bar{s}\ped{w}^{-[t+1]}\\
+\end{pmatrix}
+\label{eq_s_matrix_def}
+\end{equation}
+The name and the definition of this matrix derives directly from the classical scattering matrix used for the description of radio frequency devices.
+With matrix algebra, it can be shown (see for example~\cite{martin2009scoi} for detailed calculations) that the different blocks of the $\dbar{S}^{[T]}$ matrix can be calculated from the eigenvectors and eigenvalues matrices associated to the two adjacent sections $t$ and $t+1$:
+\begin{equation}
+\dbar{t}_{++}^{[t]} = 2\left (\dbar{W}^{[t]-1}\dbar{W}^{[t+1]}+
+\dbar{V}^{[t]-1}\dbar{V}^{[t+1]}\right )^{-1}\dbar{P}^{[t]}
+\end{equation}
+\begin{equation}
+\dbar{r}_{+-}^{[t]} = \left (\dbar{W}^{[t]-1}\dbar{W}^{[t+1]}+
+\dbar{V}^{[t]-1}\dbar{V}^{[t+1]}\right )^{-1} 
+\left(-\dbar{W}^{[t]-1}\dbar{W}^{[t+1]}+
+\dbar{V}^{[t]-1}\dbar{V}^{[t+1]}\right )\dbar{P}^{[t+1]}
+\end{equation}
+\begin{equation}
+\dbar{r}_{-+}^{[t]} = \left (\dbar{W}^{[t+1]-1}\dbar{W}^{[t]}+
+\dbar{V}^{[t+1]-1}\dbar{V}^{[t]}\right )^{-1} 
+\left(-\dbar{W}^{[t+1]-1}\dbar{W}^{[t]}+
+\dbar{V}^{[t+1]-1}\dbar{V}^{[t]}\right )\dbar{P}^{[t]}
+\end{equation}
+\begin{equation}
+\dbar{t}_{--}^{[t]} = 2\left (\dbar{W}^{[t+1]-1}\dbar{W}^{[t]}+
+\dbar{V}^{[t+1]-1}\dbar{V}^{[t]}\right )^{-1}\dbar{P}^{[t+1]}
+\end{equation}
+This situation is depicted in figure~\ref{fig_interfaces}
+\begin{figure}
+\centering
+\input{interfaces.pgf}
+\caption{Schematic representation of the structure and the field excitations at each interface between $N$ adjacent sections. The vectors surrounded by rectangles are the global propagative and counter-propagative excitations of the structure.}
+\label{fig_interfaces}
+\end{figure}
+If we have $N$ sections in our structure, we should consider a global excitation composed by the vectors $\bar{s}\ped{w}^{+[0]}$ and $\bar{s}\ped{w}^{-[N-1]}$ for the input of our calculations. The former is the propagative excitation at the beginning of the structure and the latter is the counter-propagative excitation at the end of the structure.
+We then begin by calculating all the propagative and counter-propagative excitations for each sections, from the global excitations  $\bar{s}\ped{w}^{+[0]}$ and $\bar{s}\ped{w}^{-[N-1]}$:
+\begin{equation}
+\begin{pmatrix}
+\bar{s}\ped{w}^{+[t+1]}\\
+\bar{s}\ped{w}^{-[0]}\\
+\end{pmatrix}
+=
+\begin{pmatrix}
+\dbar{T}^{[t]}_{++} & \dbar{R}^{[t]}_{+-} \\
+\dbar{R}^{[t]}_{-+} & \dbar{T}^{[t]}_{--}
+\end{pmatrix}
+\begin{pmatrix}
+\bar{s}\ped{w}^{+[0]}\\
+\bar{s}\ped{w}^{-[t+1]}\\
+\end{pmatrix}
+\label{eq_global_s_matrix}
+\end{equation}
+where the blocks are defined by recurrence:
+\begin{equation}
+\dbar{T}^{[t]}_{++} = \dbar{t}^{[t]}_{++}\left (\dbar{I}-\dbar{R}^{[t-1]}_{+-}\dbar{r}^{[t]}_{-+}\right)^{-1} \dbar{T}^{[t-1]}_{++}
+\end{equation}
+\begin{equation}
+\dbar{R}^{[t]}_{+-} = \dbar{t}^{[t]}_{++}\left (\dbar{I}-\dbar{R}^{[t-1]}_{+-}\dbar{r}^{[t]}_{-+}\right)^{-1} \dbar{R}^{[t-1]}_{+-}\dbar{t}^{[t]}_{--}+\dbar{r}^{[t]}_{+-}
+\end{equation}
+\begin{equation}
+\dbar{R}^{[t]}_{-+} = \dbar{R}^{[t-1]}_{-+} + \dbar{T}^{[t-1]}_{--}\left (\dbar{I}-\dbar{r}^{[t]}_{-+}\dbar{R}^{[t-1]}_{+-}\right)^{-1} \dbar{r}^{[t]}_{-+}\dbar{T}^{[t-1]}_{++}
+\end{equation}
+\begin{equation}
+\dbar{T}^{[t]}_{--} = \dbar{T}^{[t-1]}_{--}\left (\dbar{I}-\dbar{r}^{[t]}_{-+}\dbar{R}^{[t-1]}_{+-}\right)^{-1} \dbar{t}^{[t]}_{--}
+\end{equation}
+where $t = 1, \cdots, N-1$.
+Now we can determine the excitations of the structure:
+\begin{equation}
+\bar{s}\ped{w}^{-[t]} = 
+\left(\dbar{I}-\dbar{r}_{-+}^{[t]}\dbar{R}_{+-}^{[t-1]}\right)^{-1}
+\left(\dbar{r}_{-+}^{[t]}\dbar{T}_{++}^{[t-1]}\bar{s}\ped{w}^{+[0]}+
+\dbar{t}_{--}^{[t]}\bar{s}\ped{w}^{-[t+1]}\right)
+\end{equation}
+\begin{equation}
+\bar{s}\ped{w}^{+[t]} = \dbar{t}_{++}^{[t-1]}\bar{s}\ped{w}^{+[t-1]}+
+\dbar{r}_{+-}^{[t-1]}\bar{s}\ped{w}^{-[t]}
+\end{equation}
+where $t = N-1, N-2, \cdots, 1$.
+And the field in each point of the structure can be calculated by propagating all the eigenmodes of the structure and by summing up all the contributions in the point in which the field should be calculated with equation~\eqref{eq_total_field_fourier}.
+
+\section{Bloch-mode calculation}
+\label{sec_bloch_theory}
+Following the ideas developed in \cite{cao2002stable}, Bloch-like modes of a structure can be calculated by supposing that the sections defined in \afmm\ are repeated an infinite number of times, thus forming a periodic structure. This can be useful for the analysis of Bragg gratings or photonic crystal structures.
+\begin{figure}
+\centering
+\input{bloch_vectors.pgf}
+\caption{Calculations of excitation of Bloch-modes in the structure.}
+\label{fig_bloch_vectors}
+\end{figure}
+In fact, in figure~\ref{fig_bloch_vectors} calculating a Bloch-like mode consists in applying a sort of continuity between the vectors representing modes at the left and at the right of the structure. We called those vectors $\bar{a}\ped{w}^{-[0]}$, $\bar{a}\ped{w}^{+[0]}$ and $\bar{a}\ped{w}^{+[N-1]}$ as well as $\bar{a}\ped{w}^{-[N-1]}$. There is a difference between the vectors here called $\bar{a}\ped{w}$ and the vectors employed above for the propagation, i.e. $\bar{s}\ped{w}$. In fact, they are not always referred to the same plane and in certain cases we have to apply the appropriate propagation matrix. We can write:
+\begin{equation}
+\begin{aligned}
+\bar{a}\ped{w}^{+[0]}&=&\bar{s}\ped{w}^{+[0]}\\
+\bar{a}\ped{w}^{-[0]}&=&\dbar{P}^{[0]}\bar{s}\ped{w}^{-[0]}\\
+\bar{a}\ped{w}^{+[N-1]}&=&\dbar{P}^{[N-1]}\bar{s}\ped{w}^{+[N-1]}\\
+\bar{a}\ped{w}^{-[N-1]}&=&\bar{s}\ped{w}^{-[N-1]}\\
+\end{aligned}
+\label{eq_a_s}.
+\end{equation}
+By recalling the definition of the global scattering matrix seen in equation~\eqref{eq_global_s_matrix}, we can write:
+\begin{equation}
+\begin{aligned}
+\dbar{P}^{[N-1]}\bar{s}\ped{w}^{+[N-1]}&=&\dbar{P}^{[N-1]}\dbar{T}^{[N-1]}_{++}\bar{s}\ped{w}^{+[0]}&+&\dbar{P}^{[N-1]}\dbar{R}^{[N-1]}_{+-}\bar{s}\ped{w}^{-[N-1]}\\
+\dbar{P}^{[0]}\bar{s}\ped{w}^{+[0]}&=&\dbar{P}^{[0]}\dbar{R}^{[N-1]}_{-+}\bar{s}\ped{w}^{+[0]}&+&\dbar{P}^{[0]}\dbar{T}^{[N-1]}_{--}\bar{s}\ped{w}^{-[N-1]}
+\end{aligned}
+\label{eq_intermediate_bloch}.
+\end{equation}
+By putting at the first member all terms containing $s$ referred to section 0 and by recognizing $a$ vectors with definitions seen in equation~\eqref{eq_a_s}, we can rewrite equation~\eqref{eq_intermediate_bloch} in the following matrix form:
+\begin{equation}
+\begin{pmatrix}
+\dbar{P}^{[N-1]}\dbar{T}^{[N-1]}_{++} & 0 \\
+\dbar{P}^{[0]}\dbar{R}^{[N-1]}_{-+} & -I
+\end{pmatrix}
+\begin{pmatrix}
+\bar{a}\ped{w}^{+[0]}\\
+\bar{a}\ped{w}^{-[0]}
+\end{pmatrix}
+=
+\begin{pmatrix}
+I & -\dbar{P}^{[N-1]}\dbar{R}^{[N-1]}_{+-}\\
+0 & -\dbar{P}^{[0]}\dbar{T}^{[N-1]}_{--} 
+\end{pmatrix}
+\begin{pmatrix}
+\bar{a}\ped{w}^{+[N-1]}\\
+\bar{a}\ped{w}^{-[N-1]}
+\end{pmatrix}.
+\label{eq_bloch_maquillage}
+\end{equation}
+A Bloch-mode is characterised by a quasi-periodic behaviour. In other words, the propagative and counter-propagative fields at the structure's boundaries can be related as follows:
+\begin{equation}
+\begin{pmatrix}
+\bar{a}\ped{w}^{+[N-1]}\\
+\bar{a}\ped{w}^{-[N-1]}
+\end{pmatrix}
+=\exp (\mathrm{j}\beta\ped{b}L)
+\begin{pmatrix}
+\bar{a}\ped{w}^{+[0]}\\
+\bar{a}\ped{w}^{-[0]}
+\end{pmatrix}
+\label{eq_bloch},
+\end{equation}
+where $L$ is the total lenght of the structure.
+By combining equations \eqref{eq_bloch_maquillage} with \eqref{eq_bloch} we can relate the Bloch-mode search with a well known generalised eigenvalue problem, as visible in equation \eqref{eq_bloch_eigenv}:
+\begin{equation}
+\begin{pmatrix}
+\dbar{P}^{[N-1]}\dbar{T}^{[N-1]}_{++} & 0 \\
+\dbar{P}^{[0]}\dbar{R}^{[N-1]}_{-+} & -I
+\end{pmatrix}
+\begin{pmatrix}
+\bar{a}\ped{w}^{+[0]}\\
+\bar{a}\ped{w}^{-[0]}
+\end{pmatrix}
+=
+\alpha\ped{b}
+\begin{pmatrix}
+I & -\dbar{P}^{[N-1]}\dbar{R}^{[N-1]}_{+-}\\
+0 & -\dbar{P}^{[0]}\dbar{T}^{[N-1]}_{--} 
+\end{pmatrix}
+\begin{pmatrix}
+\bar{a}\ped{w}^{+[0]}\\
+\bar{a}\ped{w}^{-[0]}
+\end{pmatrix},
+\label{eq_bloch_eigenv}
+\end{equation}
+where $\alpha\ped{b}=\exp (\mathrm{j}\beta\ped{b}L)$. Standard numerical techniques can be exploited for the calculation of the generalised eigenvalues and eigenvectors.
+The calculation of the propagation constant $\beta\ped{b}$ and therefore of an equivalent effective index $n\ped{eff}=\beta\ped{b}/k_0$ involves the evaluation of a complex logarithm and encounters a difficulty. In fact, the complex logarithm is a multivalued function and it is difficult to determine the correct branch of the Riemann-surface to be used for the calculation. This problem is related to the well known issue of phase unwrapping which arises in several interferometric systems. If $\alpha\ped{b}$ is a generalised eigenvalue, we can write:
+\begin{equation}
+n\ped{eff}=\frac{\mathrm{Log}(\alpha\ped{b})-\mathrm{j}2\pi p}{k_0L}
+\label{eq_phase_unwrapping}
+\end{equation}
+where $p$ is an integer which determines on which branch of the Riemann surface the calculation is done and $\mathrm{Log}(\alpha\ped{b})$ is the principal value of the complex logarithm. Another more intuitive interpretation of $p$ is how many integer multiples of $2\pi$ should be considered for the phase, while propagating the field in the structure. In fact, the principal part of the logarithm gives only the fractionary part of the phase.
+ 
+\section{Conclusion}
+In this chapter, we presented the main mathematical developments used for the implementation of a 2D Fourier Modal Method mode solver implementation.
+In particular, we introduced a shorthand notation useful to write derivatives and products in a truncated 2D Fourier space, using modified block-Toeplitz matrices. This notation has been used to derive a version applicable to cylindrical coordinates.
+The following chapter will be dedicated to the use of the \afmm\ program, the tool which has been developed to perform complete 3D analysis of the field propagation using the Aperiodic Fourier Modal Method.

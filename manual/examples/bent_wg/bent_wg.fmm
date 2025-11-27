@@ -1,0 +1,29 @@
+size 25e-6 3e-6
+
+harmonics 501 1
+
+substrate 1.515 0
+
+rectangle 1.615 0 4e-6 3e-6 -2e-6 0
+
+wavelength 1550e-9
+
+lowindex 1.5 -1
+highindex 2  1
+
+matdev la 1.0
+pml_transf 16e-6 0 1 -1
+
+bend 14e-6
+
+solve
+
+inpstruct i 1200 1 bend_14.structure
+
+outgmodes Ey m 1200 1 bend_14
+outgmodes Ex m 1200 1 bend_14
+
+# effective indices given by conformal-AFMM (TE)
+# 1.981291485856762 - 0.013844630825915i
+# 1.852504876480825 - 0.029116654438393i
+# 1.746972235496869 - 0.031405571400227i

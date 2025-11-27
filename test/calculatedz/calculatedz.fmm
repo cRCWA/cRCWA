@@ -1,0 +1,24 @@
+wavelength 7.749e-07
+size 1.25e-06 1.5e-06
+carpet
+harmonics 11 11
+
+symmetry s a
+
+section 1e-07
+    substrate 1 0
+
+section 2e-08
+    substrate 1.5 0
+    rectangle 1.7 0 0.7e-6 0.7e-6 0 0
+
+section 1e-07
+    substrate 1 0
+
+wants propagation
+solve
+assemble
+excitation f cy 1 0 0 0
+propagation Ex2 m 5e-9 101 101 test_results_x.txt
+propagation Ey2 m 5e-9 101 101 test_results_y.txt
+propagation Ez2 c 5e-9 101 101 test_results_z.txt

@@ -1,0 +1,21 @@
+# testing the eigenvalues obtained for a rectangular waveguide for several 
+# identical configurations.
+
+size 800e-09 800e-09
+wavelength 820e-09
+harmonics 1 61
+carpet
+symmetry s a
+
+section 2e-6
+	substrate 1 0
+	indfile 800e-9 wguide.f3d
+	lowindex 1 -1
+	highindex 3.68 0
+
+	matdev nfs 800e-9 wguide.f3d_nvf_x wguide.f3d_nvf_y
+
+
+solve
+
+

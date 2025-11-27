@@ -1,0 +1,42 @@
+let lambda=6.526e-07
+wavelength lambda
+size 2e-06 2e-06
+carpet
+symmetry a s
+harmonics 7 7
+
+section 1e-07
+    substrate 1 0
+    matdev las 1.0
+section 2e-08
+    substrate 0.166 -3.15
+    matdev nfs 1e-6 normal_field0_nvf_x normal_field0_nvf_y
+    rectangle 1 0 1.47175e-06 1.47175e-06 0.0 0.0
+section 2e-08
+    substrate 0.166 -3.15
+    matdev nfs 1e-6 normal_field1_nvf_x normal_field1_nvf_y
+    rectangle 1 0 1.41526e-06 1.41526e-06 0.0 0.0
+section 2.6e-07
+    substrate 0.166 -3.15
+    matdev las 1.0
+
+wants propagation
+solve
+assemble
+# excitation f cx 1 0 0 0
+excitation f fx 1 0 2e-6 exc_Ex.f3d
+
+propagation Ex2 m 10e-9 21 21 test_results_pr.txt
+
+powerZ 0
+let ptot=ans
+select 1
+power f 0.9
+let pinc=ans
+let A=ptot/pinc
+let R=1-A
+
+fopen test_results_AR.txt w
+    let ffile=ans
+    fprint ffile lambda pinc ptot A R
+fclose ffile

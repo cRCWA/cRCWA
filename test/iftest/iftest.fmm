@@ -1,0 +1,129 @@
+# NOTE: this test contains both tabs and spaces chars, as tabs may confuse
+#       older versions of AFMM, inducing an error.
+
+print "---------------------------------"
+print "Test of the 'if' command in afmm."
+print "---------------------------------"
+let cond=3
+let pippo=10
+
+if cond
+	print "Ok...    1"
+	let pippo=pippo+15
+else
+	print "No ok :-("
+	let pippo=pippo+2
+endif
+
+
+let cond=0
+
+if cond
+	print "No ok :-("
+	let pippo=5
+else
+	print "Ok...    2"
+	let pippo=pippo+2
+endif
+
+let cond1=2
+let cond2=0
+let cond3=4
+let cond5=0
+let cond6=1
+
+if cond1
+	if cond2
+		print "No Ok... 3"
+	else
+        if cond3==4
+            if cond5
+                
+            else
+                if cond6
+		            print "Ok...    3"
+		            let pippo=pippo+1
+		        endif
+		    endif
+		else
+		    print "No Ok... 3(1)"
+	    endif
+	endif
+	let pippo=pippo+1
+endif
+
+if (4+3)==7
+	print "Ok...    4"
+	let pippo=pippo+2
+else
+	print "No Ok... 4" 
+endif
+
+# it should be equal
+if pippo<=31
+	print "Ok...    5"
+	let pippo=pippo+2
+else 
+	print "No Ok... 5"
+endif
+
+if pippo>31
+	print "Ok...    6"
+	let pippo=pippo+2
+else 
+	print "No Ok... 6"
+endif
+
+
+if pippo!=35
+	print "No Ok... 7"
+	let pippo=pippo+2
+else 
+	print "Ok...    7"
+endif
+
+if (pippo!=35)||(!(3==3))
+	print "No Ok... 8"
+	let pippo=pippo+2
+else 
+	print "Ok...    8"
+endif
+
+let v=35
+
+if v==pippo
+	let pippo=pippo+1
+	print "Ok...    9"
+endif
+
+let neffi=0.001
+let neffr=10
+let nsub=1.51
+let ng=1.58
+
+# in some cases the last test is evaluated as "true"
+if (abs(neffi)<threshold)&&(neffr>nsub)&&(neffr<ng)
+	print "No Ok... 10"
+else
+	print "Ok...    10"
+	let pippo=pippo+1
+endif
+
+let expected=37
+
+fopen "test_results.txt" "w"
+let file=ans
+
+fprint file "Expected: " expected
+fprint file "Wanted: " pippo
+
+if pippo==expected
+	print "All test were Ok!"
+	fprint file "Ok!"
+else
+	print "There is a problem somewhere :-("
+	print "pippo=" pippo "instead of " expected
+	fprint file "Error!"
+endif
+
+fclose file
