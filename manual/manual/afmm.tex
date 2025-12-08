@@ -14,8 +14,8 @@
 \newcommand{\nm}{\,\mathrm{nm}}
 % micron symbol
 \newcommand{\micron}{\,\mathrm{\mu m}}
-\newcommand{\afmm}{\textsf{afmm}}
-\newcommand{\Afmm}{\textsf{Afmm}}
+\newcommand{\afmm}{\textsf{cRCWA}}
+\newcommand{\Afmm}{\textsf{cRCWA}}
 
 
 % dB symbol in math mode
@@ -38,7 +38,7 @@
 
 \lstdefinelanguage{AFMM} 
 	{morekeywords={size,solve,wavelength, rectangle, substrate, harmonics, pml,inpstruct,outgmodes, lowindex, highindex, indfile, pml_transf, bend, wants,spectrum,propagation,assemble,section,order,excitation,quit,help,
-	load, print, select, coefficient, carpet, outdata, matdev, norm, clear, system, goto, label, for, next, eigenvc, eigenam, memocc, symmetry,monitor, power, powerz, let, bloch, outbloch, if, else, endif, size, lg, ln, sin, cos, tan, sqr, abs,arctan,arcsin,arccos,sinh, cosh,tanh,fopen,fclose,
+	load, print, select, coefficient, coefficient_id, carpet, outdata, matdev, norm, clear, system, goto, label, for, next, eigenvc, eigenam, memocc, symmetry,monitor, power, powerz, let, bloch, outbloch, if, else, endif, size, lg, ln, sin, cos, tan, sqr, abs,arctan,arcsin,arccos,sinh, cosh,tanh,fopen,fclose,
 	fprint,addspace,parallel, selmodes, modepos, fscan, fskip, fcheck, do,
 	while, angles, indmatrix, parsescript}, 
 	sensitive=false,  
@@ -50,13 +50,13 @@
 
 
 \begin{document}
-\title{The \afmm\ 1.4.5 user manual\\[2em]
+\title{The \afmm\ 1.5 user manual\\[2em]
 A 3D full vectorial mode solver and propagator}
 
 
 \author{Davide Bucci\\[3em] 
 \vspace{5em}
-\includegraphics[width=6cm]{logo}}
+\includegraphics[width=4cm]{logo}}
 
 \maketitle
 \tableofcontents

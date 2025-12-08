@@ -5,49 +5,47 @@ This chapter first illustrates how to install and use the program. \Afmm\ is a c
 
 The \afmm\ source code is written in C++,  using the GCC compiler and the GNU Make utility. \marginpars{You may skip all those geeky details if you have \afmm\ already preinstalled on a computer.} It should run on every platform on which a standard compliant compiler is available, provided that all the needed libraries are given during the compilation. 
 
-If you are lucky, a binary distribution of \afmm\ is available for your operating system. In this case, you may just need to copy the provide file somewhere in your disk and start using \afmm . In other cases, you may need to compile it from sources. This may allow to fine-tune the optimisation options for your particular machine and somehow increase the overall performances. All what follows refers to a typical UNIX or compatible system such as Linux, Solaris or MacOSX, but \afmm\ can be compiled and installed on Microsoft Windows thanks to tools like Cygwin\cite{cygwin_site} or MinGW\cite{mingw_site}.
+If you are lucky, a binary distribution of \afmm\ is available for your operating system. In this case, you may just need to copy the provide file somewhere in your disk and start using \afmm . In other cases, you may need to compile it from sources. This may allow to fine-tune the optimisation options for your particular machine and somehow increase the overall performances. All what follows refers to a typical UNIX or compatible system such as Linux, Solaris or macOS, but \afmm\ can be compiled and installed on Microsoft Windows thanks to tools like Cygwin\cite{cygwin_site} or MinGW\cite{mingw_site}.
 
 \Afmm\ makes use of the LAPACK\cite{lapack, lapack_site} numerical library, which should have been installed in the host system, as well as the BLAS\cite{blas, blas_site} library, needed by LAPACK. If an optimised version of BLAS is not available for the host system, we strongly recommend using ATLAS\cite{atlas, atlas_site} or OpenBLAS\cite{openblas_site}. Installing those libraries may require a Fortran compiler on your computer. The libf2c\cite{libf2c_site} library (Fortran to C adapter) should be included when linking \afmm\ object files with LAPACK and BLAS. Since version 1.0.2 of \afmm, the FFTW (a nice acronym for the ``Fastest Fourier Transform in the West''\cite{FFTW05, fftw_site}) is used for calculating the structure and mode profiles. You may refer to the documentation provided with each of those libraries to know how to configure and compile them.
 
-\Afmm\ adopts Gnu autotools and a \lstinline!./configure! script is provided, which automatically tries to determine the best software configuration useful for compiling the code, as well as how to find the required libraries. 
-
-%In other cases, for systems where the GNU make utility can be run, a makefile is available. 
-%This file should be modified in order to specify where to find the LAPACK, BLAS, libf2c as well as FFTW3 libraries.\footnote{Probably, the easiest way to use those libraries is to download them separately, compile them and provide a static link to them. In Unix systems, a static library file normally has the \lstinline!.a! extension.} 
+For systems where the GNU make utility can be run, a makefile is available. 
+This file should be modified in order to specify where to find the LAPACK, BLAS, libf2c as well as FFTW3 libraries.\footnote{Probably, the easiest way to use those libraries is to install them separately. In Unix systems, a static library file normally has the \lstinline!.a! extension and a shared library has the \lstinline!.so! extension.} 
 Once the makefile has been configured correctly for your system, type \lstinline!make all! at the terminal prompt, in the directory in which you have copied \afmm's sources.
 
 %For the MacOSX operating system, a version of LAPACK, BLAS and libf2c libraries is present in the Accelerate framework, which can be easily included in a Xcode project.
-\lstset{language=XML,showspaces=false}
-In order to compile \afmm, you should perform the following steps:
-\begin{enumerate}
-\item Download and compile LAPACK on your system, take note of the path of the file \lstinline!liblapack.a!
-\item Download and compile ATLAS on your system, take note of the path of the files \lstinline!libatlas.a!, \lstinline!libf77blas.a!\footnote{You may need  \lstinline!libptf77blas.a! instead of \lstinline!libf77blas.a! if you chose to compile ATLAS in order to use more than one thread in a multi-core environment.}
-\item Download and compile FFTW3; you need the file \lstinline!libfftw3.a!
-\item Download and compile the f2c library; you need the file \lstinline!libf2c.a!
-
-\item Launch \lstinline!./configure! to determine the best compilation configuration for \afmm . If the configuration fails, due to missing libraries, you can explicitely specify where to find them via explicit linker options:
-\begin{lstlisting}
-./configure "LDFLAGS=-Ldir1 -Ldir2 -Ldir3..."
-\end{lstlisting}
-You might also find useful to use the CXXFLAGS option to specify compiler options. For example, with the following call the \lstinline!-g! option is passed to the compiler (this means that some debug information is retained):
-\begin{lstlisting}
-./configure CXXFLAGS=-g
-\end{lstlisting}
-Launching \lstinline!./configure --help! shows some useful information concerning other configuration flags.
-\item From the build directory you should type \lstinline!make all! in order to compile all the files.
-\item If everything has gone ok, you may launch \afmm\ with the command \lstinline!./afmm! from the build directory.
-\end{enumerate}
-
-In some cases, you may have to manually specify the compilation conditions, the position of the different libraires. Here is an example which worked on a Linux machine:
-\begin{lstlisting}
-export "LDFLAGS=-L/users/labos/imep/bucci/libs";export \
-"LIBS=-lgfortran";export "BLAS=-lptf77blas -lptcblas -latlas";export\
-"LAPACK=-lptlapack";export LAPACK_ADD_FINAL_UNDERSCORE=1; export\
-BLAS_ADD_FINAL_UNDERSCORE=1;export CXXFLAGS="-O3";./configure\
- CC=c++ CPPFLAGS=-I/users/labos/imep/bucci/libs/include
-
-make
-\end{lstlisting}
-Different conventions exist when calling Fortran routines from C/C++. Some compilers add an underscore to the function names before or after the name of the function itself. For example, the BLAS routine \lstinline!zgetri! may become \lstinline!_zgetri! or \lstinline!zgetri_! depending on the conventions of the Fortran compiler. Therefore, the following variables may be put equal to 1 depending on the particular convention adopted:
+%\lstset{language=XML,showspaces=false}
+%In order to compile \afmm, you should perform the following steps:
+%\begin{enumerate}
+%\item Download and compile LAPACK on your system, take note of the path of the file \lstinline!liblapack.a!
+%\item Download and compile ATLAS on your system, take note of the path of the files \lstinline!libatlas.a!, \lstinline!libf77blas.a!\footnote{You may need  \lstinline!libptf77blas.a! instead of \lstinline!libf77blas.a! if you chose to compile ATLAS in order to use more than one thread in a multi-core environment.}
+%\item Download and compile FFTW3; you need the file \lstinline!libfftw3.a!
+%%\item Download and compile the f2c library; you need the file \lstinline!libf2c.a!
+%
+%\item Launch \lstinline!./configure! to determine the best compilation configuration for \afmm . If the configuration fails, due to missing libraries, you can explicitely specify where to find them via explicit linker options:
+%\begin{lstlisting}
+%./configure "LDFLAGS=-Ldir1 -Ldir2 -Ldir3..."
+%\end{lstlisting}
+%You might also find useful to use the CXXFLAGS option to specify compiler options. For example, with the following call the \lstinline!-g! option is passed to the compiler (this means that some debug information is retained):
+%\begin{lstlisting}
+%./configure CXXFLAGS=-g
+%\end{lstlisting}
+%Launching \lstinline!./configure --help! shows some useful information concerning other configuration flags.
+%\item From the build directory you should type \lstinline!make all! in order to compile all the files.
+%\item If everything has gone ok, you may launch \afmm\ with the command \lstinline!./afmm! from the build directory.
+%\end{enumerate}
+%
+%In some cases, you may have to manually specify the compilation conditions, the position of the different libraires. Here is an example which worked on a Linux machine:
+%\begin{lstlisting}
+%export "LDFLAGS=-L/users/labos/imep/bucci/libs";export \
+%"LIBS=-lgfortran";export "BLAS=-lptf77blas -lptcblas -latlas";export\
+%"LAPACK=-lptlapack";export LAPACK_ADD_FINAL_UNDERSCORE=1; export\
+%BLAS_ADD_FINAL_UNDERSCORE=1;export CXXFLAGS="-O3";./configure\
+% CC=c++ CPPFLAGS=-I/users/labos/imep/bucci/libs/include
+%
+%make
+%\end{lstlisting}
+Different conventions exist when calling Fortran routines from C/C++. Some compilers add an underscore to the function names before or after the name of the function itself. For example, the BLAS routine \lstinline!zgetri! may become \lstinline!_zgetri! or \lstinline!zgetri_! depending on the conventions of the Fortran compiler. Therefore, the following variables may be used in the makefile, depending on the particular convention adopted:
 \begin{itemize}
 \item\lstinline!LAPACK_ADD_FINAL_UNDERSCORE!
 \item\lstinline!LAPACK_ADD_LEADING_UNDERSCORE!
@@ -91,10 +89,11 @@ All is Ok! :-)
 
 \section{Conventions}
 
-\textsf{Afmm} can be used in two ways. \marginpars{You must know this.} If a file is specified in the command line, \afmm\ reads it and processes each line. If not, \afmm\ can be used interactively from the command line. 
+\textsf{Afmm} can be used in three ways. \marginpars{You must know this.} If a file is specified in the command line, \afmm\ reads it and processes each line. If not, \afmm\ can be used interactively from the command line. 
 In each case, the simulation is described to the software via commands, often requiring a certain number of arguments. The commands may be used to specify the calculation window, the wavelength to be used, the structure and all calculations that \afmm\ should do.
 In \afmm\ is in the interactive mode, those commands  are read and executed from the command line\footnote{I \textit{strongly} recommend the GNU \lstinline!rlwrap! utility for a much better user experience while using the interactive mode\cite{rlwrap_site}.}. 
 If an input file is provided while launching the software, it will be scanned and if valid commands are found, they will be parsed and executed. In the non-interactive mode, \afmm\ quits just after the last command in the file.
+The third way is to use \afmm\ as a Python module, as shown in appendix \ref{ch_python}.
 
 A command is formed by the command name and several parameters separated by spaces. If you want to use a space in a single parameter (for example for a file name), you should use double quotes. 
 All commands and parameters should follow the following conventions:

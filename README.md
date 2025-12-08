@@ -61,9 +61,22 @@ LIBFFTW3 = -lfftw3
 # ***************************************************************************
 ~~~~
 
+## Self tests
+
+cRCWA contains a certain number of self tests that can be run in the `test` directory. They can be useful to check for problems in your install. We encourage to run them often via the `run_all_tests.sh` script.
+
+A failure in a test does not immediately mean that a problem is present, especially when results are compared with respect to a reference. The tests try to check if two results are reasonably close. It is in fact difficult to compare two simulated results for the electric fields. Some small variations may be normal and due to the truncation to a given floating point precision.
+
 ## User manual
 
 cRCWA is described in an user manual available here: https://github.com/cRCWA/cRCWA/blob/main/manual/manual/afmm.pdf
+
+## jOptiEx
+
+cRCWA may generate large collections of files in some situations. For instance, when exporting the modes of a multimodal waveguide or structure. JOptiEx is a Java tool that allows to explore very rapidly a collection of files and represent them rapidly. It is not meant as a full-fledged scientific representation tool, but it is more a tool to explore the results to select those to be represented more carefully.
+
+jOptiEx is a Java program. To run it, you need to have a JRE available in your computer and type `java -jar jOptiEx.jar` from the directory where `jOptiEx.jar` is present.
+
 
 ## Python integration
 
