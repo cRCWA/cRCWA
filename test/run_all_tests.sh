@@ -9,7 +9,7 @@ printf "\033[0m\n"
 
 if [ -z "$1" ]
 then
-    executable="../../bin/afmm"
+    executable="../../bin/crcwa"
 else
     executable=$1
 fi

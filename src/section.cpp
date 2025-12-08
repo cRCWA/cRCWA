@@ -2167,10 +2167,12 @@ void section::modes_calculation()
     // imaginary part if we want to force convergent results.
 
     complex<double>e, g;
+    complex<double>ri;
 
     for (int j=0; j<B.getNrow();++j) {
         e=B(j,j);
         g = sqrt(e);
+        ri = sqrt(g);
 
         if(father->ensureConvergence && g.imag()>0) {
             // here the calculated square root can have both the real part
