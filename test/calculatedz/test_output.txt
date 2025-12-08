@@ -1,0 +1,125 @@
+ ***************************************************************************
+ *      Aperiodic Fourier Modal Method full vectorial 3D propagation       *
+ *                            version 1.5                                  *
+ *                                                                         *
+ *     Build date: Dec  8 2025                                             *
+ *     Source revision: N/A                                                *
+ *                                                                         *
+ *     Davide Bucci, CROMA     March 2008 - current                        *
+ *     Jérôme Michallon, CROMA     May 2012 - February 2014                *
+ *     MINATEC-Grenoble INP, 3, parvis Louis Neel                          *
+ *     38016, Grenoble CEDEX, France                                       *
+ *                                                                         *
+ *     davide.bucci@grenoble-inp.fr                                        *
+ *                                                                         *
+ ***************************************************************************
+Reading file: calculatedz.fmm
+Wavelength set to: 7.749e-07 m.
+Calculation window size set to: 1.25e-06 m x 1.5e-06 m.
+Dust will be swept under the carpet.
+(All eigenvalues having a positive imaginary part will be forced to have it negative).
+Number of harmonics set to: 11 x 11
+symmetry along x has been set, anti-symmetry along y has been set.
+
+Length of the section 1: 1e-07 m. 
+Substrate refractive index set to: (1,0)
+
+Length of the section 2: 2e-08 m.
+Substrate refractive index set to: (1.5,0)
+Generated rectangular section waveguide with core refractive index: (1.7,0)
+Size 7e-07 m x 7e-07 m at location 0 m x 0 m
+
+Length of the section 3: 1e-07 m.
+Substrate refractive index set to: (1,0)
+Matrices will be retained to compute propagation.
+
+Now considering section 1 of 3, threads in parallel: 1 
+Creating the electric field propagation matrix
+Created DD, EE, FF, GG 
+Calculating eigenvalues and eigenvectors
+LAPACK ZGEEVX executed, info = 0
+Now considering section 2 of 3, threads in parallel: 1 
+Creating the electric field propagation matrix
+Created DD, EE, FF, GG 
+Calculating eigenvalues and eigenvectors
+LAPACK ZGEEVX executed, info = 0
+Now considering section 3 of 3, threads in parallel: 1 
+Creating the electric field propagation matrix
+Created DD, EE, FF, GG 
+Calculating eigenvalues and eigenvectors
+LAPACK ZGEEVX executed, info = 0
+Section 1 of 3.
+Searching for interesting modes: 1 < Re{n_eff} < 0
+                            -0.1 < Im{n_eff} < 0.1
+Section 2 of 3.
+Searching for interesting modes: 1.5 < Re{n_eff} < 1.7
+                            -0.1 < Im{n_eff} < 0.1
+Interesting mode found 0, effective index: (1.55475,0)
+Interesting mode found 1, effective index: (1.61304,-7.3268e-18)
+Section 3 of 3.
+Searching for interesting modes: 1 < Re{n_eff} < 0
+                            -0.1 < Im{n_eff} < 0.1
+
+Assembling sections
+Fabricating V matrix, section: 0, threads in parallel: 1 
+Fabricating V matrix, section: 1, threads in parallel: 1 
+Fabricating V matrix, section: 2, threads in parallel: 1 
+Creating S matrix for interface 1 of 2.
+Creating S matrix for interface 2 of 2.
+Creating global S matrix.
+Forward excitation:
+Creating the excitation field.
+Constant excitation (1,0).
+
+Matrix size: 11 x 11
+Calculating eigenmode representation of field excitations.
+The backward excitation has not been specified. I will consider it as absent.
+Calculating excitation vectors for each interface.
+Propagation step: dz = 5e-09 m.
+Starting field propagation.
+Propagation of the Ex (improved) field.
+Considering section 1 of 3.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Considering section 2 of 3.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Considering section 3 of 3.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: test_results_x.txt
+File size: 101 x 101 x 44 points.
+
+Matrix size: 11 x 11
+Calculating eigenmode representation of field excitations.
+Propagation step: dz = 5e-09 m.
+Starting field propagation.
+Propagation of the Ey (improved) field.
+Considering section 1 of 3.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Considering section 2 of 3.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Considering section 3 of 3.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: test_results_y.txt
+File size: 101 x 101 x 44 points.
+
+Matrix size: 11 x 11
+Calculating eigenmode representation of field excitations.
+Propagation step: dz = 5e-09 m.
+Starting field propagation.
+Propagation of the Ez (improved) field.
+Considering section 1 of 3.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Considering section 2 of 3.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Considering section 3 of 3.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: test_results_z.txt
+File size: 101 x 101 x 44 points.

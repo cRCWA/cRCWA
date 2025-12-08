@@ -1,0 +1,71 @@
+ ***************************************************************************
+ *      Aperiodic Fourier Modal Method full vectorial 3D propagation       *
+ *                            version 1.5                                  *
+ *                                                                         *
+ *     Build date: Dec  8 2025                                             *
+ *     Source revision: N/A                                                *
+ *                                                                         *
+ *     Davide Bucci, CROMA     March 2008 - current                        *
+ *     Jérôme Michallon, CROMA     May 2012 - February 2014                *
+ *     MINATEC-Grenoble INP, 3, parvis Louis Neel                          *
+ *     38016, Grenoble CEDEX, France                                       *
+ *                                                                         *
+ *     davide.bucci@grenoble-inp.fr                                        *
+ *                                                                         *
+ ***************************************************************************
+Reading file: testorientation.fmm
+Wavelength set to: 1.55e-06 m.
+Calculation window size set to: 1e-05 m x 1e-05 m.
+Number of harmonics set to: 11 x 11
+Dust will be swept under the carpet.
+(All eigenvalues having a positive imaginary part will be forced to have it negative).
+
+Length of the section 1: 2e-05 m. 
+Opening index file: refractive_index_imo.rid
+The file contains 101 x  101 points.
+The x range is 1e-05 m.
+The y range is 1e-05 m.
+L2 norm: 1.01218e-05
+Substrate refractive index set to: (1,0)
+Just read a file index distribution: refractive_index_imo.rid
+Structure represented with: 101 x 101 points
+Structure file written: refractive_index.txt
+Structure represented with: 101 x 101 points
+Structure file written: refractive_index_im.txt
+Matrices will be retained to compute propagation.
+
+Now considering section 1 of 1, threads in parallel: 1 
+Creating the electric field propagation matrix
+Created DD, EE, FF, GG 
+Calculating eigenvalues and eigenvectors
+LAPACK ZGEEVX executed, info = 0
+Section 1 of 1.
+Searching for interesting modes: 1 < Re{n_eff} < 0
+                            -0.1 < Im{n_eff} < 0.1
+Selected section 1 of 1
+
+Searching for interesting modes: 1 < Re{n_eff} < 0
+                            -0.1 < Im{n_eff} < 0.1
+Indices are: 
+Forward excitation:
+Creating the excitation field.
+Selected the mode position: 0, coefficient (1,0)
+Backward excitation:
+Creating the excitation field.
+Selected the mode position: 0, coefficient (1,0)
+
+Assembling sections
+Fabricating V matrix, section: 0, threads in parallel: 1 
+Creating global S matrix.
+
+Matrix size: 11 x 11
+Calculating eigenmode representation of field excitations.
+Calculating excitation vectors for each interface.
+Propagation step: dz = 3e-07 m.
+Starting field propagation.
+Propagation of the Ex field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: propag.txt
+File size: 50 x 50 x 67 points.

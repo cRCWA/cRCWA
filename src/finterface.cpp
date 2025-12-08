@@ -125,6 +125,8 @@ finterface finterface::createSmatrix(finterface *s, int numOfInterfaces)
 
     s[0].TRpm=s[0].Rpm;
     s[0].TTpp=s[0].Tpp;
+    
+    complex<double> p;
 
     for(int i=1; i<numOfInterfaces-1; ++i) {
 
@@ -134,6 +136,7 @@ finterface finterface::createSmatrix(finterface *s, int numOfInterfaces)
         multsumscale(complex<double>(-1.0, 0), F.Rpm,
              s[i].Rmp, complex<double>(1.0, 0), pipo);
         pipo.invert();
+        p+=i;
 
         TppN = s[i].Tpp;
         TppN *=pipo;
