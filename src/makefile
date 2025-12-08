@@ -100,14 +100,14 @@ O2GFILES = optiwave2gnuplot.o
 .cpp.o:
 	$(CC) $(OPTIONS) -c $(CFLAGS) $*.cpp 
 
-all: setrev afmm  slice o2f 
-	mv afmm ../bin
+all: setrev crcwa  slice o2f 
+	mv crcwa ../bin
 	mv slice ../bin
 	mv o2g ../bin
 
 # monocore
-afmm: $(OFILES) $(HEADERS)
-	$(LD) $(OFILES) -L$(LIBLAPACKDIR) $(LIBLAPACK) -L$(LIBBLASDIR) $(LIBBLAS) -L$(LIBFFTW3DIR) -lfftw3 $(LIBTHREAD)   -o afmm
+crcwa: $(OFILES) $(HEADERS)
+	$(LD) $(OFILES) -L$(LIBLAPACKDIR) $(LIBLAPACK) -L$(LIBBLASDIR) $(LIBBLAS) -L$(LIBFFTW3DIR) -lfftw3 $(LIBTHREAD)   -o crcwa
 
 slice: $(SLOFILES)
 	$(LD) $(SLOFILES) -o slice

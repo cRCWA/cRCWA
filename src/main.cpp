@@ -109,7 +109,7 @@ int main (int argc, char * const argv[])
 {
     cout << " ***************************************************************************\n"
          << " *      Aperiodic Fourier Modal Method full vectorial 3D propagation       *\n"
-         << " *                            version 1.4.6                                *\n"
+         << " *                            version 1.5                                  *\n"
          << " *                                                                         *\n"
          << " *     Build date: " << __DATE__<<  "                                             *\n"
          << " *     Source revision: "
@@ -125,7 +125,7 @@ int main (int argc, char * const argv[])
          << " *     MINATEC-Grenoble INP, 3, parvis Louis Neel                          *\n"
          << " *     38016, Grenoble CEDEX, France                                       *\n"
          << " *                                                                         *\n"
-         << " *     bucci@minatec.grenoble-inp.fr                                       *\n"
+         << " *     davide.bucci@grenoble-inp.fr                                        *\n"
          << " *                                                                         *\n"
          << " ***************************************************************************\n";
     init_semaphore_FFTW();
