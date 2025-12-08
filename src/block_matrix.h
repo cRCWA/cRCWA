@@ -17,6 +17,26 @@
 *     BLAS included in the standard LAPACK distribution.                   *
 ****************************************************************************/
 
+
+/* This file is part of cRCWA.
+
+    cRCWA is free software: you can redistribute it and/or modify it under the
+    terms of the GNU General Public License as published by the Free Software
+    Foundation, either version 3 of the License, or (at your option) any later
+    version.
+    
+    cRCWA is distributed in the hope that it will be useful, but WITHOUT ANY
+    WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS 
+    FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+    details.
+    
+    You should have received a copy of the GNU General Public License along
+    with cRCWA. If not, see <https://www.gnu.org/licenses/>. 
+
+    Davide Bucci, 2008-2025
+    Jérôme Michallon, 2012-2014
+*/
+
 #ifndef BLOCK_MATRIX_H
 #define BLOCK_MATRIX_H
 // Comment to check for assertion in the code. This should be useful for debug

@@ -3,21 +3,57 @@
 # *                                                                         *
 # * This program needs Lapack, Blas as well as f2c and fftw3                *
 # ***************************************************************************
+# 
+# This file is part of cRCWA.
+# 
+#   cRCWA is free software: you can redistribute it and/or modify it under the
+#   terms of the GNU General Public License as published by the Free Software
+#   Foundation, either version 3 of the License, or (at your option) any later
+#   version.
+#   
+#   cRCWA is distributed in the hope that it will be useful, but WITHOUT ANY
+#   WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS 
+#   FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+#   details.
+#   
+#   You should have received a copy of the GNU General Public License along
+#   with cRCWA. If not, see <https://www.gnu.org/licenses/>. 
+# 
+#   Davide Bucci, 2008-2025
+#   Jérôme Michallon, 2012-2014
+# */
 
-# I have chosen to put all the useful files in the single 
-# directory specified by the $(LIBDIR) variable.
 
-# This is the directory where the library files are provided:
+# ***************************************************************************
+# CONFIGURATION SECTION
+# ***************************************************************************
+
+# This is the directory where the library files are provided. It is useful
+# if the LAPACK, BLAS and FFTW3 libraries are stored in the same place in
+# your system. This is very often the case.
+
 LIBDIR =  /opt/local/lib
 
 # This is where the LAPACK lib can be found
-LIBLAPACK = $(LIBDIR)/lapack
+LIBLAPACKDIR = $(LIBDIR)/lapack
+# The option to include the LAPACK library. You rarely need to change it, as
+# the name of the library is very often just "lapack".
+LIBLAPACK = -llapack
 
 # This is where the BLAS lib can be found
-LIBBLAS = $(LIBDIR)/lapack
+LIBBLASDIR = $(LIBDIR)/lapack
+# The option to include the BLAS library. You will have to change this if you
+# are using a library having a different name. For example, a common choice
+# with ATLAS may be LIBBLAS = -latlas.
+LIBBLAS = -lblas
+
 
 # This is where the fftw3 lib can be found
-LIBFFTW3 = $(LIBDIR)
+LIBFFTW3DIR = $(LIBDIR)
+# The option to include the FFTW3 library:
+LIBFFTW3 = -lfftw3
+
+# ***************************************************************************
 
 # For multi-thread operation, we need:
 LIBTHREAD = -lpthread
@@ -71,7 +107,7 @@ all: setrev afmm  slice o2f
 
 # monocore
 afmm: $(OFILES) $(HEADERS)
-	$(LD) $(OFILES) -L$(LIBLAPACK) -llapack -L$(LIBBLAS) -lblas -L$(LIBFFTW3) -lfftw3 $(LIBTHREAD)   -o afmm
+	$(LD) $(OFILES) -L$(LIBLAPACKDIR) $(LIBLAPACK) -L$(LIBBLASDIR) $(LIBBLAS) -L$(LIBFFTW3DIR) -lfftw3 $(LIBTHREAD)   -o afmm
 
 slice: $(SLOFILES)
 	$(LD) $(SLOFILES) -o slice

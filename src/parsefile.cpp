@@ -11,6 +11,26 @@
 *    C++ file parsing engine                                               *
 ****************************************************************************/
 
+
+/* This file is part of cRCWA.
+
+    cRCWA is free software: you can redistribute it and/or modify it under the
+    terms of the GNU General Public License as published by the Free Software
+    Foundation, either version 3 of the License, or (at your option) any later
+    version.
+    
+    cRCWA is distributed in the hope that it will be useful, but WITHOUT ANY
+    WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS 
+    FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+    details.
+    
+    You should have received a copy of the GNU General Public License along
+    with cRCWA. If not, see <https://www.gnu.org/licenses/>. 
+
+    Davide Bucci, 2008-2025
+    Jérôme Michallon, 2012-2014
+*/
+
 /* Version 1.4, April 2011 - Introduce the optional "system" command */
 /* Version 1.3, July 2010 - Introduce the interactive mode and include */
 /* Version 1.2.2, May 2009 - Compile under GCC > 4.3 */
