@@ -53,6 +53,16 @@ LIBFFTW3DIR = $(LIBDIR)
 # The option to include the FFTW3 library:
 LIBFFTW3 = -lfftw3
 
+# This is where the Python include file Python.h is present:
+PYTHONINCDIR = /System/Volumes/Data/opt/local/Library/Frameworks/Python.framework/Versions/3.13/include/python3.13/
+
+# This is the Python library to be included. In macOS the file can be 
+# called like libpython3.15.dylib (for a dynamically linked library).
+# If you use, let's say, Python 3.11, you should change the version
+# accordingly. cRCWA requires Python 3 in any case.
+
+PYTHONLIB = -L/opt/local/Library/Frameworks/Python.framework/Versions/3.15/lib/ -lpython3.15
+
 # ***************************************************************************
 
 # For multi-thread operation, we need:
@@ -100,7 +110,9 @@ O2GFILES = optiwave2gnuplot.o
 .cpp.o:
 	$(CC) $(OPTIONS) -c $(CFLAGS) $*.cpp 
 
-all: setrev crcwa  slice o2f 
+# Put pycrcwa after o2f if you want the Python library to be automatically
+# built with make all.
+all: setrev crcwa  slice o2f
 	mv crcwa ../bin
 	mv slice ../bin
 	mv o2g ../bin
@@ -108,6 +120,13 @@ all: setrev crcwa  slice o2f
 # monocore
 crcwa: $(OFILES) $(HEADERS)
 	$(LD) $(OFILES) -L$(LIBLAPACKDIR) $(LIBLAPACK) -L$(LIBBLASDIR) $(LIBBLAS) -L$(LIBFFTW3DIR) -lfftw3 $(LIBTHREAD)   -o crcwa
+
+pycrcwa:
+	$(CXX) -shared -L$(LIBLAPACKDIR) $(LIBLAPACK) -L$(LIBBLASDIR) $(LIBBLAS) -L$(LIBFFTW3DIR) -lfftw3 $(LIBTHREAD) $(PYTHONLIB) -o pycRCWA.so \
+	 $(OFILES) -I$(PYTHONINCDIR) afmm_python_module.cpp -fPIC
+	 mv pycRCWA.so ../python
+
+
 
 slice: $(SLOFILES)
 	$(LD) $(SLOFILES) -o slice

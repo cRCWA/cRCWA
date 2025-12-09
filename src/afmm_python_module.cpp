@@ -32,7 +32,7 @@
 */
 
 
-// g++ -dynamiclib -I/usr/include/python/ -lpython -o pyAFMM.so afmm_python_module.cpp
+// g++ -dynamiclib -I/usr/include/python/ -lpython -o pycRCWA.so afmm_python_module.cpp
 
 
 
@@ -53,7 +53,7 @@ using namespace std;
 #include "compileinfo.h"
 
 extern "C" {
-    PyMODINIT_FUNC PyInit_pyAFMM(void);
+    PyMODINIT_FUNC PyInit_pycRCWA(void);
     static PyObject* py_AFMM_banner(PyObject* self, PyObject* args);
     static PyObject* py_AFMM_parsescript(PyObject* self, PyObject* args);
     static PyObject* py_AFMM_size(PyObject* self, PyObject* args);
@@ -126,9 +126,9 @@ static PyMethodDef myModule_methods[] = {
 
 static PyObject *afmmError;
 
-static struct PyModuleDef pyAFMMmodule = {
+static struct PyModuleDef pycRCWAmodule = {
     PyModuleDef_HEAD_INIT,
-    "pyAFMM",   /* name of module */
+    "pycRCWA",   /* name of module */
     NULL, /* module documentation, may be NULL */
     -1,       /* size of per-interpreter state of the module,
                  or -1 if the module keeps state in global variables. */
@@ -144,13 +144,13 @@ bool externalCommands = false;
 /*
  * Python2 calls this to let us initialize our module
  *
-void initpyAFMM(void)
+void initpycRCWA(void)
 {
-    PyObject *m = Py_InitModule("pyAFMM", myModule_methods);
+    PyObject *m = Py_InitModule("pycRCWA", myModule_methods);
     if (m == NULL)
         return;
 
-    afmmError = PyErr_NewException("pyAFMM.error", NULL, NULL);
+    afmmError = PyErr_NewException("pycRCWA.error", NULL, NULL);
     Py_INCREF(afmmError);
     PyModule_AddObject(m, "error", afmmError);
 }
@@ -159,16 +159,15 @@ void initpyAFMM(void)
 /*
  * Python3 calls this to let us initialize our module
  */
-PyMODINIT_FUNC PyInit_pyAFMM(void)
+PyMODINIT_FUNC PyInit_pycRCWA(void)
 {
     PyObject *m;
-    CHECK_EXPIRED();
 
-    m = PyModule_Create(&pyAFMMmodule);
+    m = PyModule_Create(&pycRCWAmodule);
     if (m == NULL)
         return NULL;
 
-    afmmError = PyErr_NewException("pyAFMM.error", NULL, NULL);
+    afmmError = PyErr_NewException("pycRCWA.error", NULL, NULL);
     Py_XINCREF(afmmError);
     if (PyModule_AddObject(m, "error", afmmError) < 0) {
         Py_XDECREF(afmmError);
@@ -339,7 +338,7 @@ static PyObject* py_AFMM_banner(PyObject* self, PyObject* args)
         return NULL;
     cout << " ***************************************************************************\n"
          << " *      Aperiodic Fourier Modal Method full vectorial 3D propagation       *\n"
-         << " *                            version 1.4.6                                *\n"
+         << " *                            cRCWA 1.5                                    *\n"
          << " *                                                                         *\n"
          << " *     Build date: " << __DATE__<<  "                                             *\n"
          << " *     Source revision: "
@@ -350,8 +349,8 @@ static PyObject* py_AFMM_banner(PyObject* self, PyObject* args)
          << std::setw(0)
          << "                     *\n"
          << " *                                                                         *\n"
-         << " *     Davide Bucci, CROMA     March 2008 - current                        *\n"
-         << " *     Jérôme Michallon, CROMA     May 2012 - February 2014                *\n"
+         << " *     Davide Bucci, IMEP-LAHC March 2008 - current                        *\n"
+         << " *     Jérôme Michallon, IMEP-LAHC May 2012 - February 2014                *\n"
          << " *     MINATEC-Grenoble INP, 3, parvis Louis Neel                          *\n"
          << " *     38016, Grenoble CEDEX, France                                       *\n"
          << " *                                                                         *\n"
@@ -1058,4 +1057,3 @@ static PyObject* py_AFMM_coefficient_id(PyObject* self, PyObject* args)
 
     return Py_BuildValue("D", &coeff);
 }
-

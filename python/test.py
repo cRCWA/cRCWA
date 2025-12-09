@@ -1,6 +1,6 @@
 # The following line imports the AFMM module that should have
 # been correctly installed on your machine:
-import pyAFMM as afmm
+import pycRCWA as afmm
 
 # Show the program AFMM banner and credits
 afmm.banner()
