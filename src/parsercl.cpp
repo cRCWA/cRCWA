@@ -2,7 +2,7 @@
  ****                                                                 ****
  ****                  Main file for PARSER.CPP                       ****
  ****         Original version 1992 by Bijarne Stroustrup             ****
- ****              Modified 1998-2014 by Davide Bucci                 ****
+ ****              Modified 1998-2025 by Davide Bucci                 ****
  ****                                                                 ****
  *************************************************************************/
 
@@ -109,8 +109,8 @@ int parseTok::error(int iErrNo)
 
 int parseTok::getToken(void)
 {
-    register char ch;
-    register char cNextChar;
+    char ch;
+    char cNextChar;
 
     do {        // Eat the possibly leading spaces
         if (!(ch = pcExpression[iCurrChar++])) return curr_tok = END;
@@ -341,13 +341,13 @@ int parseTok::searchNameOnTable(char ch)
 // Extract numeric constants (returns constant's length in chars)
 int parseTok::extractNumber (int  iCharCounter)   // Position of the number
 {
-    register int iStart=iCharCounter;       // Start position of the constant
+    int iStart=iCharCounter;       // Start position of the constant
     number_value=0;                 // Zero the initial value of number_value (which will contain the result)
     double mantissa=0;                // Defines the mantissa variable for Scientific-Notation constants.
     int FlagScientific=0;             // Flag: is a Scientific-Notated contant
     int FlagMinus=0;                // Flag: scientific exponent is negative
-    register int iPointPos=NO_DECIMAL;        // POsition of decimal separator
-    register char ch;               // Char read
+    int iPointPos=NO_DECIMAL;        // POsition of decimal separator
+    char ch;               // Char read
 
 
     while (isdigit(ch=(pcExpression[iCharCounter])) ||
@@ -425,7 +425,7 @@ int parseTok::insertArray(const char far*s, int size, double *values)
 // Search for a variable. If ins==1, eventually create it if it is not found.
 name * parseTok::look(const char * p, int ins)
 {
-    register int ii = 0;
+    int ii = 0;
     const char * pp=p;
     name  *n;
 
@@ -463,7 +463,7 @@ name * parseTok::look(const char * p, int ins)
 // Kill the given variable from variable space
 int parseTok::killVariable(const char * pVarName)
 {
-    register int ii = 0;
+    int ii = 0;
     const char * pp=pVarName;
     int FlagFound=False;
     name * n=NULL;
@@ -720,7 +720,7 @@ double numParser::sec()
 
 double numParser::prim()
 {
-    register double i;
+    double i;
     int t;
     int j;
 

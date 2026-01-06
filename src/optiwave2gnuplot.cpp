@@ -178,7 +178,8 @@ int main(int argc, char **argv)
             (xmax+xmin)/2.0, (ymax+ymin)/2.0, C);
     } catch (commandError E) {
         cerr << "Error: "<<E.getMess()<<endl;
+        return 1;
     }
-
+    return 0;
 }
 

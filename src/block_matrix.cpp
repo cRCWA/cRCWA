@@ -1609,10 +1609,10 @@ db_matrix db_matrix::fft_a(bool type)
     fftw_complex *out;
     fftw_plan plan;
 
-//    sem_wait (mutex_fftw);  /*- sync start -*/
+    sem_wait (mutex_fftw);  /*- sync start -*/
     in = (fftw_complex *)fftw_malloc(sizeof(fftw_complex)*nx*ny);
     out = (fftw_complex *)fftw_malloc(sizeof(fftw_complex)*nx*ny);
-//    sem_post (mutex_fftw);  /*- sync end -*/
+    sem_post (mutex_fftw);  /*- sync end -*/
 
     int row;
     complex<double> v;
@@ -1625,20 +1625,20 @@ db_matrix db_matrix::fft_a(bool type)
         }
     }
 
-//    sem_wait (mutex_fftw);  /*- sync start -*/
+    sem_wait (mutex_fftw);  /*- sync start -*/
     if(type) {
         plan = fftw_plan_dft_2d(nx, ny, in, out, FFTW_BACKWARD, FFTW_ESTIMATE);
     } else {
         plan = fftw_plan_dft_2d(nx, ny, in, out, FFTW_FORWARD, FFTW_ESTIMATE);
     }
-//    sem_post (mutex_fftw);  /*- sync end -*/
+    sem_post (mutex_fftw);  /*- sync end -*/
 
     fftw_execute(plan);
 
-//    sem_wait (mutex_fftw);  /*- sync start -*/
+    sem_wait (mutex_fftw);  /*- sync start -*/
     fftw_free (in);
     fftw_destroy_plan(plan);
-//    sem_post (mutex_fftw);  /*- sync end -*/
+    sem_post (mutex_fftw);  /*- sync end -*/
 
     for (int i = 0; i < nx; ++i){
         row=i*ny;
@@ -1647,9 +1647,9 @@ db_matrix db_matrix::fft_a(bool type)
         }
     }
 
-//    sem_wait (mutex_fftw);  /*- sync start -*/
+    sem_wait (mutex_fftw);  /*- sync start -*/
     fftw_free (out);
-//    sem_post (mutex_fftw);/*- sync end -*/
+    sem_post (mutex_fftw);/*- sync end -*/
     #else
         cout <<"FFTW library not included. I can not compute fft2\n";
     #endif
