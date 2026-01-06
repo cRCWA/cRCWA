@@ -685,9 +685,6 @@ list<db_matrix> section::do_outgmodes(int sj, int si, char *ftype,
     int snux=father->dimx/2+1;
     int snuy=father->dimy/2+1;
 
-    //if (si<snuy) si=snuy;
-    //if (sj<snux) sj=snux;
-
     cout << "Fields represented with: "<<sj<<" x "<<si<<" points.\n";
 
     // TODO: more or less the same code in propagation routines. Should
@@ -726,41 +723,47 @@ list<db_matrix> section::do_outgmodes(int sj, int si, char *ftype,
         calcH = false;
         calcD = true;
         calcz = false;
-    }else if(strcmp(ftype, "Dz")==0) {
+    } else if(strcmp(ftype, "Dz")==0) {
         shiftToY = false;
         calcH = false;
         calcD = true;
         calcz = true;
-    }else if(strcmp(ftype, "Ex2")==0) {
+    } else if(strcmp(ftype, "Ex2")==0) {
         shiftToY = false;
         calcH = false;
         calcD = false;
         calcz = false;
         improve_representation = true;
-    }else if(strcmp(ftype, "Ey2")==0) {
+    } else if(strcmp(ftype, "Ey2")==0) {
         shiftToY = true;
         calcH = false;
         calcD = false;
         calcz = false;
         improve_representation = true;
-    }else if(strcmp(ftype, "Ez2")==0) {
+    } else if(strcmp(ftype, "Ez2")==0) {
         shiftToY = false;
         calcH = false;
         calcD = false;
         calcz = true;
         improve_representation = true;
-    }else {
+    } else {
         throw parsefile_commandError("outgmodes: unrecognized field type."
             " Should be {Ex|Ey|Ez|Ex2|Ey2|Ez2|Hx|Hy|Hz|Dx|Dy|Dz}.");
     }
 
 
-    // Check if the C matrix is empty
+    // Check if the W or B matrix are empty
     if (W.isEmpty()) {
         throw parsefile_commandError(
             "outgmodes: the problem must be set and modes calculated with"
             " solve before trying to describe them on a file.");
+    } else if (B.isEmpty()) {
+        throw parsefile_commandError(
+            "The eigenvalue matrix should be filled."
+            " This is a programming error.");
     }
+    
+    
     double dx=father->tot_x / sj;
     double dy=father->tot_y / si;
 
@@ -839,12 +842,15 @@ list<db_matrix> section::do_outgmodes(int sj, int si, char *ftype,
                 shiftToY, calcH, snux, snuy, sj, si,
                 calcD, epsilonxy, epsz, muz,calcz,improve_representation,
                 false, unused);
-
+            // Create a buffer for the file name. The size should be large
+            // enough to contain the full name.
+            size_t s_size=40+strlen(fname)+strlen(ftype);
+            char *s=new char[s_size+1];
             // We can then write the results on the output file
             if (rimc == O) {
                 // Optiwave format
-                char s[256];
-                sprintf(s, "%s_%s_%s_%d.f3d", fname, ftype, "o", mi++);
+                snprintf(s, s_size, "%s_%s_%s_%d.f3d", fname, ftype, "o",
+                    mi++);
                 FILE *f=fopen(s,"w");
                 father->fileoutputOW(out, f, dx*1e6, dy*1e6);
                 cout << "Mode file written (Optiwave format): "<< s<<"\n";
@@ -853,10 +859,9 @@ list<db_matrix> section::do_outgmodes(int sj, int si, char *ftype,
                 storage.push_back(out);
             } else {
                 // Gnuplot format. Put a small header.
-                char s[256];
                 const char *erimco[]={"r","i","m","c","o","s"};
-                sprintf(s, "%s_%s_%s_%d.mode", fname, ftype, erimco[rimc],
-                    mi++);
+                snprintf(s, s_size, "%s_%s_%s_%d.mode", fname, ftype,
+                    erimco[rimc], mi++);
                 FILE *f=fopen(s,"w");
 
                 if(useAzimuthalOrder) {
@@ -867,6 +872,7 @@ list<db_matrix> section::do_outgmodes(int sj, int si, char *ftype,
                 father->fileoutputGP(out, f, rimc, dx, dy);
                 cout << "Mode file written (Gnuplot format): "<< s<<"\n";
             }
+            free(s);
         }
     }
     return storage;
