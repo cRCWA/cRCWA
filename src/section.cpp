@@ -921,7 +921,7 @@ db_matrix section::do_inpstruct(int sj, int si, char* otype)
         for (int l=0; l<out.getNcol(); ++l) {
             for(int m=0; m<out.getNrow(); ++m) {
                 px=(double(l)*p->tot_x)/out.getNcol()-p->tot_x/2.0;
-                py=(double(m)*p->tot_y)/out.getNcol()-p->tot_y/2.0;
+                py=(double(m)*p->tot_y)/out.getNrow()-p->tot_y/2.0;
 
                 n=expectedRefractiveIndex(px, py);
 
