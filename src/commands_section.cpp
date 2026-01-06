@@ -448,7 +448,8 @@ int commands::c_selmodes(parsefile *obj, int argc,char *argv[])
 
         db_matrix out(si, sj);
 
-        char s[256];
+        size_t buf_size=strlen(argv[8])+strlen(argv[1])+strlen(argv[2])+40;
+        char s[buf_size];
         int mi=0;
         int mm, ll;
 
@@ -467,7 +468,6 @@ int commands::c_selmodes(parsefile *obj, int argc,char *argv[])
         // if the V matrix does not exist, it is created
         if ((calcH && !calcz) || (calcz && !calcH)) {
             if (p->HxField && p->HyField) {
-
                 if (p->cur->V.getNcol() == 0 && p->cur->V.getNrow() == 0) {
                     p->cur->V = p->cur->assembleVmatrix();
                 }
@@ -583,14 +583,14 @@ int commands::c_selmodes(parsefile *obj, int argc,char *argv[])
             // We can then write the results on the output file
             if (rimc == O) {
                 // Optiwave format
-                sprintf(s, "%s_%s_%s_%d.f3d", argv[8], argv[1],
+                snprintf(s, buf_size, "%s_%s_%s_%d.f3d", argv[8], argv[1],
                         argv[2], mi++);
                 FILE *f=fopen(s,"w");
                 p->fileoutputOW(out, f, dx*1e6, dy*1e6);
                 cout << "Mode file written (Optiwave format): "<< s<<"\n";
             } else {
                 // Gnuplot format. Put a small header.
-                sprintf(s, "%s_%s_%s_%d.mode", argv[8], argv[1],
+                snprintf(s, buf_size, "%s_%s_%s_%d.mode", argv[8], argv[1],
                      argv[2], mi++);
                 FILE *f=fopen(s,"w");
 

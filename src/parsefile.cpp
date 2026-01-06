@@ -27,7 +27,7 @@
     You should have received a copy of the GNU General Public License along
     with cRCWA. If not, see <https://www.gnu.org/licenses/>. 
 
-    Davide Bucci, 2008-2025
+    Davide Bucci, 2008-2026
     Jérôme Michallon, 2012-2014
 */
 
@@ -232,7 +232,7 @@ int  parsefile::c_if(parsefile *obj, int argc,char *argv[])
         // Create a label, unique.
         string labelif="iflbl";
         char buffer[256];
-        sprintf(buffer, "%li", obj->currentPosition);
+        snprintf(buffer,255, "%li", obj->currentPosition);
 
         labelif+= buffer;
 

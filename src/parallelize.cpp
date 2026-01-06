@@ -38,10 +38,11 @@
 #include "parallelize.h"
 
 sem_t *mutex_thread_counter; // Semaphore for thread counter access.
-char semaphore_thread_name[256];
+#define BUFFER_SIZE 255
+char semaphore_thread_name[BUFFER_SIZE+1];
 
 sem_t *mutex_io_access; // Semaphore for I/O.
-char semaphore_io_access_name[256];
+char semaphore_io_access_name[BUFFER_SIZE+1];
 
 
 /** Main parallelisation function: launch a new thread with the given function
@@ -58,7 +59,8 @@ void parallelize(struct thread_data *td, void* (pfunc)(void*), int instance,
     int p=getpid();
 
     if(mutex_thread_counter==NULL && nmax>1) {
-        sprintf(semaphore_thread_name,"/semaphore_thread_c_%d", p);
+        snprintf(semaphore_thread_name,BUFFER_SIZE,
+            "/semaphore_thread_c_%d", p);
         mutex_thread_counter=sem_open(semaphore_thread_name, O_CREAT, 0644, 1);
         if(mutex_thread_counter==SEM_FAILED) {
             cerr<<"Could not set up a semaphore (thread counter), and "
@@ -69,7 +71,8 @@ void parallelize(struct thread_data *td, void* (pfunc)(void*), int instance,
         }
     }
     if(mutex_io_access==NULL && nmax>1) {
-        sprintf(semaphore_io_access_name,"/semaphore_io_access_%d", p);
+        snprintf(semaphore_io_access_name,BUFFER_SIZE,
+            "/semaphore_io_access_%d", p);
         mutex_io_access=sem_open(semaphore_io_access_name, O_CREAT, 0644, 1);
         if(mutex_io_access==SEM_FAILED) {
             cerr<<"Could not set up a semaphore (IO access), and "
