@@ -93,7 +93,8 @@
 
 // Unnamed semaphores are the simplest solutions on Linux, but they are not
 // available on MacOSX, so we must provide both named and unnamed semaphores.
-#define USE_UNNAMED
+// TODO: check if this works as well in Linux
+// #define USE_UNNAMED
 
 // During the configuration operation, the configure script will try to
 // determine if the BLAS and LAPACK libraries have been compiled with a
@@ -216,7 +217,8 @@ using namespace std;
 sem_t *mutex_fftw; // Semaphore for fftw
 sem_t unnamed_mutex_fftw; // Unnamed semaphore (if applicable).
 bool mutex_fftw_created=false;
-char semaphore_name[256];
+#define SEM_NAME_SIZE 255
+char semaphore_name[SEM_NAME_SIZE+1];
 
 
 void init_semaphore_FFTW(void)
@@ -227,11 +229,11 @@ void init_semaphore_FFTW(void)
         sem_init(&unnamed_mutex_fftw, 0, 1);
         mutex_fftw=&unnamed_mutex_fftw;
         mutex_fftw_created=true;
+    #else
         // Code for a named semaphore, which seems unnecessary here and
         // error-prone
-    #else
         int p=getpid();
-        sprintf(semaphore_name,"/semaphore_fftw_%d", p);
+        snprintf(semaphore_name,SEM_NAME_SIZE,"/semaphore_fftw_%d", p);
         mutex_fftw=sem_open(semaphore_name, O_CREAT, 0644, 1);
         if(mutex_fftw==SEM_FAILED) {
             cerr<<"Could not set up a semaphore (FFTW3). "

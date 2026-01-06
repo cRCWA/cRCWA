@@ -48,6 +48,12 @@ finterface& finterface::createInterface(db_matrix &Wt_m1,
 
     // Tpp=(Wt_m1*Wtp1+Vt_m1*Vtp1);
 
+    if(Wt_m1.isEmpty() || Wtp1.isEmpty() || Vt_m1.isEmpty() || Vtp1.isEmpty()
+        || Wtp1_m1.isEmpty() || Wt.isEmpty() || Vtp1_m1.isEmpty()
+        || Vt.isEmpty() || Pt.isEmpty() || Ptp1.isEmpty())
+    {
+        cerr << "Warning: at least one of the matrices is empty!"<<endl;
+    }
     Tpp = Wt_m1;
     Tpp *= Wtp1;
     Rpm = Tpp;
@@ -105,7 +111,8 @@ finterface& finterface::createInterface(db_matrix &Wt_m1,
 
 
 */
-finterface finterface::createSmatrix(finterface *s, int numOfInterfaces)
+finterface finterface::createSmatrix(finterface *s,
+    unsigned int numOfInterfaces)
 {
     finterface F;
     db_matrix I=db_matrix::createUnitMatrix(s[0].Tpp.getNcol(),
@@ -202,8 +209,14 @@ finterface finterface::createSmatrix(finterface *s, int numOfInterfaces)
     @param p the pointer at the section array
 
 */
-void finterface::inpoutp(finterface *s, int numOfSections, section *p)
+void finterface::inpoutp(finterface *s, unsigned int numOfSections, section *p)
 {
+
+    if(numOfSections==0) {
+        cerr<<"You should have at least one interface in the structure.";
+        cerr<<endl;
+        return;
+    }
 
     db_matrix I=db_matrix::createUnitMatrix(s[0].Tpp.getNcol(),
         s[0].Tpp.getNcol());

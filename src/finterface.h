@@ -61,8 +61,8 @@ public:
 
 
     static finterface createSmatrix(finterface *s,
-        int numOfSections);
-    static void inpoutp(finterface *s, int numOfInterfaces,
+        unsigned int numOfSections);
+    static void inpoutp(finterface *s, unsigned int numOfInterfaces,
         class section *p);
 
 };

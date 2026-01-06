@@ -13,6 +13,7 @@
  *     davide.bucci@grenoble-inp.fr                                        *
  *                                                                         *
  ***************************************************************************
+Init semaphore OK.
 Reading file: calculatedz.fmm
 Wavelength set to: 7.749e-07 m.
 Calculation window size set to: 1.25e-06 m x 1.5e-06 m.

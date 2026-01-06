@@ -215,6 +215,9 @@ db_matrix & fNonDevSym::createX1(double nux, double nuy, double omega,
     X1 = F;
     X1 *= Kr;
     if(isBent) {
+        if(S.isEmpty()) {
+            cerr << "Warning: The S matrix is not supposed to be empty.";
+        }
         X1 *= S;
     }
     X1 *= TTR;
@@ -238,6 +241,9 @@ db_matrix &fNonDevSym::createX2(double nux, double nuy, double omega,
     X2 *=Kr;
 
     if(isBent) {
+        if(S.isEmpty()) {
+            cerr << "Warning: The S matrix is not supposed to be empty.";
+        }
         X2*= S;
     }
 
@@ -247,6 +253,9 @@ db_matrix &fNonDevSym::createX2(double nux, double nuy, double omega,
 
     db_matrix toto = N_toep;
     if(isBent) {
+        if(S.isEmpty()) {
+            cerr << "Warning: The S matrix is not supposed to be empty.";
+        }
         toto *= S;
     }
     toto *= (-omega*omega);
@@ -264,6 +273,9 @@ db_matrix &fNonDevSym::createX3(double nux, double nuy, double omega,
                     db_matrix &G, db_matrix &TTR)
 {
     if(isBent) {
+        if(S.isEmpty()) {
+            cerr << "Warning: The S matrix is not supposed to be empty.";
+        }
         X3 = S;
         X3 *= G;
     } else {
@@ -278,6 +290,9 @@ db_matrix &fNonDevSym::createX3(double nux, double nuy, double omega,
 
     db_matrix toto = M_toep;
     if(isBent) {
+        if(S.isEmpty()) {
+            cerr << "Warning: The S matrix is not supposed to be empty.";
+        }
         toto *= S;
     }
     toto *= (omega*omega);
@@ -296,6 +311,9 @@ db_matrix &fNonDevSym::createX4(double nux, double nuy, double omega,
                     db_matrix &G, db_matrix &TTR)
 {
     if(isBent) {
+        if(S.isEmpty()) {
+            cerr << "Warning: The S matrix is not supposed to be empty.";
+        }
         X4 = S;
         X4 *= G;
     } else {
@@ -365,6 +383,9 @@ db_matrix &fNonDevSym::createY2(double nux, double nuy, double omega,
     }
 
     if(isBent) {
+        if(S.isEmpty()) {
+            cerr << "Warning: The S matrix is not supposed to be empty.";
+        }
         toto *= S;
     }
     toto *= (omega*omega);
@@ -383,6 +404,9 @@ db_matrix &fNonDevSym::createY3(double nux, double nuy, double omega,
                     db_matrix &G, db_matrix &TTO)
 {
     if(isBent) {
+        if(S.isEmpty()) {
+            cerr << "Warning: The S matrix is not supposed to be empty.";
+        }
         Y3 = S;
         Y3 *= G;
     } else {
@@ -409,6 +433,9 @@ db_matrix &fNonDevSym::createY3(double nux, double nuy, double omega,
     }
 
     if(isBent) {
+        if(S.isEmpty()) {
+            cerr << "Warning: The S matrix is not supposed to be empty.";
+        }
         toto *= S;
     }
     toto *= (-omega*omega);
@@ -426,6 +453,9 @@ db_matrix &fNonDevSym::createY4(double nux, double nuy, double omega,
                     db_matrix &G, db_matrix &TTO)
 {
     /*if(isBent) {
+        if(S.isEmpty()) {
+            cerr << "Warning: The S matrix is not supposed to be empty.";
+        }
         Y4 = S;
         Y4 *= F;
     } else {
@@ -439,6 +469,9 @@ db_matrix &fNonDevSym::createY4(double nux, double nuy, double omega,
 
 //JEROME
     if(isBent) {
+        if(S.isEmpty()) {
+            cerr << "Warning: The S matrix is not supposed to be empty.";
+        }
         Y4 = S;
         Y4 *= G;
     } else {
@@ -481,6 +514,9 @@ db_matrix & fNFsym::createX1(double nux, double nuy, double omega,
     X1 = F;
     X1 *= Kr;
     if(isBent) {
+        if(S.isEmpty()) {
+            cerr << "Warning: The S matrix is not supposed to be empty.";
+        }
         X1 *= S;
     }
     X1 *= TTR;
@@ -503,6 +539,9 @@ db_matrix &fNFsym::createX2(double nux, double nuy, double omega,
     X2 *= Kr;
 
     if(isBent) {
+        if(S.isEmpty()) {
+            cerr << "Warning: The S matrix is not supposed to be empty.";
+        }
         X2*= S;
     }
     X2 *= TTR;
@@ -511,6 +550,9 @@ db_matrix &fNFsym::createX2(double nux, double nuy, double omega,
 
     db_matrix toto = N_toep;
     if(isBent) {
+        if(S.isEmpty()) {
+            cerr << "Warning: The S matrix is not supposed to be empty.";
+        }
         toto *= S;
     }
     toto *= (-omega*omega);
@@ -528,6 +570,9 @@ db_matrix &fNFsym::createX3(double nux, double nuy, double omega,
                     db_matrix &G, db_matrix &TTR)
 {
     if(isBent) {
+        if(S.isEmpty()) {
+            cerr << "Warning: The S matrix is not supposed to be empty.";
+        }
         X3 = S;
         X3 *= G;
     } else {
@@ -542,6 +587,9 @@ db_matrix &fNFsym::createX3(double nux, double nuy, double omega,
 
     db_matrix toto = M_toep;
     if(isBent) {
+        if(S.isEmpty()) {
+            cerr << "Warning: The S matrix is not supposed to be empty.";
+        }
         toto *= S;
     }
     toto *= (omega*omega);
@@ -560,6 +608,9 @@ db_matrix &fNFsym::createX4(double nux, double nuy, double omega,
                     db_matrix &G, db_matrix &TTR)
 {
     if(isBent) {
+        if(S.isEmpty()) {
+            cerr << "Warning: The S matrix is not supposed to be empty.";
+        }
         X4 = S;
         X4 *= G;
     } else {
@@ -640,6 +691,9 @@ db_matrix &fNFsym::createY2(double nux, double nuy, double omega,
     toto -= Delta_z*Nyy;
 
     if(isBent) {
+        if(S.isEmpty()) {
+            cerr << "Warning: The S matrix is not supposed to be empty.";
+        }
         toto *= S;
     }
 
@@ -660,6 +714,9 @@ db_matrix &fNFsym::createY3(double nux, double nuy, double omega,
     Delta_r = P_toep - Pm1_toep.invert();
 
     if(isBent) {
+        if(S.isEmpty()) {
+            cerr << "Warning: The S matrix is not supposed to be empty.";
+        }
         Y3 = S;
         Y3 *= G;
     } else {
@@ -679,6 +736,9 @@ db_matrix &fNFsym::createY3(double nux, double nuy, double omega,
     toto -= Delta_r*Nxx;
 
     if(isBent) {
+        if(S.isEmpty()) {
+            cerr << "Warning: The S matrix is not supposed to be empty.";
+        }
         toto *= S;
     }
     toto *= (-omega*omega);
@@ -696,6 +756,9 @@ db_matrix &fNFsym::createY4(double nux, double nuy, double omega,
                     db_matrix &G, db_matrix &TTO)
 {
     /*if(isBent) {
+        if(S.isEmpty()) {
+            cerr << "Warning: The S matrix is not supposed to be empty.";
+        }
         Y4 = S;
         Y4 *= F;
     } else {
@@ -708,6 +771,9 @@ db_matrix &fNFsym::createY4(double nux, double nuy, double omega,
     Y4 *=-1.0;*/
 //JEROME
     if(isBent) {
+        if(S.isEmpty()) {
+            cerr << "Warning: The S matrix is not supposed to be empty.";
+        }
         Y4 = S;
         Y4 *= G;
     } else {
@@ -726,6 +792,9 @@ db_matrix &fNFsym::createY4(double nux, double nuy, double omega,
     toto *=Nxy;
 
     if(isBent) {
+        if(S.isEmpty()) {
+            cerr << "Warning: The S matrix is not supposed to be empty.";
+        }
         toto *= S;
     }
     toto *= (omega*omega);

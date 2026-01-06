@@ -13,6 +13,7 @@
  *     davide.bucci@grenoble-inp.fr                                        *
  *                                                                         *
  ***************************************************************************
+Init semaphore OK.
 Reading file: testorientation.fmm
 Wavelength set to: 1.55e-06 m.
 Calculation window size set to: 1e-05 m x 1e-05 m.
