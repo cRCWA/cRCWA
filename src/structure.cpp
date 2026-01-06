@@ -27,7 +27,7 @@
     You should have received a copy of the GNU General Public License along
     with cRCWA. If not, see <https://www.gnu.org/licenses/>. 
 
-    Davide Bucci, 2008-2025
+    Davide Bucci, 2008-2026
     Jérôme Michallon, 2012-2014
 */
 

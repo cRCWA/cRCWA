@@ -1293,6 +1293,10 @@ void commands::outputfield(db_matrix &out, double dx, double dy,
 
     double ksinthetax=c_section.father->ksinthetax;
     double ksinthetay=c_section.father->ksinthetay;
+    if(out.isEmpty()) {
+         throw parsefile_commandError("The out matrix shouldn't be empty! "
+            "Programming error!");
+    }
 
     for(int i=0; i<out.getNrow(); ++i) {
         for(int j=0; j<out.getNcol(); ++j) {

@@ -751,7 +751,6 @@ list<db_matrix> section::do_outgmodes(int sj, int si, char *ftype,
             " Should be {Ex|Ey|Ez|Ex2|Ey2|Ez2|Hx|Hy|Hz|Dx|Dy|Dz}.");
     }
 
-
     // Check if the W or B matrix are empty
     if (W.isEmpty()) {
         throw parsefile_commandError(
@@ -2158,14 +2157,18 @@ void section::modes_calculation()
     cout << "Creating the electric field propagation matrix\n";
     postSemaphoreIO();
     calcWmatrix(father->getOmega());
-
     // Calculate eigenvectors
     waitSemaphoreIO();
     cout<<"Calculating eigenvalues and eigenvectors\n";
     postSemaphoreIO();
     cout.flush();
-    B.eig(&W);
 
+    B.eig(&W);
+    // Check if the W matrix has been successfully created.
+    if(W.isEmpty()) {
+        throw parsefile_commandError("The W matrix should have been created."
+            "  Programming error?");
+    }
     // The calculation of eigenvalues and eigenvectors in this form gives us
     // eigenvalues which are the square of the propagation constants.
     // We memorise in the principal diagonal of B their square roots (thus the

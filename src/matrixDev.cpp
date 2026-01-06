@@ -13,7 +13,7 @@
     You should have received a copy of the GNU General Public License along
     with cRCWA. If not, see <https://www.gnu.org/licenses/>. 
 
-    Davide Bucci, 2008-2025
+    Davide Bucci, 2008-2026
     Jérôme Michallon, 2012-2014
 */
 
@@ -49,6 +49,9 @@ db_matrix & fPMLbefore::createX1(double nux, double nuy, double omega,
     X1+=pipo;
 
     if(isBent) {
+        if(S.isEmpty()) {
+            cerr << "Warning: The S matrix is not supposed to be empty.";
+        }
         pipo = S;
         pipo *=F;
     } else {
@@ -63,6 +66,9 @@ db_matrix & fPMLbefore::createX1(double nux, double nuy, double omega,
     pipo.kill();
 
     if(isBent) {
+        if(S.isEmpty()) {
+            cerr << "Warning: The S matrix is not supposed to be empty.";
+        }
         pipo = (complex<double>(0,1))*
           db_matrix::hadamard(TTR, M_fft.toeplitz_ones(nux,nuy,0,0,0,1));
         X1= multsum(G,pipo,X1);
@@ -105,6 +111,9 @@ db_matrix &fPMLbefore::createX2(double nux, double nuy, double omega,
     pipo = multsum(F*F, X2, pipo);
 
     if(isBent) {
+        if(S.isEmpty()) {
+            cerr << "Warning: The S matrix is not supposed to be empty.";
+        }
         X2 = S;
         X2 *=pipo;
     } else {
@@ -148,6 +157,9 @@ db_matrix &fPMLbefore::createX3(double nux, double nuy, double omega,
     pipo+=db_matrix::hadamard(TTR, M_fft.toeplitz_ones(nux,nuy,0,0,0,2));
 
     if(isBent) {
+        if(S.isEmpty()) {
+            cerr << "Warning: The S matrix is not supposed to be empty.";
+        }
         X3 = S;
         X3 *= G;
     } else {
@@ -183,6 +195,9 @@ db_matrix &fPMLbefore::createX4(double nux, double nuy, double omega,
         db_matrix::hadamard(TTR, M_fft.toeplitz_ones(nux,nuy,0,0,1,1)));
 */
     if(isBent) {
+        if(S.isEmpty()) {
+            cerr << "Warning: The S matrix is not supposed to be empty.";
+        }
         X4 = S;
         X4 *=F;
     } else {
@@ -271,6 +286,9 @@ db_matrix &fPMLbefore::createY2(double nux, double nuy, double omega,
 
 
     if(isBent) {
+        if(S.isEmpty()) {
+            cerr << "Warning: The S matrix is not supposed to be empty.";
+        }
         pipo = Y2;
         Y2 = S;
         Y2 *= pipo;
@@ -387,6 +405,9 @@ db_matrix & fPMLafter::createX1(double nux, double nuy, double omega,
           db_matrix::hadamard(TTR, M_fft.toeplitz_ones(nux,nuy,0,0,0,1))*G;
 
     if(isBent) {
+        if(S.isEmpty()) {
+            cerr << "Warning: The S matrix is not supposed to be empty.";
+        }
         X1-=S*(db_matrix::hadamard(TTR,
             M_fft.toeplitz_ones(nux,nuy,1,0,0,1))
             +db_matrix::hadamard(TTR, M_fft.toeplitz_ones(nux,nuy,0,0,1,1)))
@@ -418,6 +439,9 @@ db_matrix &fPMLafter::createX2(double nux, double nuy, double omega,
     X2 = (isBent?1.0:0)*(complex<double>(0,-1))*
          db_matrix::hadamard(TTR, M_fft.toeplitz_ones(nux,nuy,0,0,1,0))*F;
     if(isBent) {
+        if(S.isEmpty()) {
+            cerr << "Warning: The S matrix is not supposed to be empty.";
+        }
         X2+=S*((complex<double>(-omega*omega,0) *
             N_fft.toeplitz_mod(nux, nuy, 0,0,0,0) +
             pipo*(F*F)));
@@ -472,6 +496,9 @@ db_matrix &fPMLafter::createX4(double nux, double nuy, double omega,
 {
 
     if(isBent) {
+        if(S.isEmpty()) {
+            cerr << "Warning: The S matrix is not supposed to be empty.";
+        }
         X4 = S*(db_matrix::hadamard(TTR,
             M_fft.toeplitz_ones(nux,nuy,0,1,1,0))+
             db_matrix::hadamard(TTR, M_fft.toeplitz_ones(nux,nuy,0,0,1,1)))
@@ -499,6 +526,9 @@ db_matrix & fPMLafter::createY1(double nux, double nuy, double omega,
         db_matrix::hadamard(TTO, M_fft.toeplitz_ones(nux,nuy,0,0,0,1))*G;
 
     if(isBent) {
+        if(S.isEmpty()) {
+            cerr << "Warning: The S matrix is not supposed to be empty.";
+        }
         Y1+=S*(db_matrix::hadamard(TTO,
             M_fft.toeplitz_ones(nux,nuy,1,0,0,1)) +
             db_matrix::hadamard(TTO,M_fft.toeplitz_ones(nux,nuy,0,0,1,1)))
@@ -528,6 +558,9 @@ db_matrix &fPMLafter::createY2(double nux, double nuy, double omega,
         db_matrix::hadamard(TTO,M_fft.toeplitz_ones(nux,nuy,0,0,1,0))*F;
     //************************* <----
     if(isBent){
+        if(S.isEmpty()) {
+            cerr << "Warning: The S matrix is not supposed to be empty.";
+        }
         Y2+=S*((omega*omega)* Q_fft.toeplitz_mod(nux, nuy, 0,0,0,0) -
           pipo*F*F);
     } else {
@@ -557,6 +590,9 @@ db_matrix &fPMLafter::createY3(double nux, double nuy, double omega,
 
 
     if(isBent) {
+        if(S.isEmpty()) {
+            cerr << "Warning: The S matrix is not supposed to be empty.";
+        }
         Y3 = S*((-omega*omega)* P_fft.toeplitz_mod(nux, nuy, 0,0,0,0)+
             pipo1*(G*G));
     } else {
@@ -579,6 +615,9 @@ db_matrix &fPMLafter::createY4(double nux, double nuy, double omega,
 {
 
     if(isBent){
+        if(S.isEmpty()) {
+            cerr << "Warning: The S matrix is not supposed to be empty.";
+        }
         Y4 =-S*(db_matrix::hadamard(TTO,
             M_fft.toeplitz_ones(nux,nuy,0,1,1,0)) +
             db_matrix::hadamard(TTO,M_fft.toeplitz_ones(nux,nuy,0,0,1,1)))
@@ -615,6 +654,9 @@ db_matrix & fPMLafterOPT::createX1(double nux, double nuy, double omega,
     X1 *= G;
 
     if(isBent) {
+        if(S.isEmpty()) {
+            cerr << "Warning: The S matrix is not supposed to be empty.";
+        }
         db_matrix toto = X1;
         X1 = S;
         X1 *= toto;
@@ -661,6 +703,9 @@ db_matrix &fPMLafterOPT::createX2(double nux, double nuy, double omega,
             N_fft.toeplitz_mod(nux, nuy, 0,0,0,0);
 
     if(isBent) {
+        if(S.isEmpty()) {
+            cerr << "Warning: The S matrix is not supposed to be empty.";
+        }
         db_matrix toto = X2;
         X2 = S;
         X2 *= toto;
@@ -708,6 +753,9 @@ db_matrix &fPMLafterOPT::createX3(double nux, double nuy, double omega,
     X3 += (omega*omega)*
             M_fft.toeplitz_mod(nux, nuy, 0,0,0,0);
     if(isBent) {
+        if(S.isEmpty()) {
+            cerr << "Warning: The S matrix is not supposed to be empty.";
+        }
         db_matrix toto = X3;
         X3 = S;
         X3 *= toto;
@@ -742,6 +790,9 @@ db_matrix &fPMLafterOPT::createX4(double nux, double nuy, double omega,
 {
 
     if(isBent) {
+        if(S.isEmpty()) {
+            cerr << "Warning: The S matrix is not supposed to be empty.";
+        }
         X4 = S*(db_matrix::hadamard(TTR,
             M_fft.toeplitz_ones(nux,nuy,0,1,1,0))+
             db_matrix::hadamard(TTR, M_fft.toeplitz_ones(nux,nuy,0,0,1,1)))
@@ -770,6 +821,9 @@ db_matrix & fPMLafterOPT::createY1(double nux, double nuy, double omega,
     Y1 *=F;
     Y1 *=G;
     if(isBent) {
+        if(S.isEmpty()) {
+            cerr << "Warning: The S matrix is not supposed to be empty.";
+        }
         db_matrix toto = Y1;
         Y1 = S;
         Y1 *=toto;
@@ -816,6 +870,9 @@ db_matrix &fPMLafterOPT::createY2(double nux, double nuy, double omega,
     Y2*=-1.0;
     Y2+=(omega*omega)* Q_fft.toeplitz_mod(nux, nuy, 0,0,0,0);
     if(isBent){
+        if(S.isEmpty()) {
+            cerr << "Warning: The S matrix is not supposed to be empty.";
+        }
         db_matrix toto = Y2;
         Y2 = S;
         Y2 *=toto;
@@ -865,6 +922,9 @@ db_matrix &fPMLafterOPT::createY3(double nux, double nuy, double omega,
 
 
     if(isBent) {
+        if(S.isEmpty()) {
+            cerr << "Warning: The S matrix is not supposed to be empty.";
+        }
         db_matrix pipo1 = Y3;
         Y3 = S;
         Y3*= pipo1;
@@ -907,6 +967,9 @@ db_matrix &fPMLafterOPT::createY4(double nux, double nuy, double omega,
 
 
     if(isBent){
+        if(S.isEmpty()) {
+            cerr << "Warning: The S matrix is not supposed to be empty.";
+        }
         db_matrix toto=Y4;
         Y4 = S;
         Y4 *= toto;
@@ -934,6 +997,9 @@ db_matrix & fNonDev::createX1(double nux, double nuy, double omega,
     X1 = F;
     X1 *= M_fft.toeplitz_deriv(nux,nuy,1,0,ksinthetax,ksinthetay);
     if(isBent) {
+        if(S.isEmpty()) {
+            cerr << "Warning: The S matrix is not supposed to be empty.";
+        }
         X1 *= S;
     }
     X1 *= TTR;
@@ -957,6 +1023,9 @@ db_matrix &fNonDev::createX2(double nux, double nuy, double omega,
     X2 *= M_fft.toeplitz_deriv(nux,nuy,1,0,ksinthetax,ksinthetay);
 
     if(isBent) {
+        if(S.isEmpty()) {
+            cerr << "Warning: The S matrix is not supposed to be empty.";
+        }
         X2*= S;
     }
     X2 *= TTR;
@@ -982,6 +1051,9 @@ db_matrix &fNonDev::createX3(double nux, double nuy, double omega,
                     db_matrix &G, db_matrix &TTR)
 {
     if(isBent) {
+        if(S.isEmpty()) {
+            cerr << "Warning: The S matrix is not supposed to be empty.";
+        }
         X3 = S;
         X3 *= G;
     } else {
@@ -1014,6 +1086,9 @@ db_matrix &fNonDev::createX4(double nux, double nuy, double omega,
                     db_matrix &G, db_matrix &TTR)
 {
     if(isBent) {
+        if(S.isEmpty()) {
+            cerr << "Warning: The S matrix is not supposed to be empty.";
+        }
         X4 = S;
         X4 *= G;
     } else {
@@ -1041,6 +1116,9 @@ db_matrix & fNonDev::createY1(double nux, double nuy, double omega,
     Y1 = F;
     Y1 *=  M_fft.toeplitz_deriv(nux,nuy,1,0,ksinthetax,ksinthetay);
     if(isBent){
+        if(S.isEmpty()) {
+            cerr << "Warning: The S matrix is not supposed to be empty.";
+        }
         Y1 *= S;
     }
     Y1 *= TTO;
@@ -1062,6 +1140,9 @@ db_matrix &fNonDev::createY2(double nux, double nuy, double omega,
     Y2 = F;
     Y2 *= M_fft.toeplitz_deriv(nux,nuy,1,0,ksinthetax,ksinthetay);
     if(isBent){
+        if(S.isEmpty()) {
+            cerr << "Warning: The S matrix is not supposed to be empty.";
+        }
         Y2 *= S;
     }
     Y2 *=TTO;
@@ -1097,6 +1178,9 @@ db_matrix &fNonDev::createY3(double nux, double nuy, double omega,
                     db_matrix &G, db_matrix &TTO)
 {
     if(isBent) {
+        if(S.isEmpty()) {
+            cerr << "Warning: The S matrix is not supposed to be empty.";
+        }
         Y3 = S;
         Y3 *= G;
     } else {
@@ -1140,6 +1224,9 @@ db_matrix &fNonDev::createY4(double nux, double nuy, double omega,
                     db_matrix &G, db_matrix &TTO)
 {
     if(isBent) {
+        if(S.isEmpty()) {
+            cerr << "Warning: The S matrix is not supposed to be empty.";
+        }
         Y4 = S;
         Y4 *= F;
     } else {
@@ -1185,6 +1272,9 @@ db_matrix & fNF::createX1(double nux, double nuy, double omega,
     X1 = F;
     X1 *= M_fft.toeplitz_deriv(nux,nuy,1,0,ksinthetax,ksinthetay);
     if(isBent) {
+        if(S.isEmpty()) {
+            cerr << "Warning: The S matrix is not supposed to be empty.";
+        }
         X1 *= S;
     }
     X1 *= TTR;
@@ -1208,6 +1298,9 @@ db_matrix &fNF::createX2(double nux, double nuy, double omega,
     X2 *= M_fft.toeplitz_deriv(nux,nuy,1,0,ksinthetax,ksinthetay);
 
     if(isBent) {
+        if(S.isEmpty()) {
+            cerr << "Warning: The S matrix is not supposed to be empty.";
+        }
         X2*= S;
     }
     X2 *= TTR;
@@ -1216,6 +1309,9 @@ db_matrix &fNF::createX2(double nux, double nuy, double omega,
 
     db_matrix toto = N_fft.toeplitz_mod(nux, nuy, 0,0,0,0);
     if(isBent) {
+        if(S.isEmpty()) {
+            cerr << "Warning: The S matrix is not supposed to be empty.";
+        }
         toto *= S;
     }
     toto *= (-omega*omega);
@@ -1233,6 +1329,9 @@ db_matrix &fNF::createX3(double nux, double nuy, double omega,
                     db_matrix &G, db_matrix &TTR)
 {
     if(isBent) {
+        if(S.isEmpty()) {
+            cerr << "Warning: The S matrix is not supposed to be empty.";
+        }
         X3 = S;
         X3 *= G;
     } else {
@@ -1247,6 +1346,9 @@ db_matrix &fNF::createX3(double nux, double nuy, double omega,
 
     db_matrix toto = M_fft.toeplitz_mod(nux, nuy, 0,0,0,0);
     if(isBent) {
+        if(S.isEmpty()) {
+            cerr << "Warning: The S matrix is not supposed to be empty.";
+        }
         toto *= S;
     }
     toto *= (omega*omega);
@@ -1265,6 +1367,9 @@ db_matrix &fNF::createX4(double nux, double nuy, double omega,
                     db_matrix &G, db_matrix &TTR)
 {
     if(isBent) {
+        if(S.isEmpty()) {
+            cerr << "Warning: The S matrix is not supposed to be empty.";
+        }
         X4 = S;
         X4 *= G;
     } else {
@@ -1292,6 +1397,9 @@ db_matrix & fNF::createY1(double nux, double nuy, double omega,
     Y1 = F;
     Y1 *=  M_fft.toeplitz_deriv(nux,nuy,1,0,ksinthetax,ksinthetay);
     if(isBent){
+        if(S.isEmpty()) {
+            cerr << "Warning: The S matrix is not supposed to be empty.";
+        }
         Y1 *= S;
     }
     Y1 *= TTO;
@@ -1331,6 +1439,9 @@ db_matrix &fNF::createY2(double nux, double nuy, double omega,
     Y2 = F;
     Y2 *= M_fft.toeplitz_deriv(nux,nuy,1,0,ksinthetax,ksinthetay);
     if(isBent){
+        if(S.isEmpty()) {
+            cerr << "Warning: The S matrix is not supposed to be empty.";
+        }
         Y2 *= S;
     }
     Y2 *=TTO;
@@ -1343,6 +1454,9 @@ db_matrix &fNF::createY2(double nux, double nuy, double omega,
     toto -= Delta_z*Nz*Nz;
 
     if(isBent) {
+        if(S.isEmpty()) {
+            cerr << "Warning: The S matrix is not supposed to be empty.";
+        }
         toto *= S;
     }
 
@@ -1365,6 +1479,9 @@ db_matrix &fNF::createY3(double nux, double nuy, double omega,
         (Pm1_fft.toeplitz_mod(nux, nuy,0,0,0,0)).invert();
 
     if(isBent) {
+        if(S.isEmpty()) {
+            cerr << "Warning: The S matrix is not supposed to be empty.";
+        }
         Y3 = S;
         Y3 *= G;
     } else {
@@ -1383,6 +1500,9 @@ db_matrix &fNF::createY3(double nux, double nuy, double omega,
     toto -= Delta_r*Nr*Nr;
 
     if(isBent) {
+        if(S.isEmpty()) {
+            cerr << "Warning: The S matrix is not supposed to be empty.";
+        }
         toto *= S;
     }
     toto *= (-omega*omega);
@@ -1413,6 +1533,9 @@ db_matrix &fNF::createY4(double nux, double nuy, double omega,
     Y4 *=-1.0;
 */
     if(isBent) {
+        if(S.isEmpty()) {
+            cerr << "Warning: The S matrix is not supposed to be empty.";
+        }
         Y4 = S;
         Y4 *= F;
     } else {
