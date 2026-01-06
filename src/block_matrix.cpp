@@ -1041,7 +1041,7 @@ void db_matrix::printMatrixOnFile(string filename)
 
     int i,j;
 
-    /*
+    ////
     for(i=0; i<dimy; ++i) {
         for(j=0; j<dimx; ++j) {
             // Swap the first and the third quadrant
@@ -1053,7 +1053,7 @@ void db_matrix::printMatrixOnFile(string filename)
 
         }
     }
-    *//*
+    ///
     if(size_x & 1)  {
         for(i=0; i<dimy; ++i)  {
             R(i+shifty, shiftx)= operator()(i,0);
@@ -1074,10 +1074,10 @@ void db_matrix::printMatrixOnFile(string filename)
     }
 
     return R;
-}*/
+}///
 // The same as Matlab!
 // DEVELOPMENT NOT COMPLETE!!!
-/*db_matrix db_matrix::ifftshift()
+////db_matrix db_matrix::ifftshift()
 {
 
     // Matrix size calculation.
