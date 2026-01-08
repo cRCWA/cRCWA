@@ -120,8 +120,8 @@ int main (int argc, char * const argv[])
          << std::setw(0)
          << "                     *\n"
          << " *                                                                         *\n"
-         << " *     Davide Bucci, CROMA     March 2008 - current                        *\n"
-         << " *     Jérôme Michallon, CROMA     May 2012 - February 2014                *\n"
+         << " *     Davide Bucci, CROMA March 2008 - current                            *\n"
+         << " *     Jérôme Michallon, CROMA May 2012 - February 2014                    *\n"
          << " *     MINATEC-Grenoble INP, 3, parvis Louis Neel                          *\n"
          << " *     38016, Grenoble CEDEX, France                                       *\n"
          << " *                                                                         *\n"

@@ -21,7 +21,7 @@
     You should have received a copy of the GNU General Public License along
     with cRCWA. If not, see <https://www.gnu.org/licenses/>. 
 
-    Davide Bucci, 2008-2025
+    Davide Bucci, 2008-2026
     Jérôme Michallon, 2012-2014
 */
 
@@ -45,18 +45,23 @@ sem_t *mutex_io_access; // Semaphore for I/O.
 char semaphore_io_access_name[BUFFER_SIZE+1];
 
 
-/** Main parallelisation function: launch a new thread with the given function
-    with the given data up to a given number of threads. This function returns
-    immediately when the number of created threads is less than the maximum
-    number of allowable threads.
+/** Main scheduler function: launch a new thread with the given function
+    with the given data, up to a certain number of threads. This function
+    returns immediately when the number of created threads is less than the
+    maximum number of allowable threads.
     Synchronisation is to be done with wait_for_threads().
 */
 void parallelize(struct thread_data *td, void* (pfunc)(void*), int instance,
-    int nmax, int number_of_instances)
+    unsigned int nmax, unsigned int number_of_instances)
 {
     int rc;
     pthread_t thread;
     int p=getpid();
+
+    if(nmax==0) {
+        cerr<<"Warning: parallelization scheduler can not be set with a"
+            " maximum number of instances equal to zero."<<endl;
+    }
 
     if(mutex_thread_counter==NULL && nmax>1) {
         snprintf(semaphore_thread_name,BUFFER_SIZE,

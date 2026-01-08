@@ -5,8 +5,8 @@
  *     Build date: Jan  6 2026                                             *
  *     Source revision: N/A                                                *
  *                                                                         *
- *     Davide Bucci, CROMA     March 2008 - current                        *
- *     Jérôme Michallon, CROMA     May 2012 - February 2014                *
+ *     Davide Bucci, CROMA March 2008 - current                            *
+ *     Jérôme Michallon, CROMA May 2012 - February 2014                    *
  *     MINATEC-Grenoble INP, 3, parvis Louis Neel                          *
  *     38016, Grenoble CEDEX, France                                       *
  *                                                                         *

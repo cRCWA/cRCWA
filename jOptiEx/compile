@@ -13,8 +13,8 @@ rm bin/read/*.class
 unamestr=`uname`
 
 if [ "$unamestr" = 'Darwin' ]||[ "$1" = "mac" ]; then
-  echo "MacOSX detected: activated AppleSpecific classes."
-    javac  -g -Xlint:unchecked -O -sourcepath src -classpath bin:jar/JTransforms-3.0.jar:jar/JLargeArrays-1.2.jar ./src/AppleSpecific.java -d bin
+  echo "MacOSX detected"
+    javac  -g -Xlint:unchecked -O -sourcepath src -classpath bin:jar/JTransforms-3.0.jar:jar/JLargeArrays-1.2.jar -d bin
 fi 
 
 javac  -g -Xlint:unchecked -O -sourcepath src -classpath bin:jar/JTransforms-3.0.jar:jar/JLargeArrays-1.2.jar ./src/OptiExFrame.java -d bin
