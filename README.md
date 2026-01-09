@@ -4,62 +4,50 @@ cRCWA is an efficient implementation of the Rigorous Coupled Wave Analysis (RCWA
 
 This open source project is distributed under the GPL v.3 license.
 
-## Compile and install
+## Compile and install on a Unix system
 
-cRCWA is written in C++ and can be compiled on a Unix system using Make and gcc. On a practical standpoint, it has been tested on Linux and on macOS.
+cRCWA is written in C++ and can be compiled on a Unix system using GNU Make and gcc. On a practical standpoint, it has been tested on Linux and on macOS.
 You will need the following libraries installed in your system:
 - LAPACK, the classic library for linear algebra
 - BLAS, the basic linear algebra package, required by LAPACK
 - FFTW3, the library to efficiently compute fast Fourier transforms
 
-The source files of cRCWA and the makefile are present in the src directory.
-Write down the folders where the libraries are installed in your system, as well as the name of the libraries. For instance, let us suppose that in your system the LAPACK library is stored as `/usr/local/lib/liblapack.so`. In this case, change the configuration section of the `makefile` (in the `src` directory) so that for the LAPACK library you have:
+Write down the folders where the libraries are installed in your system, as well as the name of the libraries. For instance, let us suppose that in your system the LAPACK library is stored as `/usr/local/lib/liblapack.so` (the extension `.dylib` is sometimes used on macOS) . In this case, change the configuration section in the `configure.inc` file, so that you have:
 
 ~~~~
 LIBLAPACKDIR = /usr/local/lib/
 LIBLAPACK = -llapack
 ~~~~~
 
-When the makefile is correctly configured, you should be able to compile cRCWA by typing `make`, while in the `src` subdirectory.
+When the makefile is correctly configured, you should be able to compile cRCWA by typing `make`, while in the project main subdirectory:
 
-If the compile is successful, the executables are available in the bin directory.
+~~~~
+make
+~~~~
+
+If the compile is successful, the executables are available in the `bin` directory. The Python library is put in the `python` directory.
+
+The performances of cRCWA strongly depend on the performances of the BLAS library installed in your system. Therefore, if you want to obtain the fastest calculations possible, make sure you have an optimized version of BLAS in your system. LAPACK ships with a base implementation of BLAS will work fine for test purposes, but will not deliver the best possible performance.  It is not uncommon to cut calculation times by a factor of 2 or 3 shifting from a basic BLAS implementation to an optimized one. Popular and convenient choices may be OpenBLAS or ATLAS.
+
+Some implementations of BLAS or LAPACK may be configured to add an underscore tot the function name. For instance, one of the most important LAPACK functions for cRCWA is `zgeev`. It calculates the eigenvalues and eigenvectors of a non-symmetric matrix of complex elements and is used to calculate the propagation modes. Compilers usually add a leading underscore to the function names. In some cases, another underscore is added at the end of the name. The function `zgeev` therefore appears as `_zgeev_`. For instance, running the `nm` command on macOS we get:
+~~~~
+% nm /opt/local/lib/lapack/liblapack.dylib |grep zgeev
+00000000003146c0 T _zgeev_
+000000000071bff0 T _zgeev_64_
+0000000000315328 T _zgeevx_
+000000000071cc4c T _zgeevx_64_
+~~~~
+The following option should be provided to add the final underscore every time a LAPACK or BLAS function is called in the code:
+
+~~~~
+OPTIONS = -D LAPACK_ADD_FINAL_UNDERSCORE -D BLAS_ADD_FINAL_UNDERSCORE
+~~~~
+
+The options `LAPACK_ADD_LEADING_UNDERSCORE` and `LAPACK_ADD_BOTH_UNDERSCORES` are useful in the very rare cases where the names exported by the libraries contain a leading double underscore.
 
 ## Compile cRCWA on macOS
 
-You can use macports to install the LAPACK, BLAS and FFTW3 libraries. The macports tool installs libraries in `/opt/local/lib`. The LAPACK library is installed in a subdirectory of this folder. In this case, the configuration section at the beginning of your makefile may look as follows:
-
-~~~~
-# ***************************************************************************
-# CONFIGURATION SECTION
-# ***************************************************************************
-
-# This is the directory where the library files are provided. It is useful
-# if the LAPACK, BLAS and FFTW3 libraries are stored in the same place in
-# your system. This is very often the case.
-
-LIBDIR =  /opt/local/lib
-
-# This is where the LAPACK lib can be found
-LIBLAPACKDIR = $(LIBDIR)/lapack
-# The option to include the LAPACK library. You rarely need to change it, as
-# the name of the library is very often just "lapack".
-LIBLAPACK = -llapack
-
-# This is where the BLAS lib can be found
-LIBBLASDIR = $(LIBDIR)/lapack
-# The option to include the BLAS library. You will have to change this if you
-# are using a library having a different name. For example, a common choice
-# with ATLAS may be LIBBLAS = -latlas.
-LIBBLAS = -lblas
-
-
-# This is where the fftw3 lib can be found
-LIBFFTW3DIR = $(LIBDIR)
-# The option to include the FFTW3 library:
-LIBFFTW3 = -lfftw3
-
-# ***************************************************************************
-~~~~
+You can use macports to install the LAPACK, BLAS and FFTW3 libraries. The macports tool installs libraries in `/opt/local/lib`. The LAPACK library is installed in a subdirectory of this folder.
 
 ## Self tests
 
