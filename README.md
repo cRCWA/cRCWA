@@ -68,4 +68,4 @@ jOptiEx is a Java program. To run it, you need to have a JRE available in your c
 
 ## Python integration
 
-cRCWA can be used as a Python module...
+cRCWA can be used as a Python module 
