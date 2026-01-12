@@ -49,11 +49,11 @@
 \contentsline {section}{\numberline {2.4}Section-level commands}{47}{}%
 \contentsline {subsection}{\numberline {2.4.1}SECTION: Define a section of the given length}{47}{}%
 \contentsline {subsection}{\numberline {2.4.2}SUBSTRATE: Chooses the refractive index of the substrate}{47}{}%
-\contentsline {subsection}{\numberline {2.4.3}RECTANGLE: Add a rectangular waveguide to the structure}{48}{}%
+\contentsline {subsection}{\numberline {2.4.3}RECTANGLE: Add a rectangular waveguide to the structure}{47}{}%
 \contentsline {subsection}{\numberline {2.4.4}PML: Add perfectly matched layers to the waveguide}{48}{}%
 \contentsline {subsection}{\numberline {2.4.5}PML\_TRANSF: Adopt PML's with coordinate transform}{49}{}%
 \contentsline {subsection}{\numberline {2.4.6}INDFILE: Reads refractive index distribution from an input file}{49}{}%
-\contentsline {subsection}{\numberline {2.4.7}INPSTRUCT: Show the input structure}{50}{}%
+\contentsline {subsection}{\numberline {2.4.7}INPSTRUCT: Show the input structure}{49}{}%
 \contentsline {subsection}{\numberline {2.4.8}OUTGMODES: Write on a file the interesting modes found}{50}{}%
 \contentsline {subsection}{\numberline {2.4.9}SELMODES: output the modes using a rule}{51}{}%
 \contentsline {subsection}{\numberline {2.4.10}LOWINDEX: Set the lowest value allowed for the effective index to be considered ``interesting''}{52}{}%
@@ -72,7 +72,7 @@
 \contentsline {subsection}{\numberline {2.4.23}MONITOR: Monitors power flow in a rectangular surface}{57}{}%
 \contentsline {subsection}{\numberline {2.4.24}MODEPOS: Get mode position indices}{57}{}%
 \contentsline {section}{\numberline {2.5}Other commands of general use}{57}{}%
-\contentsline {subsection}{\numberline {2.5.1}\#: Start a comment}{58}{}%
+\contentsline {subsection}{\numberline {2.5.1}\#: Start a comment}{57}{}%
 \contentsline {subsection}{\numberline {2.5.2}HELP: List the supported commands}{58}{}%
 \contentsline {subsection}{\numberline {2.5.3}LABEL and GOTO: Unconditional jumps}{58}{}%
 \contentsline {subsection}{\numberline {2.5.4}IF, ELSE, ENDIF: Perform a conditional test}{58}{}%
@@ -81,11 +81,11 @@
 \contentsline {subsection}{\numberline {2.5.7}LOAD: Load (or includes) a new file}{59}{}%
 \contentsline {subsection}{\numberline {2.5.8}QUIT: Exit immediately}{59}{}%
 \contentsline {subsection}{\numberline {2.5.9}PRINT: Print a line at the output}{59}{}%
-\contentsline {subsection}{\numberline {2.5.10}FOPEN: Open a file}{60}{}%
+\contentsline {subsection}{\numberline {2.5.10}FOPEN: Open a file}{59}{}%
 \contentsline {subsection}{\numberline {2.5.11}FCLOSE: Close a file}{60}{}%
 \contentsline {subsection}{\numberline {2.5.12}FPRINT: Print a line on a file}{60}{}%
 \contentsline {subsection}{\numberline {2.5.13}FSCAN read a number}{60}{}%
-\contentsline {subsection}{\numberline {2.5.14}FCHECK checks if the last file read was successful}{61}{}%
+\contentsline {subsection}{\numberline {2.5.14}FCHECK checks if the last file read was successful}{60}{}%
 \contentsline {subsection}{\numberline {2.5.15}FSKIP: Skip a line on the file}{61}{}%
 \contentsline {subsection}{\numberline {2.5.16}ADDSPACE: Define the strategy for spaces and newlines in printing}{61}{}%
 \contentsline {subsection}{\numberline {2.5.17}CLEAR: Reset the structure}{61}{}%

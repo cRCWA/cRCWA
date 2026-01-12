@@ -209,7 +209,7 @@ Not all cRCWA commands are currently mapped into Python functions, consult the l
 
 ## User manual
 
-cRCWA is described in an user manual available here: https://github.com/cRCWA/cRCWA/blob/main/manual/manual/afmm.pdf
+cRCWA is described in an user manual available here: https://github.com/cRCWA/cRCWA/blob/main/manual/LaTeX/afmm.pdf
 
 ## Tools associated to cRCWA
 

@@ -135,30 +135,29 @@ defines a $2\micron\times 2\micron$ calculation window.
 
 \subsection{HARMONICS: Set number of space harmonics to be used}
 \label{subsec_harmonics}
-This command specifies the number of harmonics to be considered in the Fourier decomposition of the input structure. The harmonics specified here (including each a positive and a negative term except for DC) are employed for the representation of the structure, i.e. the spatial distribution of the permeability and permittivity. To be more explicit, if you are working in cylindrical coordinates and consider the spatial distribution in the cross-section $epsilon(r,z)$ you get the expression \eqref{eq_epsilon_series} in the manual at page \pageref{eq_epsilon_series}. The number of harmonics is therefore $S_r$ and $S_z$ in the $r$ and $z$ direction respectively. If you are working in Cartesian coordinates, of course the quantity being represented is $epsilon(x,y)$ and the number of harmonics is $S_x$ and $S_y$. This yields respectively $2S_x-1 \times 2S_y-1$ coefficients for the Fourier representation of the structure, enough to calculate convolutions with $S_x$ times $S_y$ coefficients for the electric and magnetic fields. If $S_x$ and $S_y$ are odd numbers, this yields $(S_x+1)/2\times (S_y+1)/2$ harmonics for the representation of electric and magnetic fields.
-    
-Usage: \lstinline!harmonics Sx Sy!
+This command specifies the number of harmonics to be considered in the Fourier decomposition of the fields.
+Usage: \lstinline!harmonics Nx Nx!
     
 Parameters:
 \begin{itemize}
-\item \lstinline!Sx!: number of harmonics on the $x$ axis (or $r$ axis if the structure is bent).
-\item \lstinline!Sy!: number of harmonics on the $y$ axis (or $z$ axis if the structure is bent).
+\item \lstinline!Nx!: number of harmonics on the $x$ axis (or $r$ axis if the structure is bent).
+\item \lstinline!Ny!: number of harmonics on the $y$ axis (or $z$ axis if the structure is bent).
 \end{itemize}
 Examples:
 \begin{lstlisting}
 harmonics 43 43
 \end{lstlisting}
-Use during calculations 43 harmonics in each direction, which means the continuous term as well as $\pm 42$ harmonics. This gives a result described by a continuous term plus $\pm 21$ harmonics in the $x$ and $y$ direction. The memory occupation needed for the calculations is $O(S_xS_y \times S_xS_y)$. There are no restrictions to the number of harmonics but the finite memory of the computer or workstation which is being used. It is better to use an odd number of harmonics. 
+Use during calculations 43 harmonics in each direction, which means the continuous term as well as $\pm 42$ Fourier terms. The memory occupation needed for the calculations is $O(S_xS_y \times S_xS_y)$. There are no restrictions to the number of harmonics but the finite memory of the computer or workstation which is being used. 
 This command should be placed at the very beginning of the calculation.
 
-Instead, with:
+For instance, with:
 \begin{lstlisting}
 harmonics 5 1
 \end{lstlisting}
 we obtain that:
 \begin{itemize}
-\item The permeability and permittivity will be represented with 11 coefficients in $x$ (DC+fundamental+harmonics up to order 4) and 1 coefficient in $y$ (DC only).
-\item The resulting calculated electric and magnetic fields will contain 5 coefficients in $x$ (DC+fundamental+harmonics up to order 2) and 1 coefficient in $y$ (DC only).
+\item The permeability and permittivity will be represented with $S_x=21$ coefficients in $x$ (DC+fundamental+harmonics up to order 10) and 1 coefficient in $y$ (DC only).
+\item The resulting calculated electric and magnetic fields will contain 11 coefficients in $x$ (DC+fundamental+harmonics up to order 5) and 1 coefficient in $y$ (DC only).
 \end{itemize}
 
 \subsection{WAVELENGTH: Set the wavelength to be used}
