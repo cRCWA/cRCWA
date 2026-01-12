@@ -47,6 +47,20 @@ LIBLAPACKDIR = /usr/local/lib/
 LIBLAPACK = -llapack
 ~~~~~
 
+To create the Python module,  cRCWA also requires to know where the Pyhton development file `Python.h` is present in your system, as well as the . This may require you to install packages such as `pyhton...-devel`, depending on the details of your operating system.
+
+~~~~
+# This is where the Python include file Python.h is present:
+PYTHONINCDIR =  [...] /3.15/include/python3.15/
+
+# This is the Python library to be included. In macOS the file can be 
+# called like libpython3.15.dylib (for a dynamically linked library).
+# If you use, let's say, Python 3.11, you should change the version
+# accordingly. cRCWA requires Python 3 in any case.
+
+PYTHONLIB = -L/opt/local/Library/ [...]/3.15/lib/ -lpython3.15
+~~~~
+
 When the makefile is correctly configured, you should be able to compile cRCWA by typing `make`, while in the project main subdirectory:
 
 ~~~~
@@ -66,6 +80,8 @@ cRCWA contains a certain number of self tests that can be run in the `test` dire
 A failure in a test does not immediately mean that a problem is present, especially when results are compared with respect to a reference. The tests try to check if two results are reasonably close. It is in fact difficult to compare two simulated results for the electric fields. Some small variations may be normal and due to the truncation to a given floating point precision. If a test fails, check by hand if the result is indeed acceptable.
 
 ## How to start using cRCWA
+
+### Simulation script
 
 You have three ways to use cRCWA. The first way is to write a script file containing the commands that describe the structure and launch the simulation. For instance, `substrate` defines the refractive index of the substrate, `waveglength` the vacuum wavelength, `size` the size of the calculation window, etc. The following script calculates the guided modes for a planar waveguide. Lines starting with the symbol `#` are ignored and can contain comments:
 
@@ -113,6 +129,8 @@ solve
 
 In general, the most important commands write results on files. The scripting language is primitive, but contains variables, loops, conditional execution and should be flexible enough to handle simple calculations. Notice that all sizes are given in meters.
 
+### Interactive program
+
 The second way to use cRCWA is using bin/crcwa as an interactive program. The program accepts the commands on a command line and executes them. It can be useful for a first approach with the software or to test interactively certain commands. Notice for instance how cRCWA complains about an incorrect spelling of a command:
 
 ~~~~
@@ -151,6 +169,8 @@ It is obviously possible to execute a script from the interactive mode using the
 ~~~~
 rlwrap crcwa
 ~~~~
+
+### Python module
 
 The third way to use cRCWA is as a Python module. The commands that are used in the interactive mode or in the script can be used in a Python program on a module. Instead of writing on a file the calculation results, the commands return Python objects:
 
@@ -191,11 +211,27 @@ Not all cRCWA commands are currently mapped into Python functions, consult the l
 
 cRCWA is described in an user manual available here: https://github.com/cRCWA/cRCWA/blob/main/manual/manual/afmm.pdf
 
-## jOptiEx
+## Tools associated to cRCWA
+
+### jOptiEx
 
 cRCWA may generate large collections of files in some situations. For instance, when exporting the modes of a multimodal waveguide or structure. JOptiEx is a Java tool that allows to explore very rapidly a collection of files and represent them rapidly. It is not meant as a full-fledged scientific representation tool, but it is more a tool to explore the results to select those to be represented more carefully.
 
 jOptiEx is a Java program. To run it, you need to have a JRE available in your computer and type `java -jar jOptiEx.jar` from the directory where `jOptiEx.jar` is present.
+
+### Slice
+
+The `slice` utility is a tool that allows to select some lines in the output of a field propagation, contained in a file. It can be used to select a single cross-section, for instance, or reduce the size of a calculated volume:
+
+~~~~
+./slice [-lx] [-ly] [-lz] {xy|xz|yz} quota tolerance input_file output_file
+~~~~
+
+Refer to the user manual for more information.
+
+### o2g
+
+This utility converts Optiwave-style files (`.rid` or `.f3d`) into files that can be read with a tool like Gnuplot. Refer to the user manual for more information.
 
 ## Bibliography
 
