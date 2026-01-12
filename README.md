@@ -1,6 +1,6 @@
 # cRCWA
 
-cRCWA is an efficient implementation of the Rigorous Coupled Wave Analysis (RCWA) and Aperiodic Fourier Modal Method (AFMM) techniques. It has been developed for simulating a relatively large set of photonic systems. It is developed at the Centre de Radiofréquences, Optique et Micro-nanoélectronique des Alpes (CROMA) in Grenoble, France and it has been successfully used to study diverse structures, ranging from microstructured solar cells to curved waveguides.
+cRCWA is an efficient implementation of the Rigorous Coupled Wave Analysis (RCWA) and Aperiodic Fourier Modal Method (AFMM) techniques. The project started in 2008 with the goal of simulating a relatively large set of photonic systems and has been made open source in 2026. It is developed at the Centre de Radiofréquences, Optique et Micro-nanoélectronique des Alpes (CROMA) in Grenoble, France it has been successfully used to study diverse structures, ranging from microstructured solar cells to curved waveguides.
 
 This open source project is distributed under the GPL v.3 license.
 
@@ -129,7 +129,7 @@ cRCWA % bin/crcwa
  *     MINATEC-Grenoble INP, 3, parvis Louis Neel                          *
  *     38016, Grenoble CEDEX, France                                       *
  *                                                                         *
- *     davide.bucci@grenoble-inp.fr                                        *
+ *     [email redacted]                                                    *
  *                                                                         *
  ***************************************************************************
 Init semaphore OK.
