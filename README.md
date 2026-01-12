@@ -235,8 +235,8 @@ This utility converts Optiwave-style files (`.rid` or `.f3d`) into files that ca
 
 ## Bibliography
 
-[1] - Michallon, J., Bucci, D., Morand, A., Zanuccoli, M., Consonni, V., & Kaminski-Cachopo, A. (2014). /Light trapping in ZnO nanowire arrays covered with an absorbing shell for solar cells/. Optics express, 22(S4), A1174-A1189.
+[1] - Michallon, J., Bucci, D., Morand, A., Zanuccoli, M., Consonni, V., & Kaminski-Cachopo, A. (2014). *Light trapping in ZnO nanowire arrays covered with an absorbing shell for solar cells*. Optics express, 22(S4), A1174-A1189.
 
-[2] - Lalanne, P., & Silberstein, E. (2000). /Fourier-modal methods applied to waveguide computational problems/. Optics Letters, 25(15), 1092-1094
+[2] - Lalanne, P., & Silberstein, E. (2000). *Fourier-modal methods applied to waveguide computational problems*. Optics Letters, 25(15), 1092-1094
 
-[3] - Bucci, D., Martin, B., & Morand, A. (2012). /Application of the three-dimensional aperiodic Fourier modal method using arc elements in curvilinear coordinates/. Optical Society of America. Journal A: Optics, Image Science, and Vision, 29(3), 367-373.
+[3] - Bucci, D., Martin, B., & Morand, A. (2012). *Application of the three-dimensional aperiodic Fourier modal method using arc elements in curvilinear coordinates*. Optical Society of America. Journal A: Optics, Image Science, and Vision, 29(3), 367-373.
