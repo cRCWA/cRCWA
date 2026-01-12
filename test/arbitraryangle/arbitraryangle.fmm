@@ -1,7 +1,7 @@
 let pi=3.141592654
 
 size 10e-6 1e-6
-harmonics 101 1
+harmonics 51 1
 wavelength 1.55e-6
 carpet
 angles 1.5 pi/4 0

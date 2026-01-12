@@ -6,7 +6,7 @@
 # Cas TM (tf=lambda/pi)
 
 
-harmonics 1 101
+harmonics 1 51
 
 print pi=3.14159265359
 

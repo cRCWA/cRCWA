@@ -1,5 +1,5 @@
 parallel 2
-harmonics 1 201
+harmonics 1 101
 wavelength 1.55e-6
 size 10e-6 30e-6
 

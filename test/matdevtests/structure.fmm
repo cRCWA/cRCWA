@@ -1,7 +1,7 @@
 size 2e-6 2e-6
 wavelength 1.55e-6
 
-harmonics 11 11
+harmonics 6 6
 substrate 1.44 0.0
 rectangle 3.48 -1e-2 500e-9 200e-9 0 0
 

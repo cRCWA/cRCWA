@@ -3,7 +3,7 @@ wavelength lambda
 size 2e-06 2e-06
 carpet
 symmetry a s
-harmonics 7 7
+harmonics 4 4
 
 section 1e-07
     substrate 1 0

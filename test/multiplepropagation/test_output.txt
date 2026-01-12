@@ -19,7 +19,7 @@ Wavelength set to: 7.749e-07 m.
 Calculation window size set to: 1.25e-06 m x 1.5e-06 m.
 Dust will be swept under the carpet.
 (All eigenvalues having a positive imaginary part will be forced to have it negative).
-Number of harmonics set to: 11 x 11
+Number of harmonics set to: 6 x 6
 
 Length of the section 1: 1e-07 m. 
 Substrate refractive index set to: (1,0)

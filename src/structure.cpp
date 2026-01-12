@@ -601,8 +601,16 @@ void structure::do_harmonics(int nx, int ny)
     */
     cout <<"Number of harmonics set to: "<<nx<<" x "<<ny<<"\n";
 
+/*  Old meaning of harmonics, used in old versions of cRCWA still called AFMM:
     dimx=2*nx-1;
     dimy=2*ny-1;
+*/
+
+    // New convention in cRCWA set in 2026: this allows to have an integer
+    // number of harmonics in the resulting fields.
+    dimx=2*(2*nx-1)-1;
+    dimy=2*(2*ny-1)-1;
+
 }
 
 /** Set the current wavelength
