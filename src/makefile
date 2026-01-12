@@ -37,7 +37,7 @@ CFLAGS = -g -O3
 .PHONY : setrev
 
 HEADERS =  block_matrix.h  fortran_types.h parsefile.h structure.h section.h commands.h finterface.h parsercl.h matrixDev.h matrixdevsym.h parallelize.h
-OFILES =   block_matrix.o main.o matrixDev.o parsefile.o structure.o section.o commands_structure.o commands_section.o commands_propagation.o commands_other.o finterface.o parsercl.o matrixdevsym.o parallelize.o toeplitz.o
+OFILES =   block_matrix.o main.o matrixDev.o parsefile.o structure.o section.o commands_structure.o commands_section.o commands_propagation.o commands_other.o finterface.o parsercl.o matrixdevsym.o parallelize_POSIX.o toeplitz.o
 SLOFILES = slice.o
 O2GFILES = optiwave2gnuplot.o
 
