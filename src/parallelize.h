@@ -21,6 +21,15 @@
 #define PARALLELIZE_H
 
 #include "structure.h"
+#include "compat.h"
+
+#ifdef _WIN32
+#include <thread>
+typedef std::thread thread_handle;
+#else
+#include <pthread.h>
+typedef pthread_t thread_handle;
+#endif
 
 struct thread_data{
    int  instance_number;

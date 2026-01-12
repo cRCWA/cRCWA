@@ -50,3 +50,7 @@ test/multiplepropagation2/test_output.txt
 test/multiplepropagation2/test_results_x.txt
 test/multiplepropagation2/test_results_y.txt
 test/multiplepropagation2/test_results_z.txt
+bin/crcwa
+bin/o2g
+bin/slice
+src/parallelize_POSIX.o
