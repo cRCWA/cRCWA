@@ -451,8 +451,6 @@ int commands::c_selmodes(parsefile *obj, int argc,char *argv[])
         int mi=0;
         int mm, ll;
 
-
-
         // compute epsilon and mu constants if needed
         db_matrix epsilonxy;
         db_matrix epsz;
@@ -460,7 +458,6 @@ int commands::c_selmodes(parsefile *obj, int argc,char *argv[])
 
         getEpsilonAndMu(*p->cur, calcD, calcz,
             calcH,improve_representation, epsilonxy, epsz, muz);
-
 
         // The V matrix will be used if we want to compute Ez,Ez2,Dz, Hx and Hy
         // if the V matrix does not exist, it is created
@@ -476,8 +473,6 @@ int commands::c_selmodes(parsefile *obj, int argc,char *argv[])
             }
         }
 
-        // Matrix containing the modal power of each mode.
-        double powermodes[p->cur->B.getNrow()];
 
         double integral;
         int nmodes=0;
@@ -506,7 +501,9 @@ int commands::c_selmodes(parsefile *obj, int argc,char *argv[])
         }
         cout << "direction."<<endl;
 
-        bool writemodes[p->cur->B.getNrow()];
+        // Matrix containing the modal power of each mode.
+        vector <double> powermodes(p->cur->B.getNrow());
+        vector <bool> writemodes(p->cur->B.getNrow());
         complex<double>e;
         complex<double>g;
         double order;
@@ -515,12 +512,12 @@ int commands::c_selmodes(parsefile *obj, int argc,char *argv[])
 
         // Calculate the power carried by each mode.
         for (int jj=0; jj<p->cur->B.getNrow();++jj) {
-            writemodes[jj]=false;
+            writemodes.at(jj)=false;
             e=ee->operator()(jj,0);
             integral = abs(section::integralPoynting(p, p->cur->W,p->cur->V, jj)
                 *p->tot_x*p->tot_y);
 
-            powermodes[jj]=abs(e)*abs(e)*integral;
+            powermodes.at(jj)=abs(e)*abs(e)*integral;
         }
 
         // Now that the power is known, we can search for the maximum and
@@ -528,7 +525,7 @@ int commands::c_selmodes(parsefile *obj, int argc,char *argv[])
         // nmodes times, each time searching for the maximum avoid what
         // it has already been flagged.
 
-        int modesorder[nmodes];
+        vector<int> modesorder(nmodes);
 
         double max=0;
         int maxindex=-1;
@@ -541,9 +538,9 @@ int commands::c_selmodes(parsefile *obj, int argc,char *argv[])
             max=0;
             maxindex=-1;
             for (int jj=0; jj<p->cur->B.getNrow();++jj) {
-                if(powermodes[jj]>max && !writemodes[jj]) {
+                if(powermodes.at(jj)>max && !writemodes.at(jj)) {
                     maxindex=jj;
-                    max=powermodes[jj];
+                    max=powermodes.at(jj);
                 }
             }
             if(maxindex>=0) {
@@ -596,10 +593,10 @@ int commands::c_selmodes(parsefile *obj, int argc,char *argv[])
 
                 if(p->cur->useAzimuthalOrder) {
                     fprintf(f, "# order=%lf, Q= %lf, power=%e\n",order,
-                        quality, powermodes[jj]);
+                        quality, powermodes.at(jj));
                 } else {
                     fprintf(f, "# neff=(%lf, %e), power=%e\n",g.real(),
-                        g.imag(), powermodes[jj]);
+                        g.imag(), powermodes.at(jj));
                 }
                 p->fileoutputGP(out, f, rimc, dx, dy);
                 cout << "Mode file written (Gnuplot format): "<< s<<"\n";

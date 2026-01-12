@@ -37,7 +37,7 @@
 #include <stdio.h>
 #include <vector>
 
-#include <unistd.h>
+#include "compat.h"
 
 #include "block_matrix.h"
 #include "parsefile.h"

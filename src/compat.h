@@ -1,4 +1,26 @@
 /* Minimal portability helpers for Windows vs POSIX */
+
+
+/* This file is part of cRCWA.
+
+    cRCWA is free software: you can redistribute it and/or modify it under the
+    terms of the GNU General Public License as published by the Free Software
+    Foundation, either version 3 of the License, or (at your option) any later
+    version.
+    
+    cRCWA is distributed in the hope that it will be useful, but WITHOUT ANY
+    WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS 
+    FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+    details.
+    
+    You should have received a copy of the GNU General Public License along
+    with cRCWA. If not, see <https://www.gnu.org/licenses/>. 
+
+    Lionel Bastard, 2025-2026
+    Davide Bucci, 2026
+*/
+
+
 #ifndef COMPAT_H
 #define COMPAT_H
 
@@ -20,15 +42,30 @@
 struct sem_t_wrapper { std::mutex m; };
 typedef sem_t_wrapper* sem_t;
 
-static inline sem_t sem_open(const char* /*name*/, int /*oflag*/, int /*mode*/, unsigned int /*value*/) {
+static inline sem_t sem_open(const char* /*name*/, int /*oflag*/, int /*mode*/,
+    unsigned int /*value*/)
+{
     return new sem_t_wrapper();
 }
 static inline int sem_close(sem_t s) { if (s) delete s; return 0; }
 static inline int sem_unlink(const char* /*name*/) { return 0; }
-static inline int sem_wait(sem_t s) { if (s) { s->m.lock(); return 0; } return -1; }
-static inline int sem_post(sem_t s) { if (s) { s->m.unlock(); return 0; } return -1; }
-static inline int sem_init(sem_t* s, int /*pshared*/, unsigned int /*value*/) { *s = new sem_t_wrapper(); return 0; }
-static inline int sem_destroy(sem_t* s) { if (*s) delete *s; *s = nullptr; return 0; }
+static inline int sem_wait(sem_t s)
+{
+    if (s) { s->m.lock(); return 0; } return -1; 
+}
+static inline int sem_post(sem_t s)
+{
+    if (s) { s->m.unlock(); return 0; } return -1;
+}
+static inline int sem_init(sem_t* s, int /*pshared*/, unsigned int /*value*/) 
+{
+    *s = new sem_t_wrapper(); return 0;
+}
+
+static inline int sem_destroy(sem_t* s)
+{
+    if (*s) delete *s; *s = nullptr; return 0; 
+}
 
 #define SEM_FAILED ((sem_t)NULL)
 #ifndef O_CREAT
@@ -47,25 +84,6 @@ static inline void usleep(unsigned int usec) { Sleep((usec) / 1000); }
 #ifndef M_E
 #define M_E 2.71828182845904523536
 #endif
-
-/* simple getpass replacement: reads password without echoing */
-static inline char *getpass(const char *prompt)
-{
-    static char buf[256];
-    if (prompt) fprintf(stderr, "%s", prompt);
-    int i = 0;
-    int c;
-    while ((c = _getch()) != '\r' && c != EOF && i < (int)sizeof(buf) - 1) {
-        if (c == '\b') {
-            if (i > 0) { --i; }
-        } else {
-            buf[i++] = (char)c;
-        }
-    }
-    buf[i] = '\0';
-    if (prompt) fprintf(stderr, "\n");
-    return buf;
-}
 
 #else /* POSIX */
 #include <unistd.h>

@@ -212,7 +212,7 @@ using namespace std;
 #include <semaphore.h>
 #include <sys/stat.h>
 #include <sys/types.h>
-#include <unistd.h>
+#include "compat.h"
 
 sem_t *mutex_fftw; // Semaphore for fftw
 sem_t unnamed_mutex_fftw; // Unnamed semaphore (if applicable).

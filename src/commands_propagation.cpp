@@ -36,7 +36,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include <unistd.h>
+#include "compat.h"
 
 #include "block_matrix.h"
 #include "structure.h"
