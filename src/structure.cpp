@@ -393,16 +393,16 @@ void structure::do_assemble(void)
     db_matrix Pt;      // Propagation matrix section t
     db_matrix Ptp1;    // Propagation matrix section t + 1
 
-    struct thread_data td[number_of_sections];
+    vector<struct thread_data> td(number_of_sections);
     int used_threads=1;
 
     // Calculate the V matrices for each section: PARALLELIZED
     for(int i=0; i<number_of_sections; ++i) {
-        td[i].p=this;
-        td[i].instance_number=i;
-        td[i].thread_counter=&used_threads;
+        td.at(i).p=this;
+        td.at(i).instance_number=i;
+        td.at(i).thread_counter=&used_threads;
         //  p->number_of_threads_allowed
-        parallelize(&td[i], calcV, i, number_of_threads_allowed,
+        parallelize(&td.at(i), calcV, i, number_of_threads_allowed,
             number_of_sections);
     }
     wait_for_threads(td, number_of_sections);
@@ -466,14 +466,14 @@ vector<double> structure::do_solve(void)
 {
     section *q;
     vector<double> results;
-    struct thread_data td[number_of_sections];
+    vector<struct thread_data> td(number_of_sections);
     int used_threads=1;
 
     // Parallelize the calculation for the allowed threads.
     for(int i=0; i<number_of_sections; ++i) {
-        td[i].p=this;
-        td[i].instance_number=i;
-        td[i].thread_counter=&used_threads;
+        td.at(i).p=this;
+        td.at(i).instance_number=i;
+        td.at(i).thread_counter=&used_threads;
         q=&sec_list[i];
         if((getKsinthetax()!=0 || getKsinthetay()!=0) &&
             (q->crtr->setAngles(getKsinthetax(),getKsinthetay())))
@@ -487,7 +487,7 @@ vector<double> structure::do_solve(void)
                 " working with the default settings and you should change"
                 " them.");
         }
-        parallelize(&td[i], calc_eigenvalues, i, number_of_threads_allowed,
+        parallelize(&td.at(i), calc_eigenvalues, i, number_of_threads_allowed,
             number_of_sections);
     }
     wait_for_threads(td, number_of_sections);

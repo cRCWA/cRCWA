@@ -448,8 +448,6 @@ int commands::c_selmodes(parsefile *obj, int argc,char *argv[])
 
         db_matrix out(si, sj);
 
-        size_t buf_size=strlen(argv[8])+strlen(argv[1])+strlen(argv[2])+40;
-        char s[buf_size];
         int mi=0;
         int mm, ll;
 
@@ -579,6 +577,8 @@ int commands::c_selmodes(parsefile *obj, int argc,char *argv[])
                     shiftToY, calcH, snux, snuy, sj, si,
                     calcD, epsilonxy, epsz, muz,calcz,improve_representation,
                     false, unused);
+            size_t buf_size=strlen(argv[8])+strlen(argv[1])+strlen(argv[2])+40;
+            char *s=new char[buf_size];
 
             // We can then write the results on the output file
             if (rimc == O) {
@@ -604,6 +604,8 @@ int commands::c_selmodes(parsefile *obj, int argc,char *argv[])
                 p->fileoutputGP(out, f, rimc, dx, dy);
                 cout << "Mode file written (Gnuplot format): "<< s<<"\n";
             }
+            if(s) delete[] s;
+
         }
     } else {
         cerr<<"selmodes: invalid number of parameters.";
@@ -1157,7 +1159,7 @@ int commands::c_coefficient(parsefile *obj, int argc,char *argv[])
     s[2]=abs(e)*abs(e);
 
     p->nP->insertArray("ans", 3, s);
-
+    delete[] s;
     return 0;
 }
 
@@ -1787,7 +1789,7 @@ int commands::c_modepos(parsefile *obj, int argc,char *argv[])
     vector<double> results;
     vector<int> idx;
     q->find_interesting_g(results, idx);
-    
+
     double *s =new double[idx.size()];
     
     int j=0;
@@ -1798,5 +1800,6 @@ int commands::c_modepos(parsefile *obj, int argc,char *argv[])
     }
     cout <<endl;
     p->nP->insertArray("ans", idx.size(), s);
+    delete[] s;
     return 0;
 }

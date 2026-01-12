@@ -27,4 +27,8 @@
 .PHONY: src
 
 src:
-	 $(MAKE) -C src $(MAKECMDGOALS)
+	$(MAKE) -C src $(MAKECMDGOALS)
+
+
+clean:
+	rm src/*.o

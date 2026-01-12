@@ -1,7 +1,7 @@
 /*************************************************************************
  ****                                                                 ****
  ****                  Main file for PARSER.CPP                       ****
- ****         Original version 1992 by Bijarne Stroustrup             ****
+ ****         Inspired by the 1992 C++ book by Bijarne Stroustrup     ****
  ****              Modified 1998-2025 by Davide Bucci                 ****
  ****                                                                 ****
  *************************************************************************/

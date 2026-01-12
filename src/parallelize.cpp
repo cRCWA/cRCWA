@@ -138,8 +138,9 @@ void postSemaphoreIO(void)
 
 /**
     Wait until all launched threads have finished their tasks.
+    The size of td may be greater or equal to number_of_instances.
  */
-void wait_for_threads(struct thread_data *td, int number_of_instances)
+void wait_for_threads(vector<struct thread_data> td, int number_of_instances)
 {
     bool to_cont=true;
     waitSemaphoreIO();
@@ -148,7 +149,7 @@ void wait_for_threads(struct thread_data *td, int number_of_instances)
     void *retval;
 
     for(int i=0; i<number_of_instances; ++i) {
-         if(pthread_equal(pthread_self(),td[i].thread)==0 &&
+         if(pthread_equal(pthread_self(),td.at(i).thread)==0 &&
             pthread_join(td[i].thread, &retval)!=0) {
             waitSemaphoreIO();
             printf("Error! can not join threads.\n");

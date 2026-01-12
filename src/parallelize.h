@@ -35,7 +35,7 @@ void parallelize(struct thread_data *td, void* (pfunc)(void*), int i,
     unsigned int nmax, unsigned int number_of_instances);
 
 void *parallelize_finish(struct thread_data *td);
-void wait_for_threads(struct thread_data *td, int number_of_instances);
+void wait_for_threads(vector<struct thread_data> td, int number_of_instances);
 
 void waitSemaphoreIO(void);
 void postSemaphoreIO(void);

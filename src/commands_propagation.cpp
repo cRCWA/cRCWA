@@ -171,9 +171,10 @@ int commands::c_propagation(parsefile *obj, int argc,char *argv[])
         int l=0;
         int instance=0;
         int used_threads=1;
+        #define CMAX 10
 
-        struct propagation_data spd[10];
-        struct thread_data td[10];
+        vector<struct propagation_data> spd(CMAX);
+        vector<struct thread_data> td(CMAX);
 
         // Parallelize the execution of propagation on multiple components
         // if necessary.
@@ -197,21 +198,21 @@ int commands::c_propagation(parsefile *obj, int argc,char *argv[])
                 argv[6][l++]='\0';
 
             // Data about calculations to be done
-            spd[instance].dz= dz;
-            spd[instance].sizex= sizex;
-            spd[instance].sizey= sizey;
+            spd.at(instance).dz= dz;
+            spd.at(instance).sizex= sizex;
+            spd.at(instance).sizey= sizey;
             // Calculates additional output data only in the first instance
             // of the propagation.
-            spd[instance].recordAdditionalData = (instance==0);
-            spd[instance].rimc= rimc;
-            spd[instance].component= comp;
-            spd[instance].fname= fname;
+            spd.at(instance).recordAdditionalData = (instance==0);
+            spd.at(instance).rimc= rimc;
+            spd.at(instance).component= comp;
+            spd.at(instance).fname= fname;
 
             // Generic data about parallelization
-            td[instance].p=p;
-            td[instance].instance_number=instance;
-            td[instance].thread_counter=&used_threads;
-            td[instance].payload = &spd[instance];
+            td.at(instance).p=p;
+            td.at(instance).instance_number=instance;
+            td.at(instance).thread_counter=&used_threads;
+            td.at(instance).payload = &spd[instance];
 
             parallelize(&td[instance], propagation_structure,
                 instance, p->number_of_threads_allowed,
@@ -220,7 +221,11 @@ int commands::c_propagation(parsefile *obj, int argc,char *argv[])
             comp=&argv[1][k];
             fname=&argv[6][l];
 
-            instance++;
+            ++instance;
+            if(instance>=CMAX) {
+                throw parsefile_commandError(
+                    "propagation: too many field components to be calculated.");
+            }
         } while(argv[1][k]!='\0');
         // Now instance contains the number of launched instances.
         wait_for_threads(td,instance);
@@ -853,10 +858,11 @@ db_matrix commands::getGeneration_rate(section &c_section,double tp, double tm,
 
     int ind;    // The index of each point in the radius-array. In other words,
                 // the index of the ring, to which this point belongs to.
-    int count[nbOfPoint_radius];// Counts the number of points in each ring
+    vector<int> count(nbOfPoint_radius);// Counts the number of points in each
+                // ring
 
     for (int i=0; i<nbOfPoint_radius; ++i)
-        count[i]=0;
+        count.at(i)=0;
 
     int min_int_range=nbOfPoint_radius;
     if(nbOfPoint_x/2<min_int_range)
@@ -891,12 +897,12 @@ db_matrix commands::getGeneration_rate(section &c_section,double tp, double tm,
                     + pow(abs(Ey_cartesian(iy,ix)),2)
                     + pow(abs(Ez_cartesian(iy,ix)),2))
                     * eps.imag() /(2.0*h_Planck);
-                ++count[ind];
+                ++count.at(ind);
             }
         }
     }
     for (int ir = 0; ir < nbOfPoint_radius; ++ir){
-        if (count[ir]==0)
+        if (count.at(ir)==0)
             G2D(0,ir)=0;
         else
             G2D(0,ir) = G2D(0,ir)/(double)count[ir];
