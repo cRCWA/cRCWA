@@ -14,20 +14,41 @@ cRCWA has been written from the beginning to implement effectively the AFMM meth
 
 cRCWA has also been the test implementation for an original development of the AFMM in cylindrical coordinates, introduced by D. Bucci, B. Martin and A. Morand in [3].
 
-## Compile and install cRCWA
+## Compile and install cRCWA: the quick summary
 
 There are two ways to install cRCWA: quick installation with pre-compiled mathematical libraries or recompiling libraries on your system to improve performances. We start by presenting the quick option, but if you experience problems or if you need to optimize the performances you may explore the longer route.
 
 ### Quick install on Ubuntu or equivalent Linux system
 
-On Ubuntu linux system, cRCWA can be quickly installed with
+(This paragraph is untested. Please contact us if you have a feedback)
+
+On Ubuntu linux system, cRCWA can be quickly installed with:
 ~~~~
 % sudo apt-get install python3 libfftw3-dev libblas-dev liblapack-dev
 % make
 % ./bin/crcwa
 ~~~~
 cRCWA should run. To test if everything is OK, you may run the automated tests:
+~~~~
+% cd test
+%./run_all_tests.sh
+~~~~
+If a test fails, read the note below.
 
+### Quick install on RedHat, Rocky Linux or equivalent system
+
+On such systems, cRCWA can be quickly installed with:
+~~~~
+% sudo yum install fftw-devel.x86_64 --enablerepo=devel
+% sudo yum install atlas_devel.x86_64 --enablerepo=devel
+% sudo yum install lapack-devel.x86_64 --enablerepo=devel
+~~~~
+Open the `configure.inc` file with a text editor and change the line `LIBBLAS = -lblas` into `LIBBLAS = -latlas`. Save the file, then run the following commands:
+~~~~
+% make
+% ./bin/crcwa
+~~~~
+cRCWA should run. To test if everything is OK, you may run the automated tests:
 ~~~~
 % cd test
 %./run_all_tests.sh
@@ -36,16 +57,25 @@ If a test fails, read the note below.
 
 ### Quick install on on macOS
 
-You can use macports to install the LAPACK, BLAS and FFTW3 libraries. The macports tool installs libraries in `/opt/local/lib`. The LAPACK library is installed in a subdirectory of this folder.
+You can use macports to install the LAPACK, BLAS and FFTW3 libraries. The macports tool installs libraries in `/opt/local/lib`. The LAPACK library is installed in a subdirectory of this folder:
+~~~~
+% sudo port install lapack
+% sudo port install fftw-3
+% make 
+~~~~
+cRCWA should run. To test if everything is OK, you may run the automated tests:
+~~~~
+% cd test
+%./run_all_tests.sh
+~~~~
+If a test fails, read the note below.
 
-
-
-## Quick installation on Windows
+### Quick installation on Windows
 
 Hopefully coming soon!
 
 
-### Detailed build instructions on a Unix system
+## Detailed build instructions on a Unix system
 
 cRCWA is written in C++ and can be compiled on a Unix system using GNU Make and gcc. On a practical standpoint, it has been tested on Linux and on macOS. Some experimental versions of cRCWA have been built on Windows, more information will come hopefully soon.
 
