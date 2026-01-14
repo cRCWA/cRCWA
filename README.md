@@ -291,6 +291,20 @@ Refer to the user manual for more information.
 
 This utility converts Optiwave-style files (`.rid` or `.f3d`) into files that can be read with a tool like Gnuplot. Refer to the user manual for more information.
 
+## How to contribute?
+
+If you want to contribute to the cRCWA project, your help will be more than welcome. Here are some hints about things that can be done:
+- Cite the cRCWA project in your papers.
+- Benchmark cRCWA against other simulation tools.
+- Improve the documentation (install instructions, use cases, ...)
+- Improve the automatic test suite.
+- Find and solve bugs.
+- Add new functions.
+
+If you have something in mind, do not hesitate to contact us using GitHub's discussions and describe what you plan to do and why. If you have found a bug, do not hesitate to open a new issue, by providing the minimum amount of information necessary to reproduce the bug (simulation script, etc.). Please do not provide scripts that are too long or too complicated, unless it is absolutely necessary.
+
+If you plan to work on the code, the indentation style is K&R. We tend to avoid lines longer than 80 characters to improve readability, with the notable exception of the `commands::c_help` function.
+
 ## Bibliography
 
 [1] - Michallon, J., Bucci, D., Morand, A., Zanuccoli, M., Consonni, V., & Kaminski-Cachopo, A. (2014). *Light trapping in ZnO nanowire arrays covered with an absorbing shell for solar cells*. Optics express, 22(S4), A1174-A1189.
