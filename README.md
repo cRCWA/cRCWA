@@ -307,7 +307,7 @@ If you plan to work on the code, the indentation style is K&R. We tend to avoid 
 
 The development is organized around three main branches:
 
-- `master` contains stable and tested code. Small modifications and bugfixes are done there.
+- `main` contains stable and tested code. Small modifications and bugfixes are done there.
 - `dev` contains development code for things that would not qualify as "small" and may require to be tested further before being merged to the `master` branch.
 - `feature` contains development code for a feature that is under active development.
 
