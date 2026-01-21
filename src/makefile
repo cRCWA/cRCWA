@@ -31,7 +31,7 @@ include ../configure.inc
 
 # These are the flags passed to the C++ compiler. Change accordingly to your
 # system
-CFLAGS = -g -O3
+CFLAGS = -g -O3 -fPIC
 # CFLAGS = -pedantic -Wall --unroll-all-loops -O3  
 
 .PHONY : setrev
