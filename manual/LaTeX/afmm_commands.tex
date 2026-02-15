@@ -383,6 +383,21 @@ This command should be used before \lstinline!solve!.
             \item\lstinline!h! is the height of the window
             \item\lstinline!filename! is the name of the file on which the results should be recorded
         \end{itemize}
+        
+		\item if \lstinline!t=sz!, it computes the z-component of the Poynting vector 
+		(Power flowing in the z direction) 
+
+		Usage: \lstinline!outdata sz rimc filename! 
+		 
+		where: 
+		\begin{itemize}
+	    	\item\lstinline!rimc!    must be \lstinline!{r|i|m|c}! and indicates if  the real part should be written
+		    (\lstinline!r!), the imaginary part (\lstinline!i!), the magnitude (\lstinline!m!) or the complex 
+		    value (\lstinline!c!) of the Poynting vector.
+			\item \lstinline!filename! is the name of the file on which Poynting vector will be saved.
+    	\end{itemize}
+
+
         \item if \lstinline!t=g!, it computes the 2D generation rate cylindrincally 
         interpolated from the 3D generation rate using:
 

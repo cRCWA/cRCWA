@@ -1,0 +1,122 @@
+
+# write results directly on the file
+
+fopen "test_output.txt" "w"
+let file=ans
+
+#fprint file "# case1-6 without symmetries"
+#fprint file "# case 1: centered waveguide excited with planewave at 0 incidence"
+#fprint file "# case 2: not centered waveguide excited with planewave at 0 incidence"
+#fprint file "# case 3: centered waveguide excited with planewave at non-normal incidence"
+#fprint file "# case 4: not centered waveguide excited with planewave at non-normal incidence	"
+#fprint file "# case 5: centered waveguide excited with fundamental mode"
+#fprint file "# case 6: not centered waveguide excited with fundamental mode"
+#fprint file "# case 7-12: same as 1-6 with symmetries"
+#fprint file "# case 13-24: same as 1-12 but extracted after 1µm depth"
+#fprint file "# case 8, 10, 12: are not expected to give good results as the structure is NOT symmetrical"
+	
+# fprint file "# case power powerZ monitor1 monitor2 monitor3 about_ref"
+
+let caseid=0
+
+#for :quota 1 2 1
+for :quota 0 2 1
+
+	let cas=0
+	for :case 1 13 1
+	# for :case 1 2 1
+
+		let caseid=caseid+1
+		
+		print " "
+		print "CASE " caseid
+		print " "
+		clear
+
+		# define the structure
+		size 2e-6 1e-6
+		harmonics 15 1
+		wavelength 1.55e-6
+		if case>6
+			symmetry s a
+		endif
+
+		carpet
+		
+		section 1e-6
+		substrate 1.5 0.0
+		print (int(case/2)*2)
+		if (int(case/2)*2==case)
+			rectangle 3.5 0.0 1e-6 1e-6 0.5e-6 0
+		else
+			rectangle 3.5 0.0 1e-6 1e-6 0 0
+		endif
+
+		wants propagation
+		solve
+		assemble
+
+		if (case==7)
+			let cas=0
+		endif
+		print cas=cas+1
+
+		if (cas<3)
+			excitation f cy 1 0 0 0
+		endif
+		let cond1=(cas>2)
+		let cond2=(cas<5)
+
+		if (cond1&&cond2)
+			excitation f cy 1 0 1 0
+		endif
+		if (cas>4)
+			excitation f m 1 0 0 0
+		endif
+		
+		if ((case==6)&&(quota==0))
+			outdata sz r "cas6_Pz.txt"
+			propagation Ex,Hy,Ey,Hx c 1e-6 101 1 cas6_Ex.txt,cas6_Hy.txt,cas6_Ey.txt,cas6_Hx.txt
+		else
+			propagation Ex,Hy,Ey,Hx c 10e-9 1 1 Ex.txt,Hy.txt,Ey.txt,Hx.txt
+		endif
+
+
+		select 1
+		power f 1e-8
+		let P=ans
+			
+		powerZ quota*1e-6
+		let Pz=ans
+
+		# center and full size monitor
+		monitor quota*1e-6 2e-6 1e-6 0 0
+		let P1=ans
+		
+		# monitor on the waveguide
+		monitor quota*1e-6 1e-6 1e-6 0.5e-6 0
+		let P2=ans
+
+		# monitor out of waveguide
+		monitor quota*1e-6 1e-6 1e-6 -0.5e-6 0 
+		let P3=ans
+		
+		# order of magnitude of the power value obtained by graphical fit of the plotted Sz:
+		if cas>4
+			let Pref=0.5*2.45e-7*0.032*sqr(2*3.14)*1e-6 
+		else
+			let Pref=((0.00985-0.00358)*(5.21e-7-4.76e-7)+0.00358*2e-6)*1e-6
+		endif
+
+		
+		fprint file caseid P Pz P1 P2 P3 Pref
+		
+	next :case
+next :quota
+fclose file
+
+# 
+
+
+# plot [0:13] [-2e-15:-2e-14] 'test_output.txt' u 1:2 w p t 'power' , 'test_output.txt' u 1:3 w p t 'powerz', 'test_output.txt' u 1:4 w p t 'centered monitor', 'test_output.txt' u 1:($5+$6) w p t 'monitor2+3'
+

@@ -28,7 +28,6 @@ awk_script="function abs(x){ \
 	END{\
 		norm=sqrt(norm/FNR);\
 		comp=sqrt(comp/FNR);\
-		print comp, norm;\
 		if (comp>1e-4*norm){ \
 			exit 1 \
 		}\

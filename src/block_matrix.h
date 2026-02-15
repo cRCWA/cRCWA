@@ -207,6 +207,11 @@ public:
     // Obtain the number of columns
     int getNcol(void) {return ncol;}
 
+    
+    db_matrix& crop(int row, int col);
+    
+    
+
     // operators overloading
     db_matrix& operator=(const db_matrix &d);
 
@@ -265,13 +270,18 @@ public:
     */
     db_matrix &eigGen(db_matrix matrix2, db_matrix *eigvect);
 
-    /* Calculates the 2D Fast Fourier Transform of the given matrix.
-       Employs the FFTW3 library
-    */
-    inline db_matrix fft2(void) {return fft_a(false);}
 
-    // Transpose the matrix.
-    db_matrix transpose();
+	/* Calculates the 2D Fast Fourier Transform of the given matrix.
+	   Employs the FFTW3 library 
+	*/
+	inline db_matrix fft2(void) {return fft_a(false);}
+	
+	// Transpose the matrix.
+	db_matrix transpose();
+	
+	// Reverse the matrix in either on rows or column
+	db_matrix reverse(bool reverseOnRow) ;
+	
 
     /* Calculates the 2D Inverse Fast Fourier Transform of the given matrix.
        Employs the FFTW3 library
