@@ -1,0 +1,1 @@
+function abs(x){ return ((x < 0.0) ? -x : x) } BEGIN {error=0;} FNR==NR{id[FNR]=$1; p[FNR]=$2; pz[FNR]=$3; m1[FNR]=$4; m2[FNR]=$5; m3[FNR]=$6; next} abs(p[$1]-$2)>1e-18 || abs(pz[$1]-$3)>1e-18 || abs(m1[$1]-$4)>1e-18 || abs(m2[$1]-$5)>1e-18 || abs(m3[$1]-$6)>1e-18 {error=1; print $1" " p[$1] " " pz[$1] " " m1[$1]" "m2[$1] " " m3[$1] " vs "$2" "$3" "$4" "$5" "$6} END{exit error }

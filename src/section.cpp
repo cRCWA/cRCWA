@@ -145,7 +145,7 @@ void section::reset(void)
     @param HH matrix associated to electric field in the given quota
     @param column column of the previous matrices to be considered
 
-*/
+
 double section::integralPoynting(structure *p, db_matrix &EE, db_matrix &HH,
     int column)
 {
@@ -229,6 +229,170 @@ double section::integralPoynting(structure *p, db_matrix &EE, db_matrix &HH,
     }
 
     return -0.5*Poynting_0.real();
+}*/
+
+
+/** Calculate the integral of the Poynting vector (power flow).
+    @param p The structure
+    @param W matrix associated to magnetic field in the given quota
+    @param V matrix associated to electric field in the given quota
+    @param column column of the previous matrices to be considered
+
+*/
+    
+double section::integralPoynting(structure *p, db_matrix &W, db_matrix &V, 
+	int column)
+{
+    int nlines = V.getNrow()/2;
+            
+    // Calculation of the mode normalization. First of all, we obtain
+    // the Fourier coefficients of all components involved in the
+    // z component of the Poynting vector.
+    db_matrix Hxc(nlines,1);
+    db_matrix Hyc(nlines,1);
+            
+    db_matrix Ex(nlines,1);
+    db_matrix Ey(nlines,1);
+            
+    // Here we extract the components from the V and W matrices,
+    // respectively for the magnetic and electric fields.
+            
+    int shift = 0;
+    for(int j=0; j<nlines; ++j) {
+        Hxc(j,0) = conj(V(j,column));
+        Hyc(j,0) = conj(V(j+nlines,column));
+
+        Ex(j,0) = W(j,column);
+        Ey(j,0) = W(j+nlines,column);
+    }
+            
+    // Here we calculate the Fourier coefficients of the Poynting
+    // vector, which for the z component is given by:
+    // Sz = Ex conj(Hy) - Ey conj(Hx)
+    // where the multiplication becomes a convolution of the Fourier
+    // coefficients (thus involving the multiplication by a Toeplitz
+    // matrix).
+    // Since we integrate over a period:
+    // 		integral from -T/2 to T/2 of ( exp(j ax nux ) = [sin(pi*ax)/(2*pi*ax)] from -T/2 to T/2
+    //		 = 0
+    // Therefore, the only contribution that is not null for the is the 0 term convolution
+    // The following loop represents the calculation of the 0 term of the convolution:
+
+	// N.B. In reality, the Fourier coefficients code for a field ranging from 0 to T and not from
+	// -T/2 to T/2. However, since we integrate on the period, integrating over -T/2 to T/2 or
+	// from 0 to T is the same as the signal is periodic
+	
+    complex<double> Poynting_0 = 0;
+
+	// In case of symmetry, the computation of the poynting vector is 2 or 4*
+	// times the value of the poynting vector, except for constant term
+
+	complex<double> factorX = complex<double>(1,0);
+	complex<double> factorY = complex<double>(1,0);
+	// dimx and dimy refer to the number of harmonics considered for x and y
+	double dimx;
+	double dimy;
+	dimx = p->dimx;
+	dimy = p->dimy;
+
+	if (p->symx == anti_symmetric || p->symx== symmetric) {
+		factorX *= complex<double>(2,0);
+		dimx = int(floor(double(dimx)/4.0) + 1.0);
+	} else {
+		dimx = int(floor(double(dimx)/2.0) + 1.0);
+	}
+	if (p->symy == anti_symmetric || p->symy== symmetric) {
+		factorY *= complex<double>(2,0);
+		dimy = int(floor(double(dimy)/4.0) + 1.0);
+	} else {
+		dimy = int(floor(double(dimy)/2.0) + 1.0);
+	}
+
+	
+	// compute the term independent of x and y:
+	Poynting_0 += Ex(0,0)*Hyc(0,0)-Ey(0,0)*Hxc(0,0);
+	// compute the poyinting vector for term independent of y 
+	for(int kk=1; kk<dimx; ++kk) {
+	    Poynting_0 += factorX* (Ex(kk,0)*Hyc(kk,0)-Ey(kk,0)*Hxc(kk,0));
+	}
+
+
+	for(int ll=1; ll<dimy; ++ll) {
+		// compute the term independent of x:
+		Poynting_0 += factorY*(Ex(ll*dimx,0)*Hyc(ll*dimx,0)-Ey(ll*dimx,0)*
+			Hxc(ll*dimx,0));
+		// compute the poyinting vector for x and y dependent term
+		for(int kk=1; kk<dimx; ++kk) {
+		    Poynting_0 += factorY*factorX* (Ex(kk+ll*dimx,0)*Hyc(kk+ll*dimx,0)-
+				Ey(kk+ll*dimx,0)*Hxc(kk+ll*dimx,0));
+		}
+	}
+        
+    return 0.5*Poynting_0.real();
+}
+
+/* computePoyntingVector
+
+Parameters:
+	- structure *p is the pointer to the structure
+	- db_matrix &H_vec correspond to the Hx,Hy Fourier coefficients after propagation at a given z
+	- db_matrix &E_vec correspond to the Ex,Ey Fourier coefficients after propagation at a given z
+
+Return:
+	- the Fourier coefficient of the Poynting vector (it is expanded and not compress in case of symmetry)
+
+*/
+
+db_matrix section::computePoyntingVector(structure *p, db_matrix &H_vec, db_matrix &E_vec) {
+	   
+	// Here we calculate the Fourier coefficients of the Poynting
+    // vector, which for the z component is given by:
+    // Sz = Ex conj(Hy) - Ey conj(Hx)
+    // where the multiplication becomes a convolution of the Fourier
+    // coefficients (thus involving the multiplication by a Toeplitz
+    // matrix). 
+    
+    // Spatial frequency calculation
+	double nux=2.0*M_PI/p->tot_x;
+	double nuy=2.0*M_PI/p->tot_y;
+	                    
+	// Extend the vector in case of symmetry so that we end up with the same 
+	// case as without symmetries for Hx and Hy:
+    int snux=p->dimx/2+1;
+    int snuy=p->dimy/2+1;
+
+	db_matrix Hxc_ext = H_vec.vector2fft(p->symx,p->symy,snux,snuy,false,
+		true,false).fft2vector(false,false,0).crop(snux*snuy,1);
+	db_matrix Hyc_ext = H_vec.vector2fft(p->symx,p->symy,snux,snuy,true,
+		true,false).fft2vector(false,false,0).crop(snux*snuy,1);
+	
+	// conjugate Hx and Hy    
+    int nlines = Hxc_ext.getNrow() ;
+    for(int j=0; j<nlines; ++j) {
+               
+        //Compute the conjugate of Hx and Hy.
+        Hxc_ext(j,0) = conj(Hxc_ext(j,0));
+        Hyc_ext(j,0) = conj(Hyc_ext(j,0));
+        
+    }
+
+
+	// For Ex and Ey, we create a fft, we zero pad them to get 2 times larger
+	// values compared to Hx and Hy, so that we can create a Toeplitz matrix:   
+	db_matrix Ex_FFT = E_vec.vector2fft(p->symx,p->symy,snux, snuy,false,
+		false,false).zero_pad(p->dimy, p->dimx);
+	db_matrix Ey_FFT = E_vec.vector2fft(p->symx,p->symy,snux, snuy,true,
+		false,false).zero_pad(p->dimy, p->dimx);
+	db_matrix Ex_toep = Ex_FFT.toeplitz_mod(nux, nuy, 0,0,0,0);
+	db_matrix Ey_toep = Ey_FFT.toeplitz_mod(nux, nuy, 0,0,0,0) ;
+    
+	// compute the modal poynting vector:	
+    //When we conjugate Hx and Hy, we need also to reverse the vector
+    // as Ex_cartesian = sum over ax of Ax *exp(j*ax * nux * x), the conjugate will be
+    // conj(Ex_cartesian) = sum over ax of conj(Ax) * conj(exp(j*ax * nux * x))
+    // To account for the conj(exp(j*ax * nux * x), Ax is reversed:
+	return  Ex_toep * Hyc_ext.reverse(true) - Ey_toep * Hxc_ext.reverse(true);
+
 }
 
 /** Calculate the integral of the Poynting vector (power flow) inside
@@ -241,7 +405,7 @@ double section::integralPoynting(structure *p, db_matrix &EE, db_matrix &HH,
     @param wy Height of the calculation rectangle
     @param px Position of the center of the rectangle (in x)
     @param py Position of the center of the rectangle (in y)
-*/
+
 double section::integralPoynting_rectangle(structure *p, db_matrix &EE,
     db_matrix &HH, int column, double wx, double wy, double px, double py)
 {
@@ -438,6 +602,128 @@ double section::integralPoynting_rectangle(structure *p, db_matrix &EE,
     }
 
     return -0.5*Poynting_0.real() *wx*wy;
+}*/
+
+/** Calculate the integral of the Poynting vector (power flow) inside
+    a rectangle.
+    @param p The structure
+    @param W matrix associated to magnetic field in the given quota
+    @param V matrix associated to electric field in the given quota
+    @param wx Width of the calculation rectangle
+    @param wy Height of the calculation rectangle
+    @param px Position of the center of the rectangle (in x)
+    @param py Position of the center of the rectangle (in y)
+*/
+
+
+double section::integralPoynting_rectangle(structure *p, db_matrix &W, 
+	db_matrix &V, double wx, double wy, double px, double py)
+{
+
+	// In case of symmetry, the poynting vector is always even because Ex and
+	// Hy, Ey and Hx has the same parity
+
+	// compute the convolution of a field times a conjugate of a second field
+	// Hence, the operation is the following (a sign + instead of a sign minus 
+	// for a classical toeplitz matrix:
+	// Ci = sum (Bi+ax) Aax
+		
+	// get the Fourier coefficient of the PoyntingVector for the z-component :
+	// It is derived as a non-symmetrical field.
+	db_matrix Sz = computePoyntingVector(p, V, W) ;
+	
+
+	//The following loop represents the calculation of 
+    // the integral of the poynting vector:
+
+	double sx,sy;
+	double nux=2.0*M_PI/p->tot_x;
+	double nuy=2.0*M_PI/p->tot_y;            
+    complex<double> Poynting_0 = 0;
+	complex<double> poynting = 0;
+
+	// compute the boundary of the integral:
+	// The field outputed to the user by outputfield is centered from -W/2 to W/2 with W is the 
+	// width of the  computational window. However, in reality the Fourier coefficient code for
+	// a field ranging from 0 to W. The boundary of the integral should therefore be compatible 
+	// with a computational window from 0 to W.
+	/*double x0 = px - wx/2;
+	double x1 = px + wx/2;
+
+	double y0 = py - wy/2;
+	double y1 = py + wy/2;*/
+	double x0 = -p->tot_x/2 - px + wx/2;
+	double x1 = -p->tot_x/2 - px - wx/2;
+
+	double y0 = -p->tot_y/2 - py + wy/2;
+	double y1 = -p->tot_y/2 - py - wy/2;
+	
+	cout << "Integral from x = " << x0 << " to " << x1 << endl;
+	cout << "Integral from y = " << y0 << " to " << y1 << endl;
+	
+
+	// dimx and dimy refer to the number of harmonics considered for x and y
+	// shiftx, shifty point at the 0 frequency
+	int shiftx= p->dimx/4;
+	int shifty= p->dimy/4;
+	
+	int dimy = p->dimy/2+1;
+	int dimx = p->dimx/2+1;
+			
+	if (px ==0 && py ==0 && x0 ==-x1 && y0==-y1) {
+		// here, we compute using sin to insure convergence
+		for(int ll=0; ll<dimy; ++ll) {
+			// compute the term independent of x:
+				sy = (double) (ll - shifty);
+			if (sy !=0)
+				poynting = 2.0*sin (sy*nuy*y1) / (nuy * sy);
+			else
+				poynting = (y1-y0) ;	
+
+			// compute the poyinting vector for y and y dependent term
+			for(int kk=0; kk<dimx; ++kk) {
+				sx = (double) (kk - shiftx);
+				if (sx !=0)
+					Poynting_0 += Sz(kk+ll*dimx,0)*poynting *2.0* sin (sx*nux*x1) /(nux * sx);
+				else
+					Poynting_0 += Sz(kk+ll*dimx,0)*poynting*(x1-x0) ;
+
+		
+			}
+
+		}
+
+	} else {
+		
+		// general case with complex exponentials
+		for(int ll=0; ll<dimy; ++ll) {
+			// compute the term independent of x:
+			sy = (double) (ll - shifty);
+			if (sy !=0)
+				poynting = (exp(complex<double>(0,1)*sy*nuy*y1) -
+							exp(complex<double>(0,1)*sy*nuy*y0)) / 
+							(complex<double>(0,1)*nuy * sy);
+			else
+				//poynting = 1;
+				poynting = y1-y0 ;
+
+			// compute the poyinting vector for y and y dependent term
+			for(int kk=0; kk<dimx; ++kk) {
+				sx = (double) (kk - shiftx);
+				if (sx !=0)
+					Poynting_0 += Sz(kk+ll*dimx,0)*poynting * 
+						(exp(complex<double>(0,1)*sx*nux*x1) -
+						exp(complex<double>(0,1)*sx*nux*x0)) / 
+						(complex<double>(0,1)*nux * sx);
+				else
+					Poynting_0 += Sz(kk+ll*dimx,0)*poynting*(x1-x0) ;
+
+			}
+
+		}
+		
+	}
+    return 0.5*Poynting_0.real();
 }
 
 /** Specify that in this section, an anisotropic PML has to be used.
@@ -1806,6 +2092,7 @@ db_matrix section::propagationMatrix(void)
     return P;
 }
 
+
 /** Create the excitation field which can possibly be used for the current
     section.
 
@@ -1835,6 +2122,7 @@ db_matrix section::propagationMatrix(void)
 */
 db_matrix section::create_excitation(int type, double real_neff,
     complex<double> coeff, int index_yz, int index_xz)
+
 {
     db_matrix excitation(W.getNrow(),1);
 
@@ -1918,6 +2206,30 @@ db_matrix section::create_excitation(int type, double real_neff,
     return excitation;
 }
 
+/** Create the excitation field which can possibly be used for the current 
+	section. 
+	
+	@parameter type a constant which determines which kind of excitation should
+		be used.
+	@paraleter real_neff if the excitation is of type SELECT_REAL_INDEX, this
+		value is used for the effective index search: select the mode which has
+		the real part of the refractive index which is the closest possible
+		to the given value of real_neff.
+		
+	@parameter coeff the coefficient to be assigned to the excitation of the 
+		mode being selected.
+	
+	@parameter index_yz If the excitation is CONSTANT_FIELD_X or 
+		CONSTANT_FIELD_Y, this parameter specifies the index for the angle 
+		with whom the field is propagating with the normal to the interfaces.
+	
+	@parameter index_xz If the excitation is CONSTANT_FIELD_X or
+		CONSTANT_FIELD_Y, this parameter specifies the index for the angle 
+		with whom the field is propagating with the normal to the interfaces.
+	
+	@return a matrix containing the modal excitation (in the modal base).
+	
+*/
 db_matrix section::create_excitation_const(bool isY,
     double real_neff,
     complex<double> coeff , int index_yz, int index_xz)
@@ -1982,6 +2294,7 @@ db_matrix section::create_excitation_const(bool isY,
                 if(pitchx!=0)
                     rd(l,m)*=exp(complex<double>(0,-1)
                         *(2.0*M_PI*x/pitchx));
+
                 if(pitchy!=0)
                     rd(l,m)*=exp(complex<double>(0,-1)
                         *(2.0*M_PI*y/pitchy));
@@ -1990,50 +2303,34 @@ db_matrix section::create_excitation_const(bool isY,
             }
         }
 
-        rd_fft = rd.ifft2();
-    }
-    //db_matrix N(W.getNrow(),1);
+		rd_fft = rd.ifft2();
+	}
+    
+	// Enroll the vector depending on the symmetry
+	bool xsym = false;
+	bool ysym = false;
+	if (father->symx == anti_symmetric || father->symx == symmetric) {
+		xsym = true;
+		snux = snux/2 +1;
+	}
+	if (father->symy == anti_symmetric || father->symy == symmetric) {
+		ysym = true;
+		snuy = snuy/2 +1;
+	}
 
-    // The read matrix has been constructed according to standard
-    // rules followed by FFT. We need to unroll it.
-/*
-    for(int l=0;l<snuy; ++l) {
-        for(int m=0; m<snux; ++m) {
-            mm=m+(snux/2);
-            if (mm>=snux)
-                mm=mm-snux;
-
-            ll=l+(snuy/2);
-            if (ll>=snuy)
-                ll=ll-snuy;
-
-            N(mm+ll*snux+shift,0) = rd_fft(l,m);
-
-        }
-    }*/
-
-    // Enroll the vector depending on the symmetry
-    bool xsym = false;
-    bool ysym = false;
-    if (father->symx == anti_symmetric || father->symx == symmetric) {
-        xsym = true;
-        snux = snux/2 +1;
-    }
-    if (father->symy == anti_symmetric || father->symy == symmetric) {
-        ysym = true;
-        snuy = snuy/2 +1;
-    }
     if (isY)
         shift = snux*snuy;
 
     db_matrix N = rd_fft.fft2vector(xsym,ysym,shift);
 
     db_matrix Wm1 = W;
+
     Wm1.invert();
 
     excitation = Wm1*N;
 
     return excitation;
+
 }
 
 /** Create the excitation field which can possibly be used for the current
