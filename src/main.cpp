@@ -109,7 +109,7 @@ int main (int argc, char * const argv[])
 {
     cout << " ***************************************************************************\n"
          << " *      Aperiodic Fourier Modal Method full vectorial 3D propagation       *\n"
-         << " *                            version 1.5                                  *\n"
+         << " *                            version 1.5.1                                *\n"
          << " *                                                                         *\n"
          << " *     Build date: " << __DATE__<<  "                                             *\n"
          << " *     Source revision: "

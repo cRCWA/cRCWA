@@ -338,7 +338,7 @@ static PyObject* py_AFMM_banner(PyObject* self, PyObject* args)
         return NULL;
     cout << " ***************************************************************************\n"
          << " *      Aperiodic Fourier Modal Method full vectorial 3D propagation       *\n"
-         << " *                            cRCWA 1.5                                    *\n"
+         << " *                            cRCWA 1.5.1                                  *\n"
          << " *                                                                         *\n"
          << " *     Build date: " << __DATE__<<  "                                             *\n"
          << " *     Source revision: "
