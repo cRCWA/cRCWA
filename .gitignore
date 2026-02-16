@@ -54,3 +54,14 @@ bin/crcwa
 bin/o2g
 bin/slice
 src/parallelize_POSIX.o
+./normal_field/.DS_Store
+./test/.DS_Store
+./python/.DS_Store
+./manual/.DS_Store
+./manual/LaTeX/.DS_Store
+./jOptiEx/testfiles/.DS_Store
+./jOptiEx/.DS_Store
+./jOptiEx/jar/.DS_Store
+./jOptiEx/src/.DS_Store
+./jOptiEx/src/dialogs/.DS_Store
+./src/.DS_Store
