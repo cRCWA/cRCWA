@@ -22,7 +22,6 @@ jOptiEx/bin/OptiExFrame.class
 jOptiEx/bin/read/
 jOptiEx/bin/storage/
 jOptiEx/bin/visualization/
-manual/.DS_Store
 normal_field/nf
 normal_field/pipo
 normal_field/pipo_nvf_x
@@ -55,6 +54,7 @@ bin/o2g
 bin/slice
 src/parallelize_POSIX.o
 ./normal_field/.DS_Store
+./python/.DS_Store
 ./test/.DS_Store
 ./python/.DS_Store
 ./manual/.DS_Store
