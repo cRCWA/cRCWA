@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025/MacPorts 2025.74524_1) (preloaded format=latex 2025.11.19)  12 JAN 2026 15:46
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025/MacPorts 2025.74524_1) (preloaded format=latex 2025.11.19)  16 FEB 2026 16:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -614,7 +614,7 @@ es from C/C++. Some
 [44]
 
 [45]
-Overfull \hbox (2.09442pt too wide) in paragraph at lines 481--481
+Overfull \hbox (2.09442pt too wide) in paragraph at lines 496--496
 []\OT1/cmr/bx/n/12 OUTBLOCH: Out-put the re-sults of the Bloch mode
  []
 
@@ -623,27 +623,27 @@ Overfull \hbox (2.09442pt too wide) in paragraph at lines 481--481
 [46]
 
 [47]
-Overfull \hbox (5.61427pt too wide) in paragraph at lines 593--593
+
+[48]
+Overfull \hbox (5.61427pt too wide) in paragraph at lines 608--608
 []\OT1/cmr/bx/n/12 PML[]TRANSF: Adopt PML's with co-or-di-nate trans-
  []
 
 
-Overfull \hbox (4.19502pt too wide) in paragraph at lines 595--597
+Overfull \hbox (4.19502pt too wide) in paragraph at lines 610--612
 \OT1/cmr/m/n/10 This com-mand de-fines a co-or-di-nate trans-form sec-tion used
  as a Per-fectly Matched
  []
 
 
 
-[48]
-
 [49]
-Overfull \hbox (1.6847pt too wide) in paragraph at lines 668--668
+Overfull \hbox (1.6847pt too wide) in paragraph at lines 683--683
 []\OT1/cmr/bx/n/12 OUTGMODES: Write on a file the in-ter-est-ing modes
  []
 
 
-Overfull \hbox (4.58641pt too wide) in paragraph at lines 680--681
+Overfull \hbox (4.58641pt too wide) in paragraph at lines 695--696
 [][][][] \OT1/cmr/m/n/10 must be [][][][][][][][][][][][][][][][][][][][][][][]
 [][][][][][] and in-di-cates which
  []
@@ -653,16 +653,16 @@ Overfull \hbox (4.58641pt too wide) in paragraph at lines 680--681
 [50]
 
 [51]
-Overfull \hbox (1.23471pt too wide) in paragraph at lines 780--780
+
+[52]
+Overfull \hbox (1.23471pt too wide) in paragraph at lines 795--795
 []\OT1/cmr/bx/n/12 SPECTRUM: Ob-tain all cal-cu-lated ef-fec-tive in-dices 
  []
 
 
 
-[52]
-
 [53]
-Overfull \hbox (1.01909pt too wide) in paragraph at lines 872--873
+Overfull \hbox (1.01909pt too wide) in paragraph at lines 887--888
 \OT1/cmr/m/n/10 quired and should be com-prised be-tween 0 and 1. See para-grap
 h 1.4.5[]. 
  []
@@ -686,21 +686,21 @@ h 1.4.5[].
 [61]
 
 [62]
-Overfull \hbox (6.90779pt too wide) in paragraph at lines 1291--1292
+Overfull \hbox (6.90779pt too wide) in paragraph at lines 1306--1307
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
 [][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (1.80768pt too wide) in paragraph at lines 1311--1312
+Overfull \hbox (1.80768pt too wide) in paragraph at lines 1326--1327
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
 [] 
  []
 
 
-Overfull \hbox (1.80768pt too wide) in paragraph at lines 1313--1315
+Overfull \hbox (1.80768pt too wide) in paragraph at lines 1328--1330
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
 [][][][] 
@@ -711,12 +711,12 @@ Overfull \hbox (1.80768pt too wide) in paragraph at lines 1313--1315
 [63]
 
 [64]
-Overfull \hbox (7.06288pt too wide) in paragraph at lines 1407--1407
+Overfull \hbox (7.06288pt too wide) in paragraph at lines 1422--1422
 []\OT1/cmr/bx/n/14.4 Example: slab waveg-uide mode solver, choos-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1409--1409
+Underfull \hbox (badness 10000) in paragraph at lines 1424--1424
 []\OT1/cmr/m/it/8 Which strat-egy choose for
  []
 
@@ -725,12 +725,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 1409--1409
 [65]
 
 [66]
-Overfull \hbox (11.88474pt too wide) in paragraph at lines 1508--1521
+Overfull \hbox (11.88474pt too wide) in paragraph at lines 1523--1536
  [][] 
  []
 
 
-Overfull \hbox (11.88474pt too wide) in paragraph at lines 1526--1539
+Overfull \hbox (11.88474pt too wide) in paragraph at lines 1541--1554
 [][] 
  []
 
@@ -739,12 +739,9 @@ Overfull \hbox (11.88474pt too wide) in paragraph at lines 1526--1539
 [67]
 
 [68]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 
 [69]
-Overfull \hbox (6.4711pt too wide) in paragraph at lines 1671--1671
+Overfull \hbox (6.4711pt too wide) in paragraph at lines 1686--1686
 []\OT1/cmr/bx/n/14.4 Example: guided modes of a 1D bent waveg-
  []
 
@@ -760,31 +757,28 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 [72]
 File: propagation.eps Graphic file (type eps)
  <propagation.eps>
-Overfull \hbox (9.91618pt too wide) in paragraph at lines 1805--1805
+Overfull \hbox (9.91618pt too wide) in paragraph at lines 1820--1820
 []\OT1/cmr/bx/n/14.4 Example: Bloch-mode cal-cu-la-tion for guided
  []
 
 
 
 [73]
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
+[74])
 
+[75] (./afmm_appendix.tex
 
-[74]) (./afmm_appendix.tex
-
-[75]
-
-[76
-
-]
+[76]
 Appendix A.
 
 Underfull \vbox (badness 4582) has occurred while \output is active []
 
 
 
-[77]
+[77
+
+]
 
 [78]
 Overfull \hbox (27.05453pt too wide) in paragraph at lines 86--86
@@ -883,19 +877,19 @@ Appendix F.
 
 [99]
 
-[100
-
-]
+[100]
 Appendix G.
 
-Overfull \hbox (6.61179pt too wide) in paragraph at lines 680--681
+Overfull \hbox (6.61179pt too wide) in paragraph at lines 684--685
 \OT1/cmr/m/n/10 uides and micro-ring res-onator by means of the Ape-ri-odic Fou
 rier Modal Method,''
  []
 
 ) (./afmm.bbl
 
-[101]
+[101
+
+]
 
 [102
 
@@ -918,12 +912,12 @@ L3 programming layer <2025-01-18>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 12433 strings out of 475136
- 229182 string characters out of 5764637
- 848967 words of memory out of 5000000
- 35197 multiletter control sequences out of 15000+600000
+ 12434 strings out of 475136
+ 229189 string characters out of 5764637
+ 853971 words of memory out of 5000000
+ 35198 multiletter control sequences out of 15000+600000
  574820 words of font info for 95 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 69i,16n,77p,32797b,1668s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 69i,16n,77p,32797b,1666s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on afmm.dvi (105 pages, 595096 bytes).
+Output written on afmm.dvi (105 pages, 597316 bytes).

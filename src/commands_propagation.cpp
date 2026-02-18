@@ -414,7 +414,24 @@ void *commands::propagation_structure(void *threadarg)
                     << endl;
         }
     }
-    postSemaphoreIO();
+
+    
+    FILE *f3=NULL;
+    // Additional data is recorded only if needed.
+    if (p->additional_output_data.should_record_poynting_vector && 
+    	pspd->recordAdditionalData) {
+      	f3=fopen(p->additional_output_data.poynting_vector_file_name.c_str(),"w");
+        if(f3==NULL) {
+            fclose(f);
+            postSemaphoreIO();
+            throw parsefile_commandError("propagation: Can not open output"
+               	" file for the Poynting vector calculation. The error may be on"
+               	" one of the previous outdata commands.");
+        }
+    }
+    
+	postSemaphoreIO();
+
     // Launch the calculations for each section of the structure
     for(int sec = 0; sec<p->number_of_sections; ++sec) {
         waitSemaphoreIO();
@@ -446,8 +463,8 @@ void *commands::propagation_structure(void *threadarg)
         process_section(dx, dy, dz, c_section, alpha_t, z0,
             z,f,rimc, x_t, z_t, nz,c_section.sWp,c_section.sWm,
             shiftToY, calcH, snux, snuy, sizex, sizey, f1,
-            calcD, epsilonxy, epsz, muz,calcz,improve_representation,
-            f2);
+
+            calcD, epsilonxy, epsz, muz,calcz,improve_representation, f2, f3);
 
     }
 
@@ -489,6 +506,13 @@ void *commands::propagation_structure(void *threadarg)
                 generation_absorptance_power_interpolated);
         postSemaphoreIO();
     }
+    if (f3!=NULL) {
+        fclose(f3);
+        cout << "Additional output data: Poynting vector calculation "
+            "written on "<< 
+        p->additional_output_data.poynting_vector_file_name <<endl;
+        cout << "File size: "<< sizex<<" x " <<sizey<<" x "<< nz <<" points.\n";
+    }
     waitSemaphoreIO();
     cout << "Field propagation file written: "<< filename <<"\n";
     cout << "File size: "<< sizex<<" x " <<sizey<<" x "<< nz <<" points.\n";
@@ -508,8 +532,9 @@ void commands::process_section(double dx, double dy, double dz,
     bool applyShift, bool calcH, int snux, int snuy, int sj, int si, 
     FILE *f1,
     bool calcD, db_matrix &epsilonxy, db_matrix &epsz,db_matrix &muz,
-    bool calcz,bool improve_representation, 
-    FILE *f2)
+
+	bool calcz,bool improve_representation, FILE *f2, FILE *f3)
+
 {
 
     int shift =0;
@@ -571,6 +596,18 @@ void commands::process_section(double dx, double dy, double dz,
         // Write the calculated field on the output file
         outputfield(out, dx, dy, c_section, alpha, alpha_t, z0,
             z,f,rimc, x_t, z_t, x_c,z_c, f1);
+		            
+        // If the poynting vector should be calculated, write it on the third output file:
+		if (p->additional_output_data.should_record_poynting_vector &&
+			f3!=NULL){
+			// compute the Poynting vector:
+			db_matrix Sz_out  = getPoyntingZ(c_section,tp, tm, excitation_p, excitation_m,
+				snux, snuy, sj, si, epsilonxy, epsz, muz) ;
+
+		    outputfield(Sz_out, dx, dy, c_section, alpha, alpha_t, z0,
+		        z,f3,p->additional_output_data.poynting_vector_rimc, x_t, z_t, x_c,z_c, NULL);
+
+		}
 
         // compute the generation rate if needed
         if (p->additional_output_data.should_record_generation_rate &&
@@ -596,6 +633,7 @@ void commands::process_section(double dx, double dy, double dz,
                     coeff = 0.5;
                     p->additional_output_data.generation_real_to_z1 = z;
                 }
+
 
                 // Calculating the number of points in z is interesting to
                 // write how many points have been written in the file at the
@@ -642,6 +680,7 @@ void commands::process_section(double dx, double dy, double dz,
                 postSemaphoreIO();
             }
         }
+
     }
     // Increment the reference position to the beginning of the next section.
     z0+=c_section.tot_z;
@@ -666,6 +705,7 @@ void commands::process_section(double dx, double dy, double dz,
     cout << "]" << endl;
     postSemaphoreIO();
 }
+
 
 /**  Compute the constants epsilon and mu if needed
 
@@ -754,6 +794,7 @@ void commands::getEpsilonAndMu(section &c_section, bool calcD, bool calcz,
             db_matrix Q4 = epsy - deltay * (1-alpha);
             epsilonxy = db_matrix::mergeMatrixQuad(Q1,O,O,Q4);
 
+
         } else {
                 db_matrix O(epsx.getNrow(),epsx.getNcol());
                 epsilonxy = db_matrix::mergeMatrixQuad(epsx,O,O,epsy);
@@ -768,6 +809,28 @@ void commands::getEpsilonAndMu(section &c_section, bool calcD, bool calcz,
                 -factor,factor, false,false).invert();
     }
 }
+
+/** Sum up all contributions of the propagation modes 
+*/
+/*db_matrix commands::getPropagation(db_matrix &B, double tp, double tm, 
+    db_matrix &excitation_p, db_matrix &excitation_m, bool calcH)
+{
+    db_matrix fields(B.getNrow(),1);
+
+        } else {
+                db_matrix O(epsx.getNrow(),epsx.getNcol());
+                epsilonxy = db_matrix::mergeMatrixQuad(epsx,O,O,epsy);
+        }
+    }
+    if (calcz || p->additional_output_data.should_record_generation_rate) {
+        epsz= c_section.R_fft.toeplitz_sym(xsymmetry, ysymmetry,
+                factor,-factor, false,false).invert();
+    }
+    if (calcz && calcH) {
+        muz= c_section.O_fft.toeplitz_sym(xsymmetry, ysymmetry,
+                -factor,factor, false,false).invert();
+    }
+}*/
 
 /** Interpolate the 2D generation rate from r=0 to r=r1
     G(r,z) = integral theta=0..2pi (G(r cos theta, r sin theta, z) d theta
@@ -911,14 +974,361 @@ db_matrix commands::getGeneration_rate(section &c_section,double tp, double tm,
     return G2D;
 }
 
-/** Compute the field in the traditional space for E, H or D, depending on
-    boolean variables.
-    If an improved representation is needed, it is possible to compute at the
-    same time Ex and Ey in order to save time (using additional Ey and Ey
-    variables)
+
+/** Compute the z-component of the poynting vector
+
 */
-db_matrix commands::getField(section &c_section,db_matrix &fields,
-    bool applyShift, bool calcH, int snux, int snuy, int sj, int si,
+db_matrix commands::getPoyntingZ(section &c_section,double tp, double tm, 
+    db_matrix &excitation_p, db_matrix &excitation_m,
+	int snux, int snuy,int sj, int si, db_matrix &epsilonxy,
+	db_matrix &epsz,db_matrix &muz)
+{
+
+	structure *p;
+	
+	p = c_section.father;
+	
+	// Propagate all modes at the given point, by taking into account the
+    // propagative as well as the counterpropagative components.
+	db_matrix excitationE = structure::getPropagation(c_section.B, tp, tm, 
+        excitation_p, excitation_m, false);
+	db_matrix excitationH = structure::getPropagation(c_section.B, tp, tm, 
+            excitation_p, excitation_m, true);
+
+
+    
+	// compute the field based on the boolean variable calcH, calcz, calcD
+	// get fourier for [Ex, Ey]:
+	db_matrix E_fourier = getFourierField(c_section,excitationE, false, 
+		false, epsilonxy, epsz, muz, false);
+	// get fourier for [Hx, Hy]:
+	db_matrix H_fourier = getFourierField(c_section,excitationH, true, 
+		false, epsilonxy, epsz, muz, false);
+
+    
+	// Compute the z-component of the Poynting vector 
+	// Sz contains twice less harmonics since a convolution with Toepliz matrix was performed
+	int dimx = int(floor(double(p->dimx)/2.0) + 1.0);	
+	int dimy = int(floor(double(p->dimy)/2.0) + 1.0);
+	dimx = int(floor(double(dimx)/2.0)+1);
+	dimy = int(floor(double(dimy)/2.0)+1);
+	
+	db_matrix Sz = section::computePoyntingVector(p, H_fourier,E_fourier) ;
+	
+	// Compute Sz in x,y coordinate through an inverse Fourier Transform.
+	db_matrix out;
+	
+	// The mode matrix will be constructed according to standard
+	// rules followed by FFT.
+	db_matrix Sz_fft = Sz.vector2fft(no_symmetry, no_symmetry,snux,snuy,false,false,false);
+
+	// Zero pad  Sz_fft, in order to increase the 
+	// number of points with which it will be represented.
+	out=Sz_fft.zero_pad(si,sj).fft2();
+            
+	return out;
+}
+
+/** Compute the field in the traditional space for E, H or D, depending on 
+	boolean variables.
+ 	If an improved representation is needed, it is possible to compute at the 
+ 	same time Ex and Ey in order to save time (using additionalEy and Ey 
+ 	variables)
+*/
+db_matrix commands::getField(section &c_section,db_matrix &fields, 
+	bool applyShift, bool calcH, int snux, int snuy, int sj, int si,
+	bool calcD, db_matrix &epsilonxy,
+	db_matrix &epsz,db_matrix &muz,bool calcz,bool improve_representation,
+	bool additionnalEy, db_matrix &outEy)
+{
+
+	structure *p;
+	
+	p = c_section.father;
+
+	db_matrix out;
+
+	if (!improve_representation) {
+		// compute the field based on the boolean variable calcH, calcz, calcD
+		db_matrix fields_fourier = getFourierField(c_section,fields, calcH, 
+			calcD, epsilonxy, epsz, muz, calcz);
+				
+		// The mode matrix will be constructed according to standard
+		// rules followed by FFT.
+		db_matrix mode = fields_fourier.vector2fft(p->symx,
+			 p->symy,snux,snuy,applyShift,calcH,calcz);
+
+		// Zero pad the calculated mode, in order to increase the 
+		// number of points with which it will be represented.
+		out=mode.zero_pad(si,sj).fft2();
+
+	} else {
+
+		// not possible (yet!)
+		if (calcD || calcH) {
+			throw parsefile_commandError("Calculations on the H and D fields "
+				"are not (yet!) implemented for the improved representation.");
+			return out;
+		}
+
+		if (calcz){
+			// In order to improve the representation of field, Dz is computed
+			// since it is contiunous. Then Dz_cartesian is divided by epsz:
+
+			 // compute Dz
+			db_matrix D = getFourierField(c_section, fields, false, 
+	  			true, epsilonxy, epsz, muz,true);
+
+			// The mode matrix will be constructed according to standard
+			// rules followed by FFT.
+		 	db_matrix mode = D.vector2fft(p->symx, p->symy,snux,snuy,false,
+				false, true);
+			// Zero pad the calculated mode, in order to increase the 
+			// number of points with which it will be represented.
+			db_matrix Dz_cartesian=mode.zero_pad(si,sj).fft2();
+
+			out = Dz_cartesian;
+			double x,y;
+			complex<double> epsilon;
+	
+			// we compute Ez
+			for (int i = 0; i< Dz_cartesian.getNrow(); ++i){
+				for (int j = 0; j< Dz_cartesian.getNcol(); ++j){
+			
+					x = ((double)j/(double)Dz_cartesian.getNcol() -0.5) *
+						 p->tot_x;
+					y = ((double)i/(double)Dz_cartesian.getNrow() -0.5) * 
+						p->tot_y;
+					epsilon = EPS_0* c_section.expectedRefractiveIndex(x, y)*
+						c_section.expectedRefractiveIndex(x, y);
+
+					out(i,j) = Dz_cartesian(i,j)/ epsilon;
+				} 
+			}
+
+		} else {
+			// In order to improve the representation of field, Normal field is 
+			// used to compute the electric field based on the continuity of 
+			// the  field: D normal is continuous and E perpendicular is 
+			// continuous:
+
+			 // compute Dx et Dy
+			db_matrix D = getFourierField(c_section, fields, false, 
+	  			true, epsilonxy, epsz, muz,false);
+
+			// compute Dx 
+			// The mode matrix will be constructed according to standard
+			// rules followed by FFT.
+		 	db_matrix mode = D.vector2fft(p->symx, p->symy,snux,snuy,false,
+				false,false);
+			// Zero pad the calculated mode, in order to increase the 
+			// number of points with which it will be represented.
+			db_matrix Dx_cartesian=mode.zero_pad(si,sj).fft2();
+
+			// compute Dy 
+			// The mode matrix will be constructed according to standard
+			// rules followed by FFT.
+		 	mode = D.vector2fft(p->symx,p->symy,snux,snuy,true,false, false);
+			// Zero pad the calculated mode, in order to increase the 
+			// number of points with which it will be represented.
+			db_matrix Dy_cartesian=mode.zero_pad(si,sj).fft2();
+
+
+			 // compute Ex et Ey
+			db_matrix E = getFourierField(c_section, fields, false, 
+	  			false, epsilonxy, epsz, muz,false);
+
+			// compute Ex 
+			// The mode matrix will be constructed according to standard
+			// rules followed by FFT.
+		 	mode = E.vector2fft(p->symx, p->symy,snux,snuy,false,false,false);
+			// Zero pad the calculated mode, in order to increase the 
+			// number of points with which it will be represented.
+			db_matrix Ex_cartesian=mode.zero_pad(si,sj).fft2();
+
+			// compute Ey 
+			// The mode matrix will be constructed according to standard
+			// rules followed by FFT.
+		 	mode = E.vector2fft(p->symx,p->symy,snux,snuy,true,false,false);
+			// Zero pad the calculated mode, in order to increase the 
+			// number of points with which it will be represented.
+			db_matrix Ey_cartesian=mode.zero_pad(si,sj).fft2();
+
+
+
+			// free the space
+			D.kill();
+			E.kill();
+			mode.kill();
+
+
+
+			double x,y;
+			complex<double> epsilon;
+
+			// If the normal field is specified the formula used is:
+
+			// [ Ex_cartesian_improved ] _ [ Nxx_cartesian 	Nxy_cartesian ] *
+			// [Dx_cartesian/epsx] + 
+			// [ Ey_cartesian_improved ] - [ Nxy_cartesian	Nyy_cartesian ] *
+			// [Dy_cartesian/epsy] 
+
+			// [ 1- Nxx_cartesian 	 	- Nxy_cartesian   ] [Ex_cartesian]  
+			// [ - Nxy_cartesian		1 - Nyy_cartesian ] [Ey_cartesian] 
+			if (c_section.crtr == &c_section.NormalFieldSym) {
+				if (applyShift || additionnalEy) {
+					outEy = Ey_cartesian;
+					// we compute Ey
+
+					for (int i = 0; i< Ey_cartesian.getNrow(); ++i){
+						for (int j = 0; j< Ey_cartesian.getNcol(); ++j){
+					
+						x = ((double)j /(double)Ey_cartesian.getNcol() -0.5) * 
+							p->tot_x;
+						y = ((double)i /(double)Ey_cartesian.getNrow() -0.5) *
+							p->tot_y;
+
+						epsilon = EPS_0*c_section.expectedRefractiveIndex(x,y)*
+							c_section.expectedRefractiveIndex(x, y);
+
+						outEy(i,j) = c_section.NormalFieldSym.
+							Nxy_input.expectedNormalField(x,y,p->tot_x,
+							p->tot_y)*
+							Dx_cartesian(i,j) / epsilon +
+							c_section.NormalFieldSym.
+							Nyy_input.expectedNormalField(x,y,p->tot_x,
+							p->tot_y)* 
+							Dy_cartesian(i,j) / epsilon -
+							c_section.NormalFieldSym.
+							Nxy_input.expectedNormalField(x,y,p->tot_x,
+							p->tot_y) * 
+							Ex_cartesian(i,j)  +
+							(complex<double>(1,0) -c_section.NormalFieldSym.
+							Nyy_input.expectedNormalField(x,y,p->tot_x,
+							p->tot_y))* 
+							Ey_cartesian(i,j);
+
+
+
+						}
+					}
+					// We only want Ey
+					if (applyShift)
+						return outEy;
+
+				}
+				if (! applyShift)   {
+					out = Ex_cartesian;
+					// we compute Ex
+					for (int i = 0; i< Ex_cartesian.getNrow(); ++i){
+						for (int j = 0; j< Ex_cartesian.getNcol(); ++j){
+					
+						x = ((double)j /(double)Ex_cartesian.getNcol() -0.5) * 
+							p->tot_x;
+						y = ((double)i /(double)Ex_cartesian.getNrow() -0.5) * 
+							p->tot_y;
+
+						epsilon = EPS_0*c_section.expectedRefractiveIndex(x,y)*
+							c_section.expectedRefractiveIndex(x, y);
+
+						out(i,j) = c_section.NormalFieldSym.Nxx_input.
+							expectedNormalField(x,y,p->tot_x,p->tot_y)* 
+							Dx_cartesian(i,j) / epsilon +
+							c_section.NormalFieldSym.Nxy_input.
+							expectedNormalField(x,y,p->tot_x,p->tot_y)* 
+							Dy_cartesian(i,j) / epsilon +
+							(complex<double>(1,0) - c_section.NormalFieldSym.
+							Nxx_input.expectedNormalField(x,y,p->tot_x,
+							p->tot_y))* 
+							Ex_cartesian(i,j)  -
+							c_section.NormalFieldSym.Nxy_input.
+							expectedNormalField(x,y,p->tot_x,p->tot_y)* 
+							Ey_cartesian(i,j);
+
+						}
+					}
+
+				}
+
+			} else if (c_section.crtr == &c_section.NonDevSym 
+				|| c_section.crtr == &c_section.NonDev) {
+
+				// In the case of Lalanne developpement, the same equation 
+				// can be applied with:
+				// Nxx = alpha
+				// Nyy = 1 - alpha
+				// Nxy = 0
+				double alpha = 0;
+				if (c_section.crtr == &c_section.NonDevSym)
+					alpha = c_section.NonDevSym.getAlpha();
+				else
+					alpha = c_section.NonDev.getAlpha();
+
+				if (applyShift || additionnalEy) {
+					outEy = Ey_cartesian;
+					// we compute Ey
+
+					for (int i = 0; i< Ey_cartesian.getNrow(); ++i){
+						for (int j = 0; j< Ey_cartesian.getNcol(); ++j){
+			
+						x = ((double)j /(double)Ey_cartesian.getNcol() -0.5) * 
+							p->tot_x;
+						y = ((double)i /(double)Ey_cartesian.getNrow() -0.5) * 
+							p->tot_y;
+
+						epsilon = EPS_0*c_section.expectedRefractiveIndex(x,y)*
+							c_section.expectedRefractiveIndex(x, y);
+
+						outEy(i,j) = 	(1-alpha)* Dy_cartesian(i,j) / epsilon-
+									alpha * Ey_cartesian(i,j);
+						}
+					}
+					// We only want Ey
+					if (applyShift)
+						return outEy;
+
+				}
+				if (!applyShift) {
+					out = Ex_cartesian;
+					// we compute Ex
+					for (int i = 0; i< Ex_cartesian.getNrow(); ++i){
+						for (int j = 0; j< Ex_cartesian.getNcol(); ++j){
+			
+							x = ((double)j/(double)Ex_cartesian.getNcol()-0.5)* 
+								p->tot_x;
+							y = ((double)i/(double)Ex_cartesian.getNrow()-0.5)*
+							 	p->tot_y;
+
+							epsilon = EPS_0* c_section.
+								expectedRefractiveIndex(x, y)*
+								c_section.expectedRefractiveIndex(x, y);
+
+							out(i,j) = alpha * Dx_cartesian(i,j) / epsilon +
+								(1 - alpha)* Ex_cartesian(i,j);						
+
+						}
+					}
+				}
+			}else {
+					if (additionnalEy) 
+						outEy = Ey_cartesian; 
+					if (applyShift)
+						return Ey_cartesian;
+					else
+						return Ex_cartesian;
+			}
+
+		}
+
+	}
+
+	return out;
+
+}
+/** compute the fourier field for E,H or D
+*
+db_matrix commands::getFourierField(section &c_section,db_matrix &fields, 
+	bool calcH, 
     bool calcD, db_matrix &epsilonxy,
     db_matrix &epsz,db_matrix &muz,bool calcz,bool improve_representation,
     bool additionnalEy, db_matrix &outEy)
@@ -1188,7 +1598,7 @@ db_matrix commands::getField(section &c_section,db_matrix &fields,
     }
 
     return out;
-}
+}*/
 /** Compute the Fourier coefficients of fields for E, H or D.
     If we need the magnetic field, the electric field is now transformed
     in the corresponding magnetic field. There is a difference that has been
@@ -1272,10 +1682,7 @@ db_matrix commands::getFourierField(section &c_section,db_matrix &fields,
         }
         // multiply by 1/w:
         fields_fourier /= p->getOmega();
-        
-        /* Version with an error
-        // multiply by 1/jw:
-        fields_fourier /= complex<double>(0,1)*p->getOmega();*/
+
     }
     return fields_fourier;
 }
@@ -1368,4 +1775,5 @@ void commands::outputfield(db_matrix &out, double dx, double dy,
         fprintf(f1, "%le\n", norm);
         postSemaphoreIO();
     }
+
 }

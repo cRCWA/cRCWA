@@ -153,6 +153,14 @@ cd monitortest
         test_fail=1
      fi
 cd ..
+cd monitortest2
+    if ./test_monitor.sh $executable
+    then
+        ok=1
+    else
+        test_fail=1
+     fi
+cd ..
 cd testorientation
     if ./testorientation.sh $executable
     then
@@ -185,6 +193,7 @@ cd calculatedz
         test_fail=1
      fi
 cd ..
+
 
 echo
 if test $test_fail != 0

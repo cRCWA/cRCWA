@@ -1,0 +1,2242 @@
+ ***************************************************************************
+ *      Aperiodic Fourier Modal Method full vectorial 3D propagation       *
+ *                            version 1.5                                  *
+ *                                                                         *
+ *     Build date: Feb 15 2026                                             *
+ *     Source revision: N/A                                                *
+ *                                                                         *
+ *     Davide Bucci, CROMA March 2008 - current                            *
+ *     Jérôme Michallon, CROMA May 2012 - February 2014                    *
+ *     MINATEC-Grenoble INP, 3, parvis Louis Neel                          *
+ *     38016, Grenoble CEDEX, France                                       *
+ *                                                                         *
+ *     davide.bucci@grenoble-inp.fr                                        *
+ *                                                                         *
+ ***************************************************************************
+Init semaphore OK.
+Reading file: monitor.fmm
+  
+CASE  1 
+  
+The structure definition has been cleared.
+Calculation window size set to: 2e-06 m x 1e-06 m.
+Number of harmonics set to: 15 x 1
+Wavelength set to: 1.55e-06 m.
+Dust will be swept under the carpet.
+(All eigenvalues having a positive imaginary part will be forced to have it negative).
+
+Length of the section 1: 1e-06 m. 
+Substrate refractive index set to: (1.5,0)
+0 
+Generated rectangular section waveguide with core refractive index: (3.5,0)
+Size 1e-06 m x 1e-06 m at location 0 m x 0 m
+Matrices will be retained to compute propagation.
+
+Now considering section 1 of 1, threads in parallel: 1 
+Creating the electric field propagation matrix
+Created DD, EE, FF, GG 
+Calculating eigenvalues and eigenvectors
+LAPACK ZGEEVX executed, info = 0
+Section 1 of 1.
+Searching for interesting modes: 1.5 < Re{n_eff} < 3.5
+                            -0.1 < Im{n_eff} < 0.1
+Interesting mode found 0, effective index: (3.41881,-1.48323e-18)
+Interesting mode found 1, effective index: (3.16501,-8.2135e-19)
+Interesting mode found 2, effective index: (2.70183,-4.91481e-18)
+Interesting mode found 3, effective index: (1.9782,-1.74997e-17)
+Interesting mode found 4, effective index: (1.52642,-5.77431e-18)
+Interesting mode found 5, effective index: (3.43528,-6.52597e-31)
+Interesting mode found 6, effective index: (3.23525,-3.36698e-30)
+Interesting mode found 7, effective index: (2.87923,-3.17504e-31)
+Interesting mode found 8, effective index: (2.32114,-1.67691e-30)
+Interesting mode found 9, effective index: (1.5469,-6.81971e-30)
+
+Assembling sections
+Fabricating V matrix, section: 0, threads in parallel: 1 
+Creating global S matrix.
+1 
+Forward excitation:
+Creating the excitation field.
+Constant excitation (1,0).
+
+Matrix size: 1 x 29
+Calculating eigenmode representation of field excitations.
+The backward excitation has not been specified. I will consider it as absent.
+Calculating excitation vectors for each interface.
+Propagation step: dz = 1e-08 m.
+Starting field propagation.
+Propagation of the Ex field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Ex.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Hy field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Hy.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Ey field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Ey.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Hx field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Hx.txt
+File size: 1 x 1 x 100 points.
+Selected section 1 of 1
+Forward Filtering modes with a real part of neff > 1e-08
+power in the current section (in W): -6.65508e-15
+section considered: 1
+power at z = 0 (in W): -6.65508e-15
+section considered: 1
+Considering the surface of size 2e-06 m x 1e-06 m at location 0 m x 0 m
+Integral from x = 0 to -2e-06
+Integral from y = 0 to -1e-06
+power at z = 0 (in W): -6.65508e-15
+section considered: 1
+Considering the surface of size 1e-06 m x 1e-06 m at location 5e-07 m x 0 m
+Integral from x = -1e-06 to -2e-06
+Integral from y = 0 to -1e-06
+power at z = 0 (in W): -3.32754e-15
+section considered: 1
+Considering the surface of size 1e-06 m x 1e-06 m at location -5e-07 m x 0 m
+Integral from x = 0 to -1e-06
+Integral from y = 0 to -1e-06
+power at z = 0 (in W): -3.32754e-15
+  
+CASE  2 
+  
+The structure definition has been cleared.
+Calculation window size set to: 2e-06 m x 1e-06 m.
+Number of harmonics set to: 15 x 1
+Wavelength set to: 1.55e-06 m.
+Dust will be swept under the carpet.
+(All eigenvalues having a positive imaginary part will be forced to have it negative).
+
+Length of the section 1: 1e-06 m. 
+Substrate refractive index set to: (1.5,0)
+2 
+Generated rectangular section waveguide with core refractive index: (3.5,0)
+Size 1e-06 m x 1e-06 m at location 5e-07 m x 0 m
+Matrices will be retained to compute propagation.
+
+Now considering section 1 of 1, threads in parallel: 1 
+Creating the electric field propagation matrix
+Created DD, EE, FF, GG 
+Calculating eigenvalues and eigenvectors
+LAPACK ZGEEVX executed, info = 0
+Section 1 of 1.
+Searching for interesting modes: 1.5 < Re{n_eff} < 3.5
+                            -0.1 < Im{n_eff} < 0.1
+Interesting mode found 0, effective index: (3.41881,-1.40425e-18)
+Interesting mode found 1, effective index: (3.16501,-6.31969e-16)
+Interesting mode found 2, effective index: (2.70183,-5.69198e-17)
+Interesting mode found 3, effective index: (1.9782,-1.82268e-15)
+Interesting mode found 4, effective index: (1.52642,-1.19807e-16)
+Interesting mode found 5, effective index: (3.43528,-2.2867e-16)
+Interesting mode found 6, effective index: (3.23525,-2.76801e-16)
+Interesting mode found 7, effective index: (2.87923,-1.76426e-16)
+Interesting mode found 8, effective index: (2.32114,-3.01108e-16)
+Interesting mode found 9, effective index: (1.5469,-6.30783e-16)
+
+Assembling sections
+Fabricating V matrix, section: 0, threads in parallel: 1 
+Creating global S matrix.
+2 
+Forward excitation:
+Creating the excitation field.
+Constant excitation (1,0).
+
+Matrix size: 1 x 29
+Calculating eigenmode representation of field excitations.
+The backward excitation has not been specified. I will consider it as absent.
+Calculating excitation vectors for each interface.
+Propagation step: dz = 1e-08 m.
+Starting field propagation.
+Propagation of the Ex field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Ex.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Hy field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Hy.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Ey field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Ey.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Hx field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Hx.txt
+File size: 1 x 1 x 100 points.
+Selected section 1 of 1
+Forward Filtering modes with a real part of neff > 1e-08
+power in the current section (in W): -6.65508e-15
+section considered: 1
+power at z = 0 (in W): -6.65508e-15
+section considered: 1
+Considering the surface of size 2e-06 m x 1e-06 m at location 0 m x 0 m
+Integral from x = 0 to -2e-06
+Integral from y = 0 to -1e-06
+power at z = 0 (in W): -6.65508e-15
+section considered: 1
+Considering the surface of size 1e-06 m x 1e-06 m at location 5e-07 m x 0 m
+Integral from x = -1e-06 to -2e-06
+Integral from y = 0 to -1e-06
+power at z = 0 (in W): -4.64033e-15
+section considered: 1
+Considering the surface of size 1e-06 m x 1e-06 m at location -5e-07 m x 0 m
+Integral from x = 0 to -1e-06
+Integral from y = 0 to -1e-06
+power at z = 0 (in W): -2.01476e-15
+  
+CASE  3 
+  
+The structure definition has been cleared.
+Calculation window size set to: 2e-06 m x 1e-06 m.
+Number of harmonics set to: 15 x 1
+Wavelength set to: 1.55e-06 m.
+Dust will be swept under the carpet.
+(All eigenvalues having a positive imaginary part will be forced to have it negative).
+
+Length of the section 1: 1e-06 m. 
+Substrate refractive index set to: (1.5,0)
+2 
+Generated rectangular section waveguide with core refractive index: (3.5,0)
+Size 1e-06 m x 1e-06 m at location 0 m x 0 m
+Matrices will be retained to compute propagation.
+
+Now considering section 1 of 1, threads in parallel: 1 
+Creating the electric field propagation matrix
+Created DD, EE, FF, GG 
+Calculating eigenvalues and eigenvectors
+LAPACK ZGEEVX executed, info = 0
+Section 1 of 1.
+Searching for interesting modes: 1.5 < Re{n_eff} < 3.5
+                            -0.1 < Im{n_eff} < 0.1
+Interesting mode found 0, effective index: (3.41881,-1.48323e-18)
+Interesting mode found 1, effective index: (3.16501,-8.2135e-19)
+Interesting mode found 2, effective index: (2.70183,-4.91481e-18)
+Interesting mode found 3, effective index: (1.9782,-1.74997e-17)
+Interesting mode found 4, effective index: (1.52642,-5.77431e-18)
+Interesting mode found 5, effective index: (3.43528,-6.52597e-31)
+Interesting mode found 6, effective index: (3.23525,-3.36698e-30)
+Interesting mode found 7, effective index: (2.87923,-3.17504e-31)
+Interesting mode found 8, effective index: (2.32114,-1.67691e-30)
+Interesting mode found 9, effective index: (1.5469,-6.81971e-30)
+
+Assembling sections
+Fabricating V matrix, section: 0, threads in parallel: 1 
+Creating global S matrix.
+3 
+Forward excitation:
+Creating the excitation field.
+Excitation angles 31.1089, 0.
+Coefficient (1,0).
+pitchx=2e-06  pitchy=0
+
+Matrix size: 1 x 29
+Calculating eigenmode representation of field excitations.
+The backward excitation has not been specified. I will consider it as absent.
+Calculating excitation vectors for each interface.
+Propagation step: dz = 1e-08 m.
+Starting field propagation.
+Propagation of the Ex field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Ex.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Hy field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Hy.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Ey field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Ey.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Hx field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Hx.txt
+File size: 1 x 1 x 100 points.
+Selected section 1 of 1
+Forward Filtering modes with a real part of neff > 1e-08
+power in the current section (in W): -6.19628e-15
+section considered: 1
+power at z = 0 (in W): -6.19628e-15
+section considered: 1
+Considering the surface of size 2e-06 m x 1e-06 m at location 0 m x 0 m
+Integral from x = 0 to -2e-06
+Integral from y = 0 to -1e-06
+power at z = 0 (in W): -6.19628e-15
+section considered: 1
+Considering the surface of size 1e-06 m x 1e-06 m at location 5e-07 m x 0 m
+Integral from x = -1e-06 to -2e-06
+Integral from y = 0 to -1e-06
+power at z = 0 (in W): -3.1005e-15
+section considered: 1
+Considering the surface of size 1e-06 m x 1e-06 m at location -5e-07 m x 0 m
+Integral from x = 0 to -1e-06
+Integral from y = 0 to -1e-06
+power at z = 0 (in W): -3.09578e-15
+  
+CASE  4 
+  
+The structure definition has been cleared.
+Calculation window size set to: 2e-06 m x 1e-06 m.
+Number of harmonics set to: 15 x 1
+Wavelength set to: 1.55e-06 m.
+Dust will be swept under the carpet.
+(All eigenvalues having a positive imaginary part will be forced to have it negative).
+
+Length of the section 1: 1e-06 m. 
+Substrate refractive index set to: (1.5,0)
+4 
+Generated rectangular section waveguide with core refractive index: (3.5,0)
+Size 1e-06 m x 1e-06 m at location 5e-07 m x 0 m
+Matrices will be retained to compute propagation.
+
+Now considering section 1 of 1, threads in parallel: 1 
+Creating the electric field propagation matrix
+Created DD, EE, FF, GG 
+Calculating eigenvalues and eigenvectors
+LAPACK ZGEEVX executed, info = 0
+Section 1 of 1.
+Searching for interesting modes: 1.5 < Re{n_eff} < 3.5
+                            -0.1 < Im{n_eff} < 0.1
+Interesting mode found 0, effective index: (3.41881,-1.40425e-18)
+Interesting mode found 1, effective index: (3.16501,-6.31969e-16)
+Interesting mode found 2, effective index: (2.70183,-5.69198e-17)
+Interesting mode found 3, effective index: (1.9782,-1.82268e-15)
+Interesting mode found 4, effective index: (1.52642,-1.19807e-16)
+Interesting mode found 5, effective index: (3.43528,-2.2867e-16)
+Interesting mode found 6, effective index: (3.23525,-2.76801e-16)
+Interesting mode found 7, effective index: (2.87923,-1.76426e-16)
+Interesting mode found 8, effective index: (2.32114,-3.01108e-16)
+Interesting mode found 9, effective index: (1.5469,-6.30783e-16)
+
+Assembling sections
+Fabricating V matrix, section: 0, threads in parallel: 1 
+Creating global S matrix.
+4 
+Forward excitation:
+Creating the excitation field.
+Excitation angles 31.1089, 0.
+Coefficient (1,0).
+pitchx=2e-06  pitchy=0
+
+Matrix size: 1 x 29
+Calculating eigenmode representation of field excitations.
+The backward excitation has not been specified. I will consider it as absent.
+Calculating excitation vectors for each interface.
+Propagation step: dz = 1e-08 m.
+Starting field propagation.
+Propagation of the Ex field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Ex.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Hy field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Hy.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Ey field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Ey.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Hx field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Hx.txt
+File size: 1 x 1 x 100 points.
+Selected section 1 of 1
+Forward Filtering modes with a real part of neff > 1e-08
+power in the current section (in W): -6.19628e-15
+section considered: 1
+power at z = 0 (in W): -6.19628e-15
+section considered: 1
+Considering the surface of size 2e-06 m x 1e-06 m at location 0 m x 0 m
+Integral from x = 0 to -2e-06
+Integral from y = 0 to -1e-06
+power at z = 0 (in W): -6.19628e-15
+section considered: 1
+Considering the surface of size 1e-06 m x 1e-06 m at location 5e-07 m x 0 m
+Integral from x = -1e-06 to -2e-06
+Integral from y = 0 to -1e-06
+power at z = 0 (in W): -4.53026e-15
+section considered: 1
+Considering the surface of size 1e-06 m x 1e-06 m at location -5e-07 m x 0 m
+Integral from x = 0 to -1e-06
+Integral from y = 0 to -1e-06
+power at z = 0 (in W): -1.66603e-15
+  
+CASE  5 
+  
+The structure definition has been cleared.
+Calculation window size set to: 2e-06 m x 1e-06 m.
+Number of harmonics set to: 15 x 1
+Wavelength set to: 1.55e-06 m.
+Dust will be swept under the carpet.
+(All eigenvalues having a positive imaginary part will be forced to have it negative).
+
+Length of the section 1: 1e-06 m. 
+Substrate refractive index set to: (1.5,0)
+4 
+Generated rectangular section waveguide with core refractive index: (3.5,0)
+Size 1e-06 m x 1e-06 m at location 0 m x 0 m
+Matrices will be retained to compute propagation.
+
+Now considering section 1 of 1, threads in parallel: 1 
+Creating the electric field propagation matrix
+Created DD, EE, FF, GG 
+Calculating eigenvalues and eigenvectors
+LAPACK ZGEEVX executed, info = 0
+Section 1 of 1.
+Searching for interesting modes: 1.5 < Re{n_eff} < 3.5
+                            -0.1 < Im{n_eff} < 0.1
+Interesting mode found 0, effective index: (3.41881,-1.48323e-18)
+Interesting mode found 1, effective index: (3.16501,-8.2135e-19)
+Interesting mode found 2, effective index: (2.70183,-4.91481e-18)
+Interesting mode found 3, effective index: (1.9782,-1.74997e-17)
+Interesting mode found 4, effective index: (1.52642,-5.77431e-18)
+Interesting mode found 5, effective index: (3.43528,-6.52597e-31)
+Interesting mode found 6, effective index: (3.23525,-3.36698e-30)
+Interesting mode found 7, effective index: (2.87923,-3.17504e-31)
+Interesting mode found 8, effective index: (2.32114,-1.67691e-30)
+Interesting mode found 9, effective index: (1.5469,-6.81971e-30)
+
+Assembling sections
+Fabricating V matrix, section: 0, threads in parallel: 1 
+Creating global S matrix.
+5 
+Forward excitation:
+Creating the excitation field.
+Excitation mode n_eff=(3.43528,-6.52597e-31)
+
+Matrix size: 1 x 29
+Calculating eigenmode representation of field excitations.
+The backward excitation has not been specified. I will consider it as absent.
+Calculating excitation vectors for each interface.
+Propagation step: dz = 1e-08 m.
+Starting field propagation.
+Propagation of the Ex field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Ex.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Hy field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Hy.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Ey field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Ey.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Hx field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Hx.txt
+File size: 1 x 1 x 100 points.
+Selected section 1 of 1
+Forward Filtering modes with a real part of neff > 1e-08
+power in the current section (in W): -9.11868e-15
+section considered: 1
+power at z = 0 (in W): -9.11868e-15
+section considered: 1
+Considering the surface of size 2e-06 m x 1e-06 m at location 0 m x 0 m
+Integral from x = 0 to -2e-06
+Integral from y = 0 to -1e-06
+power at z = 0 (in W): -9.11868e-15
+section considered: 1
+Considering the surface of size 1e-06 m x 1e-06 m at location 5e-07 m x 0 m
+Integral from x = -1e-06 to -2e-06
+Integral from y = 0 to -1e-06
+power at z = 0 (in W): -4.55934e-15
+section considered: 1
+Considering the surface of size 1e-06 m x 1e-06 m at location -5e-07 m x 0 m
+Integral from x = 0 to -1e-06
+Integral from y = 0 to -1e-06
+power at z = 0 (in W): -4.55934e-15
+  
+CASE  6 
+  
+The structure definition has been cleared.
+Calculation window size set to: 2e-06 m x 1e-06 m.
+Number of harmonics set to: 15 x 1
+Wavelength set to: 1.55e-06 m.
+Dust will be swept under the carpet.
+(All eigenvalues having a positive imaginary part will be forced to have it negative).
+
+Length of the section 1: 1e-06 m. 
+Substrate refractive index set to: (1.5,0)
+6 
+Generated rectangular section waveguide with core refractive index: (3.5,0)
+Size 1e-06 m x 1e-06 m at location 5e-07 m x 0 m
+Matrices will be retained to compute propagation.
+
+Now considering section 1 of 1, threads in parallel: 1 
+Creating the electric field propagation matrix
+Created DD, EE, FF, GG 
+Calculating eigenvalues and eigenvectors
+LAPACK ZGEEVX executed, info = 0
+Section 1 of 1.
+Searching for interesting modes: 1.5 < Re{n_eff} < 3.5
+                            -0.1 < Im{n_eff} < 0.1
+Interesting mode found 0, effective index: (3.41881,-1.40425e-18)
+Interesting mode found 1, effective index: (3.16501,-6.31969e-16)
+Interesting mode found 2, effective index: (2.70183,-5.69198e-17)
+Interesting mode found 3, effective index: (1.9782,-1.82268e-15)
+Interesting mode found 4, effective index: (1.52642,-1.19807e-16)
+Interesting mode found 5, effective index: (3.43528,-2.2867e-16)
+Interesting mode found 6, effective index: (3.23525,-2.76801e-16)
+Interesting mode found 7, effective index: (2.87923,-1.76426e-16)
+Interesting mode found 8, effective index: (2.32114,-3.01108e-16)
+Interesting mode found 9, effective index: (1.5469,-6.30783e-16)
+
+Assembling sections
+Fabricating V matrix, section: 0, threads in parallel: 1 
+Creating global S matrix.
+6 
+Forward excitation:
+Creating the excitation field.
+Excitation mode n_eff=(3.43528,-2.2867e-16)
+Additional output: record the Poynting vector in the next propagation command.
+
+Matrix size: 1 x 29
+Calculating eigenmode representation of field excitations.
+The backward excitation has not been specified. I will consider it as absent.
+Calculating excitation vectors for each interface.
+Propagation step: dz = 1e-06 m.
+Starting field propagation.
+Propagation of the Ex field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Additional output data: Poynting vector calculation written on cas6_Pz.txt
+File size: 101 x 1 x 1 points.
+Field propagation file written: cas6_Ex.txt
+File size: 101 x 1 x 1 points.
+Propagation of the Hy field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: cas6_Hy.txt
+File size: 101 x 1 x 1 points.
+Propagation of the Ey field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: cas6_Ey.txt
+File size: 101 x 1 x 1 points.
+Propagation of the Hx field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: cas6_Hx.txt
+File size: 101 x 1 x 1 points.
+Selected section 1 of 1
+Forward Filtering modes with a real part of neff > 1e-08
+power in the current section (in W): -9.11868e-15
+section considered: 1
+power at z = 0 (in W): -9.11868e-15
+section considered: 1
+Considering the surface of size 2e-06 m x 1e-06 m at location 0 m x 0 m
+Integral from x = 0 to -2e-06
+Integral from y = 0 to -1e-06
+power at z = 0 (in W): -9.11868e-15
+section considered: 1
+Considering the surface of size 1e-06 m x 1e-06 m at location 5e-07 m x 0 m
+Integral from x = -1e-06 to -2e-06
+Integral from y = 0 to -1e-06
+power at z = 0 (in W): -9.06231e-15
+section considered: 1
+Considering the surface of size 1e-06 m x 1e-06 m at location -5e-07 m x 0 m
+Integral from x = 0 to -1e-06
+Integral from y = 0 to -1e-06
+power at z = 0 (in W): -5.63743e-17
+  
+CASE  7 
+  
+The structure definition has been cleared.
+Calculation window size set to: 2e-06 m x 1e-06 m.
+Number of harmonics set to: 15 x 1
+Wavelength set to: 1.55e-06 m.
+symmetry along x has been set, anti-symmetry along y has been set.
+Dust will be swept under the carpet.
+(All eigenvalues having a positive imaginary part will be forced to have it negative).
+
+Length of the section 1: 1e-06 m. 
+Substrate refractive index set to: (1.5,0)
+6 
+Generated rectangular section waveguide with core refractive index: (3.5,0)
+Size 1e-06 m x 1e-06 m at location 0 m x 0 m
+Matrices will be retained to compute propagation.
+
+Now considering section 1 of 1, threads in parallel: 1 
+Creating the electric field propagation matrix
+Created DD, EE, FF, GG 
+Calculating eigenvalues and eigenvectors
+LAPACK ZGEEVX executed, info = 0
+Section 1 of 1.
+Searching for interesting modes: 1.5 < Re{n_eff} < 3.5
+                            -0.1 < Im{n_eff} < 0.1
+Interesting mode found 0, effective index: (2.69258,0)
+Interesting mode found 1, effective index: (3.16501,-3.81084e-16)
+Interesting mode found 2, effective index: (1.9782,-4.44705e-17)
+Interesting mode found 3, effective index: (3.43528,-2.08825e-16)
+Interesting mode found 4, effective index: (2.87923,-2.09104e-16)
+Interesting mode found 5, effective index: (1.5469,-2.85027e-16)
+
+Assembling sections
+Fabricating V matrix, section: 0, threads in parallel: 1 
+Creating global S matrix.
+1 
+Forward excitation:
+Creating the excitation field.
+Constant excitation (1,0).
+
+Matrix size: 1 x 29
+Calculating eigenmode representation of field excitations.
+The backward excitation has not been specified. I will consider it as absent.
+Calculating excitation vectors for each interface.
+Propagation step: dz = 1e-08 m.
+Starting field propagation.
+Propagation of the Ex field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Ex.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Hy field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Hy.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Ey field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Ey.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Hx field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Hx.txt
+File size: 1 x 1 x 100 points.
+Selected section 1 of 1
+Forward Filtering modes with a real part of neff > 1e-08
+power in the current section (in W): -6.65508e-15
+section considered: 1
+power at z = 0 (in W): -6.65508e-15
+section considered: 1
+Considering the surface of size 2e-06 m x 1e-06 m at location 0 m x 0 m
+Integral from x = 0 to -2e-06
+Integral from y = 0 to -1e-06
+power at z = 0 (in W): -6.65508e-15
+section considered: 1
+Considering the surface of size 1e-06 m x 1e-06 m at location 5e-07 m x 0 m
+Integral from x = -1e-06 to -2e-06
+Integral from y = 0 to -1e-06
+power at z = 0 (in W): -3.32754e-15
+section considered: 1
+Considering the surface of size 1e-06 m x 1e-06 m at location -5e-07 m x 0 m
+Integral from x = 0 to -1e-06
+Integral from y = 0 to -1e-06
+power at z = 0 (in W): -3.32754e-15
+  
+CASE  8 
+  
+The structure definition has been cleared.
+Calculation window size set to: 2e-06 m x 1e-06 m.
+Number of harmonics set to: 15 x 1
+Wavelength set to: 1.55e-06 m.
+symmetry along x has been set, anti-symmetry along y has been set.
+Dust will be swept under the carpet.
+(All eigenvalues having a positive imaginary part will be forced to have it negative).
+
+Length of the section 1: 1e-06 m. 
+Substrate refractive index set to: (1.5,0)
+8 
+Generated rectangular section waveguide with core refractive index: (3.5,0)
+Size 1e-06 m x 1e-06 m at location 5e-07 m x 0 m
+Matrices will be retained to compute propagation.
+
+Now considering section 1 of 1, threads in parallel: 1 
+Creating the electric field propagation matrix
+Created DD, EE, FF, GG 
+Calculating eigenvalues and eigenvectors
+LAPACK ZGEEVX executed, info = 0
+Section 1 of 1.
+Searching for interesting modes: 1.5 < Re{n_eff} < 3.5
+                            -0.1 < Im{n_eff} < 0.1
+Interesting mode found 0, effective index: (2.69258,0)
+Interesting mode found 1, effective index: (1.70068,-7.10173e-15)
+Interesting mode found 2, effective index: (2.10062,-3.37961e-15)
+Interesting mode found 3, effective index: (1.72643,-3.1418e-15)
+
+Assembling sections
+Fabricating V matrix, section: 0, threads in parallel: 1 
+Creating global S matrix.
+2 
+Forward excitation:
+Creating the excitation field.
+Constant excitation (1,0).
+
+Matrix size: 1 x 29
+Calculating eigenmode representation of field excitations.
+The backward excitation has not been specified. I will consider it as absent.
+Calculating excitation vectors for each interface.
+Propagation step: dz = 1e-08 m.
+Starting field propagation.
+Propagation of the Ex field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Ex.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Hy field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Hy.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Ey field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Ey.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Hx field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Hx.txt
+File size: 1 x 1 x 100 points.
+Selected section 1 of 1
+Forward Filtering modes with a real part of neff > 1e-08
+power in the current section (in W): -6.57602e-15
+section considered: 1
+power at z = 0 (in W): -6.11495e-15
+section considered: 1
+Considering the surface of size 2e-06 m x 1e-06 m at location 0 m x 0 m
+Integral from x = 0 to -2e-06
+Integral from y = 0 to -1e-06
+power at z = 0 (in W): -6.11495e-15
+section considered: 1
+Considering the surface of size 1e-06 m x 1e-06 m at location 5e-07 m x 0 m
+Integral from x = -1e-06 to -2e-06
+Integral from y = 0 to -1e-06
+power at z = 0 (in W): -3.05748e-15
+section considered: 1
+Considering the surface of size 1e-06 m x 1e-06 m at location -5e-07 m x 0 m
+Integral from x = 0 to -1e-06
+Integral from y = 0 to -1e-06
+power at z = 0 (in W): -3.05748e-15
+  
+CASE  9 
+  
+The structure definition has been cleared.
+Calculation window size set to: 2e-06 m x 1e-06 m.
+Number of harmonics set to: 15 x 1
+Wavelength set to: 1.55e-06 m.
+symmetry along x has been set, anti-symmetry along y has been set.
+Dust will be swept under the carpet.
+(All eigenvalues having a positive imaginary part will be forced to have it negative).
+
+Length of the section 1: 1e-06 m. 
+Substrate refractive index set to: (1.5,0)
+8 
+Generated rectangular section waveguide with core refractive index: (3.5,0)
+Size 1e-06 m x 1e-06 m at location 0 m x 0 m
+Matrices will be retained to compute propagation.
+
+Now considering section 1 of 1, threads in parallel: 1 
+Creating the electric field propagation matrix
+Created DD, EE, FF, GG 
+Calculating eigenvalues and eigenvectors
+LAPACK ZGEEVX executed, info = 0
+Section 1 of 1.
+Searching for interesting modes: 1.5 < Re{n_eff} < 3.5
+                            -0.1 < Im{n_eff} < 0.1
+Interesting mode found 0, effective index: (2.69258,0)
+Interesting mode found 1, effective index: (3.16501,-3.81084e-16)
+Interesting mode found 2, effective index: (1.9782,-4.44705e-17)
+Interesting mode found 3, effective index: (3.43528,-2.08825e-16)
+Interesting mode found 4, effective index: (2.87923,-2.09104e-16)
+Interesting mode found 5, effective index: (1.5469,-2.85027e-16)
+
+Assembling sections
+Fabricating V matrix, section: 0, threads in parallel: 1 
+Creating global S matrix.
+3 
+Forward excitation:
+Creating the excitation field.
+Excitation angles 31.1089, 0.
+Coefficient (1,0).
+pitchx=2e-06  pitchy=0
+
+Matrix size: 1 x 29
+Calculating eigenmode representation of field excitations.
+The backward excitation has not been specified. I will consider it as absent.
+Calculating excitation vectors for each interface.
+Propagation step: dz = 1e-08 m.
+Starting field propagation.
+Propagation of the Ex field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Ex.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Hy field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Hy.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Ey field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Ey.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Hx field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Hx.txt
+File size: 1 x 1 x 100 points.
+Selected section 1 of 1
+Forward Filtering modes with a real part of neff > 1e-08
+power in the current section (in W): -1.2461e-14
+section considered: 1
+power at z = 0 (in W): -1.2461e-14
+section considered: 1
+Considering the surface of size 2e-06 m x 1e-06 m at location 0 m x 0 m
+Integral from x = 0 to -2e-06
+Integral from y = 0 to -1e-06
+power at z = 0 (in W): -1.2461e-14
+section considered: 1
+Considering the surface of size 1e-06 m x 1e-06 m at location 5e-07 m x 0 m
+Integral from x = -1e-06 to -2e-06
+Integral from y = 0 to -1e-06
+power at z = 0 (in W): -6.23051e-15
+section considered: 1
+Considering the surface of size 1e-06 m x 1e-06 m at location -5e-07 m x 0 m
+Integral from x = 0 to -1e-06
+Integral from y = 0 to -1e-06
+power at z = 0 (in W): -6.23051e-15
+  
+CASE  10 
+  
+The structure definition has been cleared.
+Calculation window size set to: 2e-06 m x 1e-06 m.
+Number of harmonics set to: 15 x 1
+Wavelength set to: 1.55e-06 m.
+symmetry along x has been set, anti-symmetry along y has been set.
+Dust will be swept under the carpet.
+(All eigenvalues having a positive imaginary part will be forced to have it negative).
+
+Length of the section 1: 1e-06 m. 
+Substrate refractive index set to: (1.5,0)
+10 
+Generated rectangular section waveguide with core refractive index: (3.5,0)
+Size 1e-06 m x 1e-06 m at location 5e-07 m x 0 m
+Matrices will be retained to compute propagation.
+
+Now considering section 1 of 1, threads in parallel: 1 
+Creating the electric field propagation matrix
+Created DD, EE, FF, GG 
+Calculating eigenvalues and eigenvectors
+LAPACK ZGEEVX executed, info = 0
+Section 1 of 1.
+Searching for interesting modes: 1.5 < Re{n_eff} < 3.5
+                            -0.1 < Im{n_eff} < 0.1
+Interesting mode found 0, effective index: (2.69258,0)
+Interesting mode found 1, effective index: (1.70068,-7.10173e-15)
+Interesting mode found 2, effective index: (2.10062,-3.37961e-15)
+Interesting mode found 3, effective index: (1.72643,-3.1418e-15)
+
+Assembling sections
+Fabricating V matrix, section: 0, threads in parallel: 1 
+Creating global S matrix.
+4 
+Forward excitation:
+Creating the excitation field.
+Excitation angles 31.1089, 0.
+Coefficient (1,0).
+pitchx=2e-06  pitchy=0
+
+Matrix size: 1 x 29
+Calculating eigenmode representation of field excitations.
+The backward excitation has not been specified. I will consider it as absent.
+Calculating excitation vectors for each interface.
+Propagation step: dz = 1e-08 m.
+Starting field propagation.
+Propagation of the Ex field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Ex.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Hy field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Hy.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Ey field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Ey.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Hx field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Hx.txt
+File size: 1 x 1 x 100 points.
+Selected section 1 of 1
+Forward Filtering modes with a real part of neff > 1e-08
+power in the current section (in W): -1.16499e-14
+section considered: 1
+power at z = 0 (in W): -1.15514e-14
+section considered: 1
+Considering the surface of size 2e-06 m x 1e-06 m at location 0 m x 0 m
+Integral from x = 0 to -2e-06
+Integral from y = 0 to -1e-06
+power at z = 0 (in W): -1.15514e-14
+section considered: 1
+Considering the surface of size 1e-06 m x 1e-06 m at location 5e-07 m x 0 m
+Integral from x = -1e-06 to -2e-06
+Integral from y = 0 to -1e-06
+power at z = 0 (in W): -5.7757e-15
+section considered: 1
+Considering the surface of size 1e-06 m x 1e-06 m at location -5e-07 m x 0 m
+Integral from x = 0 to -1e-06
+Integral from y = 0 to -1e-06
+power at z = 0 (in W): -5.7757e-15
+  
+CASE  11 
+  
+The structure definition has been cleared.
+Calculation window size set to: 2e-06 m x 1e-06 m.
+Number of harmonics set to: 15 x 1
+Wavelength set to: 1.55e-06 m.
+symmetry along x has been set, anti-symmetry along y has been set.
+Dust will be swept under the carpet.
+(All eigenvalues having a positive imaginary part will be forced to have it negative).
+
+Length of the section 1: 1e-06 m. 
+Substrate refractive index set to: (1.5,0)
+10 
+Generated rectangular section waveguide with core refractive index: (3.5,0)
+Size 1e-06 m x 1e-06 m at location 0 m x 0 m
+Matrices will be retained to compute propagation.
+
+Now considering section 1 of 1, threads in parallel: 1 
+Creating the electric field propagation matrix
+Created DD, EE, FF, GG 
+Calculating eigenvalues and eigenvectors
+LAPACK ZGEEVX executed, info = 0
+Section 1 of 1.
+Searching for interesting modes: 1.5 < Re{n_eff} < 3.5
+                            -0.1 < Im{n_eff} < 0.1
+Interesting mode found 0, effective index: (2.69258,0)
+Interesting mode found 1, effective index: (3.16501,-3.81084e-16)
+Interesting mode found 2, effective index: (1.9782,-4.44705e-17)
+Interesting mode found 3, effective index: (3.43528,-2.08825e-16)
+Interesting mode found 4, effective index: (2.87923,-2.09104e-16)
+Interesting mode found 5, effective index: (1.5469,-2.85027e-16)
+
+Assembling sections
+Fabricating V matrix, section: 0, threads in parallel: 1 
+Creating global S matrix.
+5 
+Forward excitation:
+Creating the excitation field.
+Excitation mode n_eff=(3.43528,-2.08825e-16)
+
+Matrix size: 1 x 29
+Calculating eigenmode representation of field excitations.
+The backward excitation has not been specified. I will consider it as absent.
+Calculating excitation vectors for each interface.
+Propagation step: dz = 1e-08 m.
+Starting field propagation.
+Propagation of the Ex field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Ex.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Hy field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Hy.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Ey field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Ey.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Hx field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Hx.txt
+File size: 1 x 1 x 100 points.
+Selected section 1 of 1
+Forward Filtering modes with a real part of neff > 1e-08
+power in the current section (in W): -1.22411e-14
+section considered: 1
+power at z = 0 (in W): -1.22411e-14
+section considered: 1
+Considering the surface of size 2e-06 m x 1e-06 m at location 0 m x 0 m
+Integral from x = 0 to -2e-06
+Integral from y = 0 to -1e-06
+power at z = 0 (in W): -1.22411e-14
+section considered: 1
+Considering the surface of size 1e-06 m x 1e-06 m at location 5e-07 m x 0 m
+Integral from x = -1e-06 to -2e-06
+Integral from y = 0 to -1e-06
+power at z = 0 (in W): -6.12057e-15
+section considered: 1
+Considering the surface of size 1e-06 m x 1e-06 m at location -5e-07 m x 0 m
+Integral from x = 0 to -1e-06
+Integral from y = 0 to -1e-06
+power at z = 0 (in W): -6.12057e-15
+  
+CASE  12 
+  
+The structure definition has been cleared.
+Calculation window size set to: 2e-06 m x 1e-06 m.
+Number of harmonics set to: 15 x 1
+Wavelength set to: 1.55e-06 m.
+symmetry along x has been set, anti-symmetry along y has been set.
+Dust will be swept under the carpet.
+(All eigenvalues having a positive imaginary part will be forced to have it negative).
+
+Length of the section 1: 1e-06 m. 
+Substrate refractive index set to: (1.5,0)
+12 
+Generated rectangular section waveguide with core refractive index: (3.5,0)
+Size 1e-06 m x 1e-06 m at location 5e-07 m x 0 m
+Matrices will be retained to compute propagation.
+
+Now considering section 1 of 1, threads in parallel: 1 
+Creating the electric field propagation matrix
+Created DD, EE, FF, GG 
+Calculating eigenvalues and eigenvectors
+LAPACK ZGEEVX executed, info = 0
+Section 1 of 1.
+Searching for interesting modes: 1.5 < Re{n_eff} < 3.5
+                            -0.1 < Im{n_eff} < 0.1
+Interesting mode found 0, effective index: (2.69258,0)
+Interesting mode found 1, effective index: (1.70068,-7.10173e-15)
+Interesting mode found 2, effective index: (2.10062,-3.37961e-15)
+Interesting mode found 3, effective index: (1.72643,-3.1418e-15)
+
+Assembling sections
+Fabricating V matrix, section: 0, threads in parallel: 1 
+Creating global S matrix.
+6 
+Forward excitation:
+Creating the excitation field.
+
+Matrix size: 1 x 29
+Calculating eigenmode representation of field excitations.
+The backward excitation has not been specified. I will consider it as absent.
+Calculating excitation vectors for each interface.
+Propagation step: dz = 1e-08 m.
+Starting field propagation.
+Propagation of the Ex field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Ex.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Hy field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Hy.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Ey field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Ey.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Hx field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Hx.txt
+File size: 1 x 1 x 100 points.
+Selected section 1 of 1
+Forward Filtering modes with a real part of neff > 1e-08
+power in the current section (in W): 0
+section considered: 1
+power at z = 0 (in W): 0
+section considered: 1
+Considering the surface of size 2e-06 m x 1e-06 m at location 0 m x 0 m
+Integral from x = 0 to -2e-06
+Integral from y = 0 to -1e-06
+power at z = 0 (in W): 0
+section considered: 1
+Considering the surface of size 1e-06 m x 1e-06 m at location 5e-07 m x 0 m
+Integral from x = -1e-06 to -2e-06
+Integral from y = 0 to -1e-06
+power at z = 0 (in W): 0
+section considered: 1
+Considering the surface of size 1e-06 m x 1e-06 m at location -5e-07 m x 0 m
+Integral from x = 0 to -1e-06
+Integral from y = 0 to -1e-06
+power at z = 0 (in W): 0
+  
+CASE  13 
+  
+The structure definition has been cleared.
+Calculation window size set to: 2e-06 m x 1e-06 m.
+Number of harmonics set to: 15 x 1
+Wavelength set to: 1.55e-06 m.
+Dust will be swept under the carpet.
+(All eigenvalues having a positive imaginary part will be forced to have it negative).
+
+Length of the section 1: 1e-06 m. 
+Substrate refractive index set to: (1.5,0)
+0 
+Generated rectangular section waveguide with core refractive index: (3.5,0)
+Size 1e-06 m x 1e-06 m at location 0 m x 0 m
+Matrices will be retained to compute propagation.
+
+Now considering section 1 of 1, threads in parallel: 1 
+Creating the electric field propagation matrix
+Created DD, EE, FF, GG 
+Calculating eigenvalues and eigenvectors
+LAPACK ZGEEVX executed, info = 0
+Section 1 of 1.
+Searching for interesting modes: 1.5 < Re{n_eff} < 3.5
+                            -0.1 < Im{n_eff} < 0.1
+Interesting mode found 0, effective index: (3.41881,-1.48323e-18)
+Interesting mode found 1, effective index: (3.16501,-8.2135e-19)
+Interesting mode found 2, effective index: (2.70183,-4.91481e-18)
+Interesting mode found 3, effective index: (1.9782,-1.74997e-17)
+Interesting mode found 4, effective index: (1.52642,-5.77431e-18)
+Interesting mode found 5, effective index: (3.43528,-6.52597e-31)
+Interesting mode found 6, effective index: (3.23525,-3.36698e-30)
+Interesting mode found 7, effective index: (2.87923,-3.17504e-31)
+Interesting mode found 8, effective index: (2.32114,-1.67691e-30)
+Interesting mode found 9, effective index: (1.5469,-6.81971e-30)
+
+Assembling sections
+Fabricating V matrix, section: 0, threads in parallel: 1 
+Creating global S matrix.
+1 
+Forward excitation:
+Creating the excitation field.
+Constant excitation (1,0).
+
+Matrix size: 1 x 29
+Calculating eigenmode representation of field excitations.
+The backward excitation has not been specified. I will consider it as absent.
+Calculating excitation vectors for each interface.
+Propagation step: dz = 1e-08 m.
+Starting field propagation.
+Propagation of the Ex field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Ex.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Hy field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Hy.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Ey field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Ey.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Hx field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Hx.txt
+File size: 1 x 1 x 100 points.
+Selected section 1 of 1
+Forward Filtering modes with a real part of neff > 1e-08
+power in the current section (in W): -6.65508e-15
+section considered: 1
+power at z = 1e-06 (in W): -6.65508e-15
+section considered: 1
+Considering the surface of size 2e-06 m x 1e-06 m at location 0 m x 0 m
+Integral from x = 0 to -2e-06
+Integral from y = 0 to -1e-06
+power at z = 1e-06 (in W): -6.65508e-15
+section considered: 1
+Considering the surface of size 1e-06 m x 1e-06 m at location 5e-07 m x 0 m
+Integral from x = -1e-06 to -2e-06
+Integral from y = 0 to -1e-06
+power at z = 1e-06 (in W): -3.32754e-15
+section considered: 1
+Considering the surface of size 1e-06 m x 1e-06 m at location -5e-07 m x 0 m
+Integral from x = 0 to -1e-06
+Integral from y = 0 to -1e-06
+power at z = 1e-06 (in W): -3.32754e-15
+  
+CASE  14 
+  
+The structure definition has been cleared.
+Calculation window size set to: 2e-06 m x 1e-06 m.
+Number of harmonics set to: 15 x 1
+Wavelength set to: 1.55e-06 m.
+Dust will be swept under the carpet.
+(All eigenvalues having a positive imaginary part will be forced to have it negative).
+
+Length of the section 1: 1e-06 m. 
+Substrate refractive index set to: (1.5,0)
+2 
+Generated rectangular section waveguide with core refractive index: (3.5,0)
+Size 1e-06 m x 1e-06 m at location 5e-07 m x 0 m
+Matrices will be retained to compute propagation.
+
+Now considering section 1 of 1, threads in parallel: 1 
+Creating the electric field propagation matrix
+Created DD, EE, FF, GG 
+Calculating eigenvalues and eigenvectors
+LAPACK ZGEEVX executed, info = 0
+Section 1 of 1.
+Searching for interesting modes: 1.5 < Re{n_eff} < 3.5
+                            -0.1 < Im{n_eff} < 0.1
+Interesting mode found 0, effective index: (3.41881,-1.40425e-18)
+Interesting mode found 1, effective index: (3.16501,-6.31969e-16)
+Interesting mode found 2, effective index: (2.70183,-5.69198e-17)
+Interesting mode found 3, effective index: (1.9782,-1.82268e-15)
+Interesting mode found 4, effective index: (1.52642,-1.19807e-16)
+Interesting mode found 5, effective index: (3.43528,-2.2867e-16)
+Interesting mode found 6, effective index: (3.23525,-2.76801e-16)
+Interesting mode found 7, effective index: (2.87923,-1.76426e-16)
+Interesting mode found 8, effective index: (2.32114,-3.01108e-16)
+Interesting mode found 9, effective index: (1.5469,-6.30783e-16)
+
+Assembling sections
+Fabricating V matrix, section: 0, threads in parallel: 1 
+Creating global S matrix.
+2 
+Forward excitation:
+Creating the excitation field.
+Constant excitation (1,0).
+
+Matrix size: 1 x 29
+Calculating eigenmode representation of field excitations.
+The backward excitation has not been specified. I will consider it as absent.
+Calculating excitation vectors for each interface.
+Propagation step: dz = 1e-08 m.
+Starting field propagation.
+Propagation of the Ex field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Ex.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Hy field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Hy.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Ey field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Ey.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Hx field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Hx.txt
+File size: 1 x 1 x 100 points.
+Selected section 1 of 1
+Forward Filtering modes with a real part of neff > 1e-08
+power in the current section (in W): -6.65508e-15
+section considered: 1
+power at z = 1e-06 (in W): -6.65508e-15
+section considered: 1
+Considering the surface of size 2e-06 m x 1e-06 m at location 0 m x 0 m
+Integral from x = 0 to -2e-06
+Integral from y = 0 to -1e-06
+power at z = 1e-06 (in W): -6.65508e-15
+section considered: 1
+Considering the surface of size 1e-06 m x 1e-06 m at location 5e-07 m x 0 m
+Integral from x = -1e-06 to -2e-06
+Integral from y = 0 to -1e-06
+power at z = 1e-06 (in W): -5.63674e-15
+section considered: 1
+Considering the surface of size 1e-06 m x 1e-06 m at location -5e-07 m x 0 m
+Integral from x = 0 to -1e-06
+Integral from y = 0 to -1e-06
+power at z = 1e-06 (in W): -1.01834e-15
+  
+CASE  15 
+  
+The structure definition has been cleared.
+Calculation window size set to: 2e-06 m x 1e-06 m.
+Number of harmonics set to: 15 x 1
+Wavelength set to: 1.55e-06 m.
+Dust will be swept under the carpet.
+(All eigenvalues having a positive imaginary part will be forced to have it negative).
+
+Length of the section 1: 1e-06 m. 
+Substrate refractive index set to: (1.5,0)
+2 
+Generated rectangular section waveguide with core refractive index: (3.5,0)
+Size 1e-06 m x 1e-06 m at location 0 m x 0 m
+Matrices will be retained to compute propagation.
+
+Now considering section 1 of 1, threads in parallel: 1 
+Creating the electric field propagation matrix
+Created DD, EE, FF, GG 
+Calculating eigenvalues and eigenvectors
+LAPACK ZGEEVX executed, info = 0
+Section 1 of 1.
+Searching for interesting modes: 1.5 < Re{n_eff} < 3.5
+                            -0.1 < Im{n_eff} < 0.1
+Interesting mode found 0, effective index: (3.41881,-1.48323e-18)
+Interesting mode found 1, effective index: (3.16501,-8.2135e-19)
+Interesting mode found 2, effective index: (2.70183,-4.91481e-18)
+Interesting mode found 3, effective index: (1.9782,-1.74997e-17)
+Interesting mode found 4, effective index: (1.52642,-5.77431e-18)
+Interesting mode found 5, effective index: (3.43528,-6.52597e-31)
+Interesting mode found 6, effective index: (3.23525,-3.36698e-30)
+Interesting mode found 7, effective index: (2.87923,-3.17504e-31)
+Interesting mode found 8, effective index: (2.32114,-1.67691e-30)
+Interesting mode found 9, effective index: (1.5469,-6.81971e-30)
+
+Assembling sections
+Fabricating V matrix, section: 0, threads in parallel: 1 
+Creating global S matrix.
+3 
+Forward excitation:
+Creating the excitation field.
+Excitation angles 31.1089, 0.
+Coefficient (1,0).
+pitchx=2e-06  pitchy=0
+
+Matrix size: 1 x 29
+Calculating eigenmode representation of field excitations.
+The backward excitation has not been specified. I will consider it as absent.
+Calculating excitation vectors for each interface.
+Propagation step: dz = 1e-08 m.
+Starting field propagation.
+Propagation of the Ex field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Ex.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Hy field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Hy.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Ey field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Ey.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Hx field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Hx.txt
+File size: 1 x 1 x 100 points.
+Selected section 1 of 1
+Forward Filtering modes with a real part of neff > 1e-08
+power in the current section (in W): -6.19628e-15
+section considered: 1
+power at z = 1e-06 (in W): -6.19628e-15
+section considered: 1
+Considering the surface of size 2e-06 m x 1e-06 m at location 0 m x 0 m
+Integral from x = 0 to -2e-06
+Integral from y = 0 to -1e-06
+power at z = 1e-06 (in W): -6.19628e-15
+section considered: 1
+Considering the surface of size 1e-06 m x 1e-06 m at location 5e-07 m x 0 m
+Integral from x = -1e-06 to -2e-06
+Integral from y = 0 to -1e-06
+power at z = 1e-06 (in W): -5.06821e-15
+section considered: 1
+Considering the surface of size 1e-06 m x 1e-06 m at location -5e-07 m x 0 m
+Integral from x = 0 to -1e-06
+Integral from y = 0 to -1e-06
+power at z = 1e-06 (in W): -1.12807e-15
+  
+CASE  16 
+  
+The structure definition has been cleared.
+Calculation window size set to: 2e-06 m x 1e-06 m.
+Number of harmonics set to: 15 x 1
+Wavelength set to: 1.55e-06 m.
+Dust will be swept under the carpet.
+(All eigenvalues having a positive imaginary part will be forced to have it negative).
+
+Length of the section 1: 1e-06 m. 
+Substrate refractive index set to: (1.5,0)
+4 
+Generated rectangular section waveguide with core refractive index: (3.5,0)
+Size 1e-06 m x 1e-06 m at location 5e-07 m x 0 m
+Matrices will be retained to compute propagation.
+
+Now considering section 1 of 1, threads in parallel: 1 
+Creating the electric field propagation matrix
+Created DD, EE, FF, GG 
+Calculating eigenvalues and eigenvectors
+LAPACK ZGEEVX executed, info = 0
+Section 1 of 1.
+Searching for interesting modes: 1.5 < Re{n_eff} < 3.5
+                            -0.1 < Im{n_eff} < 0.1
+Interesting mode found 0, effective index: (3.41881,-1.40425e-18)
+Interesting mode found 1, effective index: (3.16501,-6.31969e-16)
+Interesting mode found 2, effective index: (2.70183,-5.69198e-17)
+Interesting mode found 3, effective index: (1.9782,-1.82268e-15)
+Interesting mode found 4, effective index: (1.52642,-1.19807e-16)
+Interesting mode found 5, effective index: (3.43528,-2.2867e-16)
+Interesting mode found 6, effective index: (3.23525,-2.76801e-16)
+Interesting mode found 7, effective index: (2.87923,-1.76426e-16)
+Interesting mode found 8, effective index: (2.32114,-3.01108e-16)
+Interesting mode found 9, effective index: (1.5469,-6.30783e-16)
+
+Assembling sections
+Fabricating V matrix, section: 0, threads in parallel: 1 
+Creating global S matrix.
+4 
+Forward excitation:
+Creating the excitation field.
+Excitation angles 31.1089, 0.
+Coefficient (1,0).
+pitchx=2e-06  pitchy=0
+
+Matrix size: 1 x 29
+Calculating eigenmode representation of field excitations.
+The backward excitation has not been specified. I will consider it as absent.
+Calculating excitation vectors for each interface.
+Propagation step: dz = 1e-08 m.
+Starting field propagation.
+Propagation of the Ex field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Ex.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Hy field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Hy.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Ey field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Ey.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Hx field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Hx.txt
+File size: 1 x 1 x 100 points.
+Selected section 1 of 1
+Forward Filtering modes with a real part of neff > 1e-08
+power in the current section (in W): -6.19628e-15
+section considered: 1
+power at z = 1e-06 (in W): -6.19628e-15
+section considered: 1
+Considering the surface of size 2e-06 m x 1e-06 m at location 0 m x 0 m
+Integral from x = 0 to -2e-06
+Integral from y = 0 to -1e-06
+power at z = 1e-06 (in W): -6.19628e-15
+section considered: 1
+Considering the surface of size 1e-06 m x 1e-06 m at location 5e-07 m x 0 m
+Integral from x = -1e-06 to -2e-06
+Integral from y = 0 to -1e-06
+power at z = 1e-06 (in W): -5.4473e-15
+section considered: 1
+Considering the surface of size 1e-06 m x 1e-06 m at location -5e-07 m x 0 m
+Integral from x = 0 to -1e-06
+Integral from y = 0 to -1e-06
+power at z = 1e-06 (in W): -7.48987e-16
+  
+CASE  17 
+  
+The structure definition has been cleared.
+Calculation window size set to: 2e-06 m x 1e-06 m.
+Number of harmonics set to: 15 x 1
+Wavelength set to: 1.55e-06 m.
+Dust will be swept under the carpet.
+(All eigenvalues having a positive imaginary part will be forced to have it negative).
+
+Length of the section 1: 1e-06 m. 
+Substrate refractive index set to: (1.5,0)
+4 
+Generated rectangular section waveguide with core refractive index: (3.5,0)
+Size 1e-06 m x 1e-06 m at location 0 m x 0 m
+Matrices will be retained to compute propagation.
+
+Now considering section 1 of 1, threads in parallel: 1 
+Creating the electric field propagation matrix
+Created DD, EE, FF, GG 
+Calculating eigenvalues and eigenvectors
+LAPACK ZGEEVX executed, info = 0
+Section 1 of 1.
+Searching for interesting modes: 1.5 < Re{n_eff} < 3.5
+                            -0.1 < Im{n_eff} < 0.1
+Interesting mode found 0, effective index: (3.41881,-1.48323e-18)
+Interesting mode found 1, effective index: (3.16501,-8.2135e-19)
+Interesting mode found 2, effective index: (2.70183,-4.91481e-18)
+Interesting mode found 3, effective index: (1.9782,-1.74997e-17)
+Interesting mode found 4, effective index: (1.52642,-5.77431e-18)
+Interesting mode found 5, effective index: (3.43528,-6.52597e-31)
+Interesting mode found 6, effective index: (3.23525,-3.36698e-30)
+Interesting mode found 7, effective index: (2.87923,-3.17504e-31)
+Interesting mode found 8, effective index: (2.32114,-1.67691e-30)
+Interesting mode found 9, effective index: (1.5469,-6.81971e-30)
+
+Assembling sections
+Fabricating V matrix, section: 0, threads in parallel: 1 
+Creating global S matrix.
+5 
+Forward excitation:
+Creating the excitation field.
+Excitation mode n_eff=(3.43528,-6.52597e-31)
+
+Matrix size: 1 x 29
+Calculating eigenmode representation of field excitations.
+The backward excitation has not been specified. I will consider it as absent.
+Calculating excitation vectors for each interface.
+Propagation step: dz = 1e-08 m.
+Starting field propagation.
+Propagation of the Ex field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Ex.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Hy field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Hy.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Ey field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Ey.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Hx field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Hx.txt
+File size: 1 x 1 x 100 points.
+Selected section 1 of 1
+Forward Filtering modes with a real part of neff > 1e-08
+power in the current section (in W): -9.11868e-15
+section considered: 1
+power at z = 1e-06 (in W): -9.11868e-15
+section considered: 1
+Considering the surface of size 2e-06 m x 1e-06 m at location 0 m x 0 m
+Integral from x = 0 to -2e-06
+Integral from y = 0 to -1e-06
+power at z = 1e-06 (in W): -9.11868e-15
+section considered: 1
+Considering the surface of size 1e-06 m x 1e-06 m at location 5e-07 m x 0 m
+Integral from x = -1e-06 to -2e-06
+Integral from y = 0 to -1e-06
+power at z = 1e-06 (in W): -4.55934e-15
+section considered: 1
+Considering the surface of size 1e-06 m x 1e-06 m at location -5e-07 m x 0 m
+Integral from x = 0 to -1e-06
+Integral from y = 0 to -1e-06
+power at z = 1e-06 (in W): -4.55934e-15
+  
+CASE  18 
+  
+The structure definition has been cleared.
+Calculation window size set to: 2e-06 m x 1e-06 m.
+Number of harmonics set to: 15 x 1
+Wavelength set to: 1.55e-06 m.
+Dust will be swept under the carpet.
+(All eigenvalues having a positive imaginary part will be forced to have it negative).
+
+Length of the section 1: 1e-06 m. 
+Substrate refractive index set to: (1.5,0)
+6 
+Generated rectangular section waveguide with core refractive index: (3.5,0)
+Size 1e-06 m x 1e-06 m at location 5e-07 m x 0 m
+Matrices will be retained to compute propagation.
+
+Now considering section 1 of 1, threads in parallel: 1 
+Creating the electric field propagation matrix
+Created DD, EE, FF, GG 
+Calculating eigenvalues and eigenvectors
+LAPACK ZGEEVX executed, info = 0
+Section 1 of 1.
+Searching for interesting modes: 1.5 < Re{n_eff} < 3.5
+                            -0.1 < Im{n_eff} < 0.1
+Interesting mode found 0, effective index: (3.41881,-1.40425e-18)
+Interesting mode found 1, effective index: (3.16501,-6.31969e-16)
+Interesting mode found 2, effective index: (2.70183,-5.69198e-17)
+Interesting mode found 3, effective index: (1.9782,-1.82268e-15)
+Interesting mode found 4, effective index: (1.52642,-1.19807e-16)
+Interesting mode found 5, effective index: (3.43528,-2.2867e-16)
+Interesting mode found 6, effective index: (3.23525,-2.76801e-16)
+Interesting mode found 7, effective index: (2.87923,-1.76426e-16)
+Interesting mode found 8, effective index: (2.32114,-3.01108e-16)
+Interesting mode found 9, effective index: (1.5469,-6.30783e-16)
+
+Assembling sections
+Fabricating V matrix, section: 0, threads in parallel: 1 
+Creating global S matrix.
+6 
+Forward excitation:
+Creating the excitation field.
+Excitation mode n_eff=(3.43528,-2.2867e-16)
+
+Matrix size: 1 x 29
+Calculating eigenmode representation of field excitations.
+The backward excitation has not been specified. I will consider it as absent.
+Calculating excitation vectors for each interface.
+Propagation step: dz = 1e-08 m.
+Starting field propagation.
+Propagation of the Ex field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Ex.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Hy field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Hy.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Ey field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Ey.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Hx field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Hx.txt
+File size: 1 x 1 x 100 points.
+Selected section 1 of 1
+Forward Filtering modes with a real part of neff > 1e-08
+power in the current section (in W): -9.11868e-15
+section considered: 1
+power at z = 1e-06 (in W): -9.11868e-15
+section considered: 1
+Considering the surface of size 2e-06 m x 1e-06 m at location 0 m x 0 m
+Integral from x = 0 to -2e-06
+Integral from y = 0 to -1e-06
+power at z = 1e-06 (in W): -9.11868e-15
+section considered: 1
+Considering the surface of size 1e-06 m x 1e-06 m at location 5e-07 m x 0 m
+Integral from x = -1e-06 to -2e-06
+Integral from y = 0 to -1e-06
+power at z = 1e-06 (in W): -9.06231e-15
+section considered: 1
+Considering the surface of size 1e-06 m x 1e-06 m at location -5e-07 m x 0 m
+Integral from x = 0 to -1e-06
+Integral from y = 0 to -1e-06
+power at z = 1e-06 (in W): -5.63743e-17
+  
+CASE  19 
+  
+The structure definition has been cleared.
+Calculation window size set to: 2e-06 m x 1e-06 m.
+Number of harmonics set to: 15 x 1
+Wavelength set to: 1.55e-06 m.
+symmetry along x has been set, anti-symmetry along y has been set.
+Dust will be swept under the carpet.
+(All eigenvalues having a positive imaginary part will be forced to have it negative).
+
+Length of the section 1: 1e-06 m. 
+Substrate refractive index set to: (1.5,0)
+6 
+Generated rectangular section waveguide with core refractive index: (3.5,0)
+Size 1e-06 m x 1e-06 m at location 0 m x 0 m
+Matrices will be retained to compute propagation.
+
+Now considering section 1 of 1, threads in parallel: 1 
+Creating the electric field propagation matrix
+Created DD, EE, FF, GG 
+Calculating eigenvalues and eigenvectors
+LAPACK ZGEEVX executed, info = 0
+Section 1 of 1.
+Searching for interesting modes: 1.5 < Re{n_eff} < 3.5
+                            -0.1 < Im{n_eff} < 0.1
+Interesting mode found 0, effective index: (2.69258,0)
+Interesting mode found 1, effective index: (3.16501,-3.81084e-16)
+Interesting mode found 2, effective index: (1.9782,-4.44705e-17)
+Interesting mode found 3, effective index: (3.43528,-2.08825e-16)
+Interesting mode found 4, effective index: (2.87923,-2.09104e-16)
+Interesting mode found 5, effective index: (1.5469,-2.85027e-16)
+
+Assembling sections
+Fabricating V matrix, section: 0, threads in parallel: 1 
+Creating global S matrix.
+1 
+Forward excitation:
+Creating the excitation field.
+Constant excitation (1,0).
+
+Matrix size: 1 x 29
+Calculating eigenmode representation of field excitations.
+The backward excitation has not been specified. I will consider it as absent.
+Calculating excitation vectors for each interface.
+Propagation step: dz = 1e-08 m.
+Starting field propagation.
+Propagation of the Ex field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Ex.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Hy field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Hy.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Ey field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Ey.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Hx field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Hx.txt
+File size: 1 x 1 x 100 points.
+Selected section 1 of 1
+Forward Filtering modes with a real part of neff > 1e-08
+power in the current section (in W): -6.65508e-15
+section considered: 1
+power at z = 1e-06 (in W): -6.65508e-15
+section considered: 1
+Considering the surface of size 2e-06 m x 1e-06 m at location 0 m x 0 m
+Integral from x = 0 to -2e-06
+Integral from y = 0 to -1e-06
+power at z = 1e-06 (in W): -6.65508e-15
+section considered: 1
+Considering the surface of size 1e-06 m x 1e-06 m at location 5e-07 m x 0 m
+Integral from x = -1e-06 to -2e-06
+Integral from y = 0 to -1e-06
+power at z = 1e-06 (in W): -3.32754e-15
+section considered: 1
+Considering the surface of size 1e-06 m x 1e-06 m at location -5e-07 m x 0 m
+Integral from x = 0 to -1e-06
+Integral from y = 0 to -1e-06
+power at z = 1e-06 (in W): -3.32754e-15
+  
+CASE  20 
+  
+The structure definition has been cleared.
+Calculation window size set to: 2e-06 m x 1e-06 m.
+Number of harmonics set to: 15 x 1
+Wavelength set to: 1.55e-06 m.
+symmetry along x has been set, anti-symmetry along y has been set.
+Dust will be swept under the carpet.
+(All eigenvalues having a positive imaginary part will be forced to have it negative).
+
+Length of the section 1: 1e-06 m. 
+Substrate refractive index set to: (1.5,0)
+8 
+Generated rectangular section waveguide with core refractive index: (3.5,0)
+Size 1e-06 m x 1e-06 m at location 5e-07 m x 0 m
+Matrices will be retained to compute propagation.
+
+Now considering section 1 of 1, threads in parallel: 1 
+Creating the electric field propagation matrix
+Created DD, EE, FF, GG 
+Calculating eigenvalues and eigenvectors
+LAPACK ZGEEVX executed, info = 0
+Section 1 of 1.
+Searching for interesting modes: 1.5 < Re{n_eff} < 3.5
+                            -0.1 < Im{n_eff} < 0.1
+Interesting mode found 0, effective index: (2.69258,0)
+Interesting mode found 1, effective index: (1.70068,-7.10173e-15)
+Interesting mode found 2, effective index: (2.10062,-3.37961e-15)
+Interesting mode found 3, effective index: (1.72643,-3.1418e-15)
+
+Assembling sections
+Fabricating V matrix, section: 0, threads in parallel: 1 
+Creating global S matrix.
+2 
+Forward excitation:
+Creating the excitation field.
+Constant excitation (1,0).
+
+Matrix size: 1 x 29
+Calculating eigenmode representation of field excitations.
+The backward excitation has not been specified. I will consider it as absent.
+Calculating excitation vectors for each interface.
+Propagation step: dz = 1e-08 m.
+Starting field propagation.
+Propagation of the Ex field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Ex.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Hy field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Hy.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Ey field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Ey.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Hx field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Hx.txt
+File size: 1 x 1 x 100 points.
+Selected section 1 of 1
+Forward Filtering modes with a real part of neff > 1e-08
+power in the current section (in W): -6.57602e-15
+section considered: 1
+power at z = 1e-06 (in W): -2.70763e-14
+section considered: 1
+Considering the surface of size 2e-06 m x 1e-06 m at location 0 m x 0 m
+Integral from x = 0 to -2e-06
+Integral from y = 0 to -1e-06
+power at z = 1e-06 (in W): -2.70763e-14
+section considered: 1
+Considering the surface of size 1e-06 m x 1e-06 m at location 5e-07 m x 0 m
+Integral from x = -1e-06 to -2e-06
+Integral from y = 0 to -1e-06
+power at z = 1e-06 (in W): -1.35382e-14
+section considered: 1
+Considering the surface of size 1e-06 m x 1e-06 m at location -5e-07 m x 0 m
+Integral from x = 0 to -1e-06
+Integral from y = 0 to -1e-06
+power at z = 1e-06 (in W): -1.35382e-14
+  
+CASE  21 
+  
+The structure definition has been cleared.
+Calculation window size set to: 2e-06 m x 1e-06 m.
+Number of harmonics set to: 15 x 1
+Wavelength set to: 1.55e-06 m.
+symmetry along x has been set, anti-symmetry along y has been set.
+Dust will be swept under the carpet.
+(All eigenvalues having a positive imaginary part will be forced to have it negative).
+
+Length of the section 1: 1e-06 m. 
+Substrate refractive index set to: (1.5,0)
+8 
+Generated rectangular section waveguide with core refractive index: (3.5,0)
+Size 1e-06 m x 1e-06 m at location 0 m x 0 m
+Matrices will be retained to compute propagation.
+
+Now considering section 1 of 1, threads in parallel: 1 
+Creating the electric field propagation matrix
+Created DD, EE, FF, GG 
+Calculating eigenvalues and eigenvectors
+LAPACK ZGEEVX executed, info = 0
+Section 1 of 1.
+Searching for interesting modes: 1.5 < Re{n_eff} < 3.5
+                            -0.1 < Im{n_eff} < 0.1
+Interesting mode found 0, effective index: (2.69258,0)
+Interesting mode found 1, effective index: (3.16501,-3.81084e-16)
+Interesting mode found 2, effective index: (1.9782,-4.44705e-17)
+Interesting mode found 3, effective index: (3.43528,-2.08825e-16)
+Interesting mode found 4, effective index: (2.87923,-2.09104e-16)
+Interesting mode found 5, effective index: (1.5469,-2.85027e-16)
+
+Assembling sections
+Fabricating V matrix, section: 0, threads in parallel: 1 
+Creating global S matrix.
+3 
+Forward excitation:
+Creating the excitation field.
+Excitation angles 31.1089, 0.
+Coefficient (1,0).
+pitchx=2e-06  pitchy=0
+
+Matrix size: 1 x 29
+Calculating eigenmode representation of field excitations.
+The backward excitation has not been specified. I will consider it as absent.
+Calculating excitation vectors for each interface.
+Propagation step: dz = 1e-08 m.
+Starting field propagation.
+Propagation of the Ex field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Ex.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Hy field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Hy.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Ey field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Ey.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Hx field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Hx.txt
+File size: 1 x 1 x 100 points.
+Selected section 1 of 1
+Forward Filtering modes with a real part of neff > 1e-08
+power in the current section (in W): -1.2461e-14
+section considered: 1
+power at z = 1e-06 (in W): -1.2461e-14
+section considered: 1
+Considering the surface of size 2e-06 m x 1e-06 m at location 0 m x 0 m
+Integral from x = 0 to -2e-06
+Integral from y = 0 to -1e-06
+power at z = 1e-06 (in W): -1.2461e-14
+section considered: 1
+Considering the surface of size 1e-06 m x 1e-06 m at location 5e-07 m x 0 m
+Integral from x = -1e-06 to -2e-06
+Integral from y = 0 to -1e-06
+power at z = 1e-06 (in W): -6.23051e-15
+section considered: 1
+Considering the surface of size 1e-06 m x 1e-06 m at location -5e-07 m x 0 m
+Integral from x = 0 to -1e-06
+Integral from y = 0 to -1e-06
+power at z = 1e-06 (in W): -6.23051e-15
+  
+CASE  22 
+  
+The structure definition has been cleared.
+Calculation window size set to: 2e-06 m x 1e-06 m.
+Number of harmonics set to: 15 x 1
+Wavelength set to: 1.55e-06 m.
+symmetry along x has been set, anti-symmetry along y has been set.
+Dust will be swept under the carpet.
+(All eigenvalues having a positive imaginary part will be forced to have it negative).
+
+Length of the section 1: 1e-06 m. 
+Substrate refractive index set to: (1.5,0)
+10 
+Generated rectangular section waveguide with core refractive index: (3.5,0)
+Size 1e-06 m x 1e-06 m at location 5e-07 m x 0 m
+Matrices will be retained to compute propagation.
+
+Now considering section 1 of 1, threads in parallel: 1 
+Creating the electric field propagation matrix
+Created DD, EE, FF, GG 
+Calculating eigenvalues and eigenvectors
+LAPACK ZGEEVX executed, info = 0
+Section 1 of 1.
+Searching for interesting modes: 1.5 < Re{n_eff} < 3.5
+                            -0.1 < Im{n_eff} < 0.1
+Interesting mode found 0, effective index: (2.69258,0)
+Interesting mode found 1, effective index: (1.70068,-7.10173e-15)
+Interesting mode found 2, effective index: (2.10062,-3.37961e-15)
+Interesting mode found 3, effective index: (1.72643,-3.1418e-15)
+
+Assembling sections
+Fabricating V matrix, section: 0, threads in parallel: 1 
+Creating global S matrix.
+4 
+Forward excitation:
+Creating the excitation field.
+Excitation angles 31.1089, 0.
+Coefficient (1,0).
+pitchx=2e-06  pitchy=0
+
+Matrix size: 1 x 29
+Calculating eigenmode representation of field excitations.
+The backward excitation has not been specified. I will consider it as absent.
+Calculating excitation vectors for each interface.
+Propagation step: dz = 1e-08 m.
+Starting field propagation.
+Propagation of the Ex field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Ex.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Hy field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Hy.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Ey field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Ey.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Hx field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Hx.txt
+File size: 1 x 1 x 100 points.
+Selected section 1 of 1
+Forward Filtering modes with a real part of neff > 1e-08
+power in the current section (in W): -1.16499e-14
+section considered: 1
+power at z = 1e-06 (in W): -1.17972e-13
+section considered: 1
+Considering the surface of size 2e-06 m x 1e-06 m at location 0 m x 0 m
+Integral from x = 0 to -2e-06
+Integral from y = 0 to -1e-06
+power at z = 1e-06 (in W): -1.17972e-13
+section considered: 1
+Considering the surface of size 1e-06 m x 1e-06 m at location 5e-07 m x 0 m
+Integral from x = -1e-06 to -2e-06
+Integral from y = 0 to -1e-06
+power at z = 1e-06 (in W): -5.89861e-14
+section considered: 1
+Considering the surface of size 1e-06 m x 1e-06 m at location -5e-07 m x 0 m
+Integral from x = 0 to -1e-06
+Integral from y = 0 to -1e-06
+power at z = 1e-06 (in W): -5.89861e-14
+  
+CASE  23 
+  
+The structure definition has been cleared.
+Calculation window size set to: 2e-06 m x 1e-06 m.
+Number of harmonics set to: 15 x 1
+Wavelength set to: 1.55e-06 m.
+symmetry along x has been set, anti-symmetry along y has been set.
+Dust will be swept under the carpet.
+(All eigenvalues having a positive imaginary part will be forced to have it negative).
+
+Length of the section 1: 1e-06 m. 
+Substrate refractive index set to: (1.5,0)
+10 
+Generated rectangular section waveguide with core refractive index: (3.5,0)
+Size 1e-06 m x 1e-06 m at location 0 m x 0 m
+Matrices will be retained to compute propagation.
+
+Now considering section 1 of 1, threads in parallel: 1 
+Creating the electric field propagation matrix
+Created DD, EE, FF, GG 
+Calculating eigenvalues and eigenvectors
+LAPACK ZGEEVX executed, info = 0
+Section 1 of 1.
+Searching for interesting modes: 1.5 < Re{n_eff} < 3.5
+                            -0.1 < Im{n_eff} < 0.1
+Interesting mode found 0, effective index: (2.69258,0)
+Interesting mode found 1, effective index: (3.16501,-3.81084e-16)
+Interesting mode found 2, effective index: (1.9782,-4.44705e-17)
+Interesting mode found 3, effective index: (3.43528,-2.08825e-16)
+Interesting mode found 4, effective index: (2.87923,-2.09104e-16)
+Interesting mode found 5, effective index: (1.5469,-2.85027e-16)
+
+Assembling sections
+Fabricating V matrix, section: 0, threads in parallel: 1 
+Creating global S matrix.
+5 
+Forward excitation:
+Creating the excitation field.
+Excitation mode n_eff=(3.43528,-2.08825e-16)
+
+Matrix size: 1 x 29
+Calculating eigenmode representation of field excitations.
+The backward excitation has not been specified. I will consider it as absent.
+Calculating excitation vectors for each interface.
+Propagation step: dz = 1e-08 m.
+Starting field propagation.
+Propagation of the Ex field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Ex.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Hy field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Hy.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Ey field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Ey.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Hx field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Hx.txt
+File size: 1 x 1 x 100 points.
+Selected section 1 of 1
+Forward Filtering modes with a real part of neff > 1e-08
+power in the current section (in W): -1.22411e-14
+section considered: 1
+power at z = 1e-06 (in W): -1.22411e-14
+section considered: 1
+Considering the surface of size 2e-06 m x 1e-06 m at location 0 m x 0 m
+Integral from x = 0 to -2e-06
+Integral from y = 0 to -1e-06
+power at z = 1e-06 (in W): -1.22411e-14
+section considered: 1
+Considering the surface of size 1e-06 m x 1e-06 m at location 5e-07 m x 0 m
+Integral from x = -1e-06 to -2e-06
+Integral from y = 0 to -1e-06
+power at z = 1e-06 (in W): -6.12057e-15
+section considered: 1
+Considering the surface of size 1e-06 m x 1e-06 m at location -5e-07 m x 0 m
+Integral from x = 0 to -1e-06
+Integral from y = 0 to -1e-06
+power at z = 1e-06 (in W): -6.12057e-15
+  
+CASE  24 
+  
+The structure definition has been cleared.
+Calculation window size set to: 2e-06 m x 1e-06 m.
+Number of harmonics set to: 15 x 1
+Wavelength set to: 1.55e-06 m.
+symmetry along x has been set, anti-symmetry along y has been set.
+Dust will be swept under the carpet.
+(All eigenvalues having a positive imaginary part will be forced to have it negative).
+
+Length of the section 1: 1e-06 m. 
+Substrate refractive index set to: (1.5,0)
+12 
+Generated rectangular section waveguide with core refractive index: (3.5,0)
+Size 1e-06 m x 1e-06 m at location 5e-07 m x 0 m
+Matrices will be retained to compute propagation.
+
+Now considering section 1 of 1, threads in parallel: 1 
+Creating the electric field propagation matrix
+Created DD, EE, FF, GG 
+Calculating eigenvalues and eigenvectors
+LAPACK ZGEEVX executed, info = 0
+Section 1 of 1.
+Searching for interesting modes: 1.5 < Re{n_eff} < 3.5
+                            -0.1 < Im{n_eff} < 0.1
+Interesting mode found 0, effective index: (2.69258,0)
+Interesting mode found 1, effective index: (1.70068,-7.10173e-15)
+Interesting mode found 2, effective index: (2.10062,-3.37961e-15)
+Interesting mode found 3, effective index: (1.72643,-3.1418e-15)
+
+Assembling sections
+Fabricating V matrix, section: 0, threads in parallel: 1 
+Creating global S matrix.
+6 
+Forward excitation:
+Creating the excitation field.
+
+Matrix size: 1 x 29
+Calculating eigenmode representation of field excitations.
+The backward excitation has not been specified. I will consider it as absent.
+Calculating excitation vectors for each interface.
+Propagation step: dz = 1e-08 m.
+Starting field propagation.
+Propagation of the Ex field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Ex.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Hy field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Hy.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Ey field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Ey.txt
+File size: 1 x 1 x 100 points.
+Propagation of the Hx field.
+Considering section 1 of 1.
+[0%        25%          50%        75%         100%]
+[**************************************************]
+Field propagation file written: Hx.txt
+File size: 1 x 1 x 100 points.
+Selected section 1 of 1
+Forward Filtering modes with a real part of neff > 1e-08
+power in the current section (in W): 0
+section considered: 1
+power at z = 1e-06 (in W): 0
+section considered: 1
+Considering the surface of size 2e-06 m x 1e-06 m at location 0 m x 0 m
+Integral from x = 0 to -2e-06
+Integral from y = 0 to -1e-06
+power at z = 1e-06 (in W): 0
+section considered: 1
+Considering the surface of size 1e-06 m x 1e-06 m at location 5e-07 m x 0 m
+Integral from x = -1e-06 to -2e-06
+Integral from y = 0 to -1e-06
+power at z = 1e-06 (in W): 0
+section considered: 1
+Considering the surface of size 1e-06 m x 1e-06 m at location -5e-07 m x 0 m
+Integral from x = 0 to -1e-06
+Integral from y = 0 to -1e-06
+power at z = 1e-06 (in W): 0

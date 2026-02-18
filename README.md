@@ -305,11 +305,11 @@ If you have something in mind, do not hesitate to contact us using GitHub's disc
 
 If you plan to work on the code, the indentation style is K&R. We tend to avoid lines longer than 80 characters to improve readability, with the notable exception of the `commands::c_help` function.
 
-The development is organized around three main branches:
+The development is organized around three type of branches:
 
-- `main` contains stable and tested code. Small modifications and bugfixes are done there.
-- `dev` contains development code for things that would not qualify as "small" and may require to be tested further before being merged to the `master` branch.
-- `feature` contains development code for a feature that is under active development.
+- `main` contains stable and tested code. pushing to main is deactivated. 
+- `dev` contains ongoing development code and modifications that would soon be part of official release in `main` branch. Small modifications and bugfixes are done there. 
+- `feature` branches contain added features or debugging that is under active development. The modifications here would not qualify as "small" and may require to be tested further before being merged to the `dev` branch. Once the developement is finished and tested, the branches are merged to the `dev` and deleted. 
 
 ## Bibliography
 

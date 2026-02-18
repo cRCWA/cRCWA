@@ -1606,8 +1606,8 @@ int commands::c_power(parsefile *obj, int argc,char *argv[])
     // excitation has been put equal to zero.
     db_matrix E=p->cur->W*excitation;
     db_matrix H=p->cur->V*excitation;
-
     power = section::integralPoynting(p,E, H,0)*p->tot_x*p->tot_y;;
+
 
     p->insertVar("ans",power);
 
@@ -1643,7 +1643,9 @@ int commands::c_powerZ(parsefile *obj, int argc,char *argv[])
              "the z value.\n");
      }
 
+
     power = p->do_powerz(z);
+
     p->insertVar("ans",power);
 
     cout << "power at z = " << z << " (in W): "<<power<<endl;
@@ -1701,7 +1703,9 @@ int commands::c_monitor(parsefile *obj, int argc,char *argv[])
     if(sscanf(argv[5], "%20lf", &py)!=1) {
          throw parsefile_commandError("monitor: error while reading "
              "the py value.\n");
+
      }
+
 
     power=p->do_monitor(z,wx,wy,px,py);
     p->insertVar("ans",power);

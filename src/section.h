@@ -241,10 +241,12 @@ public:
 
 
     static double integralPoynting_rectangle(structure *p, db_matrix &V,
-        db_matrix &W, int column, double wx, double wy, double px, double py);
+        db_matrix &W, double wx, double wy, double px, double py);
 
     static double integralPoynting(structure *p, db_matrix &V, db_matrix &W,
         int column);
+    static db_matrix computePoyntingVector(structure *p, db_matrix &H_vec,
+    	db_matrix &E_vec);
 
     void set_substrate(complex<double>subs);
     void add_rectangle(complex<double>n_g, double wx, double wy, double px,
@@ -298,6 +300,7 @@ public:
         double real_neff, complex<double> coeff , int index_yz, int index_xz);
 
     db_matrix create_excitation_from_file(bool excitation_fy, db_matrix &rd );
+
 
     int select_real(double real_neff);
 
