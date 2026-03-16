@@ -599,7 +599,6 @@ db_matrix &db_matrix::operator*=(const db_matrix &d)
             total_elements+=nrow*d.ncol;
             if(total_elements>max_elements) max_elements=total_elements;
     #endif
-
     zgemm(&TransA, &TransB, &M, &N, &K, &alpha, Ar, &LDA,
         Br, &LDB, &beta,  Cr, &LDC);
     delete[] A;
