@@ -2,7 +2,7 @@
  *      Aperiodic Fourier Modal Method full vectorial 3D propagation       *
  *                            version 1.5                                  *
  *                                                                         *
- *     Build date: Feb 15 2026                                             *
+ *     Build date: Feb 16 2026                                             *
  *     Source revision: N/A                                                *
  *                                                                         *
  *     Davide Bucci, CROMA March 2008 - current                            *
@@ -40,16 +40,16 @@ LAPACK ZGEEVX executed, info = 0
 Section 1 of 1.
 Searching for interesting modes: 1.5 < Re{n_eff} < 3.5
                             -0.1 < Im{n_eff} < 0.1
-Interesting mode found 0, effective index: (3.41881,-1.48323e-18)
-Interesting mode found 1, effective index: (3.16501,-8.2135e-19)
-Interesting mode found 2, effective index: (2.70183,-4.91481e-18)
-Interesting mode found 3, effective index: (1.9782,-1.74997e-17)
-Interesting mode found 4, effective index: (1.52642,-5.77431e-18)
-Interesting mode found 5, effective index: (3.43528,-6.52597e-31)
-Interesting mode found 6, effective index: (3.23525,-3.36698e-30)
-Interesting mode found 7, effective index: (2.87923,-3.17504e-31)
-Interesting mode found 8, effective index: (2.32114,-1.67691e-30)
-Interesting mode found 9, effective index: (1.5469,-6.81971e-30)
+Interesting mode found 0, effective index: (3.41881,-8.62502e-18)
+Interesting mode found 1, effective index: (3.16501,-1.08746e-17)
+Interesting mode found 2, effective index: (2.70183,-9.92039e-19)
+Interesting mode found 3, effective index: (1.9782,-1.75904e-18)
+Interesting mode found 4, effective index: (1.52642,-4.66986e-17)
+Interesting mode found 5, effective index: (3.43528,-1.79536e-30)
+Interesting mode found 6, effective index: (3.23525,-4.09361e-30)
+Interesting mode found 7, effective index: (2.87923,-1.26269e-30)
+Interesting mode found 8, effective index: (2.32114,-5.01088e-31)
+Interesting mode found 9, effective index: (1.5469,-2.22062e-29)
 
 Assembling sections
 Fabricating V matrix, section: 0, threads in parallel: 1 
@@ -134,16 +134,16 @@ LAPACK ZGEEVX executed, info = 0
 Section 1 of 1.
 Searching for interesting modes: 1.5 < Re{n_eff} < 3.5
                             -0.1 < Im{n_eff} < 0.1
-Interesting mode found 0, effective index: (3.41881,-1.40425e-18)
-Interesting mode found 1, effective index: (3.16501,-6.31969e-16)
-Interesting mode found 2, effective index: (2.70183,-5.69198e-17)
-Interesting mode found 3, effective index: (1.9782,-1.82268e-15)
-Interesting mode found 4, effective index: (1.52642,-1.19807e-16)
-Interesting mode found 5, effective index: (3.43528,-2.2867e-16)
-Interesting mode found 6, effective index: (3.23525,-2.76801e-16)
-Interesting mode found 7, effective index: (2.87923,-1.76426e-16)
-Interesting mode found 8, effective index: (2.32114,-3.01108e-16)
-Interesting mode found 9, effective index: (1.5469,-6.30783e-16)
+Interesting mode found 0, effective index: (3.41881,-9.28574e-17)
+Interesting mode found 1, effective index: (3.16501,-1.20371e-16)
+Interesting mode found 2, effective index: (2.70183,-3.6724e-16)
+Interesting mode found 3, effective index: (1.9782,-1.03975e-15)
+Interesting mode found 4, effective index: (1.52642,-5.64473e-16)
+Interesting mode found 5, effective index: (3.43528,-1.45203e-16)
+Interesting mode found 6, effective index: (3.23525,-4.63833e-16)
+Interesting mode found 7, effective index: (2.87923,-1.57887e-16)
+Interesting mode found 8, effective index: (2.32114,-6.49225e-16)
+Interesting mode found 9, effective index: (1.5469,-3.57123e-16)
 
 Assembling sections
 Fabricating V matrix, section: 0, threads in parallel: 1 
@@ -228,16 +228,16 @@ LAPACK ZGEEVX executed, info = 0
 Section 1 of 1.
 Searching for interesting modes: 1.5 < Re{n_eff} < 3.5
                             -0.1 < Im{n_eff} < 0.1
-Interesting mode found 0, effective index: (3.41881,-1.48323e-18)
-Interesting mode found 1, effective index: (3.16501,-8.2135e-19)
-Interesting mode found 2, effective index: (2.70183,-4.91481e-18)
-Interesting mode found 3, effective index: (1.9782,-1.74997e-17)
-Interesting mode found 4, effective index: (1.52642,-5.77431e-18)
-Interesting mode found 5, effective index: (3.43528,-6.52597e-31)
-Interesting mode found 6, effective index: (3.23525,-3.36698e-30)
-Interesting mode found 7, effective index: (2.87923,-3.17504e-31)
-Interesting mode found 8, effective index: (2.32114,-1.67691e-30)
-Interesting mode found 9, effective index: (1.5469,-6.81971e-30)
+Interesting mode found 0, effective index: (3.41881,-8.62502e-18)
+Interesting mode found 1, effective index: (3.16501,-1.08746e-17)
+Interesting mode found 2, effective index: (2.70183,-9.92039e-19)
+Interesting mode found 3, effective index: (1.9782,-1.75904e-18)
+Interesting mode found 4, effective index: (1.52642,-4.66986e-17)
+Interesting mode found 5, effective index: (3.43528,-1.79536e-30)
+Interesting mode found 6, effective index: (3.23525,-4.09361e-30)
+Interesting mode found 7, effective index: (2.87923,-1.26269e-30)
+Interesting mode found 8, effective index: (2.32114,-5.01088e-31)
+Interesting mode found 9, effective index: (1.5469,-2.22062e-29)
 
 Assembling sections
 Fabricating V matrix, section: 0, threads in parallel: 1 
@@ -324,16 +324,16 @@ LAPACK ZGEEVX executed, info = 0
 Section 1 of 1.
 Searching for interesting modes: 1.5 < Re{n_eff} < 3.5
                             -0.1 < Im{n_eff} < 0.1
-Interesting mode found 0, effective index: (3.41881,-1.40425e-18)
-Interesting mode found 1, effective index: (3.16501,-6.31969e-16)
-Interesting mode found 2, effective index: (2.70183,-5.69198e-17)
-Interesting mode found 3, effective index: (1.9782,-1.82268e-15)
-Interesting mode found 4, effective index: (1.52642,-1.19807e-16)
-Interesting mode found 5, effective index: (3.43528,-2.2867e-16)
-Interesting mode found 6, effective index: (3.23525,-2.76801e-16)
-Interesting mode found 7, effective index: (2.87923,-1.76426e-16)
-Interesting mode found 8, effective index: (2.32114,-3.01108e-16)
-Interesting mode found 9, effective index: (1.5469,-6.30783e-16)
+Interesting mode found 0, effective index: (3.41881,-9.28574e-17)
+Interesting mode found 1, effective index: (3.16501,-1.20371e-16)
+Interesting mode found 2, effective index: (2.70183,-3.6724e-16)
+Interesting mode found 3, effective index: (1.9782,-1.03975e-15)
+Interesting mode found 4, effective index: (1.52642,-5.64473e-16)
+Interesting mode found 5, effective index: (3.43528,-1.45203e-16)
+Interesting mode found 6, effective index: (3.23525,-4.63833e-16)
+Interesting mode found 7, effective index: (2.87923,-1.57887e-16)
+Interesting mode found 8, effective index: (2.32114,-6.49225e-16)
+Interesting mode found 9, effective index: (1.5469,-3.57123e-16)
 
 Assembling sections
 Fabricating V matrix, section: 0, threads in parallel: 1 
@@ -420,16 +420,16 @@ LAPACK ZGEEVX executed, info = 0
 Section 1 of 1.
 Searching for interesting modes: 1.5 < Re{n_eff} < 3.5
                             -0.1 < Im{n_eff} < 0.1
-Interesting mode found 0, effective index: (3.41881,-1.48323e-18)
-Interesting mode found 1, effective index: (3.16501,-8.2135e-19)
-Interesting mode found 2, effective index: (2.70183,-4.91481e-18)
-Interesting mode found 3, effective index: (1.9782,-1.74997e-17)
-Interesting mode found 4, effective index: (1.52642,-5.77431e-18)
-Interesting mode found 5, effective index: (3.43528,-6.52597e-31)
-Interesting mode found 6, effective index: (3.23525,-3.36698e-30)
-Interesting mode found 7, effective index: (2.87923,-3.17504e-31)
-Interesting mode found 8, effective index: (2.32114,-1.67691e-30)
-Interesting mode found 9, effective index: (1.5469,-6.81971e-30)
+Interesting mode found 0, effective index: (3.41881,-8.62502e-18)
+Interesting mode found 1, effective index: (3.16501,-1.08746e-17)
+Interesting mode found 2, effective index: (2.70183,-9.92039e-19)
+Interesting mode found 3, effective index: (1.9782,-1.75904e-18)
+Interesting mode found 4, effective index: (1.52642,-4.66986e-17)
+Interesting mode found 5, effective index: (3.43528,-1.79536e-30)
+Interesting mode found 6, effective index: (3.23525,-4.09361e-30)
+Interesting mode found 7, effective index: (2.87923,-1.26269e-30)
+Interesting mode found 8, effective index: (2.32114,-5.01088e-31)
+Interesting mode found 9, effective index: (1.5469,-2.22062e-29)
 
 Assembling sections
 Fabricating V matrix, section: 0, threads in parallel: 1 
@@ -437,7 +437,7 @@ Creating global S matrix.
 5 
 Forward excitation:
 Creating the excitation field.
-Excitation mode n_eff=(3.43528,-6.52597e-31)
+Excitation mode n_eff=(3.43528,-1.79536e-30)
 
 Matrix size: 1 x 29
 Calculating eigenmode representation of field excitations.
@@ -514,16 +514,16 @@ LAPACK ZGEEVX executed, info = 0
 Section 1 of 1.
 Searching for interesting modes: 1.5 < Re{n_eff} < 3.5
                             -0.1 < Im{n_eff} < 0.1
-Interesting mode found 0, effective index: (3.41881,-1.40425e-18)
-Interesting mode found 1, effective index: (3.16501,-6.31969e-16)
-Interesting mode found 2, effective index: (2.70183,-5.69198e-17)
-Interesting mode found 3, effective index: (1.9782,-1.82268e-15)
-Interesting mode found 4, effective index: (1.52642,-1.19807e-16)
-Interesting mode found 5, effective index: (3.43528,-2.2867e-16)
-Interesting mode found 6, effective index: (3.23525,-2.76801e-16)
-Interesting mode found 7, effective index: (2.87923,-1.76426e-16)
-Interesting mode found 8, effective index: (2.32114,-3.01108e-16)
-Interesting mode found 9, effective index: (1.5469,-6.30783e-16)
+Interesting mode found 0, effective index: (3.41881,-9.28574e-17)
+Interesting mode found 1, effective index: (3.16501,-1.20371e-16)
+Interesting mode found 2, effective index: (2.70183,-3.6724e-16)
+Interesting mode found 3, effective index: (1.9782,-1.03975e-15)
+Interesting mode found 4, effective index: (1.52642,-5.64473e-16)
+Interesting mode found 5, effective index: (3.43528,-1.45203e-16)
+Interesting mode found 6, effective index: (3.23525,-4.63833e-16)
+Interesting mode found 7, effective index: (2.87923,-1.57887e-16)
+Interesting mode found 8, effective index: (2.32114,-6.49225e-16)
+Interesting mode found 9, effective index: (1.5469,-3.57123e-16)
 
 Assembling sections
 Fabricating V matrix, section: 0, threads in parallel: 1 
@@ -531,7 +531,7 @@ Creating global S matrix.
 6 
 Forward excitation:
 Creating the excitation field.
-Excitation mode n_eff=(3.43528,-2.2867e-16)
+Excitation mode n_eff=(3.43528,-1.45203e-16)
 Additional output: record the Poynting vector in the next propagation command.
 
 Matrix size: 1 x 29
@@ -704,9 +704,9 @@ Section 1 of 1.
 Searching for interesting modes: 1.5 < Re{n_eff} < 3.5
                             -0.1 < Im{n_eff} < 0.1
 Interesting mode found 0, effective index: (2.69258,0)
-Interesting mode found 1, effective index: (1.70068,-7.10173e-15)
-Interesting mode found 2, effective index: (2.10062,-3.37961e-15)
-Interesting mode found 3, effective index: (1.72643,-3.1418e-15)
+Interesting mode found 1, effective index: (1.70068,-4.41118e-15)
+Interesting mode found 2, effective index: (2.10062,-5.27585e-15)
+Interesting mode found 3, effective index: (1.72643,-5.36708e-15)
 
 Assembling sections
 Fabricating V matrix, section: 0, threads in parallel: 1 
@@ -886,9 +886,9 @@ Section 1 of 1.
 Searching for interesting modes: 1.5 < Re{n_eff} < 3.5
                             -0.1 < Im{n_eff} < 0.1
 Interesting mode found 0, effective index: (2.69258,0)
-Interesting mode found 1, effective index: (1.70068,-7.10173e-15)
-Interesting mode found 2, effective index: (2.10062,-3.37961e-15)
-Interesting mode found 3, effective index: (1.72643,-3.1418e-15)
+Interesting mode found 1, effective index: (1.70068,-4.41118e-15)
+Interesting mode found 2, effective index: (2.10062,-5.27585e-15)
+Interesting mode found 3, effective index: (1.72643,-5.36708e-15)
 
 Assembling sections
 Fabricating V matrix, section: 0, threads in parallel: 1 
@@ -1068,9 +1068,9 @@ Section 1 of 1.
 Searching for interesting modes: 1.5 < Re{n_eff} < 3.5
                             -0.1 < Im{n_eff} < 0.1
 Interesting mode found 0, effective index: (2.69258,0)
-Interesting mode found 1, effective index: (1.70068,-7.10173e-15)
-Interesting mode found 2, effective index: (2.10062,-3.37961e-15)
-Interesting mode found 3, effective index: (1.72643,-3.1418e-15)
+Interesting mode found 1, effective index: (1.70068,-4.41118e-15)
+Interesting mode found 2, effective index: (2.10062,-5.27585e-15)
+Interesting mode found 3, effective index: (1.72643,-5.36708e-15)
 
 Assembling sections
 Fabricating V matrix, section: 0, threads in parallel: 1 
@@ -1154,16 +1154,16 @@ LAPACK ZGEEVX executed, info = 0
 Section 1 of 1.
 Searching for interesting modes: 1.5 < Re{n_eff} < 3.5
                             -0.1 < Im{n_eff} < 0.1
-Interesting mode found 0, effective index: (3.41881,-1.48323e-18)
-Interesting mode found 1, effective index: (3.16501,-8.2135e-19)
-Interesting mode found 2, effective index: (2.70183,-4.91481e-18)
-Interesting mode found 3, effective index: (1.9782,-1.74997e-17)
-Interesting mode found 4, effective index: (1.52642,-5.77431e-18)
-Interesting mode found 5, effective index: (3.43528,-6.52597e-31)
-Interesting mode found 6, effective index: (3.23525,-3.36698e-30)
-Interesting mode found 7, effective index: (2.87923,-3.17504e-31)
-Interesting mode found 8, effective index: (2.32114,-1.67691e-30)
-Interesting mode found 9, effective index: (1.5469,-6.81971e-30)
+Interesting mode found 0, effective index: (3.41881,-8.62502e-18)
+Interesting mode found 1, effective index: (3.16501,-1.08746e-17)
+Interesting mode found 2, effective index: (2.70183,-9.92039e-19)
+Interesting mode found 3, effective index: (1.9782,-1.75904e-18)
+Interesting mode found 4, effective index: (1.52642,-4.66986e-17)
+Interesting mode found 5, effective index: (3.43528,-1.79536e-30)
+Interesting mode found 6, effective index: (3.23525,-4.09361e-30)
+Interesting mode found 7, effective index: (2.87923,-1.26269e-30)
+Interesting mode found 8, effective index: (2.32114,-5.01088e-31)
+Interesting mode found 9, effective index: (1.5469,-2.22062e-29)
 
 Assembling sections
 Fabricating V matrix, section: 0, threads in parallel: 1 
@@ -1248,16 +1248,16 @@ LAPACK ZGEEVX executed, info = 0
 Section 1 of 1.
 Searching for interesting modes: 1.5 < Re{n_eff} < 3.5
                             -0.1 < Im{n_eff} < 0.1
-Interesting mode found 0, effective index: (3.41881,-1.40425e-18)
-Interesting mode found 1, effective index: (3.16501,-6.31969e-16)
-Interesting mode found 2, effective index: (2.70183,-5.69198e-17)
-Interesting mode found 3, effective index: (1.9782,-1.82268e-15)
-Interesting mode found 4, effective index: (1.52642,-1.19807e-16)
-Interesting mode found 5, effective index: (3.43528,-2.2867e-16)
-Interesting mode found 6, effective index: (3.23525,-2.76801e-16)
-Interesting mode found 7, effective index: (2.87923,-1.76426e-16)
-Interesting mode found 8, effective index: (2.32114,-3.01108e-16)
-Interesting mode found 9, effective index: (1.5469,-6.30783e-16)
+Interesting mode found 0, effective index: (3.41881,-9.28574e-17)
+Interesting mode found 1, effective index: (3.16501,-1.20371e-16)
+Interesting mode found 2, effective index: (2.70183,-3.6724e-16)
+Interesting mode found 3, effective index: (1.9782,-1.03975e-15)
+Interesting mode found 4, effective index: (1.52642,-5.64473e-16)
+Interesting mode found 5, effective index: (3.43528,-1.45203e-16)
+Interesting mode found 6, effective index: (3.23525,-4.63833e-16)
+Interesting mode found 7, effective index: (2.87923,-1.57887e-16)
+Interesting mode found 8, effective index: (2.32114,-6.49225e-16)
+Interesting mode found 9, effective index: (1.5469,-3.57123e-16)
 
 Assembling sections
 Fabricating V matrix, section: 0, threads in parallel: 1 
@@ -1342,16 +1342,16 @@ LAPACK ZGEEVX executed, info = 0
 Section 1 of 1.
 Searching for interesting modes: 1.5 < Re{n_eff} < 3.5
                             -0.1 < Im{n_eff} < 0.1
-Interesting mode found 0, effective index: (3.41881,-1.48323e-18)
-Interesting mode found 1, effective index: (3.16501,-8.2135e-19)
-Interesting mode found 2, effective index: (2.70183,-4.91481e-18)
-Interesting mode found 3, effective index: (1.9782,-1.74997e-17)
-Interesting mode found 4, effective index: (1.52642,-5.77431e-18)
-Interesting mode found 5, effective index: (3.43528,-6.52597e-31)
-Interesting mode found 6, effective index: (3.23525,-3.36698e-30)
-Interesting mode found 7, effective index: (2.87923,-3.17504e-31)
-Interesting mode found 8, effective index: (2.32114,-1.67691e-30)
-Interesting mode found 9, effective index: (1.5469,-6.81971e-30)
+Interesting mode found 0, effective index: (3.41881,-8.62502e-18)
+Interesting mode found 1, effective index: (3.16501,-1.08746e-17)
+Interesting mode found 2, effective index: (2.70183,-9.92039e-19)
+Interesting mode found 3, effective index: (1.9782,-1.75904e-18)
+Interesting mode found 4, effective index: (1.52642,-4.66986e-17)
+Interesting mode found 5, effective index: (3.43528,-1.79536e-30)
+Interesting mode found 6, effective index: (3.23525,-4.09361e-30)
+Interesting mode found 7, effective index: (2.87923,-1.26269e-30)
+Interesting mode found 8, effective index: (2.32114,-5.01088e-31)
+Interesting mode found 9, effective index: (1.5469,-2.22062e-29)
 
 Assembling sections
 Fabricating V matrix, section: 0, threads in parallel: 1 
@@ -1438,16 +1438,16 @@ LAPACK ZGEEVX executed, info = 0
 Section 1 of 1.
 Searching for interesting modes: 1.5 < Re{n_eff} < 3.5
                             -0.1 < Im{n_eff} < 0.1
-Interesting mode found 0, effective index: (3.41881,-1.40425e-18)
-Interesting mode found 1, effective index: (3.16501,-6.31969e-16)
-Interesting mode found 2, effective index: (2.70183,-5.69198e-17)
-Interesting mode found 3, effective index: (1.9782,-1.82268e-15)
-Interesting mode found 4, effective index: (1.52642,-1.19807e-16)
-Interesting mode found 5, effective index: (3.43528,-2.2867e-16)
-Interesting mode found 6, effective index: (3.23525,-2.76801e-16)
-Interesting mode found 7, effective index: (2.87923,-1.76426e-16)
-Interesting mode found 8, effective index: (2.32114,-3.01108e-16)
-Interesting mode found 9, effective index: (1.5469,-6.30783e-16)
+Interesting mode found 0, effective index: (3.41881,-9.28574e-17)
+Interesting mode found 1, effective index: (3.16501,-1.20371e-16)
+Interesting mode found 2, effective index: (2.70183,-3.6724e-16)
+Interesting mode found 3, effective index: (1.9782,-1.03975e-15)
+Interesting mode found 4, effective index: (1.52642,-5.64473e-16)
+Interesting mode found 5, effective index: (3.43528,-1.45203e-16)
+Interesting mode found 6, effective index: (3.23525,-4.63833e-16)
+Interesting mode found 7, effective index: (2.87923,-1.57887e-16)
+Interesting mode found 8, effective index: (2.32114,-6.49225e-16)
+Interesting mode found 9, effective index: (1.5469,-3.57123e-16)
 
 Assembling sections
 Fabricating V matrix, section: 0, threads in parallel: 1 
@@ -1534,16 +1534,16 @@ LAPACK ZGEEVX executed, info = 0
 Section 1 of 1.
 Searching for interesting modes: 1.5 < Re{n_eff} < 3.5
                             -0.1 < Im{n_eff} < 0.1
-Interesting mode found 0, effective index: (3.41881,-1.48323e-18)
-Interesting mode found 1, effective index: (3.16501,-8.2135e-19)
-Interesting mode found 2, effective index: (2.70183,-4.91481e-18)
-Interesting mode found 3, effective index: (1.9782,-1.74997e-17)
-Interesting mode found 4, effective index: (1.52642,-5.77431e-18)
-Interesting mode found 5, effective index: (3.43528,-6.52597e-31)
-Interesting mode found 6, effective index: (3.23525,-3.36698e-30)
-Interesting mode found 7, effective index: (2.87923,-3.17504e-31)
-Interesting mode found 8, effective index: (2.32114,-1.67691e-30)
-Interesting mode found 9, effective index: (1.5469,-6.81971e-30)
+Interesting mode found 0, effective index: (3.41881,-8.62502e-18)
+Interesting mode found 1, effective index: (3.16501,-1.08746e-17)
+Interesting mode found 2, effective index: (2.70183,-9.92039e-19)
+Interesting mode found 3, effective index: (1.9782,-1.75904e-18)
+Interesting mode found 4, effective index: (1.52642,-4.66986e-17)
+Interesting mode found 5, effective index: (3.43528,-1.79536e-30)
+Interesting mode found 6, effective index: (3.23525,-4.09361e-30)
+Interesting mode found 7, effective index: (2.87923,-1.26269e-30)
+Interesting mode found 8, effective index: (2.32114,-5.01088e-31)
+Interesting mode found 9, effective index: (1.5469,-2.22062e-29)
 
 Assembling sections
 Fabricating V matrix, section: 0, threads in parallel: 1 
@@ -1551,7 +1551,7 @@ Creating global S matrix.
 5 
 Forward excitation:
 Creating the excitation field.
-Excitation mode n_eff=(3.43528,-6.52597e-31)
+Excitation mode n_eff=(3.43528,-1.79536e-30)
 
 Matrix size: 1 x 29
 Calculating eigenmode representation of field excitations.
@@ -1628,16 +1628,16 @@ LAPACK ZGEEVX executed, info = 0
 Section 1 of 1.
 Searching for interesting modes: 1.5 < Re{n_eff} < 3.5
                             -0.1 < Im{n_eff} < 0.1
-Interesting mode found 0, effective index: (3.41881,-1.40425e-18)
-Interesting mode found 1, effective index: (3.16501,-6.31969e-16)
-Interesting mode found 2, effective index: (2.70183,-5.69198e-17)
-Interesting mode found 3, effective index: (1.9782,-1.82268e-15)
-Interesting mode found 4, effective index: (1.52642,-1.19807e-16)
-Interesting mode found 5, effective index: (3.43528,-2.2867e-16)
-Interesting mode found 6, effective index: (3.23525,-2.76801e-16)
-Interesting mode found 7, effective index: (2.87923,-1.76426e-16)
-Interesting mode found 8, effective index: (2.32114,-3.01108e-16)
-Interesting mode found 9, effective index: (1.5469,-6.30783e-16)
+Interesting mode found 0, effective index: (3.41881,-9.28574e-17)
+Interesting mode found 1, effective index: (3.16501,-1.20371e-16)
+Interesting mode found 2, effective index: (2.70183,-3.6724e-16)
+Interesting mode found 3, effective index: (1.9782,-1.03975e-15)
+Interesting mode found 4, effective index: (1.52642,-5.64473e-16)
+Interesting mode found 5, effective index: (3.43528,-1.45203e-16)
+Interesting mode found 6, effective index: (3.23525,-4.63833e-16)
+Interesting mode found 7, effective index: (2.87923,-1.57887e-16)
+Interesting mode found 8, effective index: (2.32114,-6.49225e-16)
+Interesting mode found 9, effective index: (1.5469,-3.57123e-16)
 
 Assembling sections
 Fabricating V matrix, section: 0, threads in parallel: 1 
@@ -1645,7 +1645,7 @@ Creating global S matrix.
 6 
 Forward excitation:
 Creating the excitation field.
-Excitation mode n_eff=(3.43528,-2.2867e-16)
+Excitation mode n_eff=(3.43528,-1.45203e-16)
 
 Matrix size: 1 x 29
 Calculating eigenmode representation of field excitations.
@@ -1815,9 +1815,9 @@ Section 1 of 1.
 Searching for interesting modes: 1.5 < Re{n_eff} < 3.5
                             -0.1 < Im{n_eff} < 0.1
 Interesting mode found 0, effective index: (2.69258,0)
-Interesting mode found 1, effective index: (1.70068,-7.10173e-15)
-Interesting mode found 2, effective index: (2.10062,-3.37961e-15)
-Interesting mode found 3, effective index: (1.72643,-3.1418e-15)
+Interesting mode found 1, effective index: (1.70068,-4.41118e-15)
+Interesting mode found 2, effective index: (2.10062,-5.27585e-15)
+Interesting mode found 3, effective index: (1.72643,-5.36708e-15)
 
 Assembling sections
 Fabricating V matrix, section: 0, threads in parallel: 1 
@@ -1997,9 +1997,9 @@ Section 1 of 1.
 Searching for interesting modes: 1.5 < Re{n_eff} < 3.5
                             -0.1 < Im{n_eff} < 0.1
 Interesting mode found 0, effective index: (2.69258,0)
-Interesting mode found 1, effective index: (1.70068,-7.10173e-15)
-Interesting mode found 2, effective index: (2.10062,-3.37961e-15)
-Interesting mode found 3, effective index: (1.72643,-3.1418e-15)
+Interesting mode found 1, effective index: (1.70068,-4.41118e-15)
+Interesting mode found 2, effective index: (2.10062,-5.27585e-15)
+Interesting mode found 3, effective index: (1.72643,-5.36708e-15)
 
 Assembling sections
 Fabricating V matrix, section: 0, threads in parallel: 1 
@@ -2179,9 +2179,9 @@ Section 1 of 1.
 Searching for interesting modes: 1.5 < Re{n_eff} < 3.5
                             -0.1 < Im{n_eff} < 0.1
 Interesting mode found 0, effective index: (2.69258,0)
-Interesting mode found 1, effective index: (1.70068,-7.10173e-15)
-Interesting mode found 2, effective index: (2.10062,-3.37961e-15)
-Interesting mode found 3, effective index: (1.72643,-3.1418e-15)
+Interesting mode found 1, effective index: (1.70068,-4.41118e-15)
+Interesting mode found 2, effective index: (2.10062,-5.27585e-15)
+Interesting mode found 3, effective index: (1.72643,-5.36708e-15)
 
 Assembling sections
 Fabricating V matrix, section: 0, threads in parallel: 1 

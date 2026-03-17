@@ -94,7 +94,7 @@
 // Unnamed semaphores are the simplest solutions on Linux, but they are not
 // available on MacOSX, so we must provide both named and unnamed semaphores.
 // TODO: check if this works as well in Linux
-// #define USE_UNNAMED
+#define USE_UNNAMED
 
 // During the configuration operation, the configure script will try to
 // determine if the BLAS and LAPACK libraries have been compiled with a

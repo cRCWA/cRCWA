@@ -45,7 +45,7 @@
 #include <iostream>
 #include <iomanip>
 #include <vector>
-#include <stdio.h>
+#include <cstdio>
 
 using namespace std;
 
@@ -143,7 +143,7 @@ static struct PyModuleDef pycRCWAmodule = {
 // calculated.
 
 vector<numParser> vnP;
-vector<structure> vwaveguide;
+vector<structure *> vwaveguide;
 vector<commands> vco;
 
 /*
@@ -181,13 +181,14 @@ static PyObject* py_AFMM_create(PyObject* self, PyObject* args)
     if (!PyArg_ParseTuple(args, ""))
         return NULL;
 
-    vnP.push_back(* new numParser());
-    vwaveguide.push_back(* new structure(&vnP.at(idx)));
-    vco.push_back(* new commands(vwaveguide.at(idx), &vnP.at(idx)));
-
+    numParser *np = new numParser(); 
+    vnP.push_back(*np) ;
+    structure *sp = new structure(np);
+    vwaveguide.push_back(sp);
+    vco.push_back(* new commands(*sp, np));
+    cout << "Created new solver/propagator with index "<<idx<<endl;
     return Py_BuildValue("i", idx);
 }
-
 
 /**
   Parse an AFMM script.
@@ -211,7 +212,7 @@ static PyObject* py_AFMM_parsescript(PyObject* self, PyObject* args)
         PyErr_SetString(afmmError, e.getMess());
         return NULL;
     }
-    fclose(f);
+    //fclose(f);        // I get an error if I close the file here.
     Py_INCREF(Py_None);
     return Py_None;
 }
@@ -228,7 +229,7 @@ static PyObject* py_AFMM_size(PyObject* self, PyObject* args)
         return NULL;
 
     try {
-        vwaveguide.at(idx).do_size(sx,sy);
+        vwaveguide.at(idx)->do_size(sx,sy);
     } catch (parsefile_commandError e) {
         PyErr_SetString(afmmError, e.getMess());
         return NULL;
@@ -250,7 +251,7 @@ static PyObject* py_AFMM_harmonics(PyObject* self, PyObject* args)
         return NULL;
 
     try {
-        vwaveguide.at(idx).do_harmonics(hx,hy);
+        vwaveguide.at(idx)->do_harmonics(hx,hy);
     } catch (parsefile_commandError e) {
         PyErr_SetString(afmmError, e.getMess());
         return NULL;
@@ -272,7 +273,7 @@ static PyObject* py_AFMM_wavelength(PyObject* self, PyObject* args)
     if (!PyArg_ParseTuple(args, "id", &idx, &l))
         return NULL;
 
-    vwaveguide.at(idx).set_wavelength(l);
+    vwaveguide.at(idx)->set_wavelength(l);
 
     Py_INCREF(Py_None);
     return Py_None;
@@ -293,7 +294,7 @@ static PyObject* py_AFMM_substrate(PyObject* self, PyObject* args)
     r=c.real;
     i=c.imag;
 
-    vwaveguide.at(idx).getCur()->set_substrate(complex<double>(r,i));
+    vwaveguide.at(idx)->getCur()->set_substrate(complex<double>(r,i));
 
     Py_INCREF(Py_None);
     return Py_None;
@@ -312,7 +313,7 @@ static PyObject* py_AFMM_solve(PyObject* self, PyObject* args)
 
     vector<double> results;
     try {
-        results = vwaveguide.at(idx).do_solve();
+        results = vwaveguide.at(idx)->do_solve();
     } catch (parsefile_commandError e) {
         PyErr_SetString(afmmError, e.getMess());
         return NULL;
@@ -393,7 +394,7 @@ static PyObject* py_AFMM_rectangle(PyObject* self, PyObject* args)
     r=c.real;
     i=c.imag;
 
-    vwaveguide.at(idx).getCur()->add_rectangle(complex<double>(r,i), wx, wy,
+    vwaveguide.at(idx)->getCur()->add_rectangle(complex<double>(r,i), wx, wy,
         px, py);
 
     Py_INCREF(Py_None);
@@ -411,7 +412,7 @@ static PyObject* py_AFMM_lowindex(PyObject* self, PyObject* args)
     if (!PyArg_ParseTuple(args, "iD", &idx, &c))
         return NULL;
 
-    vwaveguide.at(idx).getCur()->set_lowindex(complex<double>(c.real,c.imag));
+    vwaveguide.at(idx)->getCur()->set_lowindex(complex<double>(c.real,c.imag));
 
     Py_INCREF(Py_None);
     return Py_None;
@@ -427,7 +428,7 @@ static PyObject* py_AFMM_highindex(PyObject* self, PyObject* args)
 
     if (!PyArg_ParseTuple(args, "iD", &idx, &c))
         return NULL;
-    vwaveguide.at(idx).getCur()->set_highindex(complex<double>(c.real,c.imag));
+    vwaveguide.at(idx)->getCur()->set_highindex(complex<double>(c.real,c.imag));
 
     Py_INCREF(Py_None);
     return Py_None;
@@ -443,7 +444,7 @@ static PyObject* py_AFMM_clear(PyObject* self, PyObject* args)
     if (!PyArg_ParseTuple(args, "i", &idx))
         return NULL;
 
-    vwaveguide.at(idx).reset();
+    vwaveguide.at(idx)->reset();
     cout<<"The structure definition has been cleared.\n";
     Py_INCREF(Py_None);
     return Py_None;
@@ -459,7 +460,7 @@ static PyObject* py_AFMM_carpet(PyObject* self, PyObject* args)
     if (!PyArg_ParseTuple(args, "i", &idx))
         return NULL;
 
-    vwaveguide.at(idx).set_ensureConvergence(true);
+    vwaveguide.at(idx)->set_ensureConvergence(true);
 
     Py_INCREF(Py_None);
     return Py_None;
@@ -476,7 +477,7 @@ static PyObject* py_AFMM_assemble(PyObject* self, PyObject* args)
         return NULL;
 
     try {
-        vwaveguide.at(idx).do_assemble();
+        vwaveguide.at(idx)->do_assemble();
     } catch (parsefile_commandError e) {
         PyErr_SetString(afmmError, e.getMess());
         return NULL;
@@ -498,7 +499,7 @@ static PyObject* py_AFMM_pml(PyObject* self, PyObject* args)
         return NULL;
 
     try {
-        vwaveguide.at(idx).getCur()->set_pml(wx,wy,
+        vwaveguide.at(idx)->getCur()->set_pml(wx,wy,
             complex<double>(alpha.real, alpha.imag));
     } catch (parsefile_commandError e) {
         PyErr_SetString(afmmError, e.getMess());
@@ -524,7 +525,7 @@ static PyObject* py_AFMM_pml_transf(PyObject* self, PyObject* args)
     double i=g.imag;
 
     try {
-        vwaveguide.at(idx).getCur()->set_pml_transf(qdx,qdy,
+        vwaveguide.at(idx)->getCur()->set_pml_transf(qdx,qdy,
             complex<double>(r,i));
     } catch (parsefile_commandError e) {
         PyErr_SetString(afmmError, e.getMess());
@@ -546,7 +547,7 @@ static PyObject* py_AFMM_bend(PyObject* self, PyObject* args)
         return NULL;
 
     try {
-        vwaveguide.at(idx).getCur()->set_bend(r);
+        vwaveguide.at(idx)->getCur()->set_bend(r);
     } catch (parsefile_commandError e) {
         PyErr_SetString(afmmError, e.getMess());
         return NULL;
@@ -570,7 +571,7 @@ static PyObject* py_AFMM_inpstruct(PyObject* self, PyObject* args)
         return NULL;
 
     try {
-        out = vwaveguide.at(idx).getCur()->do_inpstruct(sx, sy, otype);
+        out = vwaveguide.at(idx)->getCur()->do_inpstruct(sx, sy, otype);
     } catch (parsefile_commandError e) {
         PyErr_SetString(afmmError, e.getMess());
         return NULL;
@@ -618,13 +619,11 @@ static PyObject* py_AFMM_outgmodes(PyObject* self, PyObject* args)
     char *fieldcomponent;
     list<db_matrix> modes;
     int idx;
-    if (!PyArg_ParseTuple(args, "i", &idx))
-        return NULL;
 
-    if (!PyArg_ParseTuple(args, "zdd", &fieldcomponent, &sx, &sy))
+    if (!PyArg_ParseTuple(args, "izdd", &idx, &fieldcomponent, &sx, &sy))
         return NULL;
     
-    modes =  vwaveguide.at(idx).getCur()->do_outgmodes(sx, sy, fieldcomponent,
+    modes =  vwaveguide.at(idx)->getCur()->do_outgmodes(sx, sy, fieldcomponent,
         S, "");
     printf("Matrix calculated correctly\n");
     fflush(stdout);
@@ -707,7 +706,7 @@ static PyObject* py_AFMM_indmatrix(PyObject* self, PyObject* args)
         }
     }
     try {
-        vwaveguide.at(idx).getCur()->store_refractive_index(rd);
+        vwaveguide.at(idx)->getCur()->store_refractive_index(rd);
         cout<<"Refractive index matrix loaded."<<endl;
     } catch (parsefile_commandError e) {
         PyErr_SetString(afmmError, e.getMess());
@@ -724,12 +723,11 @@ static PyObject* py_AFMM_wants(PyObject* self, PyObject* args)
 {
     const char *code;
     int idx;
-    if (!PyArg_ParseTuple(args, "i", &idx))
-        return NULL;
-    if (!PyArg_ParseTuple(args, "s", &code))
+
+    if (!PyArg_ParseTuple(args, "is", &idx, &code))
         return NULL;
     try {
-        vwaveguide.at(idx).do_wants(code);
+        vwaveguide.at(idx)->do_wants(code);
     } catch (parsefile_commandError e) {
         PyErr_SetString(afmmError, e.getMess());
         return NULL;
@@ -746,13 +744,12 @@ static PyObject* py_AFMM_section(PyObject* self, PyObject* args)
 {
     double tl;
     int idx;
-    if (!PyArg_ParseTuple(args, "i", &idx))
-        return NULL;
-    if (!PyArg_ParseTuple(args, "d", &tl))
+
+    if (!PyArg_ParseTuple(args, "id", &idx, &tl))
         return NULL;
 
     try {
-        vwaveguide.at(idx).do_section(tl);
+        vwaveguide.at(idx)->do_section(tl);
     } catch (parsefile_commandError e) {
         PyErr_SetString(afmmError, e.getMess());
         return NULL;
@@ -776,7 +773,7 @@ static PyObject* py_AFMM_select(PyObject* self, PyObject* args)
     // The internal numbering starts from 0, as with C/C++
 
      try {
-        vwaveguide.at(idx).do_select(number);
+        vwaveguide.at(idx)->do_select(number);
     } catch (parsefile_commandError e) {
         PyErr_SetString(afmmError, e.getMess());
         return NULL;
@@ -799,7 +796,7 @@ static PyObject* py_AFMM_order(PyObject* self, PyObject* args)
         return NULL;
 
     try {
-        vwaveguide.at(idx).getCur()->do_order(minv,maxv);
+        vwaveguide.at(idx)->getCur()->do_order(minv,maxv);
     } catch (parsefile_commandError e) {
         PyErr_SetString(afmmError, e.getMess());
         return NULL;
@@ -821,7 +818,7 @@ static PyObject* py_AFMM_bloch(PyObject* self, PyObject* args)
 
     vector<double> results;
     try {
-        results = vwaveguide.at(idx).do_bloch();
+        results = vwaveguide.at(idx)->do_bloch();
     } catch (parsefile_commandError e) {
         PyErr_SetString(afmmError, e.getMess());
         return NULL;
@@ -868,21 +865,21 @@ static PyObject* py_AFMM_spectrum(PyObject* self, PyObject* args)
 
     try {
         // Check if the C matrix is empty
-        if (vwaveguide.at(idx).getCur()->getW().isEmpty()) {
+        if (vwaveguide.at(idx)->getCur()->getW().isEmpty()) {
             throw parsefile_commandError(
                 "spectrum: the problem must be set and modes calculated with"
                 "solve before trying to write the spectrum on a file.");
         }
-        returnObj = PyList_New(vwaveguide.at(idx).getCur()->getB().getNrow());
+        returnObj = PyList_New(vwaveguide.at(idx)->getCur()->getB().getNrow());
         if (returnObj==NULL) {
             PyErr_SetString(afmmError,
                 "Could not create a Python list from C++.");
             return NULL;
         }
         int k=0;
-        for(int i=0; i<vwaveguide.at(idx).getCur()->getB().getNrow(); ++i) {
-            complex<double>e=vwaveguide.at(idx).getCur()->getB()(i,i);
-            e = vwaveguide.at(idx).getEffectiveIndex(e);
+        for(int i=0; i<vwaveguide.at(idx)->getCur()->getB().getNrow(); ++i) {
+            complex<double>e=vwaveguide.at(idx)->getCur()->getB()(i,i);
+            e = vwaveguide.at(idx)->getEffectiveIndex(e);
             PyObject *cdata = PyComplex_FromDoubles(e.real(), e.imag());
             if (cdata==NULL) {
                 Py_DECREF(returnObj);
@@ -920,7 +917,7 @@ static PyObject* py_AFMM_powerz(PyObject* self, PyObject* args)
         return NULL;
 
     try {
-        power = vwaveguide.at(idx).do_powerz(z);
+        power = vwaveguide.at(idx)->do_powerz(z);
     } catch (parsefile_commandError e) {
         PyErr_SetString(afmmError, e.getMess());
         return NULL;
@@ -949,7 +946,7 @@ static PyObject* py_AFMM_monitor(PyObject* self, PyObject* args)
         return NULL;
 
     try {
-        power = vwaveguide.at(idx).do_monitor(z,wx,wy,px,py);
+        power = vwaveguide.at(idx)->do_monitor(z,wx,wy,px,py);
     } catch (parsefile_commandError e) {
         PyErr_SetString(afmmError, e.getMess());
         return NULL;
@@ -975,7 +972,7 @@ static PyObject* py_AFMM_angles(PyObject* self, PyObject* args)
         return NULL;
 
     try {
-        vwaveguide.at(idx).setAngles(n0, thetax, thetay);
+        vwaveguide.at(idx)->setAngles(n0, thetax, thetay);
         cout << "Angles set to: "<<thetax<<" rad and "<<thetay<<
             " rad in a section with refractive index "<<n0<<"\n";
     } catch (parsefile_commandError e) {
@@ -1008,33 +1005,33 @@ static PyObject* py_AFMM_coefficient(PyObject* self, PyObject* args)
             return NULL;
     }
 
-   iMode = vwaveguide.at(idx).getCur()->select_real(value);
+   iMode = vwaveguide.at(idx)->getCur()->select_real(value);
 
     if (iMode<0) {
         cout<<"I could not find the given mode.\n";
         return NULL;
     }
     cout << "Selected mode: ";
-    cout << vwaveguide.at(idx).getEffectiveIndex(vwaveguide.at(idx).getCur()->
+    cout << vwaveguide.at(idx)->getEffectiveIndex(vwaveguide.at(idx)->getCur()->
         B(iMode,iMode)) << "\n";
 
     if(strcmp(type,"f")==0) {
-        if(vwaveguide.at(idx).getCur()->sWp.isEmpty()) {
+        if(vwaveguide.at(idx)->getCur()->sWp.isEmpty()) {
             PyErr_SetString(afmmError, "coefficient: excitation coefficients"
                 " have not been calculated yet.\n");
             return NULL;
         } else {
             cout<<"Forward ";
-            e = vwaveguide.at(idx).getCur()->sWp(iMode, 0);
+            e = vwaveguide.at(idx)->getCur()->sWp(iMode, 0);
         }
     } else if(strcmp(type,"b")==0) {
-        if(vwaveguide.at(idx).getCur()->sWm.isEmpty()) {
+        if(vwaveguide.at(idx)->getCur()->sWm.isEmpty()) {
             PyErr_SetString(afmmError, "coefficient: excitation coefficients"
                 " have not been calculated yet.\n");
             return NULL;
         } else {
             cout<<"Backward ";
-            e = vwaveguide.at(idx).getCur()->sWm(iMode, 0);
+            e = vwaveguide.at(idx)->getCur()->sWm(iMode, 0);
         }
     } else {
         PyErr_SetString(afmmError, "coefficient: unrecognized direction "
@@ -1078,26 +1075,26 @@ static PyObject* py_AFMM_coefficient_id(PyObject* self, PyObject* args)
         return NULL;
     }
     cout << "Selected mode: ";
-    cout << vwaveguide.at(idx).getEffectiveIndex(vwaveguide.at(idx).getCur()->
+    cout << vwaveguide.at(idx)->getEffectiveIndex(vwaveguide.at(idx)->getCur()->
         B(iMode,iMode)) << "\n";
 
     if(strcmp(type,"f")==0) {
-        if(vwaveguide.at(idx).getCur()->sWp.isEmpty()) {
+        if(vwaveguide.at(idx)->getCur()->sWp.isEmpty()) {
             PyErr_SetString(afmmError, "coefficient_id: excitation coefficients"
                 " have not been calculated yet.\n");
             return NULL;
         } else {
             cout<<"Forward ";
-            e = vwaveguide.at(idx).getCur()->sWp(iMode, 0);
+            e = vwaveguide.at(idx)->getCur()->sWp(iMode, 0);
         }
     } else if(strcmp(type,"b")==0) {
-        if(vwaveguide.at(idx).getCur()->sWm.isEmpty()) {
+        if(vwaveguide.at(idx)->getCur()->sWm.isEmpty()) {
             PyErr_SetString(afmmError, "coefficient_id: excitation coefficients"
                 " have not been calculated yet.\n");
             return NULL;
         } else {
             cout<<"Backward ";
-            e = vwaveguide.at(idx).getCur()->sWm(iMode, 0);
+            e = vwaveguide.at(idx)->getCur()->sWm(iMode, 0);
         }
     } else {
         PyErr_SetString(afmmError, "coefficient_id: unrecognized direction "

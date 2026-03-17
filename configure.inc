@@ -11,16 +11,22 @@ SHELL = /bin/sh
 # if the LAPACK, BLAS and FFTW3 libraries are stored in the same place in
 # your system. This is very often the case.
 
-LIBDIR =  /opt/local/lib
+# LIBDIR =  /opt/local/lib
+LIBDIR = /usr/lib64
+
 
 # This is where the LAPACK lib can be found
-LIBLAPACKDIR = $(LIBDIR)/lapack
+# LIBLAPACKDIR = $(LIBDIR)/lapack
+LIBLAPACKDIR = $(LIBDIR)
+
 # The option to include the LAPACK library. You rarely need to change it, as
 # the name of the library is very often just "lapack".
 LIBLAPACK = -llapack
 
 # This is where the BLAS lib can be found
-LIBBLASDIR = $(LIBDIR)/lapack
+# LIBBLASDIR = $(LIBDIR)/lapack
+LIBBLASDIR = $(LIBDIR)
+
 # The option to include the BLAS library. You will have to change this if you
 # are using a library having a different name. For example, a common choice
 # with ATLAS may be LIBBLAS = -latlas.
@@ -28,19 +34,22 @@ LIBBLAS = -lblas
 
 
 # This is where the fftw3 lib can be found
-LIBFFTW3DIR = $(LIBDIR)
+# LIBFFTW3DIR = $(LIBDIR)
+
+LIBFFTW3DIR  = $(LIBDIR)
+
 # The option to include the FFTW3 library:
 LIBFFTW3 = -lfftw3
 
 # This is where the Python include file Python.h is present:
-PYTHONINCDIR = /System/Volumes/Data/opt/local/Library/Frameworks/Python.framework/Versions/3.13/include/python3.13/
+PYTHONINCDIR = /opt/anaconda3/envs/py312/include/python3.13
 
 # This is the Python library to be included. In macOS the file can be 
 # called like libpython3.15.dylib (for a dynamically linked library).
 # If you use, let's say, Python 3.11, you should change the version
 # accordingly. cRCWA requires Python 3 in any case.
 
-PYTHONLIB = -L/opt/local/Library/Frameworks/Python.framework/Versions/3.15/lib/ -lpython3.15
+PYTHONLIB = -L/opt/anaconda3/envs/py312/lib
 
 # ***************************************************************************
 

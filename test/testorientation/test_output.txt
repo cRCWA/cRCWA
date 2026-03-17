@@ -2,7 +2,7 @@
  *      Aperiodic Fourier Modal Method full vectorial 3D propagation       *
  *                            version 1.5                                  *
  *                                                                         *
- *     Build date: Feb 15 2026                                             *
+ *     Build date: Feb 16 2026                                             *
  *     Source revision: N/A                                                *
  *                                                                         *
  *     Davide Bucci, CROMA March 2008 - current                            *
