@@ -1636,7 +1636,7 @@ db_matrix db_matrix::fft_a(bool type)
     fftw_complex *in;
     fftw_complex *out;
     fftw_plan plan;
-
+    if(mutex_fftw==NULL) init_semaphore_FFTW();
     sem_wait (mutex_fftw);  /*- sync start -*/
     in = (fftw_complex *)fftw_malloc(sizeof(fftw_complex)*nx*ny);
     out = (fftw_complex *)fftw_malloc(sizeof(fftw_complex)*nx*ny);
