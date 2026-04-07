@@ -159,7 +159,9 @@ void commands::init(structure &s)
     insert_command("angles",&s,&commands::c_angles);
     insert_command("powerz",&s,&commands::c_powerZ); // accept version with "z"
 
-
+	// Added in v1.5.2
+	insert_command("inpnf",&s,&commands::c_inpnf);
+	insert_command("draw",&s,&commands::c_draw);
     // When adding new commands, please remember to update c_help
 
 }
@@ -200,10 +202,12 @@ int commands::c_help(parsefile *obj, int argc,char *argv[])
         << "Section-level commands:\n"
         << "  substrate    Define a substrate of a given refractive index.\n"
         << "  rectangle    Define a rectangular waveguide.\n"
+        << "  draw         Draw arbitrary polygone waveguide.\n"
         << "  pml          Enter an anisotropic PML.\n"
         << "  pml_transf   Enter a coordinate transform PML region.\n"
         << "  indfile      Read refractive index distribution from an input file.\n"
         << "  inpstruct    Write on a file the current index distribution.\n"
+        << "  inpnf        Write on a file the current normal field distribution.\n"
         << "  outgmodes    Write on files the interesting modes found.\n"
         << "  lowindex     Define the lower bounds for refractive index.\n"
         << "  highindex    Define the upper bounds for refractive index.\n"
@@ -489,9 +493,10 @@ db_matrix commands::read_file(char* filename, double &tot_x, double &tot_y,
     if(f==NULL)
         throw parsefile_commandError("Can not open input file:-(");
 
-    // skip a line
-
-    fscanf(f, "%*[^\n]");
+    // skip a line   
+    if (fscanf(f, "%*[^\n]")!=0)
+        throw parsefile_commandError("error in reading an empty line");
+        
     if(fscanf(f,"%20d%20d",&nx,&ny)!=2) {
         fclose(f);
         throw parsefile_commandError("Unable to read the number of x and y"

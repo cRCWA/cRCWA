@@ -64,14 +64,12 @@ class commands:public parsefile
 private:
 
 static void process_section(double dx, double dy, double dz,
-
-		section &c_section, double &alpha_t, double &z0, double &z,
-		FILE *f, enum rimco_e_t rimc, double &x_t, double &z_t, int &nz, 
-		db_matrix &excitation_p, db_matrix &excitation_m,
-		bool applyShift, bool calcH, int snux, int snuy, int sj, int si, 
-		FILE *f1, bool calcD, db_matrix &epsilonxy, db_matrix &epsz,
-		db_matrix &muz,	bool calcz,bool improve_representation, FILE *f2, FILE *f3);
-
+        section &c_section, double &alpha_t, double &z0, double &z,
+        FILE *f, enum rimco_e_t rimc, double &x_t, double &z_t, int &nz,
+        db_matrix &excitation_p, db_matrix &excitation_m,
+        bool applyShift, bool calcH, int snux, int snuy, int sj, int si,
+        FILE *f1, bool calcD, db_matrix &epsilonxy, db_matrix &epsz,
+        db_matrix &muz, bool calcz,bool improve_representation, FILE *f2);
 
 protected:
     void init(structure &s);
@@ -88,9 +86,11 @@ public:
     static int c_harmonics(parsefile *obj, int argc,char *argv[]);
     static int c_wavelength(parsefile *obj, int argc,char *argv[]);
     static int c_rectangle(parsefile *obj, int argc,char *argv[]);
+    static int c_draw(parsefile *obj, int argc,char *argv[]) ;
     static int c_pml(parsefile *obj, int argc,char *argv[]);
     static int c_solve(parsefile *obj, int argc,char *argv[]);
     static int c_inpstruct(parsefile *obj, int argc,char *argv[]);
+    static int c_inpnf(parsefile *obj, int argc,char *argv[]);
     static int c_outgmodes(parsefile *obj, int argc,char *argv[]);
     static int c_highindex(parsefile *obj, int argc,char *argv[]);
     static int c_lowindex(parsefile *obj, int argc,char *argv[]);
@@ -117,11 +117,10 @@ public:
     static int c_eigenam(parsefile *obj, int argc,char *argv[]);
     static int c_memocc(parsefile *obj, int argc,char *argv[]);
     static int c_power(parsefile *obj, int argc,char *argv[]);
-//JEROME
+
     static int c_powerZ(parsefile *obj, int argc,char *argv[]);
     static int c_monitor(parsefile *obj, int argc,char *argv[]);
     static int c_symmetry(parsefile *obj, int argc,char *argv[]);
-// DB
 
     static int c_let(parsefile *obj, int argc,char *argv[]);
     static int c_bloch(parsefile *obj, int argc,char *argv[]);
@@ -139,10 +138,6 @@ public:
     static db_matrix getFourierField(section &c_section,db_matrix &fields,
         bool calcH, bool calcD, db_matrix &epsilonxy,
         db_matrix &epsz,db_matrix &muz,bool calcz);
-        
-	static db_matrix getPoyntingZ(section &c_section,double tp, double tm, db_matrix &excitation_p, 
-		db_matrix &excitation_m, int snux, int snuy,int sj, int si, db_matrix &epsilonxy,
-		db_matrix &epsz,db_matrix &muz) ;
 
     static db_matrix getField(section &c_section,db_matrix &fields,
         bool applyShift, bool calcH, int snux, int snuy, int sj, int si,
@@ -169,8 +164,6 @@ public:
 
     // Parallelized structures
     static void *propagation_structure(void *threadarg);
-
-
 };
 
 #endif

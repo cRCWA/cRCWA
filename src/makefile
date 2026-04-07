@@ -37,9 +37,10 @@ CFLAGS = -g -O3 -fPIC
 .PHONY : setrev
 
 HEADERS =  block_matrix.h  fortran_types.h parsefile.h structure.h section.h commands.h finterface.h parsercl.h matrixDev.h matrixdevsym.h parallelize.h
-OFILES =   block_matrix.o main.o matrixDev.o parsefile.o structure.o section.o commands_structure.o commands_section.o commands_propagation.o commands_other.o finterface.o parsercl.o matrixdevsym.o parallelize_POSIX.o toeplitz.o
+OFILES =   block_matrix.o main.o matrixDev.o parsefile.o structure.o section.o commands_structure.o commands_section.o commands_propagation.o commands_other.o finterface.o parsercl.o matrixdevsym.o parallelize_POSIX.o toeplitz.o draw.o
 SLOFILES = slice.o
 O2GFILES = optiwave2gnuplot.o
+DRAWINGFILES = draw_main.o draw.o block_matrix.o
 
 # compile rule
 .cpp.o:
@@ -47,30 +48,28 @@ O2GFILES = optiwave2gnuplot.o
 
 # Put pycrcwa after o2f if you want the Python library to be automatically
 # built with make all.
-all: setrev crcwa o2f slice
+all: setrev crcwa  slice o2g draw
 	mv crcwa ../bin
 	mv slice ../bin
 	mv o2g ../bin
-	mv crcwa.exe ../bin
-	mv slice.exe ../bin
-	mv o2g.exe ../bin
-	
+	mv draw ../bin
+
 # monocore
 crcwa: $(OFILES) $(HEADERS)
-	$(LD) $(OFILES) -L$(LIBLAPACKDIR) $(LIBLAPACK) -L$(LIBBLASDIR) $(LIBBLAS) $(LIBFFTW3) -L$(LIBFFTW3DIR) $(LIBTHREAD)   -o crcwa
+	$(LD) $(OFILES) -L$(LIBLAPACKDIR) $(LIBLAPACK) -L$(LIBBLASDIR) $(LIBBLAS) -L$(LIBFFTW3DIR) -lfftw3 $(LIBTHREAD)   -o crcwa
 
 pycrcwa:
-	$(CXX) -shared $(OFILES) -I$(PYTHONINCDIR) afmm_python_module.cpp  \
-	-L$(LIBLAPACKDIR) $(LIBLAPACK) -L$(LIBBLASDIR) $(LIBBLAS) $(LIBFFTW3) -L$(LIBFFTW3DIR) $(LIBTHREAD) -L$(LIBPYTHONDIR) $(LIBPYTHON)-o pycRCWA.so \
-	 -fPIC
-	 mv pycRCWA.* ../python
+	$(CXX) -shared -L$(LIBLAPACKDIR) $(LIBLAPACK) -L$(LIBBLASDIR) $(LIBBLAS) -L$(LIBFFTW3DIR) -lfftw3 $(LIBTHREAD) $(PYTHONLIB) -o pycRCWA.so \
+	 $(OFILES) -I$(PYTHONINCDIR) afmm_python_module.cpp -fPIC
+	 mv pycRCWA.so ../python
 
-
+draw: $(DRAWINGFILES) $(HEADERS)
+	$(LD) $(DRAWINGFILES) -L$(LIBLAPACKDIR) $(LIBLAPACK) -L$(LIBBLASDIR) $(LIBBLAS) -L$(LIBFFTW3DIR) -lfftw3 $(LIBTHREAD) -o draw
 
 slice: $(SLOFILES)
 	$(LD) $(SLOFILES) -o slice
 
-o2f: $(O2GFILES)
+o2g: $(O2GFILES)
 	$(LD) $(O2GFILES) -o o2g
 
 clean:

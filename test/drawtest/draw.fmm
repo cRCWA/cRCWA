@@ -1,0 +1,57 @@
+	
+size 1e-6 2e-6
+harmonics 31 31
+wavelength 1.55e-6
+# symmetry n n
+
+section 1e-6
+
+	# indfile 1e-6 square1.rid
+	# matdev nfs 1e-6 square1.rid_nvf_x square1.rid_nvf_y
+	
+	# inpstruct im 512 512 square7.ind
+	# inpnf nm 257 257 square7.ind_nvf_x square7.ind_nvf_y
+	
+	draw 1 p 1 0 4 .25e-6 -.25e-6 -.25e-6 -0.25e-6 -0.25e-6 -0.75e-6 0.25e-6 -0.75e-6 2 0 
+	inpstruct im 512 512 square7.ind
+	inpnf n 257 257 square7.ind_nvf_x square7.ind_nvf_y
+	
+section 1e-6
+	draw 1 r 1 0 .5e-6 .5e-6 0 -0.5e-6 2 0 
+	inpstruct im 512 512 square8.ind
+	inpnf n 257 257 square8.ind_nvf_x square8.ind_nvf_y
+
+section 1e-6
+ 	draw [filename.rid 1e-06 2e-06] 1 c 1 0 0.3535e-6 4 0 -0.5e-6 0 2 0 -no-nf
+ 	inpstruct im 512 512 square9.ind
+ 	inpnf n 257 257 square9.ind_nvf_x square9.ind_nvf_y
+ 
+clear
+
+size 1e-6 2e-6
+harmonics 31 31
+wavelength 1.55e-6
+symmetry n n
+
+section 1e-6
+
+	# indfile 1e-6 square1.rid
+	# matdev nfs 1e-6 square1.rid_nvf_x square1.rid_nvf_y
+	
+	# inpstruct im 512 512 square7.ind
+	# inpnf nm 257 257 square7.ind_nvf_x square7.ind_nvf_y
+	
+	draw 1 p 1 0 4 .25e-6 -.25e-6 -.25e-6 -0.25e-6 -0.25e-6 -0.75e-6 0.25e-6 -0.75e-6 2 0 
+	inpstruct im 512 512 square10.ind
+	inpnf n 257 257 square10.ind_nvf_x square10.ind_nvf_y
+	
+section 1e-6
+	draw 1 r 1 0 .5e-6 .5e-6 0 -0.5e-6 2 0 
+	inpstruct im 512 512 square11.ind
+	inpnf n 257 257 square11.ind_nvf_x square11.ind_nvf_y
+
+section 1e-6
+ 	draw [filename.rid 1e-06 2e-06] 1 c 1 0 0.3535e-6 4 0 -0.5e-6 0 2 0 -no-nf
+ 	inpstruct im 512 512 square12.ind
+ 	inpnf n 257 257 square12.ind_nvf_x square12.ind_nvf_y
+ 	

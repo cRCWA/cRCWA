@@ -518,7 +518,7 @@ Optiwave's 3D field format is very close to the .rid format described in the pre
 
 
 \section{Conversion utility: \texttt{o2g}}
-The \texttt{o2g} utility is part of \afmm\ and can be used to convert any of the Optiwave file format into a Gnuplot-compatible file.
+The \texttt{o2g} utility is part of \afmm and can be used to convert any of the Optiwave file format into a Gnuplot-compatible file.
 The usage is as follows:
 \begin{lstlisting}
 [davidebucci@imep197-231-6]$ ./o2g 
@@ -526,6 +526,183 @@ Optiwave to Gnuplot converter.
 Usage ./o2g file_in.optiwave file_out.gnuplot
 [davidebucci@imep197-231-6]$
 \end{lstlisting}
+
+\chapter{The \textsf{draw} utility}
+\label{ch_draw}
+\section{Introduction}
+\textsf{draw} utility can be used either as a standalone tool or as part of \afmm command to draw structure and generate normal field. Standalone version is user-fiendly and can be used to generate the command for \afmm. Integrated command in \afmm is equivalent as :
+\begin{itemize}
+\item 1- generate index and normal filed with \textsf{draw} standalone
+\item 2- input refractinve index with \textsf{indfile}
+\item 3- input normal field with \textsf{matdev nf} or\textsf{matdev nfs}
+\end {itemize}
+\section{Help}
+Help can be easily obtained with :
+\begin{lstlisting}
+$ ./draw --help 
+USAGE AS cRCWA COMMAND           
+draw [...] nb_layer ...
+                shape_type parameters ... 
+                shape_type parameters ...
+                ...  
+                n_ext k_ext ...
+                OPTIONAL_PARAMETERS
+
+USAGE AS STANDALONE TOOL: \ 
+./draw test.ind sizeX sizeY \
+                nb_layer \ 
+                shape_type parameters \ 
+                shape_type parameters \ 
+                ... \ 
+                n_ext k_ext \ 
+                OPTIONAL_PARAMETERS
+
+shape_type = c or e or r or p
+        - c: polygone generated from CIRCLE: 
+                all points are taken regularly on a circle
+                * parameters =  n_int k_int rx nb_edge px py shift_angle
+        - e: polygone generated with all points are taken regularly on an ELIPSE
+                * parameters = n_int k_int rx ry nb_edge px py shift_angle 
+        - r: RECTANGLE generated
+                * parameters = n_int k_int wx wy px py 
+        - p: shape generated with specifying its POINTS
+                * parameters = n_int k_int nb_edge x0 y0 x1 y1 ... xN yN
+
+OPTIONAL_PARAMETERS are:
+        - '-o' ox oy : set the orientation of the normal field. 
+                ox and oy are the x- y- direction of the normal field
+                Default is radial normal fileld
+        - '-c' cx, cy : set the cordinate of the point where the normal field is
+                pointing to. For example, when the point is inside a polygone,
+                normal field will be close to radial with a vortex inside the
+                shape. When the point is pointing far away from the shape, the 
+                normal field parallel to each other pointing toward the specified
+                point 
+                cx and cy are the x- y- coordinate of the center point
+                By default it is centered on the polygone
+        - '-i' or '-no-nf' only generate the refractive index, not the  
+                normal field. When used inside crwca, previously computed 
+                nf will be used.
+        - '-order-points' when considering input points, order them               
+                           
+General parameter description:
+        * sizeX and sizeY are respectively the size of the computation window
+        * n_int, k_int are respectively the real and imaginary index of the shape
+        * wx, wy are the x- and y- width of the shape
+        * rx, ry are the radius of the circle or elipse along x and y directions
+        * nb_edge is the number of edge of the shape
+        * shift_angle is an added angle to rotate the shape. The origin of angle
+                is taken as 360/(2*nb_edges) so that the side of the polygone is 
+                always perpendicular to the x axis.
+        * px, py, x- and y-position of the center of the shape. 
+                px=py=0 means that the shape is centered in the middle of the 
+                computational window.
+        * x0,y0..xN,yN are points to specify the position of the edges
+        * nf_x and nf_y are the x and y component of the normal field
+
+
+N.B. [...]: parameters inside square brakets are ignored when called from crcwa
+   and read when using command line. It can be advantageously used to input    
+   [test.ind sizeX sizeY] parameters
+N.B. N+1 layer is below the layer N. Layer 1, is therefore on top of all other
+        layers.
+
+USAGE IN LEGACY MODE
+./draw --legacy 
+ or
+./draw --legacy test.ind sizeY \
+                nb_layer \
+                rx nb_edge px py angle_shift n_int k_int \
+                rx nb_edge px py angle_shift n_int k_int \
+                n_ext k_ext
+\end{lstlisting}
+
+\section{Examples}
+\subsection{Rectangle}
+To generate a rectangle waveguide of 200x500nm² with refractive index of 1.5 in a computation window of 1x1µm², we can use the interactive tool:
+
+\begin{lstlisting}
+$ ./draw
+Draw Utility part of cRCWA sofware suite. 
+Use ./draw --help for usage options or answer the following questions:
+ 
+filename? structure.rid
+size of computation window in x? 1e-6
+size of computation window in y? 1e-6
+number of layers? 1
+shape type (c, e, r or p)? r
+Internal real index? 1.5
+Internal imaginary index? 0
+width of the rectangle along x (between 0 and 1e-06)? 200e-9
+width of the rectangle along y (between 0 and 1e-06)? 500e-9
+Origine X (between -5e-07 and 5e-07)? 0
+Origine Y (between -5e-07 and 5e-07)? 0
+External real index? 1
+External imaginary index? 0
+Command executed: draw [structure.rid 1e-06 1e-06] 1 r 1.5 0 2e-07 5e-07 0 0 1 0 
+Refractive index map generated
+Normal field maps generated
+Writing in structure.rid
+writing normal field files: structure.rid_nvf_x and structure.rid_nvf_y
+\end{lstlisting}
+
+\textsf{draw} utility has indicated the command parameters to use both as \afmm  command or in the stand alone \textsf{draw} utility. we can re-run the generation with:
+\begin{lstlisting}
+$ ./draw [structure.rid 1e-06 1e-06] 1 r 1.5 0 2e-07 5e-07 0 0 1 0 
+\end{lstlisting}
+
+\subsection{Circle}
+To generate a circular waveguide of radius 300nm with refractive index of 1.5 in a computation window of 1x1µm², we can use the interactive tool:
+
+\begin{lstlisting}
+$ ./draw 
+Draw Utility part of cRCWA sofware suite. 
+Use ./draw --help for usage options or answer the following questions:
+ 
+filename? structure.rid
+size of computation window in x? 1e-6 
+size of computation window in y? 1e-6
+number of layers? 1
+shape type (c, e, r or p)? c
+Internal real index? 1.5
+Internal imaginary index? 0
+radius along x (between 0 and 5e-07)? 300e-9
+Number of edges? 50
+Origine X (between -5e-07 and 5e-07)? 0
+Origine Y (between -5e-07 and 5e-07)? 0
+Shift angle (deg)? 0
+External real index? 1
+External imaginary index? 0
+Command executed: draw [structure.rid 1e-06 1e-06] 1 c 1.5 0 3e-07 50 0 0 0 1 0 
+Refractive index map generated
+Normal field maps generated
+Writing in structure.rid
+writing normal field files: structure.rid_nvf_x and structure.rid_nvf_y
+
+\end{lstlisting}
+
+\textsf{draw} utility has indicated the command parameters to use both as \afmm  command or in the stand alone \textsf{draw} utility. we can re-run the generation with:
+\begin{lstlisting}
+$ ./draw [structure.rid 1e-06 1e-06] 1 c 1.5 0 3e-07 50 0 0 0 1 0
+\end{lstlisting}
+
+\subsection{Plotting results}
+The \texttt{o2g} is used to plot the output of \texttt{draw}:
+
+\begin{lstlisting}
+$ ./o2g structure.rid structure.ind
+$./o2g structure.rid_nvf_x structure.ind_nvf_x
+$ ./o2g structure.rid_nvf_y structure.ind_nvf_y
+$ paste structure.ind_nvf_x structure.ind_nvf_y > structure.ind_nvf
+\end{lstlisting}
+
+With gnuplot, we can run the following commands:
+\begin{lstlisting}
+gnuplot> set pm3d map
+gnuplot> splot 'structure.ind' u 1:2:3
+gnuplot> plot 'structure.ind_nvf' every 5:5 u ($1*1e6):($2*1e6):($3/50):($7/50) with vectors
+\end{lstlisting}
+
 \chapter{Python interface}
 \label{ch_python}
 \section{Introduction}
@@ -610,9 +787,9 @@ The following Python script can be used to calculate the modes for the waveguide
 
 \chapter{Version history and change-log}
 
-\section{Version 1.5.1}
-The command \lstinline!monitor! has been debugged for non-centered case and automated tests where added. \lstinline!outdata sz! was also added to extract the z-component of the Poynting vector.
-
+\section{Version 1.5.3}
+Adding \lstinline!draw! command and \textsf{draw} utility for drawing structure and automatically generating normal field for improve convergence. \lstinline!inpnf! has been introduced to export the normalfield generated by the \lstinline!draw! command.
+\lstinline!...! has also been introduce to cut on instruction line into multiple lines. While issuing an error, the line numer is given to ease debugging. 
 
 \section{Version 1.5}
 The first open source version of \afmm\ , published on GitHub. The software, originally called \textsf{AFMM} is renamed as \afmm .

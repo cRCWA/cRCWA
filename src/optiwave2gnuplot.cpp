@@ -68,8 +68,9 @@ complex<double> *read_optiwave(char* filename, int &nx, int &ny,
     if(f==NULL)
         throw commandError("Can not open input file :-(");
 
-    // skip a line
-    fscanf(f, "%*[^\n]");
+    // skip a line   
+    if (fscanf(f, "%*[^\n]")!=0)
+    	throw commandError("error in reading an empty line");
 
     if(fscanf(f,"%20d%20d",&nx,&ny)!=2) {
         fclose(f);
@@ -134,6 +135,16 @@ void write_gnuplot(char *filename, complex<double> *out, int nx, int ny,
     if(f==NULL)
         throw commandError("Can not open output file :-(");
     cout<<"nx="<<nx<<"  ny="<<ny<<endl;
+    // print header:
+    if(rimc==C) {
+        fprintf(f, "# x y real imag\n");
+    } else if(rimc==R) {
+        fprintf(f, "# x y real\n");
+    } else if(rimc==I) {
+        fprintf(f, "# x y imag\n");
+    } else if(rimc==M) {
+        fprintf(f, "# x y abs\n");
+    }
     for(int i=0; i<ny; ++i) {
         for(int j=0; j<nx; ++j) {
 

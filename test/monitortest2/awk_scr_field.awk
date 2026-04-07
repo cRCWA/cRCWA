@@ -1,1 +1,0 @@
-function abs(x){ return ((x < 0.0) ? -x : x) } BEGIN {comp=0; norm=0;} FNR==NR{sz=($4*$9-$5*$10-$14*$19+$15*$20); Pz=$24 ;norm+=$24*$24; comp+=((sz-Pz)*(sz-Pz)) ; next} END{ norm=sqrt(norm/FNR); comp=sqrt(comp/FNR); if (comp>1e-3*norm){ exit 1 } }

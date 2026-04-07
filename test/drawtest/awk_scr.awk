@@ -1,0 +1,1 @@
+function abs(x){ return ((x < 0.0) ? -x : x) } BEGIN {comp=0; norm=0;} FNR>1&&FNR==NR{a[FNR]=abs($3); next} FNR>1&&a[FNR]!=abs($3){comp+=abs(abs($3)-a[FNR])} END{ Nlines=sqrt(FNR); if (comp>4.5*Nlines){ exit 0 } exit 1 ; }

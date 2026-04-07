@@ -2,7 +2,7 @@
  *      Aperiodic Fourier Modal Method full vectorial 3D propagation       *
  *                            version 1.5                                  *
  *                                                                         *
- *     Build date: Feb 15 2026                                             *
+ *     Build date: Apr  7 2026                                             *
  *     Source revision: N/A                                                *
  *                                                                         *
  *     Davide Bucci, CROMA March 2008 - current                            *
@@ -41,19 +41,31 @@ Created DD, EE, FF, GG
 Calculating eigenvalues and eigenvectors
 LAPACK ZGEEVX executed, info = 0
 Section 1 of 1.
-Searching for interesting modes: 1 < Re{n_eff} < 0
+Searching for interesting modes: 1 < Re{n_eff} < 1.5
                             -0.1 < Im{n_eff} < 0.1
+Interesting mode found 0, effective index: (1.32367,-6.94235e-17)
+Interesting mode found 1, effective index: (1.29572,-2.22322e-18)
+Interesting mode found 2, effective index: (1.16696,-4.09317e-18)
+Interesting mode found 3, effective index: (1.1601,-2.79032e-17)
+Interesting mode found 4, effective index: (1.00276,-1.66723e-17)
+Interesting mode found 5, effective index: (1.00015,-2.82544e-17)
 Selected section 1 of 1
 
-Searching for interesting modes: 1 < Re{n_eff} < 0
+Searching for interesting modes: 1 < Re{n_eff} < 1.5
                             -0.1 < Im{n_eff} < 0.1
-Indices are: 
+Interesting mode found 0, effective index: (1.32367,-6.94235e-17)
+Interesting mode found 1, effective index: (1.29572,-2.22322e-18)
+Interesting mode found 2, effective index: (1.16696,-4.09317e-18)
+Interesting mode found 3, effective index: (1.1601,-2.79032e-17)
+Interesting mode found 4, effective index: (1.00276,-1.66723e-17)
+Interesting mode found 5, effective index: (1.00015,-2.82544e-17)
+Indices are: 0 1 2 3 28 29 
 Forward excitation:
 Creating the excitation field.
 Selected the mode position: 0, coefficient (1,0)
 Backward excitation:
 Creating the excitation field.
-Selected the mode position: 0, coefficient (1,0)
+Selected the mode position: 3, coefficient (1,0)
 
 Assembling sections
 Fabricating V matrix, section: 0, threads in parallel: 1 

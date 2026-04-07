@@ -43,6 +43,7 @@
 #include "section.h"
 #include "finterface.h"
 #include "commands.h"
+#include "draw.h" 
 #include "phys_constants.h"
 
 
@@ -132,6 +133,161 @@ int commands::c_rectangle(parsefile *obj, int argc,char *argv[])
     return 0;
 
 }
+
+
+/*  DRAW: draw polygone waveguide 
+
+    Usage:
+    draw [...] nb_layer shape_type shape_parameters ... n_ext k_ext optional_parameters
+
+
+    shape_type = c or e or r or p
+        - c: polygone generated from CIRCLE: 
+                all points are taken regularly on a circle
+                * shape_parameters =  n_int k_int rx nb_edge px py shift_angle
+        - e: polygone generated with all points are taken regularly on an ELIPSE
+                * shape_parameters = n_int k_int rx ry nb_edge px py shift_angle 
+        - r: RECTANGLE generated
+                * shape_parameters = n_int k_int wx wy px py 
+        - p: shape generated with specifying its POINTS
+                * shape_parameters = n_int k_int nb_edge x0 y0 x1 y1 ... xN yN
+    
+    optional_parameters:
+    	- '-o' ox oy : set the orientation of the normal field. 
+            	ox and oy are the x- y- direction of the normal field
+            	Default is radial normal fileld
+            * parameters are nf_x nf_y
+		- '-c' cx, cy : set the cordinate of the point where the normal field is
+                pointing to. For example, when the point is inside a polygone,
+                normal field will be close to radial with a vortex inside the
+                shape. When the point is pointing far away from the shape, the 
+                normal field parallel to each other pointing toward the specified
+                point 
+                cx and cy are the x- y- coordinate of the center point
+                By default it is centered on the polygone
+		- '-i' or '-no-nf' only generate the refractive index, not the  
+                normal field. When used inside crwca, previously computed 
+                nf will be used.
+
+
+    Parameters definition:
+
+    n_int, k_int: real and imaginary index of the waveguide
+    wx, wy      : x- and y- width of the shape
+    rx, ry      : radius of the circle or elipse along x and y directions
+    nb_edge     : number of edge of the shape
+    shift_angle : added angle to rotate the shape. The origin of angle
+            	  is taken as 360/(2*nb_edges) so that the side of the polygone 
+            	  is always perpendicular to the x axis.
+    px, py      : x- and y-position of the center of the shape. 
+            	  px=py=0 means that the shape is centered in the middle of the 
+            	  computational window.
+    x0,y0..xN,yN: points to specify the position of the edges
+    nf_x, nf_y  :x and y component of the normal field
+
+    Notes:
+    	parameters inside square brakets [...] are ignored
+		N+1 layer is below the layer N. Layer 1, is therefore on top of all other	
+		layers.
+    	This command should be used once the size of the calculation window and
+    	the number of space harmonics to be taken has been defined.
+
+*/
+int commands::c_draw(parsefile *obj, int argc,char *argv[])
+{
+	section *q ;
+	
+	// get structure:
+	structure *p;
+    if((p=dynamic_cast<structure *>(obj))==NULL)
+        throw parsefile_commandError("Incorrect dynamic cast: programming"
+            " error:-(");
+            
+	draw dw;
+	dw.set_size(p->tot_x, p->tot_y);
+
+	// sent the command to draw to be parsed
+    if(dw.parse(argc,argv, false)) {
+        throw parsefile_commandError("draw: error while reading"
+            " parameters.\n");
+    }
+    // set substrate
+    
+    // store the refractive index  
+    p->cur->store_refractive_index(dw.get_refractive_index());
+    cout << "Just read imported refractive index\n";
+
+	if (dw.get_OnlyIndex()) {
+	
+		// search for the previous section:
+		int current_section_number = 0 ;
+		q= &(p->sec_list[current_section_number]);
+		while (q != p->cur and current_section_number < p->number_of_sections){
+			q= &(p->sec_list[current_section_number++]);
+		}
+		current_section_number-- ;
+
+		if (q != p->cur) {
+		    throw parsefile_commandError("Programing error: cannot find previous section\n");
+		}
+		q= &(p->sec_list[current_section_number-1]);
+		
+		if (p->number_of_sections == 1 or
+			(q->crtr != &q->NormalFieldSym and q->crtr  != &q->NormalField) ) {
+			cout << "No normal field strategy used.\n"
+				"   Use matdev to change it or remove '-no-nf' option from draw \n"
+				"   to use automatically the normal field strategy\n";
+			return 0;
+		}
+	}
+	// set the matdev strategy for normal field:
+	if (p->symx == previous_version and p->symy == previous_version) {
+		// matdev nf
+		cout << "Set matrix development strategy to nf\n";
+		p->cur->crtr = &p->cur->NormalField;
+	} else {
+		// matdev nfs
+		cout << "Set matrix development strategy to nfs\n";
+		p->cur->crtr = &p->cur->NormalFieldSym;
+	}
+	
+	if (! dw.get_OnlyIndex()) {
+		// normal field has been computed. Store it:
+		p->cur->store_normal_field(dw.get_Normal_Field_x(), 
+			dw.get_Normal_Field_y());
+	    cout << "Just imported normal fields\n";
+	} else {
+	
+		// copy the previous normal field to the current section
+		cout << "Copying normal field matrices from previous section\n";    			
+
+	    if (p->symx == previous_version and p->symy == previous_version) {
+			// matdev nf
+			// Save the matrices:
+			p->cur->NormalField.Nr_fft = q->NormalField.Nr_fft ;
+			p->cur->NormalField.Nz_fft = q->NormalField.Nz_fft ;
+			
+		} else {
+			// matdev nfs
+			
+		   	// Save the matrices:
+			p->cur->NormalFieldSym.Nxx_input = q->NormalFieldSym.Nxx_input;
+			p->cur->NormalFieldSym.Nxy_input = q->NormalFieldSym.Nxy_input;
+			p->cur->NormalFieldSym.Nyy_input = q->NormalFieldSym.Nyy_input;
+
+			p->cur->NormalFieldSym.Nxx_fft = q->NormalFieldSym.Nxx_fft;
+			p->cur->NormalFieldSym.Nyy_fft = q->NormalFieldSym.Nyy_fft;
+			p->cur->NormalFieldSym.Nxy_fft = q->NormalFieldSym.Nxy_fft;
+
+    	}
+    }
+    
+
+   
+    return 0;
+
+}
+
 
 /*  PML: Add perfectly matched layers to the waveguide structure.
          See "Use of grating theories in integrated optics"
@@ -263,6 +419,105 @@ int commands::c_inpstruct(parsefile *obj, int argc,char *argv[])
     }
     fclose(f);
     cout << "Structure file written: "<< argv[4]<<"\n";
+
+    return 0;
+}
+
+/*  INPNF: write on a file the input normal field (stands for INPut Normal Field)
+
+    Usage:
+    inpnf type size_x size_y file_x file_y
+
+
+    Parameters:
+    type    must be {n|nm|nmo}, n indicates the normal field extracted from
+    		inverse Fourier transform, The nm case is a little bit special, since
+            it will give the normal field calculated *without* representing
+            the structure via the Fourier series. It is thus the "ideal case"
+            in some way. nmo is the same, but in the Optiwave format.
+
+    size_x  number of points to be plot in the x direction
+
+    size_y  number of points to be plot in the y direction
+
+    file_x    filename which should be written the x component of the normal field
+
+    file_y    filename which should be written the y component of the normal field
+    
+    File format:
+        The file format used is extremely simple and is organized in order to
+        be directly compatible with Gnuplot way of life.
+
+*/
+int commands::c_inpnf(parsefile *obj, int argc,char *argv[])
+{
+
+
+    structure *p;
+
+    p = wantedParameters(argv[0], argc, 6, obj);
+
+    // p contains the current object and should therefore be a structure
+
+    int sj =0;
+    int si =0;
+
+    sscanf(argv[2],"%20d", &sj);
+    sscanf(argv[3],"%20d", &si);
+    db_matrix out_x ;
+    db_matrix out_y ;
+    p->cur->do_inpnf(sj, si,argv[1], out_x, out_y);
+    
+    double dx=p->tot_x / sj;
+    double dy=p->tot_y / si;
+
+    FILE *fx=fopen(argv[4],"w");
+    if(fx==NULL)
+        throw parsefile_commandError("inpstruct: I can not open the output"
+            " file:-(");
+    FILE *fy=fopen(argv[5],"w");
+    if(fy==NULL)
+        throw parsefile_commandError("inpstruct: I can not open the output"
+            " file:-(");
+            
+    if(strcmp(argv[1],"nmo")==0) {
+/*        fprintf(f, "UPI3DRI 3.0\n");
+        fprintf(f, "%d %d\n", out.getNcol(), out.getNrow());
+        fprintf(f, "%lf %lf %lf %lf\n", 0.0, p->tot_x*1e6, 0.0, p->tot_y*1e6);
+        for(int i=0; i<out.getNrow(); ++i) {
+            for(int j=0; j<out.getNcol(); ++j) {
+                fprintf(f, "%le, %le\n",
+                    out(i,j).real(),
+                    out(i,j).imag());
+            }
+            fprintf(f,"\n");
+        }*/
+        cout << "Not implemented yet\n";
+    } else {
+        fprintf(fx, "# x         y        %s.real       %s.imag\n", argv[1],
+            argv[1]);
+        fprintf(fy, "# x         y        %s.real       %s.imag\n", argv[1],
+            argv[1]);
+        for(int i=0; i<out_x.getNrow(); ++i) {
+            for(int j=0; j<out_x.getNcol(); ++j) {
+                fprintf(fx, "%le %le %le %le\n",
+                    j*dx,
+                    i*dy,
+                    out_x(i,j).real(),
+                    out_x(i,j).imag());
+                fprintf(fy, "%le %le %le %le\n",
+                    j*dx,
+                    i*dy,
+                    out_y(i,j).real(),
+                    out_y(i,j).imag());
+            }
+            fprintf(fx,"\n");
+            fprintf(fy,"\n");
+        }
+    }
+    fclose(fx);
+    fclose(fy);
+    cout << "Normal field files written: "<< argv[4]<<" and "<< argv[5] << "\n";
 
     return 0;
 }
@@ -1453,18 +1708,9 @@ int commands::c_matdev(parsefile *obj, int argc,char *argv[])
 
         p->cur->crtr = &p->cur->NormalField;
         db_matrix file_x = read_file(argv[3], p->tot_x, p->tot_y, mult);
-
-        file_x *= 1.0/file_x.getNcol()/file_x.getNrow();
-
-        db_matrix file_x_fft = file_x.ifft2();
-
-        p->cur->NormalField.Nr_fft = fft2cent(p->dimx, p->dimy, file_x_fft);
-
         db_matrix file_y = read_file(argv[4], p->tot_x, p->tot_y, mult);
-        file_y *= 1.0/file_y.getNcol()/file_y.getNrow();
-        db_matrix file_y_fft = file_y.ifft2();
-
-        p->cur->NormalField.Nz_fft = fft2cent(p->dimx, p->dimy, file_y_fft);
+        
+		p->cur->store_normal_field(file_x, file_y);
 
     } else if(strcmp(argv[1],"las")==0) {
         if(argc<3) {
@@ -1498,35 +1744,9 @@ int commands::c_matdev(parsefile *obj, int argc,char *argv[])
 
         p->cur->crtr = &p->cur->NormalFieldSym;
         db_matrix file_x = read_file(argv[3], p->tot_x, p->tot_y, mult);
-
         db_matrix file_y = read_file(argv[4], p->tot_x, p->tot_y, mult);
 
-        db_matrix Nxx  = file_x;
-        db_matrix Nyy = file_y;
-        db_matrix Nxy = file_x;
-
-        Nxx.hadamard(file_x);
-        Nyy.hadamard(file_y);
-        Nxy.hadamard(file_y);
-
-        // Save the matrices:
-        p->cur->NormalFieldSym.Nxx_input = Nxx;
-        p->cur->NormalFieldSym.Nxy_input = Nxy;
-        p->cur->NormalFieldSym.Nyy_input = Nyy;
-
-        // normalise the matrices for the fft:
-
-        Nxx *= 1.0/file_x.getNcol()/file_x.getNrow();
-        Nyy *= 1.0/file_x.getNcol()/file_x.getNrow();
-        Nxy *= 1.0/file_x.getNcol()/file_x.getNrow();
-
-        db_matrix Nxx_fft = Nxx.fft2();
-        db_matrix Nxy_fft = Nxy.fft2();
-        db_matrix Nyy_fft = Nyy.fft2();
-
-        p->cur->NormalFieldSym.Nxx_fft = fft2cent(p->dimx, p->dimy, Nxx_fft);
-        p->cur->NormalFieldSym.Nyy_fft = fft2cent(p->dimx, p->dimy, Nyy_fft);
-        p->cur->NormalFieldSym.Nxy_fft = fft2cent(p->dimx, p->dimy, Nxy_fft);
+		p->cur->store_normal_field(file_x, file_y);
 
     } else {
         throw parsefile_commandError("matdev: unrecognized development. "
@@ -1606,8 +1826,8 @@ int commands::c_power(parsefile *obj, int argc,char *argv[])
     // excitation has been put equal to zero.
     db_matrix E=p->cur->W*excitation;
     db_matrix H=p->cur->V*excitation;
-    power = section::integralPoynting(p,E, H,0)*p->tot_x*p->tot_y;;
 
+    power = section::integralPoynting(p,E, H,0)*p->tot_x*p->tot_y;;
 
     p->insertVar("ans",power);
 
@@ -1643,9 +1863,7 @@ int commands::c_powerZ(parsefile *obj, int argc,char *argv[])
              "the z value.\n");
      }
 
-
     power = p->do_powerz(z);
-
     p->insertVar("ans",power);
 
     cout << "power at z = " << z << " (in W): "<<power<<endl;
@@ -1703,9 +1921,7 @@ int commands::c_monitor(parsefile *obj, int argc,char *argv[])
     if(sscanf(argv[5], "%20lf", &py)!=1) {
          throw parsefile_commandError("monitor: error while reading "
              "the py value.\n");
-
      }
-
 
     power=p->do_monitor(z,wx,wy,px,py);
     p->insertVar("ans",power);

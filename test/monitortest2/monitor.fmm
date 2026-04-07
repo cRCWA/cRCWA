@@ -55,6 +55,7 @@ for :quota 0 2 1
 		wants propagation
 		solve
 		assemble
+		# outdata sz r PoyntingZ.txt
 
 		if (case==7)
 			let cas=0
@@ -73,13 +74,10 @@ for :quota 0 2 1
 		if (cas>4)
 			excitation f m 1 0 0 0
 		endif
-		
-		if ((case==6)&&(quota==0))
-			outdata sz r "cas6_Pz.txt"
-			propagation Ex,Hy,Ey,Hx c 1e-6 101 1 cas6_Ex.txt,cas6_Hy.txt,cas6_Ey.txt,cas6_Hx.txt
-		else
-			propagation Ex,Hy,Ey,Hx c 10e-9 1 1 Ex.txt,Hy.txt,Ey.txt,Hx.txt
-		endif
+
+
+		propagation Ex,Hy,Ey,Hx c 10e-9 101 1 Ex.txt,Hy.txt,Ey.txt,Hx.txt
+
 
 
 		select 1
@@ -114,9 +112,6 @@ for :quota 0 2 1
 	next :case
 next :quota
 fclose file
-
-# 
-
 
 # plot [0:13] [-2e-15:-2e-14] 'test_output.txt' u 1:2 w p t 'power' , 'test_output.txt' u 1:3 w p t 'powerz', 'test_output.txt' u 1:4 w p t 'centered monitor', 'test_output.txt' u 1:($5+$6) w p t 'monitor2+3'
 

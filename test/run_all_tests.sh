@@ -193,6 +193,14 @@ cd calculatedz
         test_fail=1
      fi
 cd ..
+cd drawtest
+    if ./test_draw.sh $executable
+    then
+        ok=1
+    else
+        test_fail=1
+     fi
+cd ..
 
 
 echo

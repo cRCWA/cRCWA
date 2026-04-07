@@ -93,15 +93,11 @@ void structure::reset(void)
 /*    // Set the default matrix creation strategy for PMLs
     crtr = &PMLafterOPT;    */
 
+    additional_output_data.should_record_integral = false;
+    additional_output_data.should_record_generation_rate = false;
 
-	additional_output_data.should_record_integral = false;
-	additional_output_data.should_record_generation_rate = false;
-	additional_output_data.should_record_poynting_vector=false;
-
-            
-	bloch_eigvect.kill();
-	bloch_eigval.kill();
-
+    bloch_eigvect.kill();
+    bloch_eigval.kill();
 }
 
 
@@ -206,7 +202,7 @@ double structure::do_monitor(const double z, const double wx, const double wy,
     db_matrix E=q->W*excitationE;
     db_matrix H=q->V*excitationH;
 
-    power= section::integralPoynting_rectangle(this,E, H,wx,wy,px,py);
+    power= section::integralPoynting_rectangle(this,E, H,0,wx,wy,px,py);
     cout << "power at z = " << z << " (in W): "<<power<<endl;
     return power;
 

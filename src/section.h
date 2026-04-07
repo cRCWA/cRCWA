@@ -241,12 +241,10 @@ public:
 
 
     static double integralPoynting_rectangle(structure *p, db_matrix &V,
-        db_matrix &W, double wx, double wy, double px, double py);
+        db_matrix &W, int column, double wx, double wy, double px, double py);
 
     static double integralPoynting(structure *p, db_matrix &V, db_matrix &W,
         int column);
-    static db_matrix computePoyntingVector(structure *p, db_matrix &H_vec,
-    	db_matrix &E_vec);
 
     void set_substrate(complex<double>subs);
     void add_rectangle(complex<double>n_g, double wx, double wy, double px,
@@ -257,10 +255,12 @@ public:
     void set_pml_transf(double qdx, double qdy, complex<double> g);
     void set_bend(double r);
     db_matrix do_inpstruct(int sj, int sx, char* otype);
+    void do_inpnf(int sj, int si, char* otype, db_matrix &out_x, db_matrix &out_y);
     list<db_matrix> do_outgmodes(int sj, int si, char *ftype, 
         rimco_e rimc, const char *fname);
     void store_refractive_index(db_matrix rd);
     void do_order(double min, double max);
+    void store_normal_field(db_matrix &Nfx, db_matrix &Nfy);
     db_matrix &getW(void){return W;}
     db_matrix &getB(void){return B;}
 
@@ -300,7 +300,6 @@ public:
         double real_neff, complex<double> coeff , int index_yz, int index_xz);
 
     db_matrix create_excitation_from_file(bool excitation_fy, db_matrix &rd );
-
 
     int select_real(double real_neff);
 

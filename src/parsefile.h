@@ -64,7 +64,7 @@ using namespace std;
 #define HT_NOTFOUND -1
 #define HT_NOTSPACE -1
 #define MAXCMLEN     64             // Longueur maximale d'un nom de commande
-#define BUFDIM      256             // Longueur maximale d'une ligne du fichier
+#define BUFDIM      512             // Longueur maximale d'une ligne du fichier
 #define MAXFILE     20              // Nombre max de files ouverts
 
 typedef class parsefile parsefile_tag;
@@ -199,7 +199,7 @@ public:
         /*errMess[m.getLen()]='\0';
         // HEY THIS CODE DOES NOT ADD \0!!!
         strncat(errMess, m.c_str(),MAXLEN);*/
-        cerr << m<<endl;
+        //cerr << m<<endl;
         errMess=m;
     }
     ~parsefile_commandError() throw () {};

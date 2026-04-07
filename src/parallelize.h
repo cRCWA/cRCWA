@@ -23,14 +23,13 @@
 #include "structure.h"
 #include "compat.h"
 
-// It seems that this is different for different compilers !
-//#ifdef _WIN32
-//#include <thread>
-//typedef std::thread thread_handle;
-//#else
+#ifdef _WIN32
+#include <thread>
+typedef std::thread thread_handle;
+#else
 #include <pthread.h>
 typedef pthread_t thread_handle;
-//#endif
+#endif
 
 struct thread_data{
    int  instance_number;
@@ -38,7 +37,7 @@ struct thread_data{
    void *payload;
    bool close_process;
    int *thread_counter;
-   thread_handle thread;
+   pthread_t thread;
 };
 
 void parallelize(struct thread_data *td, void* (pfunc)(void*), int i, 

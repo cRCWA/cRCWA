@@ -260,7 +260,7 @@ with the important advantage that, if the \lstinline!parallel! command is used, 
             The backward excitation is applied to the end of the calculation 
             region, i.e. after the last section which has been 
             defined and propagates towards the section 1.
-    \item\lstinline!t!      defines the excitation types and can be \lstinline!{m|s|cx|cy|fx|fy}!. 
+    \item\lstinline!t!      defines the excitation types and can be \lstinline!{m|s|fx|fy}!. 
     \item\lstinline!r,i! parameters giving the real and imaginary part of the excitation coefficient for the selected mode or field. This is useful to control the phase or intensity relation between two modes or the forward and backward excitation. In fact, several  \lstinline!excitation! commands can be used to excite for example several propagation modes employing different strategies.
     \item\lstinline!a,b! additional parameters whose signification depends to the parameter \lstinline!t! which has been provided to the command.
 \end{itemize}
@@ -397,7 +397,7 @@ This command should be used before \lstinline!solve!.
 			\item \lstinline!filename! is the name of the file on which Poynting vector will be saved.
     	\end{itemize}
 
-
+        
         \item if \lstinline!t=g!, it computes the 2D generation rate cylindrincally 
         interpolated from the 3D generation rate using:
 
@@ -578,6 +578,135 @@ rectangle 3.46 0.0 500e-9 200e-9 0 0
 Define a $3.46$ refractive index (silicon) rectangular waveguide, $500\nm \times 200\nm$, centreed in the calculation window.
 
 
+\subsection{DRAW: draw the structure}
+\label{subsec_draw}
+
+Generates a structure by drawing polygones. When 2 polygones overlaps, the first defined polygone is drawn on top of the others.
+
+Usage: \lstinline!draw [...] nb_shapes shape_type shape_parameters ... n_ext k_ext OPTIONAL_PARAMETERS!
+
+
+Parameters:
+\begin{itemize}
+\item \lstinline!nb_shapes!: number of shapes to be drawn. \lstinline!shape_type shape_parameters! are input for each shape.
+\item \lstinline!shape_type!: defines the type of shape can be \lstinline!{c|e|r|p}!.
+    \begin{itemize}
+    	\item if \lstinline!shape_type=c!, the polygone is generated with points on a circle.
+        
+        	\lstinline!shape_parameters! = \lstinline!nr_shape ni_shape rx nb_edges px py shift_angle!
+        	
+        	where:
+		    \begin{itemize}
+	    		\item \lstinline!nr_shape!: shape refractive index, real part
+				\item \lstinline!ni_shape!: shape refractive index, imaginary part
+				\item \lstinline!rx!: radius of the circle used to compute polygone points
+				\item \lstinline!nb_edges!: number of edged of the polygone
+				\item \lstinline!px!: $x$ position of the centre of the shape 
+				\item \lstinline!py!: $y$ position of the centre of the shape
+				\item \lstinline!shift_angle!: angle of rotation of the shape. For \lstinline!shift_angle=0!, the side of the polygone is perpendicular to the $x$ axis.		
+	    	\end{itemize}
+
+    	\item if \lstinline!shape_type=e!, the polygone is generated with points on an elipse.
+        
+        	\lstinline!shape_parameters! = \lstinline!nr_shape ni_shape rx ry nb_edges px py shift_angle!
+        	
+        	where:
+		    \begin{itemize}
+	    		\item \lstinline!nr_shape!: shape refractive index, real part
+				\item \lstinline!ni_shape!: shape refractive index, imaginary part
+				\item \lstinline!rx!: radius in $x$ direction of the elipse used to compute polygone points
+				\item \lstinline!rx!: radius in $y$ direction of the elipse used to compute polygone points
+				\item \lstinline!nb_edges!: number of edged of the polygone
+				\item \lstinline!px!: $x$ position of the centre of the shape 
+				\item \lstinline!py!: $y$ position of the centre of the shape
+				\item \lstinline!shift_angle!: angle of rotation of the shape. For \lstinline!shift_angle=0!, the side of the polygone is perpendicular to the $x$ axis.		
+	    	\end{itemize}
+
+    	\item if \lstinline!shape_type=r!, rectangle is generated.
+        
+        	\lstinline!shape_parameters! = \lstinline!nr_shape ni_shape wx wy px py!
+        	
+        	where:
+		    \begin{itemize}
+	    		\item \lstinline!nr_shape!: shape refractive index, real part
+				\item \lstinline!ni_shape!: shape refractive index, imaginary part
+				\item \lstinline!wx!: rectangle $x$ width
+				\item \lstinline!wy!: rectangle $y$ width
+				\item \lstinline!px!: $x$ position of the centre of the shape 
+				\item \lstinline!py!: $y$ position of the centre of the shape
+	    	\end{itemize}
+	    	
+    	\item if \lstinline!shape_type=p!, the point coodinate of the polygone are explicitly defined
+        
+        	\lstinline!shape_parameters! = \lstinline!nr_shape ni_shape nb_edges x0 y0 ... xN yN!
+        	
+        	where:
+		    \begin{itemize}
+	    		\item \lstinline!nr_shape!: shape refractive index, real part
+				\item \lstinline!ni_shape!: shape refractive index, imaginary part
+				\item \lstinline!nb_edges!: number of edged of the polygone
+				\item \lstinline!x!: for each edge define the $x$ coordinate
+				\item \lstinline!y!: for each edge define the $y$ coordinate
+	    	\end{itemize}  	
+	\end{itemize}
+\item \lstinline!nr_sur!: surronding medium refractive index, real part
+\item \lstinline!ni_sur!: surronding medium index, imaginary part
+\item \lstinline!OPTIONAL_PARAMETERS!: optional parameters:
+    \begin{itemize}
+    	\item \lstinline!-o ox oy! set the preferential orientation of the normal field. When not set, the normal field is radial.
+			\begin{itemize}
+				\item \lstinline!ox!: $x$ component of the normal field
+				\item \lstinline!oy!: $y$ component of the normal field
+			\end{itemize}	
+    	\item \lstinline!-c cx, cy! set the cordinate of the point where the normal field is pointing to.
+    		For example, when the point is inside a polygone,
+            normal field will be close to radial with a vortex inside the
+            shape. When the point is pointing outside the shape, the 
+            normal field parallel to each other pointing toward the specified point 
+            cx and cy are the x- y- coordinate of the center point.
+            When not set, it is centered on the polygone.
+
+			\begin{itemize}
+				\item \lstinline!cx!: $x$ coordinate of the center point
+				\item \lstinline!cy!: $y$ coordinate of the center point
+			\end{itemize}	
+    	\item \lstinline!-no-nf! only generate the refractive index, not the  
+             normal field. Previously computed normal field will be used instead.
+
+	\end{itemize}
+\end{itemize}
+
+
+Notes:
+	This command usually results in more accurate results that using \lstinline!substrate! and \lstinline!rectangle! commands as it is automatically seting the normal vector field.
+    This command should be used once the size of the calculation window (command \lstinline!size!)  and    the number of space harmonics to be taken in the calculations (command \lstinline!harmonics!)  have been defined.
+    This command implicitly defines the maximum value of the effective index for a mode to be considered ``interesting'' when using the \lstinline!solve! command.
+ 
+For example:
+\begin{lstlisting}
+draw 1 r 3.46 0.0 500e-9 200e-9 0 0 1 0
+\end{lstlisting}
+Define a $3.46$ refractive index (silicon) rectangular waveguide, $500\nm \times 200\nm$, centreed in the calculation window in air (refractive index of 1). The normal field is generated and used to improve convergence: better accuracy is reach for a smaller number of harmonics. This is equivalent to generate the normal field with external tool and run:
+\begin{lstlisting}
+substrate 1 0
+rectangle 3.46 0.0 500e-9 200e-9 0 0
+matdev nf 1e-6 nv_x.rid nv_y.rid
+\end{lstlisting}
+
+Example 2:
+\begin{lstlisting}
+draw 1 c 3.46 0 200e-9 50 0 0 0 1 0 
+\end{lstlisting}
+Define a $3.46$ refractive index (silicon) circular waveguide (50 points spread on a circle) with $200\nm$ radius, centreed in the calculation window, in air (refractive index of 1). The normal field is generated and used to improve convergence: better accuracy is reach for a smaller number of harmonics.
+
+
+Example 3:
+\begin{lstlisting}
+draw 2 c 3.46 0 200e-9 8 0 0 0 p 1.44 0 4 400e-9 400e-9 ...
+	-400e-9 400e-9 -400e-9 -400e-9 400e-9 400e-9 1 0 
+\end{lstlisting}
+Define a $3.46$ refractive index (silicon) hexagonal waveguide (8 points spread on a circle) with $200\nm$ radius, centreed in the calculation window; inside a square waveguide of $1.44$ of refractive index (SiO2), in the air. The normal field is generated and used to improve convergence: better accuracy is reach for a smaller number of harmonics.
+
 \subsection{PML: Add perfectly matched layers to the waveguide}
 \label{subsec_pml}
 Implement anisotropic perfectly matched layers on the boundaries of the calculation window, as described in \cite{silberstein2001ugt} and in this manual in section~\ref{subsec_pml_anisotropic}.
@@ -642,7 +771,44 @@ Parameters:
    \end{itemize}
     
     File format: the refractive index distribution must be coded in the Optiwave \lstinline!rid! format, described in detail in section~\ref{sec_format_rid}.
+
+\subsection{INPNF: Show the input normal-field}
+\label{subsec_inpnf}
+Write on a file the normal field considered in the computation (stands for INPut Normal-Field). This may be useful to check if it has been 
+defined correctly by the input file, as well as to check how well the structure
+is represented, given the number of harmonics taken into account, unless the \lstinline!nm! type of representation is chosen. In this case, the represented normal-field is the one originally specified, without passing by the Fourier transforms.
     
+    Usage: \lstinline!inpnf type size_x size_y file_x file_y!
+    
+    \begin{itemize}
+    \item
+    \lstinline!type!    must be \lstinline!{n|nm|nmo}!, \lstinline!n! indicates the 
+            normal field extracted. \lstinline!nm! indicates the original normal field distribution, without having passed by a Fourier transform. \lstinline!nmo! is the same as \lstinline!nm!, but the output is done in the Optiwave format.
+    \item
+    \lstinline!size_x!  number of points to be plot in the x direction
+    \item
+    \lstinline!size_y!  number of points to be plot in the y direction
+    \item
+    \lstinline!file_x!    name of the file which should be written the x component of the normal field
+    \item
+    \lstinline!file_y!    name of the file which should be written the y component of the normal field
+    \end{itemize}
+    
+File format: Gnuplot-compatible (see appendix~\ref{sec_format_gnuplot}).
+
+Notes: 
+\begin{itemize}
+	\item
+	As the sign of the normal field is arbitrary when considering the normal field implementation, only the absolute of the normal field is stored in (when considering symmetry). The return normal field is thus the absolute value.
+	\item For \lstinline!type=n!, the normal-field considered is obtained by an inverse Fourier transform.
+	If the number of point given by \lstinline!size_x! and \lstinline!size_y! is bigger than 
+	the corresponding size of the normal-field, a zero padding technique is applied 
+	before calculating the inverse transform of the matrix obtained. This allows to
+	represent a given distribution with a comfortable number of point even if the
+	number of harmonics taken is much less. No magic: it is just that the results
+	are interpolated.
+\end{itemize}
+
 \subsection{INPSTRUCT: Show the input structure}
 \label{subsec_inpstruct}
 Write on a file the permittivity or permeability chart of the input structure (stands for INPut STRUCTure). This may be useful to check if it has been 

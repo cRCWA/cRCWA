@@ -1,0 +1,81 @@
+# simulation of a dielectric layer in air (i.e. Fabry-Perot) resonances at various incident angle
+
+let lambda=1.5e-6
+let lambda0=1.3e-6
+let Tx=3.2e-6
+let ninc=1
+let ndiel=4
+let hdiel=lambda0/(2*ndiel)
+
+
+fopen "test_output.txt" "w"
+let file=ans
+for :angle 0 30 1 
+
+	print " "
+	print "ANGLE =" angle
+	print " "
+	clear
+	
+	size Tx 3.2e-6
+	wavelength lambda
+	harmonics 21 1
+
+	# Air
+	section 1e-6
+		substrate ninc 0.0
+
+	# dielectric
+	section hdiel
+		substrate ndiel 0.0
+		
+	# Air
+	section 1e-6
+		substrate 1 0.0
+
+	wants propagation
+	solve
+	assemble
+	
+	let theta=angle/180*3.14
+
+	#let a0=1.0/(cos(theta-arcsin(lambda/(ninc*Tx))))
+	#let a1=1.0/(cos(theta-arcsin(2*lambda/(ninc*Tx))))
+	
+	let a1=ninc*Tx*sin(theta)/lambda
+	let a0=cos(theta)-a1*cos(arcsin(lambda/(ninc*Tx)))
+	#let a0=cos(theta)-a1*sqr(1-(lambda/(ninc*Tx))^2)
+	
+	#let a1=ninc*Tx*sin(theta)/(lambda)
+	#let a0=1
+	let a0=cos(theta)-sin(theta)*sqr(((ninc*Tx)/lambda)^2-1)
+	
+	
+	print "excitation theta =" theta "a0 = " a0 "a1 = " a1
+	excitation f cy a0 0 0 0
+	excitation f cy a1 0 1 0
+
+	
+	propagation Ey m 10e-9 1 1 Ey.txt
+		
+	# compute power
+	select 1
+	power f 1e-8
+	let P=ans
+	
+	let z0=hdiel+1.2e-6
+	powerZ z0
+	let Pz=ans
+	let T=Pz/P
+
+	print theta
+	print thetadiel=arcsin(ninc/ndiel*sin(theta))
+	print Rinterf=((ndiel*cos(thetadiel)-ninc*cos(theta))/(ndiel*cos(thetadiel)+ninc*cos(theta)))^2
+	print phi=4*3.14*ndiel*hdiel*cos(thetadiel)/lambda
+	print Tref=((1-Rinterf)^2)/(1-2*Rinterf*cos(phi)+Rinterf^2)
+
+	fprint file angle P Pz T Tref
+		
+next :angle
+fclose file
+

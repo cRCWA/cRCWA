@@ -37,7 +37,7 @@
   \marginpar{\footnotesize{\it #1}}}
 
 \lstdefinelanguage{AFMM} 
-	{morekeywords={size,solve,wavelength, rectangle, substrate, harmonics, pml,inpstruct,outgmodes, lowindex, highindex, indfile, pml_transf, bend, wants,spectrum,propagation,assemble,section,order,excitation,quit,help,
+	{morekeywords={size,solve,wavelength, rectangle, substrate, draw, harmonics, pml,inpstruct, inpnf, outgmodes, lowindex, highindex, indfile, pml_transf, bend, wants,spectrum,propagation,assemble,section,order,excitation,quit,help,...
 	load, print, select, coefficient, coefficient_id, carpet, outdata, matdev, norm, clear, system, goto, label, for, next, eigenvc, eigenam, memocc, symmetry,monitor, power, powerz, let, bloch, outbloch, if, else, endif, size, lg, ln, sin, cos, tan, sqr, abs,arctan,arcsin,arccos,sinh, cosh,tanh,fopen,fclose,
 	fprint,addspace,parallel, selmodes, modepos, fscan, fskip, fcheck, do,
 	while, angles, indmatrix, parsescript}, 
@@ -50,7 +50,7 @@
 
 
 \begin{document}
-\title{The \afmm\ 1.5.1 user manual\\[2em]
+\title{The \afmm\ 1.5 user manual\\[2em]
 A 3D full vectorial mode solver and propagator}
 
 
@@ -65,7 +65,7 @@ I am deeply thankful to Bruno Martin for his friendly help through the detailed 
 
 Another person to whom I am deeply indebted is J\'er\^ome Michallon, who carefully checked all my calculations and corrected several of the mistakes I did. He developed a very detailed understanding of the implementation details, and this allowed him to be active in the code development. Thanks to his work, \afmm\ can now take into account symmetries present in the calculated structure. J\'er\^ome also participated to an accurate revision of this document. Kudos to Elise Ghibaudo; she provided a very detailed feedback and spotted some bugs and errors in this manual.
 
-I would also thank all the colleagues and the students who provided a very welcomed feedback about this software: Thomas Nappez, Marco Casale, Elsa Jardinier, Sandie de Bonnault, Lionel Bastard and many others.
+I would also thank all the colleagues and the students who provided a very welcomed feedback about this software: Thomas Nappez, Marco Casale, Elsa Jardinier, Sandie de Bonnault.
 
 \chapter*{Introduction}
 \textsf{

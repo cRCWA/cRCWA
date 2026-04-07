@@ -636,7 +636,8 @@ int parsefile::c_fskip(parsefile *obj, int argc,char *argv[])
         file=obj->openedfiles[handle];
 
         // skip a line
-        fscanf(file, "%*[^\n]");
+        if (fscanf(file, "%*[^\n]")!=0)
+        	throw parsefile_commandError("error in reading an empty line");
 
     } else {
         throw parsefile_commandError("fskip: invalid number of parameters.");
@@ -793,7 +794,7 @@ void parsefile::readFile(FILE* pFin_r, bool interactive)
     pFin=pFin_r;
     nP->setErrorDetectLevel(0);
 
-    char buffer[BUFDIM];
+    char buffer[BUFDIM+1];
     char com[BUFDIM];
     int index,i;
     int ligne=0;
@@ -829,6 +830,9 @@ void parsefile::readFile(FILE* pFin_r, bool interactive)
 
         bool doNotExecute=false;
         noForCycles=false;
+        
+        // reseting the line number for the second pass
+        ligne=0 ;
 
         while(cont && !stopEx){
             ++ligne;
@@ -841,7 +845,8 @@ void parsefile::readFile(FILE* pFin_r, bool interactive)
                     com[1]='\0';
 
                 index=ht_find(com);
-                //cout <<"pass: "<<pass<< "; command: "<<com<<endl;
+                
+                //cout <<"pass: "<<pass<< "; line: "<< ligne <<"; command: "<<com<<endl;
                 if(index>=0){
                     // In the first pass, we only interpret and execute
                     // the following commands
@@ -862,7 +867,7 @@ void parsefile::readFile(FILE* pFin_r, bool interactive)
                     i=0;
 
                     // On utilise la variable suivante comme un compteur
-                    // des paramètres, pour la valeur 0 on a le commande
+                    // des paramètres, pour la valeur 0 on a la commande
 
                     c_argc=0;
 
@@ -880,13 +885,32 @@ void parsefile::readFile(FILE* pFin_r, bool interactive)
 
                     while(buffer[i]!='\0'&&(buffer[i]!='\n' &&
                         buffer[i]!='\r')){
-
+						
                         if(buffer[i]=='#') { // A comment.
                             inComment=true;
                         }
                         if(inComment) {
                             ++i;
                             continue;
+                        }
+                        // If we get '...', the commands continue on next line
+                        if (!inQuotes && buffer[i]=='.' && i>1) {
+                        	if (buffer[i-1] =='.' && buffer[i-2] =='.'){
+
+                        		// the current argument starts with '...'
+                        		// this cannot be a valid argument. remove it 
+                        		// to look for next argument.
+                        		if (c_argv[c_argc][0] =='.' ) {  
+                                 	c_argc-- ;
+                        		}
+                        		i-- ;
+								buffer[i-1] =' ' ; 
+        		               
+								// add the following line into the buffer:
+                        		cont = (fgets(&buffer[i], BUFDIM, pFin)!=NULL);
+                        		++ligne;
+                        		--i ;
+                        	}
                         }
                         if(buffer[i]=='"') {
                             inQuotes = !inQuotes;
@@ -904,9 +928,9 @@ void parsefile::readFile(FILE* pFin_r, bool interactive)
                             else if(!inQuotes)
                                 buffer[i]='\0';
                         }
-                        // on sait que chaque paramétre est separé de l'autre
+                        // on sait que chaque paramètre est separé de l'autre
                         // par un espace donc on peut chercher sur
-                        // l'array "buffer" chaque paramétre
+                        // l'array "buffer" chaque paramètre
 
                         if((buffer[i]==' ' || buffer[i]=='\t') && !inQuotes){
                             // We substitute space with the '\0' terminator
@@ -937,82 +961,100 @@ void parsefile::readFile(FILE* pFin_r, bool interactive)
                             };
                             // quand on trouve l'espace, on donne l'adresse
                             // du prochaine paramètre à c_argv:
-
                             c_argv[c_argc]=&buffer[i+1];
+
                         }
                         ++i;
                         if (i>=BUFDIM){
                             throw parsefile_commandError("Command line too"
                                 " long.");
                         }
-                    }
-                    buffer[i]='\0';
-
-                    double res;
-
-                    // Process all arguments (calculate, if possible)
-                    for(int k=0; k<c_argc+1; ++k) {
-                        int err=1;
-
-                        if (!dont_evaluate[k]) {
-                            err=nP->calculate(c_argv[k], res);
-                        }
-                        dont_evaluate[k]=false;
-                        to_free[k] = false;
-
-                        if (err==0) {
-                            to_free[k] = true;
-                            c_argv[k] = new char[BUFDIM];
-
-                            snprintf(c_argv[k], BUFDIM, "%g", res);
-                        }
+						
                     }
 
-                    if(!doNotExecute) {
-                        try {
-                            if(!interactive) {
-                                if(ht_commande[index].fonc(
-                                    ht_commande[index].obj,
-                                    c_argc+1,c_argv)){
-                                    ostringstream errstr;
+	                buffer[i]='\0';
 
-                                    errstr<<"Execution error in command: ";
-                                    errstr<<ht_commande[index].commande;
-                                    errstr<<" at line ";
-                                    errstr<<ligne;
-                                    // error while executing command
+	                double res;
+	                // Process all arguments (calculate, if possible)
+	                for(int k=0; k<c_argc+1; ++k) {
+	                    int err=1;
+	                    if (!dont_evaluate[k]) {
+	                        err=nP->calculate(c_argv[k], res);
+	                    }
+	                    dont_evaluate[k]=false;
+	                    to_free[k] = false;
 
-                                    throw parsefile_commandError(errstr.str());
-                                }
-                            } else {
-                                try {
-                                    if(ht_commande[index].fonc(
-                                        ht_commande[index].
-                                        obj, c_argc+1,c_argv)){
-                                        cerr<<"Execution error in command: ";
-                                        cerr<<ht_commande[index].commande;
-                                        cerr<<endl;
-                                    }
-                                } catch(parsefile_commandError P) {
-                                    cerr<<P.getMess()<<"\n";
-                                    if(pFin!=stdin) {
-                                        cont=false;
-                                        pass=1;
-                                        goto test_end_file;
-                                    }
-                                }
-                            }
-                        } catch(parsefile_stop Q) {
-                            cout<< "Stopping the program execution"<<endl;
-                            stopEx = true;
-                        }
-                    }
-                    for(int k=0; k<c_argc+1; ++k) {
-                        if (to_free[k]) {
-                            delete[] c_argv[k];
-                            to_free[k]=false;
-                        }
-                    }
+	                    if (err==0) {
+	                        to_free[k] = true;
+	                        c_argv[k] = new char[BUFDIM];
+
+	                        snprintf(c_argv[k], BUFDIM, "%g", res);
+	                    }
+	                }
+
+	                if(!doNotExecute) {
+	                    try {
+	                        if(!interactive) {
+	                            try {
+			                        if(ht_commande[index].fonc(
+			                            ht_commande[index].obj,
+			                            c_argc+1,c_argv)){
+			                            ostringstream errstr;
+
+			                            errstr<<"Execution error in command: ";
+			                            errstr<<ht_commande[index].commande;
+			                            errstr<<" at line ";
+			                            errstr<<ligne;
+			                            
+			                            // error while executing command
+			                            throw parsefile_commandError(errstr.str());
+			                        }
+	                            } catch(parsefile_commandError P) {
+	                            	// catching error from commands
+	                            	// adding contextual information such as
+	                            	// line number and interpreted command
+	                            	// and throw it back to be caught by main.
+	                            	ostringstream errstr;
+	                            	
+		                            errstr<<"Error at line " << ligne << ": " ;
+		                            for(int k=0; k<c_argc+1; ++k) 
+		                            	errstr<<c_argv[k] << " ";
+		                            errstr<<endl;
+	                                errstr<<P.getMess()<<"\n";
+	                                // throw another error that will be caught
+	                                // by main function and will exit the program
+	                                throw parsefile_commandError(errstr.str());
+	                            }
+	                        } else {
+	                            try {
+	                                if(ht_commande[index].fonc(
+	                                    ht_commande[index].
+	                                    obj, c_argc+1,c_argv)){
+	                                    cerr<<"Execution error in command: ";
+	                                    cerr<<ht_commande[index].commande;
+	                                    cerr<<endl;
+	                                }
+	                            } catch(parsefile_commandError P) {                                   
+	                                cerr<<P.getMess()<<"\n";
+	                                if(pFin!=stdin) {
+	                                    cont=false;
+	                                    pass=1;
+	                                    goto test_end_file;
+	                                }
+	                            }
+	                        }
+	                    } catch(parsefile_stop Q) {
+	                        cout<< "Stopping the program execution"<<endl;
+	                        stopEx = true;
+	                    }
+	                }
+	                for(int k=0; k<c_argc+1; ++k) {
+	                    if (to_free[k]) {
+	                        delete[] c_argv[k];
+	                        to_free[k]=false;
+	                    }
+	                }
+
                 } else {
                     cerr<<"Could not recognize the command ";
                     cerr<<com;

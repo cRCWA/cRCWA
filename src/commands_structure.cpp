@@ -646,14 +646,12 @@ int commands::c_excitation(parsefile *obj, int argc,char *argv[])
                throw parsefile_commandError("excitation: can not read the"
                 " specified angle indexes.\n");
             }
-
             if (do_the_shift)
                 *exc = (p->sec_list[sec]).create_excitation_const(true,
                     0.0, phase,index_yz,index_xz); // exc. for Ey
             else
                 *exc = (p->sec_list[sec]).create_excitation_const(false,
                     0.0, phase,index_yz,index_xz); // exc. for Ex
-
         } else if (type == select) {
             // If we are in the select mode, we should first read the
             // parameter a as a double precision constant and then use it for
@@ -670,7 +668,6 @@ int commands::c_excitation(parsefile *obj, int argc,char *argv[])
 
             db_matrix newexc = (p->sec_list[sec]).create_excitation(
                 section::SELECT_REAL_INDEX,value, phase,0.0,0.0);
-
 
             // When the excitation already exists, the new requested excitation
             // Is added to the previous one, allowing us to excite multiple
@@ -840,17 +837,10 @@ int commands::c_excitation(parsefile *obj, int argc,char *argv[])
             dr is the step for the radius
             filename is the name of the file on which the results should be
                 recorded
+            it will be computed from z0 to z1 and from r=0 to r=r1.
 
-			it will be computed from z0 to z1 and from r=0 to r=r1.
-	
-		if t == pz, compute the z component of the Poynting vector.
-		
-		outdata sz rimc filename
-		
-		NOTE that the step in z in given by the command propagation.
-
+        NOTE that the step in z in given by the command propagation.
 */
-
 int commands::c_outdata(parsefile *obj, int argc,char *argv[])
 {
     structure *p;
@@ -940,38 +930,10 @@ int commands::c_outdata(parsefile *obj, int argc,char *argv[])
             if(p->additional_output_data.generation_to_r1 > p->tot_x ||
                     p->additional_output_data.generation_to_r1 > p->tot_y){
                 throw parsefile_commandError("outdata: it is not possible to"
-
-				" use 'outdata g' if the the computational window is smaller"
-				" than the radius.\n");
-            }          
-        } else if(strcmp(argv[1],"sz")==0) {
-            if(argc<3) {
-                throw parsefile_commandError("outdata sz: some parameters are"
-                	" missing.\n");
+                " use 'outdata g' if the the computational window is smaller"
+                " than the radius.\n");
             }
-                
-            p->additional_output_data.should_record_poynting_vector=true;
- 
-	     	if(strcmp(argv[2],"r")==0) {
-		        p->additional_output_data.poynting_vector_rimc=R;
-		    } else if(strcmp(argv[2],"i")==0) {
-		        p->additional_output_data.poynting_vector_rimc=I;
-		    } else if(strcmp(argv[2],"m")==0) {
-		        p->additional_output_data.poynting_vector_rimc=M;
-		    } else if(strcmp(argv[2],"c")==0) {
-		        p->additional_output_data.poynting_vector_rimc=C;
-		    } else {
-		        throw parsefile_commandError("outdata sz: unrecognized rimc."
-		        	" Should be {r|i|m|c}.");
-		    }
-		    
-            p->additional_output_data.poynting_vector_file_name=argv[3]; 
-            
 
-            cout << "Additional output: record the Poynting vector in the next"
-            	" propagation command.\n";        
-                        
-                        
         }else {
             throw parsefile_commandError("outdata: unrecognized parameter"
                 " type.\n");

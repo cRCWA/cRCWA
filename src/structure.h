@@ -39,7 +39,6 @@
 #include "block_matrix.h"
 #include "section.h"
 #include "commands.h"
-#include <vector>
 
 #define ERROR 1
 #define EPS_0 8.8541878176e-12
@@ -53,63 +52,48 @@ typedef enum field_e_t{Ex,Ey, Ez, Hx, Hy, Hz, Dx, Dy, Dz} field_e;
     propagation
 
 */
-
-            
 class outputdata {
 public:
+    // if type t ==i
+    bool should_record_integral;
+    field_e window_field_type;
+    double window_centerx;
+    double window_centery;
+    double window_width;
+    double window_height;
+    string window_file_name;
 
-	// if type t ==i
-	bool should_record_integral;
-	field_e window_field_type;
-	double window_centerx;
-	double window_centery;
-	double window_width;
-	double window_height;
-	string window_file_name;
-	
-	outputdata () 
-	{
-		should_record_poynting_vector=false ;
-		should_record_integral = false;
-		should_record_generation_rate = false;
-		window_field_type = Ex;
-		window_centerx = 0;
-		window_centery = 0;
-		window_width = 0;
-		window_height = 0;
-		generation_radial_step_size = 0;
-		generation_from_z0 = 0;
-		generation_to_z1 = 0;
-		generation_to_r1 = 0;
-		//generation_absorptance_power = 0;
-		generation_absorptance_power_interpolated = 0;
+    outputdata ()
+    {
+        should_record_integral = false;
+        should_record_generation_rate = false;
+        window_field_type = Ex;
+        window_centerx = 0;
+        window_centery = 0;
+        window_width = 0;
+        window_height = 0;
+        generation_radial_step_size = 0;
+        generation_from_z0 = 0;
+        generation_to_z1 = 0;
+        generation_to_r1 = 0;
+        generation_absorptance_power_interpolated = 0;
         generation_real_from_z0 = 0.0;
         generation_real_to_z1 = 0.0;
-		generation_nz = 0;
-		poynting_vector_rimc = R ;
-	}
-
+        generation_nz = 0;
+    }
 
     // type t ==g
 
-
-	bool should_record_generation_rate;
-	double generation_radial_step_size;
-	double generation_from_z0;
-	double generation_to_z1;
+    bool should_record_generation_rate;
+    double generation_radial_step_size;
+    double generation_from_z0;
+    double generation_to_z1;
     double generation_real_from_z0;
     double generation_real_to_z1;
-	double generation_to_r1;
-	//double generation_absorptance_power;
-	double generation_absorptance_power_interpolated;
-	int generation_nz;
-	string generation_file_name;
-	
-	// type t == sz
-	bool should_record_poynting_vector ;
-	string poynting_vector_file_name ;
-	enum rimco_e_t poynting_vector_rimc ;
-
+    double generation_to_r1;
+    double generation_absorptance_power_interpolated;
+    int generation_nz;
+    string generation_file_name;
 };
 
 class structure : public parsefile

@@ -70,7 +70,7 @@ void process(int argc, char * const argv[])
             co.read("stdin (interactive mode)", true);
 
     } catch(parsefile_commandError P) {
-        cerr<<"Exc. in main."<<endl;
+        cerr<<endl <<"Exc. in main."<<endl;
         cerr<<P.getMess()<<"\n";
         cerr.flush();
     }
@@ -109,7 +109,7 @@ int main (int argc, char * const argv[])
 {
     cout << " ***************************************************************************\n"
          << " *      Aperiodic Fourier Modal Method full vectorial 3D propagation       *\n"
-         << " *                            version 1.5.1                                *\n"
+         << " *                            version 1.5                                  *\n"
          << " *                                                                         *\n"
          << " *     Build date: " << __DATE__<<  "                                             *\n"
          << " *     Source revision: "

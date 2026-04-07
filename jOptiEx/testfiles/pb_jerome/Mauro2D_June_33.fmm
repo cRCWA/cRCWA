@@ -1,0 +1,51 @@
+
+# taille x y
+size 2e-06 2e-06
+# longueur d'onde
+wavelength 500e-09
+# nombre d'harmoniques en x y
+harmonics 3 41
+carpet
+
+# air
+section 1000e-9
+substrate 1 0.00001
+
+# nanofils
+section 1e-6
+substrate 1 0.0001
+rectangle 4.293 0.045 2e-6 400e-9 0 0
+
+# affiche la structure
+inpstruct i 70 70 struct.ind
+
+# substrat
+section 1e-6
+substrate 1 0.00001
+
+
+# on va sauvegarder la matrice de propagation
+wants propagation
+
+solve
+# prepare les matrices
+assemble
+
+# excitation
+# vient d'en face (front)
+# mode fondamental
+# partie reelle
+# partie imaginaire
+# coefficient multiplicatif pour les valeurs du fichier entree suivant (si on choisit fx ou fy en 2e argument)
+# le coeff s'applique sur la 3e ligne, où l'on renseigne les dimensions x et y => il faut que ce soit les bonnes
+# fichier du champ (si on choisit fx ou fy en 2e argument)
+excitation f fx 1 0 2e-6 champ.txt
+
+# propagation
+# on choisit Ex
+# magnitude en sortie
+# tranche dz
+# nombre de tranches en x
+# nombre de tranches en y
+# nom du fichier de sortie
+propagation Ex m 5e-9 999 999 resu_Mauro2D_June_41

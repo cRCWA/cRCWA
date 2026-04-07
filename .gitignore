@@ -52,6 +52,7 @@ test/multiplepropagation2/test_results_z.txt
 bin/crcwa
 bin/o2g
 bin/slice
+bin/draw
 src/parallelize_POSIX.o
 ./normal_field/.DS_Store
 ./test/.DS_Store
