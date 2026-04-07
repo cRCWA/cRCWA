@@ -32,17 +32,20 @@ LIBFFTW3DIR = $(LIBDIR)/fftw-3.3.5-dll64
 # The option to include the FFTW3 library:
 LIBFFTW3 = -lfftw3
 
+# Usually includes and libs of Python are stored in the same parent directory
+# This parent directory is defined here:
+PYTHONDIR="C:\Program Files\Python313"
 
 # This is where the Python include file Python.h is present:
 #PYTHONINCDIR = /System/Volumes/Data/opt/local/Library/Frameworks/Python.framework/Versions/3.13/include/python3.13/
 PYVERSION=python3.13
-PYTHONINCDIR = "C:\Program Files\Python313\include"
+PYTHONINCDIR = $(PYTHONDIR)\include
 
 # This is the Python library to be included. In macOS the file can be 
 # called like libpython3.15.dylib (for a dynamically linked library).
 # If you use, let's say, Python 3.11, you should change the version
 # accordingly. cRCWA requires Python 3 in any case.
-LIBPYTHONDIR="C:\Program Files\Python313\libs"
+LIBPYTHONDIR=$(PYTHONDIR)\libs
 
 LIBPYTHON=-l$(PYVERSION)
 # ***************************************************************************

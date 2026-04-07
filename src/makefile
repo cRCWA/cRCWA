@@ -47,19 +47,23 @@ O2GFILES = optiwave2gnuplot.o
 
 # Put pycrcwa after o2f if you want the Python library to be automatically
 # built with make all.
-all: setrev crcwa  slice o2f
+all: setrev crcwa o2f slice
 	mv crcwa ../bin
 	mv slice ../bin
 	mv o2g ../bin
-
+	mv crcwa.exe ../bin
+	mv slice.exe ../bin
+	mv o2g.exe ../bin
+	
 # monocore
 crcwa: $(OFILES) $(HEADERS)
-	$(LD) $(OFILES) -L$(LIBLAPACKDIR) $(LIBLAPACK) -L$(LIBBLASDIR) $(LIBBLAS) -L$(LIBFFTW3DIR) -lfftw3 $(LIBTHREAD)   -o crcwa
+	$(LD) $(OFILES) -L$(LIBLAPACKDIR) $(LIBLAPACK) -L$(LIBBLASDIR) $(LIBBLAS) $(LIBFFTW3) -L$(LIBFFTW3DIR) $(LIBTHREAD)   -o crcwa
 
 pycrcwa:
-	$(CXX) -shared -L$(LIBLAPACKDIR) $(LIBLAPACK) -L$(LIBBLASDIR) $(LIBBLAS) -L$(LIBFFTW3DIR) -lfftw3 $(LIBTHREAD) $(PYTHONLIB) -o pycRCWA.so \
-	 $(OFILES) -I$(PYTHONINCDIR) afmm_python_module.cpp -fPIC
-	 mv pycRCWA.so ../python
+	$(CXX) -shared $(OFILES) -I$(PYTHONINCDIR) afmm_python_module.cpp  \
+	-L$(LIBLAPACKDIR) $(LIBLAPACK) -L$(LIBBLASDIR) $(LIBBLAS) $(LIBFFTW3) -L$(LIBFFTW3DIR) $(LIBTHREAD) -L$(LIBPYTHONDIR) $(LIBPYTHON)-o pycRCWA.so \
+	 -fPIC
+	 mv pycRCWA.* ../python
 
 
 

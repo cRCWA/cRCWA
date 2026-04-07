@@ -65,3 +65,10 @@ src/parallelize_POSIX.o
 ./jOptiEx/src/.DS_Store
 ./jOptiEx/src/dialogs/.DS_Store
 ./src/.DS_Store
+*.exe
+*.o
+*.so
+test_win
+winlib
+
+

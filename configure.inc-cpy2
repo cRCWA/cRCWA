@@ -32,19 +32,19 @@ LIBFFTW3DIR = $(LIBDIR)/fftw-3.3.5-dll64
 # The option to include the FFTW3 library:
 LIBFFTW3 = -lfftw3
 
-
 # This is where the Python include file Python.h is present:
 #PYTHONINCDIR = /System/Volumes/Data/opt/local/Library/Frameworks/Python.framework/Versions/3.13/include/python3.13/
-PYVERSION=python3.13
-PYTHONINCDIR = "C:\Program Files\Python313\include"
+PYVERSION=python3.14
+PYTHONINCDIR = /home/jerome/Téléchargements/Python-3.14.3/Include
 
 # This is the Python library to be included. In macOS the file can be 
 # called like libpython3.15.dylib (for a dynamically linked library).
 # If you use, let's say, Python 3.11, you should change the version
 # accordingly. cRCWA requires Python 3 in any case.
-LIBPYTHONDIR="C:\Program Files\Python313\libs"
 
-LIBPYTHON=-l$(PYVERSION)
+#PYTHONLIB = -L/opt/local/Library/Frameworks/Python.framework/Versions/3.15/lib/ -lpython3.15
+
+PYTHONLIB = -L/home/jerome/Téléchargements/Python-3.14.3/Lib -I/home/jerome/Téléchargements/Python-3.14.3/PC -I/usr/x86_64-w64-mingw32/include -l$(PYVERSION)
 # ***************************************************************************
 
 # For multi-thread operation, we need:

@@ -90,6 +90,7 @@
 
 #include "block_matrix.h"
 #include "fortran_types.h"
+#include "compat.h"
 
 // Unnamed semaphores are the simplest solutions on Linux, but they are not
 // available on MacOSX, so we must provide both named and unnamed semaphores.
@@ -214,8 +215,12 @@ using namespace std;
 #include <sys/types.h>
 #include "compat.h"
 
-sem_t *mutex_fftw; // Semaphore for fftw
-sem_t unnamed_mutex_fftw; // Unnamed semaphore (if applicable).
+#ifndef _WIN32
+typedef sem_t* sem_t_wrapper;
+#endif
+
+sem_t_wrapper mutex_fftw; // Semaphore for fftw
+sem_t_wrapper unnamed_mutex_fftw; // Unnamed semaphore (if applicable).
 bool mutex_fftw_created=false;
 #define SEM_NAME_SIZE 255
 char semaphore_name[SEM_NAME_SIZE+1];

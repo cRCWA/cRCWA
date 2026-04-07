@@ -39,6 +39,7 @@
 #include "block_matrix.h"
 #include "section.h"
 #include "commands.h"
+#include <vector>
 
 #define ERROR 1
 #define EPS_0 8.8541878176e-12
