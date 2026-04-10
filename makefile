@@ -20,7 +20,7 @@
 #   with cRCWA. If not, see <https://www.gnu.org/licenses/>. 
 # 
 #   Davide Bucci, 2008-2026
-#   Jérôme Michallon, 2012-2014
+#   Jérôme Michallon, 2012-2014 2026
 # 
 
 

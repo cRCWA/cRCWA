@@ -1,11 +1,17 @@
 
 # ***************************************************************************
-# CONFIGURATION SECTION
+#                    COMPILATION UNDER UNIX SYSTEMS 
 # ***************************************************************************
 
+# Define the compilers:
 CC = gcc
 LD = g++
+CXX = g++
 SHELL = /bin/sh
+
+# Define specific OS parameters:
+EXE_EXT :=
+PY_EXT := .so
 
 # This is the directory where the library files are provided. It is useful
 # if the LAPACK, BLAS and FFTW3 libraries are stored in the same place in
@@ -30,11 +36,15 @@ LIBBLAS = -lblas
 
 # This is where the fftw3 lib can be found
 LIBFFTW3DIR = $(LIBDIR)
+
+# This is where fftw3.h can be found
+FFTW3INCDIR=../lib/fftw-3.3.5-dll64
+
 # The option to include the FFTW3 library:
 LIBFFTW3 = -lfftw3
 
+
 # This is where the Python include file Python.h is present:
-#PYTHONINCDIR = /System/Volumes/Data/opt/local/Library/Frameworks/Python.framework/Versions/3.13/include/python3.13/
 PYVERSION=python3.12
 PYTHONINCDIR = /usr/include/$(PYVERSION)
 
@@ -42,10 +52,10 @@ PYTHONINCDIR = /usr/include/$(PYVERSION)
 # called like libpython3.15.dylib (for a dynamically linked library).
 # If you use, let's say, Python 3.11, you should change the version
 # accordingly. cRCWA requires Python 3 in any case.
+LIBPYTHONDIR=/usr/lib/$(PYVERSION)
 
-#PYTHONLIB = -L/opt/local/Library/Frameworks/Python.framework/Versions/3.15/lib/ -lpython3.15
+LIBPYTHON=-l$(PYVERSION)
 
-PYTHONLIB = -L/usr/lib/$(PYVERSION) -l$(PYVERSION)
 # ***************************************************************************
 
 # For multi-thread operation, we need:

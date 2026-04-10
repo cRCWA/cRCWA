@@ -70,5 +70,7 @@ src/parallelize_POSIX.o
 *.so
 test_win
 winlib
-
+bin
+old
+lib
 
