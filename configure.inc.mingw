@@ -3,7 +3,7 @@
 #                    COMPILATION UNDER WINDOWS WITH MINGW
 # ***************************************************************************
 
-CC = x86_64-w64-mingw32-gcc -I
+CC = x86_64-w64-mingw32-gcc
 LD = x86_64-w64-mingw32-g++
 CXX = x86_64-w64-mingw32-g++
 SHELL = /bin/sh
@@ -43,7 +43,7 @@ LIBFFTW3 = -lfftw3
 
 
 # This is where the Python include file Python.h is present:
-PYVERSION=python313
+PYVERSION=Python313
 PYTHONINCDIR = "C:\Program Files\$(PYVERSION)\include"
 
 # This is the Python library to be included. In macOS the file can be 
