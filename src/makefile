@@ -34,7 +34,6 @@ include ../configure.inc
 CFLAGS = -g -O3 -fPIC
 # CFLAGS = -pedantic -Wall --unroll-all-loops -O3  
 
-.PHONY : setrev
 
 HEADERS =  block_matrix.h  fortran_types.h parsefile.h structure.h section.h commands.h finterface.h parsercl.h matrixDev.h matrixdevsym.h parallelize.h
 OFILES =   block_matrix.o main.o matrixDev.o parsefile.o structure.o section.o commands_structure.o commands_section.o commands_propagation.o commands_other.o finterface.o parsercl.o matrixdevsym.o parallelize_POSIX.o toeplitz.o
@@ -47,7 +46,7 @@ O2GFILES = optiwave2gnuplot.o
 
 # Put pycrcwa after o2f if you want the Python library to be automatically
 # built with make all.
-all: setrev crcwa o2f slice pycrcwa
+all: crcwa o2f slice pycrcwa
 	
 # monocore
 crcwa: $(OFILES) $(HEADERS)
@@ -59,8 +58,7 @@ pycrcwa:
 	-L$(LIBLAPACKDIR) $(LIBLAPACK) -L$(LIBBLASDIR) $(LIBBLAS) $(LIBFFTW3) -L$(LIBFFTW3DIR) $(LIBTHREAD) -L$(LIBPYTHONDIR) $(LIBPYTHON) -o pycRCWA$(PY_EXT) \
 	 -fPIC
 	 mv pycRCWA$(PY_EXT) ../python
-
-
+	
 
 slice: $(SLOFILES)
 	$(LD) $(SLOFILES) -o slice$(EXE_EXT)
