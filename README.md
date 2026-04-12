@@ -24,7 +24,7 @@ There are two ways to install cRCWA: quick installation with pre-compiled mathem
 On Debian linux system, cRCWA can be quickly installed with:
 ~~~~
 % sudo apt-get install python3 libfftw3-dev libblas-dev liblapack-dev
-% ./configure
+% ./configure.sh
 % make
 % ./bin/crcwa
 ~~~~
@@ -40,8 +40,8 @@ If a test fails, read the 'Self tests' section below.
 
 On such systems, cRCWA can be quickly installed with:
 ~~~~
-% sudo yum install python3-devel  fftw-devel.x86_64 atlas-devel.x86_64 lapack-devel.x86_64
-% ./configure
+% sudo yum install python3-devel fftw-devel.x86_64 atlas-devel.x86_64 lapack-devel.x86_64
+% ./configure.sh
 % make
 % ./bin/crcwa
 ~~~~
@@ -53,12 +53,13 @@ To test if everything is OK, you may run the automated tests:
 ~~~~
 If a test fails, read the 'Self tests' section below.
 
-### Quick install on on macOS
+### Quick install on on macOS (TO BE TESTED WITH configure.sh)
 
 You can use macports to install the LAPACK, BLAS and FFTW3 libraries. The macports tool installs libraries in `/opt/local/lib`. The LAPACK library is installed in a subdirectory of this folder:
 ~~~~
 % sudo port install lapack
 % sudo port install fftw-3
+% ./configure.sh
 % make 
 ~~~~
 cRCWA should run, if not refer to 'Troubleshooting section below'.
@@ -68,18 +69,19 @@ To test if everything is OK, you may run the automated tests:
 %./run_all_tests.sh
 ~~~~
 If a test fails, read the 'Self tests' section below.
+
 ### Troubleshooting
-If you were not able to build cRCWA or the python library, check that the libraries LAPACK, BLAS and FFTW3 are well installed on your system and re-lauch the configure tool. It the problem is still here, it perhabs because the libraries were not installed in usual folder. In this case, replace the config.inc file by the one corresponding to your system (config.inc.debian, config.inc.redhat, config.inc.macos). Edit the file and add manually the path to the libraries see 'detailed build instruction on Unix system below'
+If you were not able to build cRCWA or the python library, check that the libraries LAPACK, BLAS and FFTW3 are well installed on your system and re-lauch the configure tool. It the problem is still here, it is perhabs because the libraries were not installed in usual folder. In this case, replace the config.inc file by the one corresponding to your system (config.inc.debian, config.inc.redhat, config.inc.macos). Edit the file and add manually the paths to the libraries see 'detailed build instruction on Unix system below'
 
 ### Quick installation on Windows
 
 Unfortunatly, there is no quick installation on Windows as the pre-build library of LAPACK (https://icl.utk.edu/lapack-for-windows/lapack/) lacks of gfortan library (namely libgfortran-3.dll) that we could not find. If anyone knows the work around, please let us know via GitHub's discussions :).
-Instead, you need to jump to the detailed build instruction for windows (note that the prebuild of fftw3 can be directly used and requires libfftw3-3.dll to be present in the same folder of cRCWA.exe of pycRCWA.pyd). Please also read Detailed build instruction on Unix system as it gives a good information on how to optain the best computation performances.
+Instead, you need to jump to the detailed build instruction for windows (note that the prebuild of fftw3 is used and requires libfftw3-3.dll to be present in the same folder of cRCWA.exe of pycRCWA.pyd). Please also read 'Detailed build instructions' as it gives a good information on how to obtain the best computation performances.
 
 
 ## Detailed build instructions
 
-cRCWA is written in C++ and can be compiled on a Unix system using GNU Make and gcc. On a practical standpoint, it has been intensively tested on Linux and on macOS. Recently Windows versions have been built, see the section 'Detailed build instruction on Window' below.
+cRCWA is written in C++ and can be compiled on a Unix system using GNU Make and gcc. On a practical standpoint, it has been intensively tested on Linux and on macOS. Recently Windows versions were built, see the section 'Detailed build instruction on Window' below.
 
 You will need the following libraries installed in your system:
 - LAPACK, the classic library for linear algebra
@@ -88,7 +90,7 @@ You will need the following libraries installed in your system:
 
 These libraries can either be installed from already available pre-compiled packages (see the linux command on 'Quick installation' sections) or built from the source code. Please refer to 'Build dependency section' below for step-by-step guide for building those libraries.  
 
-The performances of cRCWA strongly depend on the performances of the BLAS library installed in your system. Therefore, if you want to obtain the fastest calculations possible, make sure you have an optimized version of BLAS in your system. LAPACK ships with a base implementation of BLAS will work fine for test purposes, but will not deliver the best possible performance.  It is not uncommon to cut calculation times by a factor of 2 or 3 shifting from a basic BLAS implementation to an optimized one. Popular and convenient choices may be OpenBLAS or ATLAS.
+The performances of cRCWA strongly depend on the performances of the BLAS library installed in your system. Therefore, if you want to obtain the fastest calculations possible, make sure you have an optimized version of BLAS in your system. LAPACK ships with a base implementation of BLAS will work fine for test purposes, but will not deliver the best possible performance. It is not uncommon to cut calculation times by a factor of 2 or 3 shifting from a basic BLAS implementation to an optimized one. Popular and convenient choices may be OpenBLAS or ATLAS.
 
 ### Detailed build instructions on a Unix system
 
@@ -148,6 +150,7 @@ If the compile is successful, the executables are available in the `bin` directo
 ### Detailed build instructions on a Windows
 
 cRCWA has been successfully built on Windows using mingw and manually building LAPACK library. This section guides you though the steps.
+
 #### Installing mingw:
 Here are the installation steps:
 - Download w64devkit from https://github.com/skeeto/w64devkit/releases/
@@ -160,17 +163,16 @@ Here are the installation steps:
 5- Click OK on all open windows to save the changes.
 6- Restart PC.
 
->Please refer to this article for more details: https://dev.to/prastha/install-mingw-w64-on-windows-11-2025-november-acg
+> Please refer to this article for more details: https://dev.to/prastha/install-mingw-w64-on-windows-11-2025-november-acg
 
 #### Build or download pre-compiled libraries:
 On windows, LAPACK library should be built as the pre-build library of LAPACK (https://icl.utk.edu/lapack-for-windows/lapack/) lacks of gfortan library (namely libgfortran-3.dll) that we could not find. Please refer to the following section 'Detailed build instructions for dependencies' to build it.
-Once build, create a new 'lib' folder in cRCWA main directory and copy liblapack.a into it. If you are not planning on building OPENBLAS, also copy librefblas.a into 'lib'
+Once build, create a new 'lib' folder in cRCWA main directory and copy liblapack.a into it. If you are not planning on building OPENBLAS, also copy librefblas.a into 'cRCWA/lib'
 
-Compiling FFTW3 is optional, instead you can simply download pre-compile libraries from https://www.fftw.org/install/windows.html
-If you choose this option, unzip the downloaded pre-compiled library into cCRWA/lib directory and rename libfftw3-3.dll to as libfftw3.dll. Please not that with this option, you need to have libfftw3.dll present is in the same directory as cRCWA.exe or pycRCWA.pyd to execute the programs.
-If you want to include them as a static library into cRCWA, refer to the following section step-by-step guide.
+FFTW3 pre-build is directly downloaded from https://www.fftw.org/install/windows.html
+Unzip the downloaded pre-compiled library into cCRWA/lib directory and rename libfftw3-3.dll to as libfftw3.dll. Please not that, you need to have libfftw3.dll present is in the same directory as cRCWA.exe or pycRCWA.pyd to execute the programs.
 
-Compiling OPENBLAS is optional as the BLAS implementation from LAPACK could be used but computation performances will be reduced. For best computation performances, the BLAS implementation of ATLAS or OPENBLAS  should be prefered. If you skip building OPENBLAS, simply copy librefblas.a created when building LAPACK into cRCWA/lib. For details instruction on building OPENBLAS, refer to the following sections.
+Compiling OPENBLAS is optional as the BLAS implementation from LAPACK could be used but computation performances will be reduced. For best computation performances, the BLAS implementation of ATLAS or OPENBLAS should be prefered. If you skip building OPENBLAS, simply copy librefblas.a created when building LAPACK into cRCWA/lib. For details instruction on building OPENBLAS, refer to the following sections.
 
 At this stage, the cRCWA/lib should contain:
 ~~~~
@@ -186,19 +188,22 @@ when not considering optional libraries or
 lib
 ├── liblapack.a
 ├── libopenblas.a 
-└── fftw-3.3.5-dll64?
-    ├── fftw3.h?
-    └── libfftw3.dll?
+└── fftw-3.3.5-dll64
+    ├── fftw3.h
+    └── libfftw3.dll
 ~~~~
-When using only static libraries
+When using libopenblas.a
 
-Then, copy config.inc.mingw into config.inc, make sure that:'LIBBLAS = -lrefblas' if you are using BLAS created by LAPACK or 'LIBBLAS = -lopenblas' is you are using BLAS created by OPENBLAS.
+Then, copy config.inc.mingw into config.inc, make sure that:'LIBBLAS = -lrefblas' is set if you are using BLAS created by LAPACK or 'LIBBLAS = -lopenblas' if you are using BLAS created by OPENBLAS.
 Then make:
 ~~~~
 % make
 ~~~~
 Make sure that dll libraries used during compilation are in the same folder than cRCWA. cRWCA should run!
-
+You can find test program under the cRCWA/python. You can run:
+~~~~
+% python3 test.py
+~~~~
 
 ### Detailed build instructions for dependencies on both Unix and Windows systems
 
@@ -217,19 +222,6 @@ Here are the download and build steps:
 > Under windows, if you have various compilers installed, you can force to use mingw by changing CC=x86_64-w64-mingw32-gcc and FC=x86_64-w64-mingw32-gfortran
 > Compilation may display an error during testing with Python when building on Windows but it should be fine to use in the next steps.
 
-#### Building fftw3 (optional)
-Here are the download and build steps:
-- Download the source code from https://www.fftw.org/download.html
-- Untar.gz the source code and run:
-
-It seems that this can only be done under Linux...
-~~~~
-./configure --with-our-malloc16 --with-windows-f77-mangling --enable-threads --with-combined-threads --enable-portable-binary --enable-sse2 --with-incoming-stack-boundary=2 --host=x86_64-w64-mingw32
-make
-~~~~ 
-
-> For more details, please refer to: https://www.fftw.org/install/windows.html
-
 ### Building OpenBlas (optional)
 
 - Download the latest version of OpenBlas source code from https://github.com/OpenMathLib/OpenBLAS/releases
@@ -239,8 +231,6 @@ make
 ~~~~ 
 > Note that building OpenBlas is very time long. Be patient...
 - Copy libopenblas_haswellp-r0.3.32.a in the cRCWA/lib folder and rename it as libopenblas.a
-
-
 
 ## Self tests
 
