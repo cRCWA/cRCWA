@@ -1,3 +1,28 @@
+# ***************************************************************************
+# * automated script to configure compilation on a UNIX system              *
+# *                                                                         *
+# * This program detects Lapack, Blas and fftw3  			                *
+# ***************************************************************************
+# 
+# This file is part of cRCWA.
+# 
+#   cRCWA is free software: you can redistribute it and/or modify it under the
+#   terms of the GNU General Public License as published by the Free Software
+#   Foundation, either version 3 of the License, or (at your option) any later
+#   version.
+#   
+#   cRCWA is distributed in the hope that it will be useful, but WITHOUT ANY
+#   WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS 
+#   FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+#   details.
+#   
+#   You should have received a copy of the GNU General Public License along
+#   with cRCWA. If not, see <https://www.gnu.org/licenses/>. 
+# 
+#   Davide Bucci, 2008-2025
+#   Jérôme Michallon, 2012-2014 2026
+
+
 #!/bin/bash
 echo "Operating System Information"
 echo "============================"
@@ -21,7 +46,6 @@ else
 fi
  
 echo "Architecture: $(uname -m)"
-#echo "Hostname: $(hostname)"
 echo "============================"
 
 IsDebian=false
@@ -51,7 +75,7 @@ fi
 # unix function to get path to libs
 find_libs() {
 	# pathToLib=$(dpkg -S "$@" | awk -F ": " '{print $2; exit}')
-	pathToLib=$(find /usr -name "$@" 2>/dev/null)
+	pathToLib=$(find /usr -name "$@" 2>/dev/null | head -1)
 	echo $(dirname $pathToLib)
 }
 
@@ -148,16 +172,16 @@ fi
 # create configure.inc from configure.inc.auto-base:
 cp config.inc.auto-base config.inc
 
-echo "# ==================================" >>  configure.inc
-echo "# Automatically added configuration" >>  configure.inc
-echo "# ==================================" >>  configure.inc
-echo "LIBLAPACKDIR=$LIBLAPACKDIR" >>  configure.inc
-echo "LIBBLASDIR=$LIBBLASDIR" >>  configure.inc
-echo "LIBFFTW3DIR=$LIBFFTW3DIR" >>  configure.inc
-echo "FFTW3INCDIR=$FFTW3INCDIR" >>  configure.inc
-echo "PYVERSION=$PYVERSION" >>  configure.inc
-echo "LIBPYTHONDIR=$LIBPYTHONDIR" >>  configure.inc
-echo "PYTHONINCDIR=$PYTHONINCDIR" >>  configure.inc
-echo "LIBPYTHON=$LIBPYTHON" >>  configure.inc
+echo "# ==================================" >>  config.inc
+echo "# Automatically added configuration" >>  config.inc
+echo "# ==================================" >>  config.inc
+echo "LIBLAPACKDIR=$LIBLAPACKDIR" >>  config.inc
+echo "LIBBLASDIR=$LIBBLASDIR" >>  config.inc
+echo "LIBFFTW3DIR=$LIBFFTW3DIR" >>  config.inc
+echo "FFTW3INCDIR=$FFTW3INCDIR" >>  config.inc
+echo "PYVERSION=$PYVERSION" >>  config.inc
+echo "LIBPYTHONDIR=$LIBPYTHONDIR" >>  config.inc
+echo "PYTHONINCDIR=$PYTHONINCDIR" >>  config.inc
+echo "LIBPYTHON=$LIBPYTHON" >>  config.inc
 
 

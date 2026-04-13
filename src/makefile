@@ -23,7 +23,7 @@
 #   Jérôme Michallon, 2012-2014 2026
 # */
 
-include ../configure.inc
+include ../config.inc
 
 .SUFFIXES:
 .SUFFIXES: .cpp .o

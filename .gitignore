@@ -68,9 +68,7 @@ src/parallelize_POSIX.o
 *.exe
 *.o
 *.so
-test_win
-winlib
 bin
-old
 lib
+.config.inc
 
