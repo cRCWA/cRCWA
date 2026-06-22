@@ -212,7 +212,7 @@ static PyObject* py_AFMM_parsescript(PyObject* self, PyObject* args)
         PyErr_SetString(afmmError, e.getMess());
         return NULL;
     }
-    //fclose(f);        // I get an error if I close the file here.
+    fclose(f);        // I get an error if I close the file here.
     Py_INCREF(Py_None);
     return Py_None;
 }
@@ -1042,7 +1042,7 @@ static PyObject* py_AFMM_coefficient(PyObject* self, PyObject* args)
     cout << "Squared module: " << abs(e)*abs(e) << "\n";
 
     // Save the calculated data as an array in the output variable "ans".
-    double *s =new double[3];
+    //double *s =new double[3];
     coeff.real=e.real();
     coeff.imag=e.imag();
 
