@@ -28,7 +28,7 @@
     You should have received a copy of the GNU General Public License along
     with cRCWA. If not, see <https://www.gnu.org/licenses/>. 
 
-    Davide Bucci, 2008-2025
+    Davide Bucci, 2008-2026
     Jérôme Michallon, 2012-2014
 */
 
@@ -947,7 +947,7 @@ void section::do_order(double min, double max)
     @return a list of matrices containing the mode field representation if the
         erimco is equal to S (store). It is an empty list in the other cases.
 */
-list<db_matrix> section::do_outgmodes(int sj, int si, char *ftype, 
+list<db_matrix> section::do_outgmodes(int sj, int si, const char *ftype, 
     rimco_e rimc, const char *fname)
 {
     list<db_matrix> storage;
@@ -1172,7 +1172,7 @@ list<db_matrix> section::do_outgmodes(int sj, int si, char *ftype,
     @return a matrix containing the structure.
     
 */
-db_matrix section::do_inpstruct(int sj, int si, char* otype)
+db_matrix section::do_inpstruct(int sj, int si, const char* otype)
 {
     db_matrix out(si, sj);
     structure *p=father;

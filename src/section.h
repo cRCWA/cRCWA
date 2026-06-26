@@ -256,8 +256,8 @@ public:
     void set_pml(double wx, double wy, complex<double> alpha);
     void set_pml_transf(double qdx, double qdy, complex<double> g);
     void set_bend(double r);
-    db_matrix do_inpstruct(int sj, int sx, char* otype);
-    list<db_matrix> do_outgmodes(int sj, int si, char *ftype, 
+    db_matrix do_inpstruct(int sj, int sx, const char* otype);
+    list<db_matrix> do_outgmodes(int sj, int si, const char *ftype, 
         rimco_e rimc, const char *fname);
     void store_refractive_index(db_matrix rd);
     void do_order(double min, double max);

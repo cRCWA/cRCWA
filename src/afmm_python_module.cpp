@@ -192,6 +192,12 @@ static PyObject* py_AFMM_create(PyObject* self, PyObject* args)
     return Py_BuildValue("i", idx);
 }
 
+#define CHECK_IDX() \
+    if(idx<0 || idx>=vnP.size()) {\
+        PyErr_SetString(afmmError, "Uncorrect ID.");\
+        return NULL;\
+    }
+
 /**
   Parse an AFMM script.
   Execution of external commands is not active.
@@ -205,6 +211,7 @@ static PyObject* py_AFMM_parsescript(PyObject* self, PyObject* args)
         PyErr_SetString(afmmError, "Specify an ID and the input script.");
         return NULL;
     }
+    CHECK_IDX();
 
     //co.allow_system_command(true);   // potentially dangerous
     FILE *f= tmpfile();
@@ -238,7 +245,8 @@ static PyObject* py_AFMM_size(PyObject* self, PyObject* args)
         PyErr_SetString(afmmError, "Specify an ID, followed by sx and sy.");
         return NULL;
     }
-
+    CHECK_IDX();
+    
     try {
         vwaveguide.at(idx)->do_size(sx,sy);
     } catch (parsefile_commandError e) {
@@ -262,6 +270,7 @@ static PyObject* py_AFMM_harmonics(PyObject* self, PyObject* args)
         PyErr_SetString(afmmError, "Specify an ID followed by hx and hy.");
         return NULL;
     }
+    CHECK_IDX();
 
     try {
         vwaveguide.at(idx)->do_harmonics(hx,hy);
@@ -287,6 +296,7 @@ static PyObject* py_AFMM_wavelength(PyObject* self, PyObject* args)
         PyErr_SetString(afmmError, "Specify an ID and the wavelength.");
         return NULL;
     }
+    CHECK_IDX();
 
     vwaveguide.at(idx)->set_wavelength(l);
 
@@ -308,6 +318,7 @@ static PyObject* py_AFMM_substrate(PyObject* self, PyObject* args)
             "index of the substrate.");
         return NULL;
     }
+    CHECK_IDX();
 
     r=c.real;
     i=c.imag;
@@ -330,6 +341,7 @@ static PyObject* py_AFMM_solve(PyObject* self, PyObject* args)
         PyErr_SetString(afmmError, "Specify an ID.");
         return NULL;
     }
+    CHECK_IDX();
 
     vector<double> results;
     try {
@@ -415,6 +427,7 @@ static PyObject* py_AFMM_rectangle(PyObject* self, PyObject* args)
             " the width in x and y and the x and y coordinates of the center.");
         return NULL;
     }
+    CHECK_IDX();
 
     r=c.real;
     i=c.imag;
@@ -438,6 +451,7 @@ static PyObject* py_AFMM_lowindex(PyObject* self, PyObject* args)
         PyErr_SetString(afmmError, "Specify an ID and the low index.");
         return NULL;
     }
+    CHECK_IDX();
 
     vwaveguide.at(idx)->getCur()->set_lowindex(complex<double>(c.real,c.imag));
 
@@ -457,6 +471,7 @@ static PyObject* py_AFMM_highindex(PyObject* self, PyObject* args)
         PyErr_SetString(afmmError, "Specify an ID and the high index.");
         return NULL;
     }
+    CHECK_IDX();
     vwaveguide.at(idx)->getCur()->set_highindex(complex<double>(c.real,c.imag));
 
     Py_INCREF(Py_None);
@@ -474,6 +489,7 @@ static PyObject* py_AFMM_clear(PyObject* self, PyObject* args)
         PyErr_SetString(afmmError, "Specify an ID.");
         return NULL;
     }
+    CHECK_IDX();
 
     vwaveguide.at(idx)->reset();
     cout<<"The structure definition has been cleared.\n";
@@ -492,6 +508,7 @@ static PyObject* py_AFMM_carpet(PyObject* self, PyObject* args)
         PyErr_SetString(afmmError, "Specify an ID.");
         return NULL;
     }
+    CHECK_IDX();
     vwaveguide.at(idx)->set_ensureConvergence(true);
 
     Py_INCREF(Py_None);
@@ -509,6 +526,7 @@ static PyObject* py_AFMM_assemble(PyObject* self, PyObject* args)
         PyErr_SetString(afmmError, "Specify an ID.");
         return NULL;
     }
+    CHECK_IDX();
 
     try {
         vwaveguide.at(idx)->do_assemble();
@@ -534,6 +552,7 @@ static PyObject* py_AFMM_pml(PyObject* self, PyObject* args)
             "size of the PML.");
         return NULL;
     }
+    CHECK_IDX();
 
     try {
         vwaveguide.at(idx)->getCur()->set_pml(wx,wy,
@@ -560,6 +579,7 @@ static PyObject* py_AFMM_pml_transf(PyObject* self, PyObject* args)
             "complex coefficient of the PML.");
         return NULL;
     }
+    CHECK_IDX();
 
     double r=g.real;
     double i=g.imag;
@@ -587,6 +607,7 @@ static PyObject* py_AFMM_bend(PyObject* self, PyObject* args)
         PyErr_SetString(afmmError, "Specify an ID and the bending radius.");
         return NULL;
     }
+    CHECK_IDX();
 
     try {
         vwaveguide.at(idx)->getCur()->set_bend(r);
@@ -604,16 +625,17 @@ static PyObject* py_AFMM_bend(PyObject* self, PyObject* args)
 */
 static PyObject* py_AFMM_inpstruct(PyObject* self, PyObject* args)
 {
-    double sx, sy;
+    int sx, sy;
     const char *otype;
     db_matrix out;
     int idx;
 
-    if (!PyArg_ParseTuple(args, "iddz", &idx, &sx, &sy, &otype)) {
+    if (!PyArg_ParseTuple(args, "iiiz", &idx, &sx, &sy, &otype)) {
         PyErr_SetString(afmmError, "Specify an ID, the number of points in x "
             "and y and the type of output data required.");
         return NULL;
     }
+    CHECK_IDX();
 
     try {
         out = vwaveguide.at(idx)->getCur()->do_inpstruct(sx, sy, otype);
@@ -660,16 +682,17 @@ static PyObject* py_AFMM_inpstruct(PyObject* self, PyObject* args)
 */
 static PyObject* py_AFMM_outgmodes(PyObject* self, PyObject* args)
 {
-    double sx, sy;
+    int sx, sy;
     const char *fieldcomponent;
     list<db_matrix> modes;
     int idx;
 
-    if (!PyArg_ParseTuple(args, "izdd", &idx, &fieldcomponent, &sx, &sy)) {
+    if (!PyArg_ParseTuple(args, "izii", &idx, &fieldcomponent, &sx, &sy)) {
         PyErr_SetString(afmmError, "Specify an ID, the type of the field "
             "component, the number of points in x and y.");
         return NULL;
     }
+    CHECK_IDX();
     
     modes =  vwaveguide.at(idx)->getCur()->do_outgmodes(sx, sy, fieldcomponent,
         S, "");
@@ -722,6 +745,7 @@ static PyObject* py_AFMM_indmatrix(PyObject* self, PyObject* args)
         PyErr_SetString(afmmError, "Use with an index and a list of lists");
         return NULL;
     }
+    CHECK_IDX();
     if(!PyList_Check(rows)) {
         PyErr_SetString(afmmError, "Object is not a list");
         return NULL;
@@ -774,6 +798,7 @@ static PyObject* py_AFMM_wants(PyObject* self, PyObject* args)
         PyErr_SetString(afmmError, "Specify an ID and a parameter.");
         return NULL;
     }
+    CHECK_IDX();
     try {
         vwaveguide.at(idx)->do_wants(code);
     } catch (parsefile_commandError e) {
@@ -798,6 +823,7 @@ static PyObject* py_AFMM_section(PyObject* self, PyObject* args)
             "section.");
         return NULL;
     }
+    CHECK_IDX();
 
     try {
         vwaveguide.at(idx)->do_section(tl);
@@ -822,6 +848,7 @@ static PyObject* py_AFMM_select(PyObject* self, PyObject* args)
             "section.");
         return NULL;
     }
+    CHECK_IDX();
     // The internal numbering starts from 0, as with C/C++
 
      try {
@@ -846,6 +873,7 @@ static PyObject* py_AFMM_order(PyObject* self, PyObject* args)
         PyErr_SetString(afmmError, "Specify an ID and minv and maxv.");
         return NULL;
     }
+    CHECK_IDX();
 
     try {
         vwaveguide.at(idx)->getCur()->do_order(minv,maxv);
@@ -869,6 +897,7 @@ static PyObject* py_AFMM_bloch(PyObject* self, PyObject* args)
         PyErr_SetString(afmmError, "Specify an ID.");
         return NULL;
     }
+    CHECK_IDX();
 
     vector<double> results;
     try {
@@ -916,6 +945,7 @@ static PyObject* py_AFMM_spectrum(PyObject* self, PyObject* args)
         PyErr_SetString(afmmError, "Specify an ID.");
         return NULL;
     }
+    CHECK_IDX();
 
     PyObject *returnObj;
 
@@ -971,6 +1001,7 @@ static PyObject* py_AFMM_powerz(PyObject* self, PyObject* args)
         PyErr_SetString(afmmError, "Specify an ID and the z position.");
         return NULL;
     }
+    CHECK_IDX();
 
     try {
         power = vwaveguide.at(idx)->do_powerz(z);
@@ -1000,6 +1031,7 @@ static PyObject* py_AFMM_monitor(PyObject* self, PyObject* args)
             "in x and y, the position in x and y.");
         return NULL;
     }
+    CHECK_IDX();
 
     try {
         power = vwaveguide.at(idx)->do_monitor(z,wx,wy,px,py);
@@ -1026,6 +1058,7 @@ static PyObject* py_AFMM_angles(PyObject* self, PyObject* args)
             "the two angles.");
         return NULL;
     }
+    CHECK_IDX();
 
     try {
         vwaveguide.at(idx)->setAngles(n0, thetax, thetay);
@@ -1056,6 +1089,7 @@ static PyObject* py_AFMM_coefficient(PyObject* self, PyObject* args)
                 "parameters.\n");
         return NULL;
     }
+    CHECK_IDX();
 
    iMode = vwaveguide.at(idx)->getCur()->select_real(value);
 
@@ -1118,6 +1152,7 @@ static PyObject* py_AFMM_coefficient_id(PyObject* self, PyObject* args)
                 "parameters.\n");
             return NULL;
     }
+    CHECK_IDX();
 
     if (iMode<0) {
         PyErr_SetString(afmmError, "Mode index invalid.\n");
