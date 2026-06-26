@@ -178,8 +178,10 @@ static PyObject* py_AFMM_create(PyObject* self, PyObject* args)
 {
     int idx=vnP.size();
 
-    if (!PyArg_ParseTuple(args, ""))
+    if (!PyArg_ParseTuple(args, "")) {
+        PyErr_SetString(afmmError, "This command does not accept parameters.");
         return NULL;
+    }
 
     numParser *np = new numParser(); 
     vnP.push_back(*np) ;
@@ -199,13 +201,15 @@ static PyObject* py_AFMM_parsescript(PyObject* self, PyObject* args)
     const char *script;
     int idx;
 
-    if (!PyArg_ParseTuple(args, "is", &idx, &script))
+    if (!PyArg_ParseTuple(args, "is", &idx, &script)) {
+        PyErr_SetString(afmmError, "Specify an ID and the input script.");
         return NULL;
+    }
 
     //co.allow_system_command(true);   // potentially dangerous
     FILE *f= tmpfile();
     if (f==NULL) {
-        PyErr_SetString(afmmError, "Cannot create temporary file");
+        PyErr_SetString(afmmError, "Cannot create temporary file.");
         return NULL;
     }
     fprintf(f, "%s",script);
@@ -230,8 +234,10 @@ static PyObject* py_AFMM_size(PyObject* self, PyObject* args)
     double sx, sy;
     int idx;
 
-    if (!PyArg_ParseTuple(args, "idd", &idx, &sx, &sy))
+    if (!PyArg_ParseTuple(args, "idd", &idx, &sx, &sy)) {
+        PyErr_SetString(afmmError, "Specify an ID, followed by sx and sy.");
         return NULL;
+    }
 
     try {
         vwaveguide.at(idx)->do_size(sx,sy);
@@ -252,8 +258,10 @@ static PyObject* py_AFMM_harmonics(PyObject* self, PyObject* args)
     int hx, hy;
     int idx;
 
-    if (!PyArg_ParseTuple(args, "iii", &idx, &hx, &hy))
+    if (!PyArg_ParseTuple(args, "iii", &idx, &hx, &hy)) {
+        PyErr_SetString(afmmError, "Specify an ID followed by hx and hy.");
         return NULL;
+    }
 
     try {
         vwaveguide.at(idx)->do_harmonics(hx,hy);
@@ -275,8 +283,10 @@ static PyObject* py_AFMM_wavelength(PyObject* self, PyObject* args)
     double l;
     int idx;
 
-    if (!PyArg_ParseTuple(args, "id", &idx, &l))
+    if (!PyArg_ParseTuple(args, "id", &idx, &l)) {
+        PyErr_SetString(afmmError, "Specify an ID and the wavelength.");
         return NULL;
+    }
 
     vwaveguide.at(idx)->set_wavelength(l);
 
@@ -293,8 +303,11 @@ static PyObject* py_AFMM_substrate(PyObject* self, PyObject* args)
     Py_complex c;
     int idx;
 
-    if (!PyArg_ParseTuple(args, "iD", &idx, &c))
+    if (!PyArg_ParseTuple(args, "iD", &idx, &c)) {
+        PyErr_SetString(afmmError, "Specify an ID and the refractive "
+            "index of the substrate.");
         return NULL;
+    }
 
     r=c.real;
     i=c.imag;
@@ -313,8 +326,10 @@ static PyObject* py_AFMM_substrate(PyObject* self, PyObject* args)
 static PyObject* py_AFMM_solve(PyObject* self, PyObject* args)
 {
     int idx;
-    if (!PyArg_ParseTuple(args, "i", &idx))
+    if (!PyArg_ParseTuple(args, "i", &idx)) {
+        PyErr_SetString(afmmError, "Specify an ID.");
         return NULL;
+    }
 
     vector<double> results;
     try {
@@ -355,8 +370,10 @@ static PyObject* py_AFMM_solve(PyObject* self, PyObject* args)
  */
 static PyObject* py_AFMM_banner(PyObject* self, PyObject* args)
 {
-    if (!PyArg_ParseTuple(args, ""))
+    if (!PyArg_ParseTuple(args, "")) {
+        PyErr_SetString(afmmError, "This command does not accept parameters.");
         return NULL;
+    }
     cout << " ***************************************************************************\n"
          << " *      Aperiodic Fourier Modal Method full vectorial 3D propagation       *\n"
          << " *                            cRCWA 1.5.1                                  *\n"
@@ -393,8 +410,11 @@ static PyObject* py_AFMM_rectangle(PyObject* self, PyObject* args)
     double wx, wy, px, py;
     int idx;
 
-    if (!PyArg_ParseTuple(args, "iDdddd", &idx, &c,&wx,&wy,&px,&py))
+    if (!PyArg_ParseTuple(args, "iDdddd", &idx, &c,&wx,&wy,&px,&py)) {
+        PyErr_SetString(afmmError, "Specify an ID, the refractive index, "
+            " the width in x and y and the x and y coordinates of the center.");
         return NULL;
+    }
 
     r=c.real;
     i=c.imag;
@@ -414,8 +434,10 @@ static PyObject* py_AFMM_lowindex(PyObject* self, PyObject* args)
     Py_complex c;
     int idx;
 
-    if (!PyArg_ParseTuple(args, "iD", &idx, &c))
+    if (!PyArg_ParseTuple(args, "iD", &idx, &c)) {
+        PyErr_SetString(afmmError, "Specify an ID and the low index.");
         return NULL;
+    }
 
     vwaveguide.at(idx)->getCur()->set_lowindex(complex<double>(c.real,c.imag));
 
@@ -431,8 +453,10 @@ static PyObject* py_AFMM_highindex(PyObject* self, PyObject* args)
     Py_complex c;
     int idx;
 
-    if (!PyArg_ParseTuple(args, "iD", &idx, &c))
+    if (!PyArg_ParseTuple(args, "iD", &idx, &c)) {
+        PyErr_SetString(afmmError, "Specify an ID and the high index.");
         return NULL;
+    }
     vwaveguide.at(idx)->getCur()->set_highindex(complex<double>(c.real,c.imag));
 
     Py_INCREF(Py_None);
@@ -446,8 +470,10 @@ static PyObject* py_AFMM_highindex(PyObject* self, PyObject* args)
 static PyObject* py_AFMM_clear(PyObject* self, PyObject* args)
 {
     int idx;
-    if (!PyArg_ParseTuple(args, "i", &idx))
+    if (!PyArg_ParseTuple(args, "i", &idx)) {
+        PyErr_SetString(afmmError, "Specify an ID.");
         return NULL;
+    }
 
     vwaveguide.at(idx)->reset();
     cout<<"The structure definition has been cleared.\n";
@@ -462,9 +488,10 @@ static PyObject* py_AFMM_clear(PyObject* self, PyObject* args)
 static PyObject* py_AFMM_carpet(PyObject* self, PyObject* args)
 {
     int idx;
-    if (!PyArg_ParseTuple(args, "i", &idx))
+    if (!PyArg_ParseTuple(args, "i", &idx)) {
+        PyErr_SetString(afmmError, "Specify an ID.");
         return NULL;
-
+    }
     vwaveguide.at(idx)->set_ensureConvergence(true);
 
     Py_INCREF(Py_None);
@@ -478,8 +505,10 @@ static PyObject* py_AFMM_carpet(PyObject* self, PyObject* args)
 static PyObject* py_AFMM_assemble(PyObject* self, PyObject* args)
 {
     int idx;
-    if (!PyArg_ParseTuple(args, "i", &idx))
+    if (!PyArg_ParseTuple(args, "i", &idx)) {
+        PyErr_SetString(afmmError, "Specify an ID.");
         return NULL;
+    }
 
     try {
         vwaveguide.at(idx)->do_assemble();
@@ -500,8 +529,11 @@ static PyObject* py_AFMM_pml(PyObject* self, PyObject* args)
     Py_complex alpha;
     int idx;
 
-    if (!PyArg_ParseTuple(args, "iDdd", &idx, &alpha, &wx,&wy))
+    if (!PyArg_ParseTuple(args, "iDdd", &idx, &alpha, &wx,&wy)) {
+        PyErr_SetString(afmmError, "Specify an ID, alpha and the x and y "
+            "size of the PML.");
         return NULL;
+    }
 
     try {
         vwaveguide.at(idx)->getCur()->set_pml(wx,wy,
@@ -523,8 +555,11 @@ static PyObject* py_AFMM_pml_transf(PyObject* self, PyObject* args)
     Py_complex g;
     int idx;
 
-    if (!PyArg_ParseTuple(args, "iddD", &idx, &qdx,&qdy,&g))
+    if (!PyArg_ParseTuple(args, "iddD", &idx, &qdx,&qdy,&g)) {
+        PyErr_SetString(afmmError, "Specify an ID, the x and y size and the "
+            "complex coefficient of the PML.");
         return NULL;
+    }
 
     double r=g.real;
     double i=g.imag;
@@ -548,8 +583,10 @@ static PyObject* py_AFMM_bend(PyObject* self, PyObject* args)
     double r;
     int idx;
 
-    if (!PyArg_ParseTuple(args, "id", &idx, &r))
+    if (!PyArg_ParseTuple(args, "id", &idx, &r)) {
+        PyErr_SetString(afmmError, "Specify an ID and the bending radius.");
         return NULL;
+    }
 
     try {
         vwaveguide.at(idx)->getCur()->set_bend(r);
@@ -568,12 +605,15 @@ static PyObject* py_AFMM_bend(PyObject* self, PyObject* args)
 static PyObject* py_AFMM_inpstruct(PyObject* self, PyObject* args)
 {
     double sx, sy;
-    char *otype;
+    const char *otype;
     db_matrix out;
     int idx;
 
-    if (!PyArg_ParseTuple(args, "iddz", &idx, &sx, &sy, &otype))
+    if (!PyArg_ParseTuple(args, "iddz", &idx, &sx, &sy, &otype)) {
+        PyErr_SetString(afmmError, "Specify an ID, the number of points in x "
+            "and y and the type of output data required.");
         return NULL;
+    }
 
     try {
         out = vwaveguide.at(idx)->getCur()->do_inpstruct(sx, sy, otype);
@@ -621,12 +661,15 @@ static PyObject* py_AFMM_inpstruct(PyObject* self, PyObject* args)
 static PyObject* py_AFMM_outgmodes(PyObject* self, PyObject* args)
 {
     double sx, sy;
-    char *fieldcomponent;
+    const char *fieldcomponent;
     list<db_matrix> modes;
     int idx;
 
-    if (!PyArg_ParseTuple(args, "izdd", &idx, &fieldcomponent, &sx, &sy))
+    if (!PyArg_ParseTuple(args, "izdd", &idx, &fieldcomponent, &sx, &sy)) {
+        PyErr_SetString(afmmError, "Specify an ID, the type of the field "
+            "component, the number of points in x and y.");
         return NULL;
+    }
     
     modes =  vwaveguide.at(idx)->getCur()->do_outgmodes(sx, sy, fieldcomponent,
         S, "");
@@ -727,8 +770,10 @@ static PyObject* py_AFMM_wants(PyObject* self, PyObject* args)
     const char *code;
     int idx;
 
-    if (!PyArg_ParseTuple(args, "is", &idx, &code))
+    if (!PyArg_ParseTuple(args, "is", &idx, &code)) {
+        PyErr_SetString(afmmError, "Specify an ID and a parameter.");
         return NULL;
+    }
     try {
         vwaveguide.at(idx)->do_wants(code);
     } catch (parsefile_commandError e) {
@@ -748,8 +793,11 @@ static PyObject* py_AFMM_section(PyObject* self, PyObject* args)
     double tl;
     int idx;
 
-    if (!PyArg_ParseTuple(args, "id", &idx, &tl))
+    if (!PyArg_ParseTuple(args, "id", &idx, &tl)) {
+        PyErr_SetString(afmmError, "Specify an ID and the length of the "
+            "section.");
         return NULL;
+    }
 
     try {
         vwaveguide.at(idx)->do_section(tl);
@@ -769,8 +817,11 @@ static PyObject* py_AFMM_select(PyObject* self, PyObject* args)
 {
     unsigned int number;
     int idx;
-    if (!PyArg_ParseTuple(args, "iI", &idx, &number))
+    if (!PyArg_ParseTuple(args, "iI", &idx, &number)) {
+        PyErr_SetString(afmmError, "Specify an ID and the number of the "
+            "section.");
         return NULL;
+    }
     // The internal numbering starts from 0, as with C/C++
 
      try {
@@ -791,8 +842,10 @@ static PyObject* py_AFMM_order(PyObject* self, PyObject* args)
 {
     double minv, maxv;
     int idx;
-    if (!PyArg_ParseTuple(args, "idd", &idx, &minv, &maxv))
+    if (!PyArg_ParseTuple(args, "idd", &idx, &minv, &maxv)) {
+        PyErr_SetString(afmmError, "Specify an ID and minv and maxv.");
         return NULL;
+    }
 
     try {
         vwaveguide.at(idx)->getCur()->do_order(minv,maxv);
@@ -812,8 +865,10 @@ static PyObject* py_AFMM_order(PyObject* self, PyObject* args)
 static PyObject* py_AFMM_bloch(PyObject* self, PyObject* args)
 {
     int idx;
-    if (!PyArg_ParseTuple(args, "i", &idx))
+    if (!PyArg_ParseTuple(args, "i", &idx)) {
+        PyErr_SetString(afmmError, "Specify an ID.");
         return NULL;
+    }
 
     vector<double> results;
     try {
@@ -857,8 +912,10 @@ static PyObject* py_AFMM_bloch(PyObject* self, PyObject* args)
 static PyObject* py_AFMM_spectrum(PyObject* self, PyObject* args)
 {
     int idx;
-    if (!PyArg_ParseTuple(args, "i", &idx))
+    if (!PyArg_ParseTuple(args, "i", &idx)) {
+        PyErr_SetString(afmmError, "Specify an ID.");
         return NULL;
+    }
 
     PyObject *returnObj;
 
@@ -910,8 +967,10 @@ static PyObject* py_AFMM_powerz(PyObject* self, PyObject* args)
     double z=0;
     double power;
     int idx;
-    if (!PyArg_ParseTuple(args, "id", &idx, &z))
+    if (!PyArg_ParseTuple(args, "id", &idx, &z)) {
+        PyErr_SetString(afmmError, "Specify an ID and the z position.");
         return NULL;
+    }
 
     try {
         power = vwaveguide.at(idx)->do_powerz(z);
@@ -936,8 +995,11 @@ static PyObject* py_AFMM_monitor(PyObject* self, PyObject* args)
     double z, wx, wy, px, py;
     double power;
     int idx;
-    if (!PyArg_ParseTuple(args, "iddddd", &idx, &z, &wx, &wy, &px, &py))
+    if (!PyArg_ParseTuple(args, "iddddd", &idx, &z, &wx, &wy, &px, &py)) {
+        PyErr_SetString(afmmError, "Specify an ID, the z position, the size "
+            "in x and y, the position in x and y.");
         return NULL;
+    }
 
     try {
         power = vwaveguide.at(idx)->do_monitor(z,wx,wy,px,py);
@@ -959,8 +1021,11 @@ static PyObject* py_AFMM_angles(PyObject* self, PyObject* args)
 {
     double n0,thetax, thetay;
     int idx;
-    if (!PyArg_ParseTuple(args, "iddd", &idx, &n0, &thetax, &thetay))
+    if (!PyArg_ParseTuple(args, "iddd", &idx, &n0, &thetax, &thetay)) {
+        PyErr_SetString(afmmError, "Specify an ID, the refractive index and "
+            "the two angles.");
         return NULL;
+    }
 
     try {
         vwaveguide.at(idx)->setAngles(n0, thetax, thetay);
@@ -981,8 +1046,7 @@ static PyObject* py_AFMM_angles(PyObject* self, PyObject* args)
 static PyObject* py_AFMM_coefficient(PyObject* self, PyObject* args)
 {
     Py_complex coeff;
-    char *type;
-    char *second;
+    const char *type;
     double value;
     int iMode;
     complex<double> e;
@@ -990,13 +1054,13 @@ static PyObject* py_AFMM_coefficient(PyObject* self, PyObject* args)
     if(!PyArg_ParseTuple(args, "izd", &idx, &type, &value)) {
         PyErr_SetString(afmmError, "coefficient: could not read the "
                 "parameters.\n");
-            return NULL;
+        return NULL;
     }
 
    iMode = vwaveguide.at(idx)->getCur()->select_real(value);
 
     if (iMode<0) {
-        cout<<"I could not find the given mode.\n";
+        PyErr_SetString(afmmError, "I could not find the given mode.\n");
         return NULL;
     }
     cout << "Selected mode: ";
@@ -1043,8 +1107,7 @@ static PyObject* py_AFMM_coefficient(PyObject* self, PyObject* args)
 static PyObject* py_AFMM_coefficient_id(PyObject* self, PyObject* args)
 {
     Py_complex coeff;
-    char *type;
-    char *second;
+    const char *type;
     double value;
     int iMode;
     complex<double> e;
@@ -1057,7 +1120,7 @@ static PyObject* py_AFMM_coefficient_id(PyObject* self, PyObject* args)
     }
 
     if (iMode<0) {
-        cout<<"Mode index invalid.\n";
+        PyErr_SetString(afmmError, "Mode index invalid.\n");
         return NULL;
     }
     cout << "Selected mode: ";
@@ -1088,10 +1151,10 @@ static PyObject* py_AFMM_coefficient_id(PyObject* self, PyObject* args)
         return NULL;
     }
     cout << "mode coefficient: " << e << "\n";
-    cout << "Squared module: " << abs(e)*abs(e) << "\n";
+    cout << "Squared modulus: " << abs(e)*abs(e) << "\n";
 
     // Save the calculated data as an array in the output variable "ans".
-    double *s =new double[3];
+    //double *s =new double[3];
     coeff.real=e.real();
     coeff.imag=e.imag();
 
