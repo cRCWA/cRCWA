@@ -36,7 +36,7 @@
 // g++ -dynamiclib -I/usr/include/python/ -lpython -o pycRCWA.so afmm_python_module.cpp
 
 
-
+// I suspect PY_MAJOR_VERSION is not defined.
 #if PY_MAJOR_VERSION >= 3
     #error Python 3 is requested for the compilation
 #endif
@@ -204,15 +204,20 @@ static PyObject* py_AFMM_parsescript(PyObject* self, PyObject* args)
 
     //co.allow_system_command(true);   // potentially dangerous
     FILE *f= tmpfile();
+    if (f==NULL) {
+        PyErr_SetString(afmmError, "Cannot create temporary file");
+        return NULL;
+    }
     fprintf(f, "%s",script);
 
     try {
         vco.at(idx).readFile(f,false);
     } catch (parsefile_commandError e) {
+        fclose(f); 
         PyErr_SetString(afmmError, e.getMess());
         return NULL;
     }
-    fclose(f);        // I get an error if I close the file here.
+    fclose(f);
     Py_INCREF(Py_None);
     return Py_None;
 }
@@ -664,16 +669,14 @@ static PyObject* py_AFMM_outgmodes(PyObject* self, PyObject* args)
 
 /**
   indmatrix command. The Python-esque equivalent of the indfile matrix that
-  returns a matrix and do not write on a file.
+  returns a matrix and does not write on a file.
 */
 static PyObject* py_AFMM_indmatrix(PyObject* self, PyObject* args)
 {
     PyObject *rows;
     int idx;
-    if (!PyArg_ParseTuple(args, "i", &idx))
-        return NULL;
-    if (!PyArg_ParseTuple(args, "O", &rows)) {
-        PyErr_SetString(afmmError, "Can not obtain an object");
+    if (!PyArg_ParseTuple(args, "iO", &idx,&rows)) {
+        PyErr_SetString(afmmError, "Use with an index and a list of lists");
         return NULL;
     }
     if(!PyList_Check(rows)) {
@@ -766,9 +769,7 @@ static PyObject* py_AFMM_select(PyObject* self, PyObject* args)
 {
     unsigned int number;
     int idx;
-    if (!PyArg_ParseTuple(args, "i", &idx))
-        return NULL;
-    if (!PyArg_ParseTuple(args, "I", &number))
+    if (!PyArg_ParseTuple(args, "iI", &idx, &number))
         return NULL;
     // The internal numbering starts from 0, as with C/C++
 
@@ -790,9 +791,7 @@ static PyObject* py_AFMM_order(PyObject* self, PyObject* args)
 {
     double minv, maxv;
     int idx;
-    if (!PyArg_ParseTuple(args, "i", &idx))
-        return NULL;
-    if (!PyArg_ParseTuple(args, "dd", &minv, &maxv))
+    if (!PyArg_ParseTuple(args, "idd", &idx, &minv, &maxv))
         return NULL;
 
     try {
@@ -911,9 +910,7 @@ static PyObject* py_AFMM_powerz(PyObject* self, PyObject* args)
     double z=0;
     double power;
     int idx;
-    if (!PyArg_ParseTuple(args, "i", &idx))
-        return NULL;
-    if (!PyArg_ParseTuple(args, "d", &z))
+    if (!PyArg_ParseTuple(args, "id", &idx, &z))
         return NULL;
 
     try {
@@ -939,10 +936,7 @@ static PyObject* py_AFMM_monitor(PyObject* self, PyObject* args)
     double z, wx, wy, px, py;
     double power;
     int idx;
-    if (!PyArg_ParseTuple(args, "i", &idx))
-        return NULL;
-
-    if (!PyArg_ParseTuple(args, "ddddd", &z, &wx, &wy, &px, &py))
+    if (!PyArg_ParseTuple(args, "iddddd", &idx, &z, &wx, &wy, &px, &py))
         return NULL;
 
     try {
@@ -965,10 +959,7 @@ static PyObject* py_AFMM_angles(PyObject* self, PyObject* args)
 {
     double n0,thetax, thetay;
     int idx;
-    if (!PyArg_ParseTuple(args, "i", &idx))
-        return NULL;
-
-    if (!PyArg_ParseTuple(args, "ddd", &n0, &thetax, &thetay))
+    if (!PyArg_ParseTuple(args, "iddd", &idx, &n0, &thetax, &thetay))
         return NULL;
 
     try {
@@ -996,10 +987,7 @@ static PyObject* py_AFMM_coefficient(PyObject* self, PyObject* args)
     int iMode;
     complex<double> e;
     int idx;
-    if (!PyArg_ParseTuple(args, "i", &idx))
-        return NULL;
-
-    if(!PyArg_ParseTuple(args, "zd", &type, &value)) {
+    if(!PyArg_ParseTuple(args, "izd", &idx, &type, &value)) {
         PyErr_SetString(afmmError, "coefficient: could not read the "
                 "parameters.\n");
             return NULL;
@@ -1061,10 +1049,8 @@ static PyObject* py_AFMM_coefficient_id(PyObject* self, PyObject* args)
     int iMode;
     complex<double> e;
     int idx;
-    if (!PyArg_ParseTuple(args, "i", &idx))
-        return NULL;
 
-    if(!PyArg_ParseTuple(args, "zi", &type, &iMode)) {
+    if(!PyArg_ParseTuple(args, "izi", &idx, &type, &iMode)) {
         PyErr_SetString(afmmError, "coefficient_id: could not read the "
                 "parameters.\n");
             return NULL;

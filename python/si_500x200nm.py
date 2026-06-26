@@ -13,7 +13,7 @@ idx = crcwa.create()
 #crcwa.wants(idx, "propagation")
 # AFMM commands are mapped directly into Python functions:
 crcwa.size(idx, 1.5e-6,1.5e-6)
-crcwa.harmonics(idx, 8,8)
+crcwa.harmonics(idx, 18,18)
 crcwa.wavelength(idx, 1.55e-6)
 
 
