@@ -56,6 +56,8 @@ using namespace std;
 
 extern "C" {
     PyMODINIT_FUNC PyInit_pycRCWA(void);
+    static void pycRCWA_free(void *module);
+
     static PyObject* py_AFMM_create(PyObject* self, PyObject* args);
     static PyObject* py_AFMM_banner(PyObject* self, PyObject* args);
     static PyObject* py_AFMM_parsescript(PyObject* self, PyObject* args);
@@ -136,15 +138,19 @@ static struct PyModuleDef pycRCWAmodule = {
     NULL, /* module documentation, may be NULL */
     -1,       /* size of per-interpreter state of the module,
                  or -1 if the module keeps state in global variables. */
-    myModule_methods
+    myModule_methods,
+    NULL,
+    NULL,
+    NULL,
+    pycRCWA_free    /* Destructor */
 };
 
 // Create vectors of the important objects defining the structure to be
 // calculated.
 
-vector<numParser> vnP;
+vector<numParser *> vnP;
 vector<structure *> vwaveguide;
-vector<commands> vco;
+vector<commands *> vco;
 
 /*
  * Python3 calls this to let us initialize our module
@@ -165,8 +171,32 @@ PyMODINIT_FUNC PyInit_pycRCWA(void)
         Py_DECREF(m);
         return NULL;
     }
-
     return m;
+}
+
+static void pycRCWA_free(void *module)
+{
+    // Eliminate all structures
+    for (structure *p : vwaveguide) {
+        delete p;
+    }
+
+    for (numParser *p : vnP) {
+        delete p;
+    }
+    
+    for (commands *p : vco) {
+        delete p;
+    }
+
+    vwaveguide.clear();
+    vnP.clear();
+    vco.clear();
+
+    if (afmmError) {
+        Py_DECREF(afmmError);
+        afmmError = NULL;
+    }
 }
 
 
@@ -184,10 +214,11 @@ static PyObject* py_AFMM_create(PyObject* self, PyObject* args)
     }
 
     numParser *np = new numParser(); 
-    vnP.push_back(*np) ;
+    vnP.push_back(np) ;
     structure *sp = new structure(np);
     vwaveguide.push_back(sp);
-    vco.push_back(* new commands(*sp, np));
+    commands *cc = new commands(*sp, np);
+    vco.push_back(cc);
     cout << "Created new solver/propagator with index "<<idx<<endl;
     return Py_BuildValue("i", idx);
 }
@@ -222,7 +253,7 @@ static PyObject* py_AFMM_parsescript(PyObject* self, PyObject* args)
     fprintf(f, "%s",script);
 
     try {
-        vco.at(idx).readFile(f,false);
+        vco.at(idx)->readFile(f,false);
     } catch (parsefile_commandError e) {
         fclose(f); 
         PyErr_SetString(afmmError, e.getMess());

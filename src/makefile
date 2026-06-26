@@ -19,7 +19,7 @@
 #   You should have received a copy of the GNU General Public License along
 #   with cRCWA. If not, see <https://www.gnu.org/licenses/>. 
 # 
-#   Davide Bucci, 2008-2025
+#   Davide Bucci, 2008-2026
 #   Jérôme Michallon, 2012-2014
 # */
 
@@ -58,7 +58,7 @@ crcwa: $(OFILES) $(HEADERS)
 
 pycrcwa:
 	$(CXX) -shared -L$(LIBLAPACKDIR) $(LIBLAPACK) -L$(LIBBLASDIR) $(LIBBLAS) -L$(LIBFFTW3DIR) -lfftw3 $(LIBTHREAD) $(PYTHONLIB) -o pycRCWA.so \
-	 $(OFILES) -I$(PYTHONINCDIR) afmm_python_module.cpp -fPIC
+	 $(OFILES) -I$(PYTHONINCDIR) $(CFLAGS) afmm_python_module.cpp -fPIC
 	 mv pycRCWA.so ../python
 
 
