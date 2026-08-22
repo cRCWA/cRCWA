@@ -1,0 +1,73 @@
+
+wavelength 660e-9
+material 1e-6 Aspnes_Si.txt Si
+
+addspace o
+sprint filename Aspnes_ "Si" _result ".txt"
+addspace i
+
+print wrinting in filename
+fopen filename "w"
+let file=ans
+
+# simply reading and rewring refractive index file
+for :wav 300e-9 800e-9 50e-9
+	print wav
+	wavelength wav
+	fprint file (wav*1e6) Si
+next :wav
+fclose file
+
+############################################################################
+# create 1D structure with material and extract back the refractive index
+############################################################################
+wavelength 660e-9
+size 1e-6 1e-6
+harmonics 1 1
+substrate Si
+inpstruct im 1 1 inpstruct_result.txt
+
+############################################################################
+# do the same with only no imaginary refractive index:
+############################################################################
+material 1e-6 Aspnes_Si2.txt Si
+
+addspace o
+sprint filename Aspnes_ "Si2" _result ".txt"
+addspace i
+
+print wrinting in filename
+fopen filename "w"
+let file=ans
+
+# simply reading and rewring refractive index file
+for :wav 300e-9 800e-9 50e-9
+	print wav
+	wavelength wav
+	fprint file (wav*1e6) Si
+next :wav
+fclose file
+
+############################################################################
+# same with 3 colum file format:
+############################################################################
+material 1e-9 lambda_n_k_Si.dat Si2
+
+addspace o
+sprint filename lambda_n_k_Si _result ".txt"
+addspace i
+
+print wrinting in filename
+fopen filename "w"
+let file=ans
+
+# simply reading and rewring refractive index file
+for :wav 300e-9 800e-9 50e-9
+	print wav
+	wavelength wav
+	fprint file (wav*1e9) Si2
+next :wav
+fclose file
+
+
+
