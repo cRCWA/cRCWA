@@ -162,6 +162,11 @@ void commands::init(structure &s)
 	// Added in v1.5.2
 	insert_command("inpnf",&s,&commands::c_inpnf);
 	insert_command("draw",&s,&commands::c_draw);
+	
+	// Added in v1.5.4:
+	insert_command("material",&s,&commands::c_material);
+	insert_command("ensureconv",&s,&commands::c_carpet);
+	insert_command("inpstruct3d",&s,&commands::c_inpstruct3d);
     // When adding new commands, please remember to update c_help
 
 }
@@ -189,14 +194,17 @@ int commands::c_help(parsefile *obj, int argc,char *argv[])
         << "  size         Define the size of the calculation window.\n"
         << "  harmonics    Define the number of harmonics to be taken.\n"
         << "  wavelength   Define the working wavelength.\n"
+        << "  inpstruct3d  Write on a file the 3D index distribution.\n"
         << "  solve        Solve for eigenmodes for all sections.\n"
         << "  wants        Declare that the user wants to calculate H field or propagation.\n"
         << "  propagation  Propagate the field in the structure.\n"
         << "  assemble     Assemble the different sertions to create a structure.\n"
         << "  excitation   Specify the field excitation of the structure.\n"
-        << "  carpet       Sweep some numerical dust under the carpet.\n"
+        << "  carpet       Depreciated. see ensureconv.\n"
+        << "  ensureconv   Force negative imaginary propagation constants.\n"
         << "  outdata      Set up for the calculation of additional output data.\n"
         << "  symmetry     Set up if the structure is symmetrical.\n"
+        << "  material     Define material dispersion with wavelength.\n"       
 
         << "\n"
         << "Section-level commands:\n"
@@ -245,6 +253,7 @@ int commands::c_help(parsefile *obj, int argc,char *argv[])
         << "  for... next  Cycle.\n"
         << "  memocc       Print some data about the current memory occupation.\n"
         << "  print        Print a message.\n"
+        << "  sprint       Print a message into a string variable.\n"
         << "  let          Evaluate expressions.\n"
         << "  parallel     Launch multiple threads in parallel (when possible).\n";
 

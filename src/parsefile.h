@@ -64,7 +64,8 @@ using namespace std;
 #define HT_NOTFOUND -1
 #define HT_NOTSPACE -1
 #define MAXCMLEN     64             // Longueur maximale d'un nom de commande
-#define BUFDIM      512             // Longueur maximale d'une ligne du fichier
+#define BUFDIM      2048            // Longueur maximale d'une ligne du fichier
+#define VARDIM      64              // Longueur maximale pour une variable
 #define MAXFILE     20              // Nombre max de files ouverts
 
 typedef class parsefile parsefile_tag;
@@ -83,10 +84,12 @@ class parsefile {
     /* Dimension de l'hash table pour stocker les commandes à executer */
     #define HT_DIM 100
 
-    /* Hash table containing labels */
-    map<string, long int> labels;
+    /* Hash table containing labels (i.e. address in the file + line number) */
+    map<string, pair<long int, int> > labels;
+    map<string, pair<long int, int>> for_next;
+    
+    /* Hash table containing for parameters */
     map<string, double> for_end;
-    map<string, double> for_next;
     map<string, double> for_increment;
 
     bool noForCycles;
@@ -102,6 +105,7 @@ class parsefile {
     int act;
     FILE *pFin;
     long int currentPosition;
+    int currentLine;
     long int successivePosition;
 
     bool system_command_allowed;
@@ -110,7 +114,7 @@ class parsefile {
     // has been successful, false otherwise.
     bool lastRead;
 
-    // Add some spaces between arguments of print and fprint
+    // Add some spaces between arguments of print, sprint and fprint
     // as well as newlines.
     bool addspace;
 
@@ -125,8 +129,8 @@ class parsefile {
 
 protected:
     // Functions to get and set a bookmark.
-    long int getBookmark(void);
-    void setBookmark(long int b);
+    pair<long int, int> getBookmark(void);
+    void setBookmark(pair<long int, int> b);
     numParser *nP;
 public:
 
@@ -148,6 +152,7 @@ public:
     static int c_addspace(parsefile *obj, int argc,char *argv[]);
 
     static int c_print(parsefile *obj, int argc,char *argv[]);
+    static int c_sprint(parsefile *obj, int argc,char *argv[]);
 
     static int c_fopen(parsefile *obj, int argc,char *argv[]);
     static int c_fclose(parsefile *obj, int argc,char *argv[]);

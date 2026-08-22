@@ -35,134 +35,142 @@
 \contentsline {subsection}{\numberline {2.3.1}SIZE: Set calculation window size}{40}{}%
 \contentsline {subsection}{\numberline {2.3.2}HARMONICS: Set number of space harmonics to be used}{40}{}%
 \contentsline {subsection}{\numberline {2.3.3}WAVELENGTH: Set the wavelength to be used}{41}{}%
-\contentsline {subsection}{\numberline {2.3.4}SOLVE: Find propagation modes}{41}{}%
-\contentsline {subsection}{\numberline {2.3.5}WANTS: Save information for later field calculations}{42}{}%
-\contentsline {subsection}{\numberline {2.3.6}PROPAGATION: Propagate fields in the structure}{42}{}%
-\contentsline {subsection}{\numberline {2.3.7}ASSEMBLE: Prepare all the matrices needed for the propagation}{43}{}%
-\contentsline {subsection}{\numberline {2.3.8}EXCITATION: Define the excitation of the calculation region}{43}{}%
-\contentsline {subsection}{\numberline {2.3.9}CARPET: Sweep some convergence problems under the carpet}{46}{}%
-\contentsline {subsection}{\numberline {2.3.10}OUTDATA: Calculate additional output data during propagation}{46}{}%
-\contentsline {subsection}{\numberline {2.3.11}SYMMETRY: Handle structure symmetries}{47}{}%
-\contentsline {subsection}{\numberline {2.3.12}BLOCH: Calculate Bloch eigenmodes and eigenvectors}{48}{}%
-\contentsline {subsection}{\numberline {2.3.13}ANGLES: Define excitation angles different from 0}{48}{}%
-\contentsline {subsection}{\numberline {2.3.14}OUTBLOCH: Output the results of the Bloch mode calculation}{48}{}%
-\contentsline {section}{\numberline {2.4}Section-level commands}{49}{}%
-\contentsline {subsection}{\numberline {2.4.1}SECTION: Define a section of the given length}{49}{}%
-\contentsline {subsection}{\numberline {2.4.2}SUBSTRATE: Chooses the refractive index of the substrate}{49}{}%
-\contentsline {subsection}{\numberline {2.4.3}RECTANGLE: Add a rectangular waveguide to the structure}{50}{}%
-\contentsline {subsection}{\numberline {2.4.4}DRAW: draw the structure}{50}{}%
-\contentsline {subsection}{\numberline {2.4.5}PML: Add perfectly matched layers to the waveguide}{53}{}%
-\contentsline {subsection}{\numberline {2.4.6}PML\_TRANSF: Adopt PML's with coordinate transform}{53}{}%
-\contentsline {subsection}{\numberline {2.4.7}INDFILE: Reads refractive index distribution from an input file}{53}{}%
-\contentsline {subsection}{\numberline {2.4.8}INPNF: Show the input normal-field}{54}{}%
-\contentsline {subsection}{\numberline {2.4.9}INPSTRUCT: Show the input structure}{55}{}%
-\contentsline {subsection}{\numberline {2.4.10}OUTGMODES: Write on a file the interesting modes found}{55}{}%
-\contentsline {subsection}{\numberline {2.4.11}SELMODES: output the modes using a rule}{56}{}%
-\contentsline {subsection}{\numberline {2.4.12}LOWINDEX: Set the lowest value allowed for the effective index to be considered ``interesting''}{57}{}%
-\contentsline {subsection}{\numberline {2.4.13}HIGHINDEX: Set the highest value allowed for the effective index to be considered ``interesting''}{57}{}%
-\contentsline {subsection}{\numberline {2.4.14}BEND: Define the bending radius}{58}{}%
-\contentsline {subsection}{\numberline {2.4.15}SPECTRUM: Obtain all calculated effective indices}{58}{}%
-\contentsline {subsection}{\numberline {2.4.16}ORDER: Select the ``interesting'' modes on the basis of azimuthal order}{58}{}%
-\contentsline {subsection}{\numberline {2.4.17}COEFFICIENT: Determine the transmission coefficient of a mode in the structure}{58}{}%
-\contentsline {subsection}{\numberline {2.4.18}SELECT: Change the current section}{59}{}%
-\contentsline {subsection}{\numberline {2.4.19}MATDEV: Choose the matrix development strategy}{59}{}%
-\contentsline {subsection}{\numberline {2.4.20}NORM: Calculate the L2 norm of the vector of excitation}{60}{}%
-\contentsline {subsection}{\numberline {2.4.21}EIGENVC: Report eigenvectors of the current section}{61}{}%
-\contentsline {subsection}{\numberline {2.4.22}EIGENAM: Report eigenvalues of the current section}{61}{}%
-\contentsline {subsection}{\numberline {2.4.23}POWER: Calculate propagated power}{61}{}%
-\contentsline {subsection}{\numberline {2.4.24}POWERZ: Calculate all power flowing in a given quota}{62}{}%
-\contentsline {subsection}{\numberline {2.4.25}MONITOR: Monitors power flow in a rectangular surface}{62}{}%
-\contentsline {subsection}{\numberline {2.4.26}MODEPOS: Get mode position indices}{62}{}%
-\contentsline {section}{\numberline {2.5}Other commands of general use}{63}{}%
-\contentsline {subsection}{\numberline {2.5.1}\#: Start a comment}{63}{}%
-\contentsline {subsection}{\numberline {2.5.2}HELP: List the supported commands}{63}{}%
-\contentsline {subsection}{\numberline {2.5.3}LABEL and GOTO: Unconditional jumps}{63}{}%
-\contentsline {subsection}{\numberline {2.5.4}IF, ELSE, ENDIF: Perform a conditional test}{63}{}%
-\contentsline {subsection}{\numberline {2.5.5}FOR and NEXT: Define a cycle}{64}{}%
-\contentsline {subsection}{\numberline {2.5.6}DO and WHILE: Define a cycle with an exit condition}{64}{}%
-\contentsline {subsection}{\numberline {2.5.7}LOAD: Load (or includes) a new file}{64}{}%
-\contentsline {subsection}{\numberline {2.5.8}QUIT: Exit immediately}{64}{}%
-\contentsline {subsection}{\numberline {2.5.9}PRINT: Print a line at the output}{65}{}%
-\contentsline {subsection}{\numberline {2.5.10}FOPEN: Open a file}{65}{}%
-\contentsline {subsection}{\numberline {2.5.11}FCLOSE: Close a file}{65}{}%
-\contentsline {subsection}{\numberline {2.5.12}FPRINT: Print a line on a file}{65}{}%
-\contentsline {subsection}{\numberline {2.5.13}FSCAN read a number}{66}{}%
-\contentsline {subsection}{\numberline {2.5.14}FCHECK checks if the last file read was successful}{66}{}%
-\contentsline {subsection}{\numberline {2.5.15}FSKIP: Skip a line on the file}{66}{}%
-\contentsline {subsection}{\numberline {2.5.16}ADDSPACE: Define the strategy for spaces and newlines in printing}{66}{}%
-\contentsline {subsection}{\numberline {2.5.17}CLEAR: Reset the structure}{66}{}%
-\contentsline {subsection}{\numberline {2.5.18}SYSTEM: Executes a system command}{66}{}%
-\contentsline {subsection}{\numberline {2.5.19}LET: Perform numerical calculations}{67}{}%
-\contentsline {subsection}{\numberline {2.5.20}MEMOCC: Report memory occupation}{67}{}%
-\contentsline {subsection}{\numberline {2.5.21}PARALLEL: Try to parallelise calculations when possible}{67}{}%
-\contentsline {section}{\numberline {2.6}Using variables in calculations}{68}{}%
-\contentsline {section}{\numberline {2.7}Slab waveguide and matrix developments}{70}{}%
-\contentsline {section}{\numberline {2.8}Example: rectangular waveguide}{73}{}%
-\contentsline {section}{\numberline {2.9}Load refractive index distribution}{74}{}%
-\contentsline {section}{\numberline {2.10}Modes of a 1D bent waveguide}{75}{}%
-\contentsline {section}{\numberline {2.11}Propagation in a 2D structure}{76}{}%
-\contentsline {section}{\numberline {2.12}Bloch-modes calculation}{78}{}%
-\contentsline {section}{\numberline {2.13}Conclusion}{80}{}%
-\contentsline {chapter}{\numberline {A}Matrix constructions}{81}{}%
-\contentsline {section}{\numberline {A.1}The block-Toeplitz matrix}{81}{}%
-\contentsline {section}{\numberline {A.2}The modified Toeplitz notation}{83}{}%
-\contentsline {section}{\numberline {A.3}Unrolling vectors}{84}{}%
-\contentsline {section}{\numberline {A.4}Creating bloc-Toeplitz matrix}{84}{}%
-\contentsline {section}{\numberline {A.5}Modified matrices}{86}{}%
-\contentsline {section}{\numberline {A.6}Conclusion}{87}{}%
-\contentsline {chapter}{\numberline {B}Plotting modes profiles with Gnuplot}{89}{}%
-\contentsline {section}{\numberline {B.1}Plotting a structure}{89}{}%
-\contentsline {chapter}{\numberline {C}The \textsf {slice} utility}{91}{}%
-\contentsline {section}{\numberline {C.1}Usage}{91}{}%
-\contentsline {section}{\numberline {C.2}Examples}{92}{}%
-\contentsline {section}{\numberline {C.3}Conclusion}{92}{}%
-\contentsline {chapter}{\numberline {D}File formats used by \textsf {cRCWA}}{93}{}%
-\contentsline {section}{\numberline {D.1}2D and 3D formats, compatible with Gnuplot}{93}{}%
-\contentsline {subsection}{\numberline {D.1.1}Header}{93}{}%
-\contentsline {subsection}{\numberline {D.1.2}Data section of the file}{93}{}%
-\contentsline {subsection}{\numberline {D.1.3}Example}{93}{}%
-\contentsline {section}{\numberline {D.2}OptiWave software compatible formats}{94}{}%
-\contentsline {subsection}{\numberline {D.2.1}Refractive index distribution: rid}{94}{}%
-\contentsline {subsubsection}{Header}{94}{}%
-\contentsline {subsubsection}{Data section of the file}{94}{}%
-\contentsline {subsubsection}{Example}{94}{}%
-\contentsline {subsection}{\numberline {D.2.2}Electric fields: f3d}{95}{}%
-\contentsline {section}{\numberline {D.3}Conversion utility: \texttt {o2g}}{95}{}%
-\contentsline {chapter}{\numberline {E}The \textsf {draw} utility}{97}{}%
-\contentsline {section}{\numberline {E.1}Introduction}{97}{}%
-\contentsline {section}{\numberline {E.2}Help}{97}{}%
-\contentsline {section}{\numberline {E.3}Examples}{98}{}%
-\contentsline {subsection}{\numberline {E.3.1}Rectangle}{98}{}%
-\contentsline {subsection}{\numberline {E.3.2}Circle}{99}{}%
-\contentsline {subsection}{\numberline {E.3.3}Plotting results}{100}{}%
-\contentsline {chapter}{\numberline {F}Python interface}{101}{}%
-\contentsline {section}{\numberline {F.1}Introduction}{101}{}%
-\contentsline {section}{\numberline {F.2}Commands}{101}{}%
-\contentsline {section}{\numberline {F.3}Commands operating with tables}{102}{}%
-\contentsline {section}{\numberline {F.4}Python functions without an equivalent in the \textsf {cRCWA}\ script language}{102}{}%
-\contentsline {section}{\numberline {F.5}Examples}{103}{}%
-\contentsline {chapter}{\numberline {G}Version history and change-log}{105}{}%
-\contentsline {section}{\numberline {G.1}Version 1.5.3}{105}{}%
-\contentsline {section}{\numberline {G.2}Version 1.5}{105}{}%
-\contentsline {section}{\numberline {G.3}Version 1.4.5}{105}{}%
-\contentsline {section}{\numberline {G.4}Version 1.4.4}{105}{}%
-\contentsline {section}{\numberline {G.5}Version 1.4.3}{105}{}%
-\contentsline {section}{\numberline {G.6}Version 1.4.2}{106}{}%
-\contentsline {section}{\numberline {G.7}Version 1.4.1}{106}{}%
-\contentsline {section}{\numberline {G.8}Version 1.4}{106}{}%
-\contentsline {section}{\numberline {G.9}Version 1.3.5}{106}{}%
-\contentsline {section}{\numberline {G.10}Version 1.3.4}{106}{}%
-\contentsline {section}{\numberline {G.11}Version 1.3.3}{106}{}%
-\contentsline {section}{\numberline {G.12}Version 1.3.2}{106}{}%
-\contentsline {section}{\numberline {G.13}Version 1.3.1}{107}{}%
-\contentsline {section}{\numberline {G.14}Version 1.3}{107}{}%
-\contentsline {section}{\numberline {G.15}Version 1.2.3}{107}{}%
-\contentsline {section}{\numberline {G.16}Version 1.2.2}{107}{}%
-\contentsline {section}{\numberline {G.17}Version 1.2.0}{107}{}%
-\contentsline {section}{\numberline {G.18}Version 1.1.0}{107}{}%
-\contentsline {section}{\numberline {G.19}Version 1.0.2}{107}{}%
-\contentsline {section}{\numberline {G.20}Version 1.0.1}{108}{}%
-\contentsline {section}{\numberline {G.21}Version 1.0}{108}{}%
-\contentsline {chapter}{\numberline {H}List of publications related to \textsf {cRCWA}}{109}{}%
-\contentsline {subsection}{\numberline {H.0.1}Proceedings of international meetings and workshops}{109}{}%
-\contentsline {subsection}{\numberline {H.0.2}International reviews}{109}{}%
+\contentsline {subsection}{\numberline {2.3.4}MATERIAL: Load refractive index files and interpolate to the wavelength}{41}{}%
+\contentsline {subsection}{\numberline {2.3.5}INPSTRUCT3D: Show the 3d input structure}{41}{}%
+\contentsline {subsection}{\numberline {2.3.6}SOLVE: Find propagation modes}{42}{}%
+\contentsline {subsection}{\numberline {2.3.7}WANTS: Save information for later field calculations}{43}{}%
+\contentsline {subsection}{\numberline {2.3.8}PROPAGATION: Propagate fields in the structure}{43}{}%
+\contentsline {subsection}{\numberline {2.3.9}ASSEMBLE: Prepare all the matrices needed for the propagation}{44}{}%
+\contentsline {subsection}{\numberline {2.3.10}EXCITATION: Define the excitation of the calculation region}{44}{}%
+\contentsline {subsection}{\numberline {2.3.11}CARPET: Depreciated see ENSURECONV}{47}{}%
+\contentsline {subsection}{\numberline {2.3.12}ENSURECONV: ensure proper propagation modes}{47}{}%
+\contentsline {subsection}{\numberline {2.3.13}OUTDATA: Calculate additional output data during propagation}{47}{}%
+\contentsline {subsection}{\numberline {2.3.14}SYMMETRY: Handle structure symmetries}{48}{}%
+\contentsline {subsection}{\numberline {2.3.15}BLOCH: Calculate Bloch eigenmodes and eigenvectors}{49}{}%
+\contentsline {subsection}{\numberline {2.3.16}ANGLES: Define excitation angles different from 0}{49}{}%
+\contentsline {subsection}{\numberline {2.3.17}OUTBLOCH: Output the results of the Bloch mode calculation}{50}{}%
+\contentsline {section}{\numberline {2.4}Section-level commands}{50}{}%
+\contentsline {subsection}{\numberline {2.4.1}SECTION: Define a section of the given length}{50}{}%
+\contentsline {subsection}{\numberline {2.4.2}SUBSTRATE: Chooses the refractive index of the substrate}{50}{}%
+\contentsline {subsection}{\numberline {2.4.3}RECTANGLE: Add a rectangular waveguide to the structure}{51}{}%
+\contentsline {subsection}{\numberline {2.4.4}DRAW: draw the structure}{52}{}%
+\contentsline {subsection}{\numberline {2.4.5}PML: Add perfectly matched layers to the waveguide}{54}{}%
+\contentsline {subsection}{\numberline {2.4.6}PML\_TRANSF: Adopt PML's with coordinate transform}{54}{}%
+\contentsline {subsection}{\numberline {2.4.7}INDFILE: Reads refractive index distribution from an input file}{55}{}%
+\contentsline {subsection}{\numberline {2.4.8}INPNF: Show the input normal-field}{55}{}%
+\contentsline {subsection}{\numberline {2.4.9}INPSTRUCT: Show the input structure}{56}{}%
+\contentsline {subsection}{\numberline {2.4.10}OUTGMODES: Write on a file the interesting modes found}{57}{}%
+\contentsline {subsection}{\numberline {2.4.11}SELMODES: output the modes using a rule}{57}{}%
+\contentsline {subsection}{\numberline {2.4.12}LOWINDEX: Set the lowest value allowed for the effective index to be considered ``interesting''}{58}{}%
+\contentsline {subsection}{\numberline {2.4.13}HIGHINDEX: Set the highest value allowed for the effective index to be considered ``interesting''}{59}{}%
+\contentsline {subsection}{\numberline {2.4.14}BEND: Define the bending radius}{59}{}%
+\contentsline {subsection}{\numberline {2.4.15}SPECTRUM: Obtain all calculated effective indices}{59}{}%
+\contentsline {subsection}{\numberline {2.4.16}ORDER: Select the ``interesting'' modes on the basis of azimuthal order}{59}{}%
+\contentsline {subsection}{\numberline {2.4.17}COEFFICIENT: Determine the transmission coefficient of a mode in the structure}{60}{}%
+\contentsline {subsection}{\numberline {2.4.18}SELECT: Change the current section}{61}{}%
+\contentsline {subsection}{\numberline {2.4.19}MATDEV: Choose the matrix development strategy}{61}{}%
+\contentsline {subsection}{\numberline {2.4.20}NORM: Calculate the L2 norm of the vector of excitation}{62}{}%
+\contentsline {subsection}{\numberline {2.4.21}EIGENVC: Report eigenvectors of the current section}{62}{}%
+\contentsline {subsection}{\numberline {2.4.22}EIGENAM: Report eigenvalues of the current section}{62}{}%
+\contentsline {subsection}{\numberline {2.4.23}POWER: Calculate propagated power}{63}{}%
+\contentsline {subsection}{\numberline {2.4.24}POWERZ: Calculate all power flowing in a given quota}{63}{}%
+\contentsline {subsection}{\numberline {2.4.25}MONITOR: Monitors power flow in a rectangular surface}{63}{}%
+\contentsline {subsection}{\numberline {2.4.26}MODEPOS: Get mode position indices}{64}{}%
+\contentsline {section}{\numberline {2.5}Other commands of general use}{64}{}%
+\contentsline {subsection}{\numberline {2.5.1}\#: Start a comment}{64}{}%
+\contentsline {subsection}{\numberline {2.5.2}...: Continuing the command on the next line}{64}{}%
+\contentsline {subsection}{\numberline {2.5.3}HELP: List the supported commands}{64}{}%
+\contentsline {subsection}{\numberline {2.5.4}LABEL and GOTO: Unconditional jumps}{64}{}%
+\contentsline {subsection}{\numberline {2.5.5}IF, ELSE, ENDIF: Perform a conditional test}{65}{}%
+\contentsline {subsection}{\numberline {2.5.6}FOR and NEXT: Define a cycle}{65}{}%
+\contentsline {subsection}{\numberline {2.5.7}DO and WHILE: Define a cycle with an exit condition}{66}{}%
+\contentsline {subsection}{\numberline {2.5.8}LOAD: Load (or includes) a new file}{66}{}%
+\contentsline {subsection}{\numberline {2.5.9}QUIT: Exit immediately}{66}{}%
+\contentsline {subsection}{\numberline {2.5.10}PRINT: Print a line at the output}{66}{}%
+\contentsline {subsection}{\numberline {2.5.11}SPRINT: Print a line to a string variable}{66}{}%
+\contentsline {subsection}{\numberline {2.5.12}FOPEN: Open a file}{66}{}%
+\contentsline {subsection}{\numberline {2.5.13}FCLOSE: Close a file}{67}{}%
+\contentsline {subsection}{\numberline {2.5.14}FPRINT: Print a line on a file}{67}{}%
+\contentsline {subsection}{\numberline {2.5.15}FSCAN read a number}{67}{}%
+\contentsline {subsection}{\numberline {2.5.16}FCHECK checks if the last file read was successful}{68}{}%
+\contentsline {subsection}{\numberline {2.5.17}FSKIP: Skip a line on the file}{68}{}%
+\contentsline {subsection}{\numberline {2.5.18}ADDSPACE: Define the strategy for spaces and newlines in printing}{68}{}%
+\contentsline {subsection}{\numberline {2.5.19}CLEAR: Reset the structure}{68}{}%
+\contentsline {subsection}{\numberline {2.5.20}SYSTEM: Executes a system command}{68}{}%
+\contentsline {subsection}{\numberline {2.5.21}LET: Perform numerical calculations}{69}{}%
+\contentsline {subsection}{\numberline {2.5.22}MEMOCC: Report memory occupation}{69}{}%
+\contentsline {subsection}{\numberline {2.5.23}PARALLEL: Try to parallelise calculations when possible}{69}{}%
+\contentsline {section}{\numberline {2.6}Using variables in calculations}{70}{}%
+\contentsline {section}{\numberline {2.7}Slab waveguide and matrix developments}{72}{}%
+\contentsline {section}{\numberline {2.8}Example: rectangular waveguide}{75}{}%
+\contentsline {section}{\numberline {2.9}Load refractive index distribution}{77}{}%
+\contentsline {section}{\numberline {2.10}Modes of a 1D bent waveguide}{77}{}%
+\contentsline {section}{\numberline {2.11}Propagation in a 2D structure}{78}{}%
+\contentsline {section}{\numberline {2.12}Bloch-modes calculation}{80}{}%
+\contentsline {section}{\numberline {2.13}Conclusion}{82}{}%
+\contentsline {chapter}{\numberline {A}Matrix constructions}{85}{}%
+\contentsline {section}{\numberline {A.1}The block-Toeplitz matrix}{85}{}%
+\contentsline {section}{\numberline {A.2}The modified Toeplitz notation}{87}{}%
+\contentsline {section}{\numberline {A.3}Unrolling vectors}{88}{}%
+\contentsline {section}{\numberline {A.4}Creating bloc-Toeplitz matrix}{88}{}%
+\contentsline {section}{\numberline {A.5}Modified matrices}{90}{}%
+\contentsline {section}{\numberline {A.6}Conclusion}{91}{}%
+\contentsline {chapter}{\numberline {B}Plotting modes profiles with Gnuplot}{93}{}%
+\contentsline {section}{\numberline {B.1}Plotting a structure}{93}{}%
+\contentsline {chapter}{\numberline {C}The \textsf {slice} utility}{95}{}%
+\contentsline {section}{\numberline {C.1}Usage}{95}{}%
+\contentsline {section}{\numberline {C.2}Examples}{96}{}%
+\contentsline {section}{\numberline {C.3}Conclusion}{96}{}%
+\contentsline {chapter}{\numberline {D}File formats used by \textsf {cRCWA}}{97}{}%
+\contentsline {section}{\numberline {D.1}2D and 3D formats, compatible with Gnuplot}{97}{}%
+\contentsline {subsection}{\numberline {D.1.1}Header}{97}{}%
+\contentsline {subsection}{\numberline {D.1.2}Data section of the file}{97}{}%
+\contentsline {subsection}{\numberline {D.1.3}Example}{97}{}%
+\contentsline {section}{\numberline {D.2}OptiWave software compatible formats}{98}{}%
+\contentsline {subsection}{\numberline {D.2.1}Refractive index distribution: rid}{98}{}%
+\contentsline {subsubsection}{Header}{98}{}%
+\contentsline {subsubsection}{Data section of the file}{98}{}%
+\contentsline {subsubsection}{Example}{98}{}%
+\contentsline {subsection}{\numberline {D.2.2}Electric fields: f3d}{99}{}%
+\contentsline {section}{\numberline {D.3}Conversion utility: \texttt {o2g}}{99}{}%
+\contentsline {chapter}{\numberline {E}The \textsf {draw} utility}{101}{}%
+\contentsline {section}{\numberline {E.1}Introduction}{101}{}%
+\contentsline {section}{\numberline {E.2}Help}{101}{}%
+\contentsline {section}{\numberline {E.3}Examples}{102}{}%
+\contentsline {subsection}{\numberline {E.3.1}Rectangle}{102}{}%
+\contentsline {subsection}{\numberline {E.3.2}Circle}{103}{}%
+\contentsline {subsection}{\numberline {E.3.3}Plotting results}{104}{}%
+\contentsline {chapter}{\numberline {F}Python interface}{105}{}%
+\contentsline {section}{\numberline {F.1}Introduction}{105}{}%
+\contentsline {section}{\numberline {F.2}Commands}{105}{}%
+\contentsline {section}{\numberline {F.3}Commands operating with tables}{106}{}%
+\contentsline {section}{\numberline {F.4}Python functions without an equivalent in the \textsf {cRCWA}\ script language}{106}{}%
+\contentsline {section}{\numberline {F.5}Examples}{107}{}%
+\contentsline {chapter}{\numberline {G}Version history and change-log}{109}{}%
+\contentsline {section}{\numberline {G.1}Version 1.5.4}{109}{}%
+\contentsline {section}{\numberline {G.2}Version 1.5.3}{109}{}%
+\contentsline {section}{\numberline {G.3}Version 1.5.2}{109}{}%
+\contentsline {section}{\numberline {G.4}Version 1.5.1}{109}{}%
+\contentsline {section}{\numberline {G.5}Version 1.5}{109}{}%
+\contentsline {section}{\numberline {G.6}Version 1.4.5}{110}{}%
+\contentsline {section}{\numberline {G.7}Version 1.4.4}{110}{}%
+\contentsline {section}{\numberline {G.8}Version 1.4.3}{110}{}%
+\contentsline {section}{\numberline {G.9}Version 1.4.2}{110}{}%
+\contentsline {section}{\numberline {G.10}Version 1.4.1}{110}{}%
+\contentsline {section}{\numberline {G.11}Version 1.4}{110}{}%
+\contentsline {section}{\numberline {G.12}Version 1.3.5}{110}{}%
+\contentsline {section}{\numberline {G.13}Version 1.3.4}{111}{}%
+\contentsline {section}{\numberline {G.14}Version 1.3.3}{111}{}%
+\contentsline {section}{\numberline {G.15}Version 1.3.2}{111}{}%
+\contentsline {section}{\numberline {G.16}Version 1.3.1}{111}{}%
+\contentsline {section}{\numberline {G.17}Version 1.3}{111}{}%
+\contentsline {section}{\numberline {G.18}Version 1.2.3}{111}{}%
+\contentsline {section}{\numberline {G.19}Version 1.2.2}{111}{}%
+\contentsline {section}{\numberline {G.20}Version 1.2.0}{111}{}%
+\contentsline {section}{\numberline {G.21}Version 1.1.0}{112}{}%
+\contentsline {section}{\numberline {G.22}Version 1.0.2}{112}{}%
+\contentsline {section}{\numberline {G.23}Version 1.0.1}{112}{}%
+\contentsline {section}{\numberline {G.24}Version 1.0}{112}{}%
+\contentsline {chapter}{\numberline {H}List of publications related to \textsf {cRCWA}}{113}{}%
+\contentsline {subsection}{\numberline {H.0.1}Proceedings of international meetings and workshops}{113}{}%
+\contentsline {subsection}{\numberline {H.0.2}International reviews}{113}{}%

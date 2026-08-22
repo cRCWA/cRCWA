@@ -216,6 +216,7 @@ int commands::c_wavelength(parsefile *obj, int argc,char *argv[])
         // p contains the current object and should therefore be a structure
 
         p->set_wavelength(l);
+        p->mat->update_variables(p, l) ;
         p->insertVar("ans",l);
     }
 
@@ -646,12 +647,14 @@ int commands::c_excitation(parsefile *obj, int argc,char *argv[])
                throw parsefile_commandError("excitation: can not read the"
                 " specified angle indexes.\n");
             }
+
             if (do_the_shift)
                 *exc = (p->sec_list[sec]).create_excitation_const(true,
                     0.0, phase,index_yz,index_xz); // exc. for Ey
             else
                 *exc = (p->sec_list[sec]).create_excitation_const(false,
                     0.0, phase,index_yz,index_xz); // exc. for Ex
+
         } else if (type == select) {
             // If we are in the select mode, we should first read the
             // parameter a as a double precision constant and then use it for
@@ -837,9 +840,15 @@ int commands::c_excitation(parsefile *obj, int argc,char *argv[])
             dr is the step for the radius
             filename is the name of the file on which the results should be
                 recorded
-            it will be computed from z0 to z1 and from r=0 to r=r1.
 
-        NOTE that the step in z in given by the command propagation.
+			it will be computed from z0 to z1 and from r=0 to r=r1.
+	
+		if t == pz, compute the z component of the Poynting vector.
+		
+		outdata sz rimc filename
+		
+		NOTE that the step in z in given by the command propagation.
+
 */
 int commands::c_outdata(parsefile *obj, int argc,char *argv[])
 {
@@ -930,10 +939,36 @@ int commands::c_outdata(parsefile *obj, int argc,char *argv[])
             if(p->additional_output_data.generation_to_r1 > p->tot_x ||
                     p->additional_output_data.generation_to_r1 > p->tot_y){
                 throw parsefile_commandError("outdata: it is not possible to"
-                " use 'outdata g' if the the computational window is smaller"
-                " than the radius.\n");
+				" use 'outdata g' if the the computational window is smaller"
+				" than the radius.\n");
+            }          
+        } else if(strcmp(argv[1],"sz")==0) {
+            if(argc<3) {
+                throw parsefile_commandError("outdata sz: some parameters are"
+                	" missing.\n");
             }
+                
+            p->additional_output_data.should_record_poynting_vector=true;
+ 
+	     	if(strcmp(argv[2],"r")==0) {
+		        p->additional_output_data.poynting_vector_rimc=R;
+		    } else if(strcmp(argv[2],"i")==0) {
+		        p->additional_output_data.poynting_vector_rimc=I;
+		    } else if(strcmp(argv[2],"m")==0) {
+		        p->additional_output_data.poynting_vector_rimc=M;
+		    } else if(strcmp(argv[2],"c")==0) {
+		        p->additional_output_data.poynting_vector_rimc=C;
+		    } else {
+		        throw parsefile_commandError("outdata sz: unrecognized rimc."
+		        	" Should be {r|i|m|c}.");
+		    }
+		    
+            p->additional_output_data.poynting_vector_file_name=argv[3]; 
+            
 
+            cout << "Additional output: record the Poynting vector in the next"
+            	" propagation command.\n";        
+     
         }else {
             throw parsefile_commandError("outdata: unrecognized parameter"
                 " type.\n");
@@ -945,6 +980,79 @@ int commands::c_outdata(parsefile *obj, int argc,char *argv[])
     }
 }
 
+/** MATERIAL: read refractive index variation with wavelength from an input file.
+
+    Usage:
+    material mult filename tag
+
+    Parameters:
+    mult: a multiplier to convert the wavelength from file in meter
+    	If the wavelength in the input file is specified in micrometers, mult 
+    	should be 1e-6.
+    filename: the name of the file to be used (it should not contain spaces).
+    tag is the name of the material that can then used instead of nr and ni 
+    	parameters in RECTANGLE, DRAW, SUBSTRATE and PRINT commands.
+
+    Notes:
+    The file format to be used will be as follows. The first line is ignored.
+    This can be an header or a description of the file format.
+    The rest of the file contains columns with wavelength, nr (optionally ni).
+    When different wavelengths are used for nr and ni, header and columns are
+    repeated to define wavelength and ni.
+
+*/
+
+int commands::c_material(parsefile *obj, int argc,char *argv[])
+{
+    complex<double> n_g;
+    structure *p;
+    double mult;
+
+    int nx;
+    int ny;
+
+    double tot_x;
+    double tot_y;
+
+    int i,j;
+
+    
+    if(argc==4){
+        if(sscanf(argv[1], "%20lf", &mult)!=1){
+            throw parsefile_commandError("material: error while reading "
+            	"parameter.\n");
+        }else{
+            if((p=dynamic_cast<structure *>(obj))==NULL)
+                throw parsefile_commandError("Incorrect dynamic cast:"
+                    " programming error:-(");
+
+			if (p->lambda==0) {
+				throw parsefile_commandError("material: wavelength not defined\n");
+			}
+    
+            cout << "Opening refractive index file: " <<argv[2]<<"\n";
+            cout.flush();
+            try {
+
+
+            p->mat->create_from_file(argv[2], mult, argv[3]);
+            p->mat->update_variables(p, p->get_wavelength()) ;
+
+            cout << "Just read refractive index file: "<< argv[2] << "\n";
+            } catch (db_matrix_error E) {
+                throw parsefile_commandError("material: Could not allocate"
+                    " memory for material. Is there an error in the"
+                    " file? Normally modern computer's memories should be"
+                    " enough for most practical cases...");
+            }
+        }
+    } else {
+        throw parsefile_commandError("material: invalid number of parameters.\n");
+    }
+    return 0;
+}
+
+
 /** CARPET sweep some convergence problems under the carpet: Force all modes to
     have a negative imaginary part for the effective index. This command should
     be used before SOLVE.
@@ -953,14 +1061,131 @@ int commands::c_outdata(parsefile *obj, int argc,char *argv[])
     CARPET
 
     Parameters:
+    	optional t/f parameter, t=ensure convergence, f=unset ensure convergence
+    	in absence of parameter, ensure convergence.
 
 */
 int commands::c_carpet(parsefile *obj, int argc,char *argv[])
 {
     structure *p;
-    p = wantedParameters(argv[0], argc, 1, obj);
+    bool ensureconv = true ;
+    
+    if(argc==1) {
+        p = wantedParameters(argv[0], argc, 1, obj);
+        ensureconv = true ;
+    } else {
+    	p = wantedParameters(argv[0], argc, 2, obj);
+        if(strcmp(argv[1],"t")==0) {
+        	ensureconv = true ;
+        } else if(strcmp(argv[1],"f")==0) {
+        	ensureconv = false ;
+        } else {
+        	throw parsefile_commandError("ensureconv: parameter should be {t|f}.\n");
+        }
+            
+    	
+    }
 
-    p->set_ensureConvergence(true);
+    p->set_ensureConvergence(ensureconv);
     return 0;
 
 }
+
+/*  INPSTRUCT3D: write on a file the permettivity or permeability chart of the
+        complete 3d input structure (stands for INPut STRUCTure 3D)
+
+    Usage:
+    inpstruct type size_x size_y file
+
+
+    Parameters:
+    type    must be {i|im|ex|ey|ez|mux|muy|muz}, i indicates the refractive
+            index (it will take er_x squared), while ex, ey or ez will indicate
+            the x, y or z component of the permittivity tensor. On the same
+            way, mux, muy or muz will indicate the x, y or z component of the
+            permeability tensor. The im case is a little bit special, since
+            it will give the refractive index calculated *without* representing
+            the structure via the Fourier series. It is thus the "ideal case"
+            in some way. imo is the same, but in the Optiwave format.
+
+    size_x  number of points to be plot in the x direction
+
+    size_y  number of points to be plot in the y direction
+
+    file    filename which should be written
+
+    File format:
+        The file format used is extremely simple and is organized in order to
+        be directly compatible with Gnuplot way of life.
+
+*/
+int commands::c_inpstruct3d(parsefile *obj, int argc,char *argv[])
+{
+
+    structure *p;
+
+    p = wantedParameters(argv[0], argc, 5, obj);
+
+    if(!p->cur->isSubstrateSet) {
+        throw parsefile_commandError("inpstruct3d: The substrate should be set"
+            " before trying to define structures.");
+    }
+
+    // p contains the current object and should therefore be a structure
+    int sj =0;
+    int si =0;
+
+    sscanf(argv[2],"%20d", &sj);
+    sscanf(argv[3],"%20d", &si);
+    double dx=p->tot_x / sj;
+    double dy=p->tot_y / si;
+    double z = 0 ;
+    double x;
+    double y ;
+    
+    // Write headers:
+   FILE *f=fopen(argv[4],"w");
+    if(f==NULL)
+        throw parsefile_commandError("inpstruct3d: I can not open the output"
+            " file:-(");
+    fprintf(f, "# x         y        z         %s.real       %s.imag\n", argv[1],
+        argv[1]);   
+    
+    // Extract refractive index or permittivity for each section of the structure
+    for(int sec = 0; sec<p->number_of_sections; ++sec) {
+
+        // We create an alias for the current section, for simplicity.
+        section *c_section=&p->sec_list[sec];
+        
+    	db_matrix out = c_section->do_inpstruct(sj, si,argv[1]);
+        
+        for (int nz=0 ; nz < 2 ; nz++) {   	        
+	   		// save data in file
+			for(int i=0; i<out.getNrow(); ++i) {
+				for(int j=0; j<out.getNcol(); ++j) {
+	                x = j*dx-(out.getNcol()-1)/2.0*dx;
+            		y = i*dy-(out.getNrow()-1)/2.0*dy ;
+					if (nz==0)
+						fprintf(f, "%le %le %le %le %le\n",
+					    	x, y,z, out(i,j).real(),
+					    	out(i,j).imag());
+					else
+						fprintf(f, "%le %le %le %le %le\n",
+					    	x, y,z+c_section->tot_z*.9999,
+					    	out(i,j).real(), out(i,j).imag());  
+				}
+				fprintf(f,"\n");
+			}
+		 }
+		
+	    // Increment the reference position to the beginning of the next section.
+       	z+=c_section->tot_z; 
+	}
+    fclose(f);
+
+    cout << "Structure file written: "<< argv[4]<<"\n";
+
+    return 0;
+}
+
+

@@ -10,7 +10,7 @@ then
 	printf "For example: $0 ../../crcwa\n"
 	exit 1
 fi
-printf "Testing drawing:              "
+printf "Testing drawing:             "
 
 draw="../../bin/draw"
 o2g="../../bin/o2g"
@@ -54,7 +54,7 @@ done
 # paste circle1.ind_nvf_x circle1.ind_nvf_y> circle1.ind_nvf
 # plot 'circle1.ind_nvf' every 10:10 u 1:2:($3/50):($7/50)  with vectors
 # set pm3d map 
-# splot 'circle1' u 1:2:3 
+# splot 'circle1.ind' u 1:2:3 
 
 
 $1 draw.fmm >>log.txt
@@ -190,6 +190,7 @@ else
   rm square*
   rm rectangle*
   rm circle*
+  rm log.txt
 fi
 
 exit $test_fail

@@ -37,11 +37,16 @@
 
 #include "parallelize.h"
 
-sem_t *mutex_thread_counter; // Semaphore for thread counter access.
+#ifndef _WIN32
+typedef sem_t* sem_t_wrapper;
+#endif
+
+sem_t_wrapper mutex_thread_counter; // Semaphore for thread counter access.
+
 #define BUFFER_SIZE 255
 char semaphore_thread_name[BUFFER_SIZE+1];
 
-sem_t *mutex_io_access; // Semaphore for I/O.
+sem_t_wrapper mutex_io_access; // Semaphore for I/O.
 char semaphore_io_access_name[BUFFER_SIZE+1];
 
 

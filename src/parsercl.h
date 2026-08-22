@@ -52,6 +52,10 @@
 #define  ERR_LP              9      /* "(" expected                          */
 #define  ERR_FLOATING        10     /* Floating point exception              */
 
+		//variable types
+#define VAR_NUM				1		/* numerical variable scalar or vector	 */
+#define VAR_CHAR			2		/* string variable 						 */
+
 // Questa linea è fondamentale con lo gcc
 //#ifndef __TURBOC__
 #define far
@@ -83,6 +87,8 @@ struct name {
   bool isvector;
   long int boundary;
   double *pvector;
+  bool isstring;
+  char* pstringdata ;
 };
 
 class parseTok {
@@ -122,7 +128,7 @@ public:
   long int arrayIndex;          // Index of the array.
 
   int getToken(void);           // Charge a token
-  name * look(const char far* p, int ins =0);
+  name * look(const char far* p, int ins =0, int vartype=VAR_NUM);
   name * insert(const char far* s) { return look(s,1);}
 
   int error(int);

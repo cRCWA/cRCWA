@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=latex 2025.12.7)  6 APR 2026 15:17
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=latex 2025.12.7)  11 JUN 2026 22:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -414,27 +414,27 @@ File: l3backend-dvips.def 2024-01-04 L3 backend support: dvips
 (./afmm.aux)
 \openout1 = `afmm.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 52.
-LaTeX Font Info:    ... okay on input line 52.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
 \c@lstlisting=\count304
-LaTeX Font Info:    Trying to load font information for U+msa on input line 61.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 62.
 
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 61.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 62.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -448,13 +448,13 @@ File: logo.ps Graphic file (type eps)
 [2
 
 ] (./afmm.toc [3]
-Overfull \hbox (0.27835pt too wide) in paragraph at lines 41--41
+Overfull \hbox (0.27835pt too wide) in paragraph at lines 43--43
  [][] []\OT1/cmr/m/n/10 ASSEMBLE: Pre-pare all the ma-tri-ces needed for the pr
 op- 
  []
 
 
-Overfull \hbox (2.63956pt too wide) in paragraph at lines 44--44
+Overfull \hbox (2.63956pt too wide) in paragraph at lines 47--47
  [][] []\OT1/cmr/m/n/10 OUTDATA: Cal-cu-late ad-di-tional out-put data dur-ing 
 prop- 
  []
@@ -518,132 +518,140 @@ Overfull \hbox (1.60246pt too wide) in paragraph at lines 48--49
 es from C/C++. Some
  []
 
-[38] [39] [40] [41] [42] [43] [44] [45] [46] [47]
-Overfull \hbox (2.09442pt too wide) in paragraph at lines 496--496
+[38] [39] [40] [41] [42] [43] [44] [45] [46]
+Overfull \hbox (0.83064pt too wide) in paragraph at lines 425--425
+[]\OT1/cmr/bx/n/12 ENSURECONV: en-sure proper prop-a-ga-tion modes 
+ []
+
+[47] [48] [49]
+Overfull \hbox (2.09442pt too wide) in paragraph at lines 571--571
 []\OT1/cmr/bx/n/12 OUTBLOCH: Out-put the re-sults of the Bloch mode
  []
 
-[48] [49]
-Overfull \hbox (59.56073pt too wide) in paragraph at lines 586--587
-[]\OT1/cmr/m/n/10 Usage: [][][][][][][][][][][][][][][][][][][][][] 
+[50]
+Overfull \hbox (59.56073pt too wide) in paragraph at lines 660--661
+[]\OT1/cmr/m/n/10 Usage: [][][][][][][][][][][][][][][][][][][][][][][][][][][]
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[50] [51] [52]
-Overfull \hbox (5.61427pt too wide) in paragraph at lines 737--737
+[51] [52] [53]
+Overfull \hbox (5.61427pt too wide) in paragraph at lines 811--811
 []\OT1/cmr/bx/n/12 PML[]TRANSF: Adopt PML's with co-or-di-nate trans-
  []
 
 
-Overfull \hbox (4.19502pt too wide) in paragraph at lines 739--741
+Overfull \hbox (4.19502pt too wide) in paragraph at lines 813--815
 \OT1/cmr/m/n/10 This com-mand de-fines a co-or-di-nate trans-form sec-tion used
  as a Per-fectly Matched
  []
 
-[53] [54]
-Overfull \hbox (8.4347pt too wide) in paragraph at lines 849--849
+[54] [55] [56]
+Overfull \hbox (8.4347pt too wide) in paragraph at lines 922--922
 []\OT1/cmr/bx/n/12 OUTGMODES: Write on a file the in-ter-est-ing modes
  []
 
-[55]
-Overfull \hbox (4.58641pt too wide) in paragraph at lines 861--862
+
+Overfull \hbox (4.58641pt too wide) in paragraph at lines 934--935
 [][][][] \OT1/cmr/m/n/10 must be [][][][][][][][][][][][][][][][][][][][][][][]
 [][][][][][] and in-di-cates which
  []
 
-[56] [57]
-Overfull \hbox (1.23471pt too wide) in paragraph at lines 961--961
+[57] [58]
+Overfull \hbox (1.23471pt too wide) in paragraph at lines 1034--1034
 []\OT1/cmr/bx/n/12 SPECTRUM: Ob-tain all cal-cu-lated ef-fec-tive in-dices 
  []
 
-[58] [59]
-Overfull \hbox (1.01909pt too wide) in paragraph at lines 1053--1054
+[59] [60]
+Overfull \hbox (1.01909pt too wide) in paragraph at lines 1126--1127
 \OT1/cmr/m/n/10 quired and should be com-prised be-tween 0 and 1. See para-grap
 h 1.4.5[]. 
  []
 
-[60] [61] [62] [63] [64] [65] [66] [67]
-Overfull \hbox (6.90779pt too wide) in paragraph at lines 1472--1473
+[61] [62] [63]
+Overfull \hbox (1.80768pt too wide) in paragraph at lines 1262--1263
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[64] [65] [66] [67] [68] [69]
+Overfull \hbox (6.90779pt too wide) in paragraph at lines 1570--1571
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
 [][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (1.80768pt too wide) in paragraph at lines 1492--1493
+Overfull \hbox (1.80768pt too wide) in paragraph at lines 1590--1591
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
 [] 
  []
 
 
-Overfull \hbox (1.80768pt too wide) in paragraph at lines 1494--1496
+Overfull \hbox (1.80768pt too wide) in paragraph at lines 1592--1594
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
 [][][][] 
  []
 
-[68] [69]
-Overfull \hbox (7.06288pt too wide) in paragraph at lines 1588--1588
+[70] [71]
+Overfull \hbox (7.06288pt too wide) in paragraph at lines 1686--1686
 []\OT1/cmr/bx/n/14.4 Example: slab waveg-uide mode solver, choos-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1590--1590
+Underfull \hbox (badness 10000) in paragraph at lines 1688--1688
 []\OT1/cmr/m/it/8 Which strat-egy choose for
  []
 
-[70] [71]
-Overfull \hbox (11.88474pt too wide) in paragraph at lines 1689--1702
+[72] [73]
+Overfull \hbox (11.88474pt too wide) in paragraph at lines 1787--1800
  [][] 
  []
 
 
-Overfull \hbox (11.88474pt too wide) in paragraph at lines 1707--1720
+Overfull \hbox (11.88474pt too wide) in paragraph at lines 1805--1818
 [][] 
  []
 
-[72] [73] [74]
-Overfull \hbox (6.4711pt too wide) in paragraph at lines 1852--1852
+[74] [75] [76]
+Overfull \hbox (6.4711pt too wide) in paragraph at lines 1950--1950
 []\OT1/cmr/bx/n/14.4 Example: guided modes of a 1D bent waveg-
  []
 
-[75] [76]
+[77] [78]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [79]
 File: propagation.eps Graphic file (type eps)
- <propagation.eps>
-Overfull \hbox (9.91618pt too wide) in paragraph at lines 1986--1986
+
+<propagation.eps>
+Overfull \hbox (9.91618pt too wide) in paragraph at lines 2084--2084
 []\OT1/cmr/bx/n/14.4 Example: Bloch-mode cal-cu-la-tion for guided
  []
 
+[80] [81]) [82] (./afmm_appendix.tex [83] [84
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [77]
-[78]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [79])
-(./afmm_appendix.tex [80]
+]
 Appendix A.
 
 Underfull \vbox (badness 4582) has occurred while \output is active []
 
- [81
-
-]
-[82]
+ [85]
+[86]
 Overfull \hbox (27.05453pt too wide) in paragraph at lines 86--86
 []\OT1/cmr/bx/n/14.4 Representing deriva-tives: the mod-i-fied Toeplitz
  []
 
-[83]
+[87]
 Overfull \hbox (6.34265pt too wide) detected at line 179
 []\OML/cmm/m/it/8 A[] \OT1/cmr/m/n/8 = []
  []
 
-[84]
+[88]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [85]
+ [89]
 Overfull \hbox (16.71771pt too wide) detected at line 279
 []\OML/cmm/m/it/8 A[] \OT1/cmr/m/n/8 = []
  []
@@ -656,12 +664,12 @@ Overfull \hbox (11.08568pt too wide) detected at line 295
 
 Underfull \vbox (badness 1072) has occurred while \output is active []
 
- [86]
-[87] [88
+ [90]
+[91] [92
 
 ]
 Appendix B.
-[89]
+[93]
 LaTeX Font Info:    Trying to load font information for TS1+cmtt on input line 
 364.
  (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmtt.fd
@@ -669,209 +677,210 @@ File: ts1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
 File: test_Ex_m_2.eps Graphic file (type eps)
 
-<test_Ex_m_2.eps> [90]
+<test_Ex_m_2.eps> [94]
 Appendix C.
-[91
+[95
 
-] [92]
+] [96]
 Appendix D.
-[93
+[97
 
-] [94]
+] [98]
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <14.4> not available
 (Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 520.
- [95] [96
+ [99] [100
 
 ]
 Appendix E.
 
-Overfull \hbox (0.12564pt too wide) in paragraph at lines 533--534
+Overfull \hbox (0.12564pt too wide) in paragraph at lines 536--537
 \OT1/cmss/m/n/10 draw \OT1/cmr/m/n/10 util-ity can be used ei-ther as a stan-da
 lone tool or as part of \OT1/cmss/m/n/10 cR-CWA\OT1/cmr/m/n/10 command
  []
 
 
-Overfull \hbox (22.20813pt too wide) in paragraph at lines 563--564
+Overfull \hbox (22.20813pt too wide) in paragraph at lines 566--567
 [][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (63.00903pt too wide) in paragraph at lines 564--565
+Overfull \hbox (63.00903pt too wide) in paragraph at lines 567--568
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (32.40836pt too wide) in paragraph at lines 565--566
+Overfull \hbox (32.40836pt too wide) in paragraph at lines 568--569
 [][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[97]
-Overfull \hbox (22.20813pt too wide) in paragraph at lines 569--571
+[101]
+Overfull \hbox (22.20813pt too wide) in paragraph at lines 572--574
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (6.90779pt too wide) in paragraph at lines 576--577
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (6.90779pt too wide) in paragraph at lines 573--574
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (63.00903pt too wide) in paragraph at lines 575--576
+Overfull \hbox (63.00903pt too wide) in paragraph at lines 578--579
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (52.8088pt too wide) in paragraph at lines 576--577
+Overfull \hbox (52.8088pt too wide) in paragraph at lines 579--580
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (47.7087pt too wide) in paragraph at lines 577--578
+Overfull \hbox (47.7087pt too wide) in paragraph at lines 580--581
 [][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (52.8088pt too wide) in paragraph at lines 578--579
+Overfull \hbox (52.8088pt too wide) in paragraph at lines 581--582
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (68.10915pt too wide) in paragraph at lines 579--580
+Overfull \hbox (68.10915pt too wide) in paragraph at lines 582--583
 [][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (12.0079pt too wide) in paragraph at lines 581--582
+Overfull \hbox (12.0079pt too wide) in paragraph at lines 584--585
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (12.0079pt too wide) in paragraph at lines 583--584
+Overfull \hbox (12.0079pt too wide) in paragraph at lines 586--587
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (27.30824pt too wide) in paragraph at lines 584--585
+Overfull \hbox (27.30824pt too wide) in paragraph at lines 587--588
 [][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (47.7087pt too wide) in paragraph at lines 589--590
+Overfull \hbox (47.7087pt too wide) in paragraph at lines 592--593
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (68.10915pt too wide) in paragraph at lines 590--591
+Overfull \hbox (68.10915pt too wide) in paragraph at lines 593--594
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (63.00903pt too wide) in paragraph at lines 592--593
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (63.00903pt too wide) in paragraph at lines 594--595
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
 Overfull \hbox (63.00903pt too wide) in paragraph at lines 595--596
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (63.00903pt too wide) in paragraph at lines 597--598
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (63.00903pt too wide) in paragraph at lines 598--599
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (47.7087pt too wide) in paragraph at lines 598--599
+Overfull \hbox (47.7087pt too wide) in paragraph at lines 601--602
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (12.0079pt too wide) in paragraph at lines 600--601
+Overfull \hbox (12.0079pt too wide) in paragraph at lines 603--604
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (6.90779pt too wide) in paragraph at lines 601--604
+Overfull \hbox (6.90779pt too wide) in paragraph at lines 604--607
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (57.90892pt too wide) in paragraph at lines 604--605
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+Overfull \hbox (57.90892pt too wide) in paragraph at lines 607--608
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (37.50847pt too wide) in paragraph at lines 605--606
+Overfull \hbox (37.50847pt too wide) in paragraph at lines 608--609
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (52.8088pt too wide) in paragraph at lines 607--608
+Overfull \hbox (52.8088pt too wide) in paragraph at lines 610--611
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ] 
  []
 
-[98]
-Overfull \hbox (12.0079pt too wide) in paragraph at lines 627--629
+[102]
+Overfull \hbox (12.0079pt too wide) in paragraph at lines 630--632
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (63.00903pt too wide) in paragraph at lines 642--643
+Overfull \hbox (63.00903pt too wide) in paragraph at lines 645--646
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][] 
  []
 
 
-Overfull \hbox (17.10802pt too wide) in paragraph at lines 646--647
+Overfull \hbox (17.10802pt too wide) in paragraph at lines 649--650
 [][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (12.0079pt too wide) in paragraph at lines 660--662
+Overfull \hbox (12.0079pt too wide) in paragraph at lines 663--665
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (57.90892pt too wide) in paragraph at lines 676--677
+Overfull \hbox (57.90892pt too wide) in paragraph at lines 679--680
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][] 
  []
 
 
-Overfull \hbox (17.10802pt too wide) in paragraph at lines 680--682
+Overfull \hbox (17.10802pt too wide) in paragraph at lines 683--685
 [][][][][][][][][][][][][][][][][][][][] 
  []
 
-[99]
-Overfull \hbox (124.21039pt too wide) in paragraph at lines 703--704
+[103]
+Overfull \hbox (124.21039pt too wide) in paragraph at lines 706--707
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[100]
+[104]
 Appendix F.
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <8> not available
-(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 718.
-[101
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 722.
+[105
 
 ] (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2023/02/27 1.9 listings language file
-) [102]
-(../../python/test.py) [103] [104
+) [106]
+(../../python/test.py) [107] [108
 
 ]
 Appendix G.
-[105] [106] [107] [108]
+[109] [110] [111] [112]
 Appendix H.
 
-Overfull \hbox (6.61179pt too wide) in paragraph at lines 861--862
+Overfull \hbox (6.61179pt too wide) in paragraph at lines 879--880
 \OT1/cmr/m/n/10 uides and micro-ring res-onator by means of the Ape-ri-odic Fou
 rier Modal Method,''
  []
 
-) (./afmm.bbl [109
+) (./afmm.bbl [113
 
-] [110
+] [114
 
 ]
 Underfull \hbox (badness 1189) in paragraph at lines 79--82
@@ -879,19 +888,19 @@ Underfull \hbox (badness 1189) in paragraph at lines 79--82
  fourier modal
  []
 
-[111] [112]) [113] (./afmm.aux)
+[115] [116]) [117] (./afmm.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 12608 strings out of 476183
- 231087 string characters out of 5795621
+ 12614 strings out of 476183
+ 231175 string characters out of 5795621
  2014972 words of memory out of 5000000
- 34366 multiletter control sequences out of 15000+600000
+ 34372 multiletter control sequences out of 15000+600000
  574052 words of font info for 95 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 69i,16n,79p,32797b,1669s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 69i,16n,79p,32797b,1672s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on afmm.dvi (113 pages, 643356 bytes).
+Output written on afmm.dvi (117 pages, 659676 bytes).

@@ -90,6 +90,7 @@
 
 #include "block_matrix.h"
 #include "fortran_types.h"
+#include "compat.h"
 
 // Unnamed semaphores are the simplest solutions on Linux, but they are not
 // available on MacOSX, so we must provide both named and unnamed semaphores.
@@ -214,8 +215,13 @@ using namespace std;
 #include <sys/types.h>
 #include "compat.h"
 
-sem_t *mutex_fftw; // Semaphore for fftw
-sem_t unnamed_mutex_fftw; // Unnamed semaphore (if applicable).
+#ifndef _WIN32
+typedef sem_t* sem_t_wrapper;
+#endif
+
+sem_t_wrapper mutex_fftw; // Semaphore for fftw
+sem_t_wrapper unnamed_mutex_fftw; // Unnamed semaphore (if applicable).
+
 bool mutex_fftw_created=false;
 #define SEM_NAME_SIZE 255
 char semaphore_name[SEM_NAME_SIZE+1];
@@ -1149,6 +1155,32 @@ db_matrix db_matrix::transpose()
     return d;
 }
 
+
+// Reverse the matrix in either on rows or column
+db_matrix db_matrix::reverse(bool reverseOnRow)
+{	
+	int i,j;
+	
+	db_matrix d(nrow, ncol);
+
+    // Loop on all points
+    if (reverseOnRow) {
+		for(i=0; i<nrow; ++i) {
+			for(j=0; j<ncol; ++j) {
+				d(nrow-i-1, j) = operator()(i,j);
+			}
+		}
+	} else {
+		for(i=0; i<nrow; ++i) {
+			for(j=0; j<ncol; ++j) {
+				d(i,ncol-j-1) = operator()(i,j);
+			}
+		}
+	} 
+	return d;
+}
+
+
 // Invert the matrix. Call LAPACK routines ZGETRF and ZGETRI
 // The original matrix is overwritten with the new results.
 // It returns the inverted matrix.
@@ -1835,6 +1867,19 @@ db_matrix db_matrix::add(const db_matrix &M, int sign ,int ni, int nj,
     }
     return *this;
 }
+
+
+// crop a matrix
+db_matrix& db_matrix::crop(int row, int col)
+{
+
+	assert(col< ncol);
+	assert(row< nrow);
+	ncol=col;	
+	nrow=row;
+	return *this;
+}
+
 
 // return the absolute value of an integer:
 inline int abs(int i)

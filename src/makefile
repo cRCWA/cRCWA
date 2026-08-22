@@ -20,10 +20,10 @@
 #   with cRCWA. If not, see <https://www.gnu.org/licenses/>. 
 # 
 #   Davide Bucci, 2008-2025
-#   Jérôme Michallon, 2012-2014
+#   Jérôme Michallon, 2012-2014 2026
 # */
 
-include ../configure.inc
+include ../config.inc
 
 .SUFFIXES:
 .SUFFIXES: .cpp .o
@@ -34,43 +34,42 @@ include ../configure.inc
 CFLAGS = -g -O3 -fPIC
 # CFLAGS = -pedantic -Wall --unroll-all-loops -O3  
 
-.PHONY : setrev
 
 HEADERS =  block_matrix.h  fortran_types.h parsefile.h structure.h section.h commands.h finterface.h parsercl.h matrixDev.h matrixdevsym.h parallelize.h
-OFILES =   block_matrix.o main.o matrixDev.o parsefile.o structure.o section.o commands_structure.o commands_section.o commands_propagation.o commands_other.o finterface.o parsercl.o matrixdevsym.o parallelize_POSIX.o toeplitz.o draw.o
+OFILES =   block_matrix.o main.o matrixDev.o parsefile.o structure.o section.o commands_structure.o commands_section.o commands_propagation.o commands_other.o finterface.o parsercl.o matrixdevsym.o parallelize_POSIX.o toeplitz.o draw.o material.o
 SLOFILES = slice.o
 O2GFILES = optiwave2gnuplot.o
 DRAWINGFILES = draw_main.o draw.o block_matrix.o
 
 # compile rule
 .cpp.o:
-	$(CC) $(OPTIONS) -c $(CFLAGS) $*.cpp 
+	$(CC) $(OPTIONS) -I$(FFTW3INCDIR) -c $(CFLAGS) $*.cpp 
 
 # Put pycrcwa after o2f if you want the Python library to be automatically
 # built with make all.
-all: setrev crcwa  slice o2g draw
-	mv crcwa ../bin
-	mv slice ../bin
-	mv o2g ../bin
-	mv draw ../bin
-
+all: crcwa o2f slice draw pycrcwa
+	
 # monocore
 crcwa: $(OFILES) $(HEADERS)
-	$(LD) $(OFILES) -L$(LIBLAPACKDIR) $(LIBLAPACK) -L$(LIBBLASDIR) $(LIBBLAS) -L$(LIBFFTW3DIR) -lfftw3 $(LIBTHREAD)   -o crcwa
-
+	$(LD) $(OFILES) -L$(LIBLAPACKDIR) $(LIBLAPACK) -L$(LIBBLASDIR) $(LIBBLAS) $(LIBFFTW3) -L$(LIBFFTW3DIR) $(LIBTHREAD)   -o crcwa$(EXE_EXT)
+	mv crcwa$(EXE_EXT) ../bin
+	
 pycrcwa:
-	$(CXX) -shared -L$(LIBLAPACKDIR) $(LIBLAPACK) -L$(LIBBLASDIR) $(LIBBLAS) -L$(LIBFFTW3DIR) -lfftw3 $(LIBTHREAD) $(PYTHONLIB) -o pycRCWA.so \
-	 $(OFILES) -I$(PYTHONINCDIR) afmm_python_module.cpp -fPIC
-	 mv pycRCWA.so ../python
-
+	$(CXX) -shared $(OFILES) -I$(PYTHONINCDIR) afmm_python_module.cpp  \
+	-L$(LIBLAPACKDIR) $(LIBLAPACK) -L$(LIBBLASDIR) $(LIBBLAS) $(LIBFFTW3) -L$(LIBFFTW3DIR) $(LIBTHREAD) -L$(LIBPYTHONDIR) $(LIBPYTHON) -o pycRCWA$(PY_EXT) \
+	 -fPIC
+	 mv pycRCWA$(PY_EXT) ../python
+	
 draw: $(DRAWINGFILES) $(HEADERS)
-	$(LD) $(DRAWINGFILES) -L$(LIBLAPACKDIR) $(LIBLAPACK) -L$(LIBBLASDIR) $(LIBBLAS) -L$(LIBFFTW3DIR) -lfftw3 $(LIBTHREAD) -o draw
-
+	$(LD) $(DRAWINGFILES) -L$(LIBLAPACKDIR) $(LIBLAPACK) -L$(LIBBLASDIR) $(LIBBLAS) -L$(LIBFFTW3DIR) -lfftw3 $(LIBTHREAD) -o draw$(EXE_EXT)
+	mv draw$(EXE_EXT) ../bin
+	
 slice: $(SLOFILES)
-	$(LD) $(SLOFILES) -o slice
+	$(LD) $(SLOFILES) -o slice$(EXE_EXT)
+	mv slice$(EXE_EXT) ../bin
 
-o2g: $(O2GFILES)
-	$(LD) $(O2GFILES) -o o2g
-
+o2f: $(O2GFILES)
+	$(LD) $(O2GFILES) -o o2g$(EXE_EXT)
+	mv o2g$(EXE_EXT) ../bin
 clean:
 	rm *.o

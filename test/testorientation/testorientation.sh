@@ -37,6 +37,7 @@ if awk -f awk_scr.awk refractive_index.txt refractive_index_ref.txt && awk -f aw
 then
   printf " \x1b[32mOK\033[0m\n"
   rm refractive_index.txt refractive_index_im.txt propag.txt
+  rm test_output.txt
 else
   test_fail=1
   printf "\033[1m\x1b[31m FAIL \033[0m\n"

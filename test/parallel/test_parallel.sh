@@ -37,6 +37,7 @@ then
   printf " \x1b[32mOK\033[0m\n"
   diff test_results.txt test_reference.txt >test_output.txt
   rm test_results.txt test_output.txt
+  rm *.idx
 else
   test_fail=1
   printf "\033[1m\x1b[31m FAIL \033[0m\n"

@@ -47,6 +47,7 @@ structure::structure(numParser *p) : parsefile(p)
 {
     sec_list =NULL;
     interf_list =NULL;
+    mat = new material ;
     reset();
 }
 
@@ -75,7 +76,7 @@ void structure::reset(void)
     HyField = false;
     calcPropagation = false;
 
-    ensureConvergence = false;
+    ensureConvergence = true;
     number_of_threads_allowed=1;
 
     dimx = 0;
@@ -93,11 +94,15 @@ void structure::reset(void)
 /*    // Set the default matrix creation strategy for PMLs
     crtr = &PMLafterOPT;    */
 
-    additional_output_data.should_record_integral = false;
-    additional_output_data.should_record_generation_rate = false;
 
-    bloch_eigvect.kill();
-    bloch_eigval.kill();
+	additional_output_data.should_record_integral = false;
+	additional_output_data.should_record_generation_rate = false;
+	additional_output_data.should_record_poynting_vector=false;
+
+            
+	bloch_eigvect.kill();
+	bloch_eigval.kill();
+
 }
 
 
@@ -202,7 +207,7 @@ double structure::do_monitor(const double z, const double wx, const double wy,
     db_matrix E=q->W*excitationE;
     db_matrix H=q->V*excitationH;
 
-    power= section::integralPoynting_rectangle(this,E, H,0,wx,wy,px,py);
+    power= section::integralPoynting_rectangle(this,E, H,wx,wy,px,py);
     cout << "power at z = " << z << " (in W): "<<power<<endl;
     return power;
 
@@ -557,9 +562,8 @@ void structure::set_ensureConvergence(bool s)
 {
     ensureConvergence=s;
     if(ensureConvergence)
-        cout<<"Dust will be swept under the carpet.\n"
-            <<"(All eigenvalues having a positive imaginary part will be "
-            <<"forced to have it negative).\n";
+        cout<<"All eigenvalues having a positive imaginary part will be "
+            <<"forced to have it negative.\n";
 }
 
 /**
@@ -745,6 +749,7 @@ void structure::fileoutputGP(db_matrix out, FILE *f, rimco_e rimc, double dx,
     double dy)
 {
     int i,j;
+    double x,y ;
     if(f==NULL)
         throw parsefile_commandError("Can not open output file :-(");
 
@@ -760,18 +765,20 @@ void structure::fileoutputGP(db_matrix out, FILE *f, rimco_e rimc, double dx,
     }
     for(i=0; i<out.getNrow(); ++i) {
         for(j=0; j<out.getNcol(); ++j) {
+            x = j*dx-(out.getNcol()-1)/2.0*dx;
+            y = i*dy-(out.getNrow()-1)/2.0*dy;
             if(rimc==C) {
                 fprintf(f, "%le %le %le %le\n",
-                    j*dx, i*dy,out(i,j).real(),out(i,j).imag());
+                    x, y,out(i,j).real(),out(i,j).imag());
             } else if(rimc==R) {
                 fprintf(f, "%le %le %le\n",
-                    j*dx, i*dy,out(i,j).real());
+                    x, y,out(i,j).real());
             } else if(rimc==I) {
                 fprintf(f, "%le %le %le\n",
-                    j*dx, i*dy,out(i,j).imag());
+                    x, y,out(i,j).imag());
             } else if(rimc==M) {
                     fprintf(f, "%le %le %le\n",
-                        j*dx, i*dy,abs(out(i,j)));
+                        x, y,abs(out(i,j)));
             }
         }
         fprintf(f,"\n");
@@ -788,7 +795,8 @@ void structure::fileoutputOW(db_matrix out, FILE *f, double dx, double dy)
         throw parsefile_commandError("Can not open output file :-(");
     fprintf(f, "BCF3DCX 3.0\n");
     fprintf(f, "%d %d\n", out.getNcol(), out.getNrow());
-    fprintf(f, "0 %le 0 %le\n", out.getNcol()*dx, out.getNrow()*dy);
+    fprintf(f, "%le %le %le %le\n", -0.5*out.getNcol()*dx,0.5*out.getNcol()*dx,
+    		 -0.5*out.getNrow()*dy, 0.5*out.getNrow()*dy);
     for(i=0; i<out.getNrow(); ++i) {
         for(j=0; j<out.getNcol(); ++j) {
             fprintf(f, "%le, %le\n", out(i,j).real(),out(i,j).imag());

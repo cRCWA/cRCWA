@@ -103,6 +103,7 @@ parsefile::parsefile(numParser *p)
     insert_command("fskip",this,&parsefile::c_fskip);
     insert_command("fprint",this,&parsefile::c_fprint);
     insert_command("addspace",this,&parsefile::c_addspace);
+    insert_command("sprint",this,&parsefile::c_sprint);
 }
 
 /** LOAD: load (or include) a new file.
@@ -187,7 +188,7 @@ int parsefile::c_system(parsefile *obj, int argc,char *argv[])
 int  parsefile::c_label(parsefile *obj, int argc,char *argv[])
 {
     if(argc==2){
-        long int l=obj->getBookmark();
+        pair<long int, int> l=obj->getBookmark();
         obj->labels[argv[1]] = l;
     } else
         throw parsefile_commandError("label: invalid number of parameters.");
@@ -199,10 +200,10 @@ int  parsefile::c_label(parsefile *obj, int argc,char *argv[])
 
 int  parsefile::c_goto(parsefile *obj, int argc,char *argv[])
 {
-    long int p=0;
+    pair<long int, int> p(0,0);
     if(argc==2){
         p=obj->labels[argv[1]];
-        if(p==0)
+        if(p.first==0)
             throw parsefile_commandError("goto: label not found.");
         obj->setBookmark(p);
     } else
@@ -244,14 +245,14 @@ int  parsefile::c_if(parsefile *obj, int argc,char *argv[])
 
         if(condition<toll && !obj->noForCycles) {
             // jump only if the condition is "false", i.e. equal to zero.
-            long int p=obj->labels[labelif];
-            if(p==0) {
+            pair<long int, int> p=obj->labels[labelif];
+            if(p.first==0) {
                 // This can happen when else is not used. In this case, search
                 // directly for the "endif" label
                 labelif+="_e";
                 p=obj->labels[labelif];
 
-                if (p==0)
+                if (p.first==0)
                     throw parsefile_commandError("if: can not find endif.");
             }
             obj->setBookmark(p);
@@ -288,9 +289,9 @@ int  parsefile::c_else(parsefile *obj, int argc,char *argv[])
         if(!obj->noForCycles) {
             // Search for the next endif.
             labelif+="_e";
-            long int p=obj->labels[labelif];
+            pair<long int, int> p=obj->labels[labelif];
             // cout << "else label for endif:"<<labelif<<" p="<<p<<endl;
-            if(p==0)
+            if(p.first==0)
                 throw parsefile_commandError("else: can not find endif.");
             else {
                 obj->ifstack.pop();
@@ -369,16 +370,17 @@ int  parsefile::c_for(parsefile *obj, int argc,char *argv[])
         sscanf(argv[3],"%20lf", &stop);
         sscanf(argv[4],"%20lf", &increment);
         obj->labels[labelfor] = obj->getBookmark();
-
-        snprintf(buffer, 256, "%s=%f", argv[1]+1, start);
+		
+        snprintf(buffer, 256, "%s=%g", argv[1]+1, start);
+        
 
         obj->nP->calculate(buffer, start);
 
         obj->for_end[variable] = stop;
         obj->for_increment[variable] = increment;
-
+		
         if(start>=stop) {
-            long int p=obj->for_next[labelfor];
+            pair<long int, int> p=obj->for_next[labelfor];
             if(!obj->noForCycles) {
                 obj->setBookmark(p);
                 obj->forstack.pop();
@@ -417,14 +419,14 @@ int  parsefile::c_next(parsefile *obj, int argc,char *argv[])
         double res=0;
 
         char buffer[256];
-        snprintf(buffer, 256, "%s=%s+%f", variable.c_str(), variable.c_str(),
+        snprintf(buffer, 256, "%s=%s+%g", variable.c_str(), variable.c_str(),
             obj->for_increment[variable]);
 
         obj->nP->calculate(buffer, res);
         obj->for_next[labelfor] = obj->getBookmark();
 
         if(res<obj->for_end[variable]) {
-            long int p=obj->labels[labelfor];
+            pair<long int, int> p=obj->labels[labelfor];
             if(!obj->noForCycles) {
                 obj->setBookmark(p);
             } else {
@@ -489,7 +491,7 @@ int  parsefile::c_while(parsefile *obj, int argc,char *argv[])
         sscanf(argv[1],"%20lf", &condition);
 
         if(condition!=0.0) {
-            long int p=obj->labels[labelfor];
+            pair<long int, int> p=obj->labels[labelfor];
             if(!obj->noForCycles) {
                 obj->setBookmark(p);
             } else {
@@ -548,6 +550,52 @@ int parsefile::c_print(parsefile *obj, int argc,char *argv[])
     }
     if(obj->addspace) cout << "\n";
     return 0;
+}
+
+
+/** SPRINT print a line to a string variable
+
+    Usage:
+    sprint variable wathever you want
+    
+    Parameters:
+    variable: the name of the variable where to store the text
+            
+    N.B. addspace depending on ADDSPACE
+*/
+int parsefile::c_sprint(parsefile *obj, int argc,char *argv[])
+{
+
+    int stringlen = 0 ;
+    // The count starts from 1 since we do not want to see "sprint" at the
+    // beginning of the line
+    if(argc>2){
+        name * var = obj->nP->look(argv[1], 1, VAR_CHAR) ;
+        if (var == NULL){
+            throw parsefile_commandError("sprint: can not create the variable.");
+        }
+        if (not (var->pstringdata == NULL)) {
+        	// re-asigning
+        	delete[] var->pstringdata;
+       	}
+       	// create the storage at the right length:
+       	stringlen = 0 ;
+       	for (int i=2; i<argc; ++i) 
+       		stringlen += strlen(argv[i])+1;
+
+       	var->pstringdata = new char[stringlen]; 
+       	strcpy(var->pstringdata,argv[2]);
+		for (int i=3; i<argc; ++i) {
+		    strcat(var->pstringdata,argv[i]);
+		    if(obj->addspace)
+		    	strcat(var->pstringdata," ");
+		}
+
+	} else {
+        throw parsefile_commandError("sprint: invalid number of parameters.");
+    }
+    return 0;
+    
 }
 
 /** FOPEN open a file
@@ -736,12 +784,13 @@ int parsefile::c_fcheck(parsefile *obj, int argc,char *argv[])
 
 /** Updates the current position in the file.
 */
-void parsefile::setBookmark(long int b)
+void parsefile::setBookmark(pair<long int, int> b)
 {
-    currentPosition=b;
+    currentPosition=b.first;
+    currentLine =b.second ;
     //cout << "setBookmark => "<<currentPosition<<endl;
     if(pFin!=NULL) {
-        fseek(pFin, b,0);
+        fseek(pFin, b.first,0);
     } else {
         throw parsefile_commandError("parsefile::setBookmark");
     }
@@ -749,10 +798,10 @@ void parsefile::setBookmark(long int b)
 
 /** Gets the current position in the file.
 */
-long int parsefile::getBookmark(void)
+pair<long int, int> parsefile::getBookmark(void)
 {
     //cout << "getBookmark => "<<currentPosition<<endl;
-    return currentPosition;
+    return make_pair(currentPosition,currentLine);
 }
 
 
@@ -769,8 +818,11 @@ void parsefile::read(string fileName, bool interactive)
     if (interactive)
         pFin = stdin;
     else {
+    	// ftell is used to extract position in the file. Under Windows ftell
+    	// will give a wrong position if the file is opened in "r" mode due
+    	// to the usage of \r\n. Opening the file as "rb" solves the issue
         const char *name=fileName.c_str();
-        pFin=fopen(name, "r");
+        pFin=fopen(name, "rb");
     }
         // Can not open the given file.
     if (pFin==NULL){
@@ -795,9 +847,10 @@ void parsefile::readFile(FILE* pFin_r, bool interactive)
     nP->setErrorDetectLevel(0);
 
     char buffer[BUFDIM+1];
-    char com[BUFDIM];
+    char *c_argv2[BUFDIM];
+    char com[MAXCMLEN];
     int index,i;
-    int ligne=0;
+
     int c_argc;
     char *c_argv[BUFDIM];
     bool to_free[BUFDIM];
@@ -813,8 +866,11 @@ void parsefile::readFile(FILE* pFin_r, bool interactive)
     fstack[0] = pFin;
     act = 0;
 
+	// this is a global variable
+    currentLine=0;
+
     if (pFin==stdin)
-        cout << ligne << " > ";
+        cout << currentLine << " > ";
 
     bool stopEx=false;
     // The following code is quite intricate, because two passes are to be
@@ -832,10 +888,10 @@ void parsefile::readFile(FILE* pFin_r, bool interactive)
         noForCycles=false;
         
         // reseting the line number for the second pass
-        ligne=0 ;
+        currentLine=0 ;
 
         while(cont && !stopEx){
-            ++ligne;
+            ++currentLine;
             doNotExecute=false;
             noForCycles=false;
 
@@ -846,7 +902,7 @@ void parsefile::readFile(FILE* pFin_r, bool interactive)
 
                 index=ht_find(com);
                 
-                //cout <<"pass: "<<pass<< "; line: "<< ligne <<"; command: "<<com<<endl;
+                //cout <<"pass: "<<pass<< "; currentLine: "<< currentLine <<"; command: "<<com<<endl;
                 if(index>=0){
                     // In the first pass, we only interpret and execute
                     // the following commands
@@ -908,7 +964,7 @@ void parsefile::readFile(FILE* pFin_r, bool interactive)
         		               
 								// add the following line into the buffer:
                         		cont = (fgets(&buffer[i], BUFDIM, pFin)!=NULL);
-                        		++ligne;
+                        		++currentLine;
                         		--i ;
                         	}
                         }
@@ -973,25 +1029,91 @@ void parsefile::readFile(FILE* pFin_r, bool interactive)
                     }
 
 	                buffer[i]='\0';
-
+					
+					// deal with custom exceptions:
+					// not evaluating 3rd arg of material which is the material
+					// name
+				    if(strcmp(com,"material")==0 && c_argc>=3)
+				    	dont_evaluate[3]=true;
+				    // not evaluating 1st arg of sprint, which is the string name
+				    if(strcmp(com,"sprint")==0 && c_argc>=1)
+				    	dont_evaluate[1]=true;
+					
 	                double res;
-	                // Process all arguments (calculate, if possible)
+	                // Process all arguments (deal with variables and calculate, if possible)
+	                int added = 0 ;
 	                for(int k=0; k<c_argc+1; ++k) {
+
 	                    int err=1;
 	                    if (!dont_evaluate[k]) {
-	                        err=nP->calculate(c_argv[k], res);
+	                    	// check if c_argv[k] is simply a variable
+	                    	name * var = nP->look(c_argv[k+added], 0, VAR_NUM+VAR_CHAR) ;
+	                    	if (var != NULL) {
+
+	                    		if (var->isvector) {
+	                    			// variable is a vector. will print all
+	                    			// vector elements.
+						
+	                    			// shift all pointers by len(vector)-1 
+	                    			// to be able to add all the new vector values:
+	                    			for (int j=c_argc+added; j >k+added ; j--) 
+	                    				c_argv[j+var->boundary-1] = c_argv[j] ;
+	                    			
+									// allocate memory and store the vector
+									// components 
+	                    			for (int j=0; j < var->boundary ; j++) {
+				                        to_free[k+added] = true;
+							            c_argv[k+added] = new char[VARDIM];
+						                if(strcmp(c_argv[0],"print")==0) {
+						                	if (j==0) {
+						                		snprintf(c_argv[k+added], VARDIM, "(%g, ", var->pvector[j]);
+						                	} else if(j==var->boundary-1) {
+						                		snprintf(c_argv[k+added], VARDIM, "%g)", var->pvector[j]);
+						                	} else {
+						                		snprintf(c_argv[k+added], VARDIM, "%g, ", var->pvector[j]);
+						                	}
+						                } else {
+							            	snprintf(c_argv[k+added], VARDIM, "%g", var->pvector[j]);
+	                    				}
+	                    				added++; 
+	                    			}    			
+	                    			// the first allocated variable is actually
+	                    			// not added as the string name of the
+	                    			// variable is replace by the first component 
+	                    			added-- ;                								
+	                    		} else if (var->isstring) {
+	                    			// this is a string:
+	                    			// point to the char stored into variable:
+			                        c_argv[k+added] = var->pstringdata;
+	                    		} else {
+	                    			// this is a scalar:
+	                    			res = var->value ;
+	                    			err = 0 ;
+	                    		}
+	                    	 } else {
+			                	// evaluate expression:
+			                    err=nP->calculate(c_argv[k+added], res);
+			                }
+							
 	                    }
+	                    // Reset dont_evaluate to false for next line 
 	                    dont_evaluate[k]=false;
-	                    to_free[k] = false;
 
 	                    if (err==0) {
-	                        to_free[k] = true;
-	                        c_argv[k] = new char[BUFDIM];
-
-	                        snprintf(c_argv[k], BUFDIM, "%g", res);
+	                        to_free[k+added] = true;
+	                        c_argv[k+added] = new char[VARDIM];
+	                        snprintf(c_argv[k+added], VARDIM, "%g", res);
 	                    }
 	                }
-
+	                // the length of c_argc may have been increase if we are
+	                // printing vectors
+					c_argc+=added ;
+					
+					
+						 /*cout << "FINAL arg = " ;
+						for (int j=0 ; j< c_argc ; j++)
+							cout << "'" << c_argv[j] << "' " ;  */
+							
 	                if(!doNotExecute) {
 	                    try {
 	                        if(!interactive) {
@@ -1004,7 +1126,7 @@ void parsefile::readFile(FILE* pFin_r, bool interactive)
 			                            errstr<<"Execution error in command: ";
 			                            errstr<<ht_commande[index].commande;
 			                            errstr<<" at line ";
-			                            errstr<<ligne;
+			                            errstr<<currentLine;
 			                            
 			                            // error while executing command
 			                            throw parsefile_commandError(errstr.str());
@@ -1016,7 +1138,7 @@ void parsefile::readFile(FILE* pFin_r, bool interactive)
 	                            	// and throw it back to be caught by main.
 	                            	ostringstream errstr;
 	                            	
-		                            errstr<<"Error at line " << ligne << ": " ;
+		                            errstr<<"Error at line " << currentLine << ": " ;
 		                            for(int k=0; k<c_argc+1; ++k) 
 		                            	errstr<<c_argv[k] << " ";
 		                            errstr<<endl;
@@ -1059,7 +1181,7 @@ void parsefile::readFile(FILE* pFin_r, bool interactive)
                     cerr<<"Could not recognize the command ";
                     cerr<<com;
                     cerr<<" at line ";
-                    cerr<<ligne<<"\n";
+                    cerr<<currentLine<<"\n";
 
                     if(pFin!=stdin)
                         stopEx=true;
@@ -1067,7 +1189,7 @@ void parsefile::readFile(FILE* pFin_r, bool interactive)
             }
 
             if (!stopEx && (pFin==stdin))
-                cout << ligne << " > ";
+                cout << currentLine << " > ";
 
             // Do not worry if you do not understand.
             if (!stopEx)
@@ -1083,7 +1205,7 @@ void parsefile::readFile(FILE* pFin_r, bool interactive)
                 pFin=fstack[--act];
                 if (!stopEx && (pFin==stdin)) {
                     interactive=true;
-                    cout << ligne << " > ";
+                    cout << currentLine << " > ";
                 }
                 cont = fgets(buffer, BUFDIM, pFin)!=NULL;
             }

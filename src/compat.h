@@ -28,7 +28,7 @@
 #ifndef NOMINMAX
 #define NOMINMAX
 #endif
-#include <windows.h>
+//#include <windows.h>
 #include <process.h>
 #include <conio.h>
 #include <cstdio>
@@ -39,35 +39,45 @@
 /* Minimal semaphore shim for Windows builds: maps named/unnamed semaphores
    to a simple mutex. This is sufficient for serializing FFTW/IO calls in
    single-process builds. */
-struct sem_t_wrapper { std::mutex m; };
-typedef sem_t_wrapper* sem_t;
+struct sem_wrapper { std::mutex m; };
+#ifdef _WIN32
+typedef sem_wrapper* sem_t_wrapper;
+#endif
+#ifndef _WIN32
+typedef sem_t* sem_t_wrapper;
+#endif
 
-static inline sem_t sem_open(const char* /*name*/, int /*oflag*/, int /*mode*/,
+static inline sem_t_wrapper sem_open(const char* /*name*/, int /*oflag*/, int /*mode*/,
     unsigned int /*value*/)
 {
-    return new sem_t_wrapper();
+    return new sem_wrapper();
 }
-static inline int sem_close(sem_t s) { if (s) delete s; return 0; }
+
+static inline int sem_close(sem_t_wrapper s) { if (s) delete s; return 0; }
+#ifndef _WIN32
+// sem_unlink already defined with mingw64
 static inline int sem_unlink(const char* /*name*/) { return 0; }
-static inline int sem_wait(sem_t s)
+#endif
+static inline int sem_wait(sem_t_wrapper s)
+
 {
     if (s) { s->m.lock(); return 0; } return -1; 
 }
-static inline int sem_post(sem_t s)
+static inline int sem_post(sem_t_wrapper s)
 {
     if (s) { s->m.unlock(); return 0; } return -1;
 }
-static inline int sem_init(sem_t* s, int /*pshared*/, unsigned int /*value*/) 
+static inline int sem_init(sem_t_wrapper* s, int /*pshared*/, unsigned int /*value*/) 
 {
-    *s = new sem_t_wrapper(); return 0;
+    *s = new sem_wrapper(); return 0;
 }
 
-static inline int sem_destroy(sem_t* s)
+static inline int sem_destroy(sem_t_wrapper* s)
 {
     if (*s) delete *s; *s = nullptr; return 0; 
 }
 
-#define SEM_FAILED ((sem_t)NULL)
+#define SEM_FAILED ((sem_t_wrapper)NULL)
 #ifndef O_CREAT
 #define O_CREAT 0
 #endif
@@ -75,7 +85,9 @@ static inline int sem_destroy(sem_t* s)
 static inline int getpid_compat() { return _getpid(); }
 #define getpid getpid_compat
 
+#ifndef _WIN32
 static inline void usleep(unsigned int usec) { Sleep((usec) / 1000); }
+#endif
 
 #ifndef M_PI
 #define M_PI 3.14159265358979323846

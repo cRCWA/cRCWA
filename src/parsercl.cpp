@@ -423,8 +423,11 @@ int parseTok::insertArray(const char far*s, int size, double *values)
 }
 
 // Search for a variable. If ins==1, eventually create it if it is not found.
-name * parseTok::look(const char * p, int ins)
+// If vartype can be VAR_NUM to look for scalar or vector and VAR_CHAR to 
+// look for only string or VAR_NUM+VAR_CHAR to look for all variables
+name * parseTok::look(const char * p, int ins, int vartype)
 {
+
     int ii = 0;
     const char * pp=p;
     name  *n;
@@ -437,9 +440,16 @@ name * parseTok::look(const char * p, int ins)
     ii %= TBLSZ;
 
 
-    for (n=table[ii]; n; n=n->next)
-        if (strcmp(p,n->sstring) == 0) return n;
-
+    for (n=table[ii]; n; n=n->next){
+        if (strcmp(p,n->sstring) == 0){
+        	if (n->isstring and not (vartype&VAR_CHAR) !=0 )
+        		return NULL;
+        	else if (!n->isstring and not (vartype&VAR_NUM) !=0 )
+        		return NULL ;
+        	else
+        		return n;
+        }
+	}
     if (ins == 0) {
         error(ERR_NOTFOUND);
         return NULL;
@@ -456,6 +466,11 @@ name * parseTok::look(const char * p, int ins)
     nn->pvector=NULL;
     nn->next = table[ii];
     nn->boundary=0;
+    if ((vartype&VAR_CHAR) !=0)
+    	nn->isstring=true;
+    else
+    	nn->isstring=false;
+    nn->pstringdata = NULL ;
     table[ii] = nn;
     return nn;
 }
@@ -553,6 +568,7 @@ int numParser::calculate(char *pcExpr, double &Result)
     getToken();
 
     Result=expr();
+    
     if (err_code) error(err_code);
     return no_of_errors;
 
@@ -773,25 +789,22 @@ double numParser::prim()
                         n->boundary=0;
                     }
 
-                    if(arrayIndex>=n->boundary) {
-                        double *np=new double[arrayIndex+1];
-
-                        for(j=n->boundary; j<arrayIndex;++j)
-                                np[j]=0;
-
-                        if(n->isvector && n->pvector!=NULL) {
-                            for(j=0; j<n->boundary;++j)
-                                np[j]=n->pvector[j];
-
-                            delete[] n->pvector;
+					if(arrayIndex>=n->boundary || n->pvector==NULL) {
+                    	double *oldp = n->pvector ;
+                    	n->pvector = new double[arrayIndex+1];
+                        if(n->isvector && oldp!=NULL) {
+                        	for(j=0; j<n->boundary;++j)
+                            	n->pvector[j]=oldp[j];
                         }
-                        n->pvector=np;
+	                    for(j=n->boundary; j<=arrayIndex;++j)
+	                            n->pvector[j]=0;
+						if(n->isvector && oldp!=NULL)
+							delete[] oldp;
                         n->boundary=arrayIndex+1;
                     }
-
                     double d=expr();
-
                     n->pvector[arrayIndex] = d;
+
                 } else {
 
                     if(!n->isvector || arrayIndex>=n->boundary)

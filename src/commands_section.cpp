@@ -204,16 +204,19 @@ int commands::c_draw(parsefile *obj, int argc,char *argv[])
             " error:-(");
             
 	draw dw;
-	dw.set_size(p->tot_x, p->tot_y);
 
+	int isNot1Dx = (p->dimx==1?0:1);
+	int isNot1Dy = (p->dimy==1?0:1);
+	dw.set_size(p->tot_x*isNot1Dx, p->tot_y*isNot1Dy);
+	
 	// sent the command to draw to be parsed
     if(dw.parse(argc,argv, false)) {
         throw parsefile_commandError("draw: error while reading"
             " parameters.\n");
     }
-    // set substrate
     
     // store the refractive index  
+    db_matrix ind = dw.get_refractive_index() ;
     p->cur->store_refractive_index(dw.get_refractive_index());
     cout << "Just read imported refractive index\n";
 
@@ -253,6 +256,7 @@ int commands::c_draw(parsefile *obj, int argc,char *argv[])
 	
 	if (! dw.get_OnlyIndex()) {
 		// normal field has been computed. Store it:
+		db_matrix Nx = dw.get_Normal_Field_x() ;
 		p->cur->store_normal_field(dw.get_Normal_Field_x(), 
 			dw.get_Normal_Field_y());
 	    cout << "Just imported normal fields\n";
@@ -385,6 +389,8 @@ int commands::c_inpstruct(parsefile *obj, int argc,char *argv[])
     
     double dx=p->tot_x / sj;
     double dy=p->tot_y / si;
+    double x ;
+    double y;
 
     FILE *f=fopen(argv[4],"w");
     if(f==NULL)
@@ -394,7 +400,8 @@ int commands::c_inpstruct(parsefile *obj, int argc,char *argv[])
     if(strcmp(argv[1],"imo")==0) {
         fprintf(f, "UPI3DRI 3.0\n");
         fprintf(f, "%d %d\n", out.getNcol(), out.getNrow());
-        fprintf(f, "%lf %lf %lf %lf\n", 0.0, p->tot_x*1e6, 0.0, p->tot_y*1e6);
+        fprintf(f, "%lf %lf %lf %lf\n", -p->tot_x*0.5e6, p->tot_x*0.5e6, 
+        	-p->tot_y*0.5e6, p->tot_y*0.5e6);
         for(int i=0; i<out.getNrow(); ++i) {
             for(int j=0; j<out.getNcol(); ++j) {
                 fprintf(f, "%le, %le\n",
@@ -408,9 +415,10 @@ int commands::c_inpstruct(parsefile *obj, int argc,char *argv[])
             argv[1]);
         for(int i=0; i<out.getNrow(); ++i) {
             for(int j=0; j<out.getNcol(); ++j) {
+                x = j*dx-(out.getNcol()-1)/2.0*dx;
+            	y = i*dy-(out.getNrow()-1)/2.0*dy ;
                 fprintf(f, "%le %le %le %le\n",
-                    j*dx,
-                    i*dy,
+					x,y,
                     out(i,j).real(),
                     out(i,j).imag());
             }
@@ -1829,6 +1837,7 @@ int commands::c_power(parsefile *obj, int argc,char *argv[])
 
     power = section::integralPoynting(p,E, H,0)*p->tot_x*p->tot_y;;
 
+
     p->insertVar("ans",power);
 
     cout << "power in the current section (in W): "<<power<<endl;
@@ -1864,6 +1873,7 @@ int commands::c_powerZ(parsefile *obj, int argc,char *argv[])
      }
 
     power = p->do_powerz(z);
+
     p->insertVar("ans",power);
 
     cout << "power at z = " << z << " (in W): "<<power<<endl;
@@ -1921,7 +1931,9 @@ int commands::c_monitor(parsefile *obj, int argc,char *argv[])
     if(sscanf(argv[5], "%20lf", &py)!=1) {
          throw parsefile_commandError("monitor: error while reading "
              "the py value.\n");
+
      }
+
 
     power=p->do_monitor(z,wx,wy,px,py);
     p->insertVar("ans",power);

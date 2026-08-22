@@ -192,9 +192,18 @@ static PyObject* py_AFMM_parsescript(PyObject* self, PyObject* args)
         return NULL;
 
     co.allow_system_command(true);
+#ifndef _WIN32
     FILE *f= tmpfile();
+#else
+    FILE *f=fopen(".tmp","wb+");
+#endif
+    if(f==NULL) {
+        cerr << "Unable to open the temporary file "<<endl;
+        exit(1);
+    }
     fprintf(f, "%s",script);
-
+    rewind(f);
+    
     try {
         co.readFile(f,false);
     } catch (parsefile_commandError e) {
@@ -338,7 +347,7 @@ static PyObject* py_AFMM_banner(PyObject* self, PyObject* args)
         return NULL;
     cout << " ***************************************************************************\n"
          << " *      Aperiodic Fourier Modal Method full vectorial 3D propagation       *\n"
-         << " *                            cRCWA 1.5.1                                  *\n"
+         << " *                            cRCWA 1.5.4                                  *\n"
          << " *                                                                         *\n"
          << " *     Build date: " << __DATE__<<  "                                             *\n"
          << " *     Source revision: "

@@ -177,6 +177,71 @@ wavelength 1550e-9
 \end{lstlisting}
 sets to $1550\nm$ the wavelength (in vacuum) used in the simulations.
 
+\subsection{MATERIAL: Load refractive index files and interpolate to the wavelength}
+\label{subsec_material}
+Usage: \lstinline!material mult filename tag!
+
+Parameters:
+\begin{itemize}
+\item \lstinline!mult!: a multiplier to convert the wavelength from file in meter.
+For example, if the wavelength in the input file is specified in micrometers, mult 
+should be 1e-6.
+\item \lstinline!filename!: name of the file to be used (it should not contain spaces).
+\item \lstinline!tag!: name of the material that can then used instead of nr and ni 
+    	parameters in \lstinline!rectangle!, \lstinline!draw!, \lstinline!substrate!
+    	or \lstinline!print! commands...
+\end{itemize}
+
+Notes:
+\begin{itemize}
+\item The file format to be used will be as follows. The first line is ignored.
+This can be an header or a description of the file format.
+    The rest of the file contains columns with wavelength, nr (optionally ni).
+    When different wavelengths are used for nr and ni, header and columns are
+    repeated to define wavelength and ni.
+\item \lstinline!tag! is actually simply an array with real and imaginary part of
+the refractive index. \lstinline!tag(0)! return the real part of the refractive
+index
+\end{itemize}
+
+
+\subsection{INPSTRUCT3D: Show the 3d input structure}
+\label{subsec_inpstruct3d}
+Write on a file the permittivity or permeability chart of the input structure (stands for INPut STRUCTure 3D). This may be useful to check if it has been 
+defined correctly by the input file, as well as to check how well the structure
+is represented, given the number of harmonics taken into account, unless the \lstinline!im! type of representation is chosen. In this case, the represented structure is the one originally specified, without passing by the Fourier transforms.
+    
+    Usage: \lstinline!inpstruct3d type size_x size_y file!
+    
+    
+    Parameters:
+    \begin{itemize}
+    \item
+    \lstinline!type!    must be \lstinline!{i|im|ex|ey|ez|mux|muy|muz}!, \lstinline!i! indicates the 
+            refractive index
+            (it takes $\epsilon_{rx}$ squared), while \lstinline!Ex!, \lstinline!Ey! or \lstinline!Ez! indicate respectively the
+            $x$, $y$ or $z$ component of the permittivity tensor. On the same way,
+            \lstinline!mux!, \lstinline!muy! or \lstinline!muz! indicate respectively the $x$, $y$ or $z$ component of the 
+            permeability tensor. \lstinline!im! indicates the original refractive index distribution, without having passed by a Fourier transform.
+    \item
+    \lstinline!size_x!  number of points to be plot in the x direction
+    \item
+    \lstinline!size_y!  number of points to be plot in the y direction
+    \item
+    \lstinline!file!    name of the file which should be written
+    \end{itemize}
+    
+File format: Gnuplot-compatible (see appendix~\ref{sec_format_gnuplot}).
+
+Note: The structure considered is obtained by an inverse Fourier transform 
+calculated from the vectors containing the permeability and permittivity
+distribution. If the number of point given by \lstinline!size_x! and \lstinline!size_y! is bigger than 
+the corresponding size of the vectors, a zero padding technique is applied 
+before calculating the inverse transform of the matrix obtained. This allows to
+represent a given distribution with a comfortable number of point even if the
+number of harmonics taken is much less. No magic: it is just that the results
+are interpolated.
+
 \subsection{SOLVE: Find propagation modes}
 \label{subsec_solve}
 This command launches the mode solving calculations for all the defined sections. The calculation window and the structure should have been completely defined by the time this command is invoiced. All propagation modes of the structure are obtained, by calculating the eigenvectors of the matrix $B$ defined in equation \eqref{eq_B_matrix_def}, for all sections of the structure. The number of modes obtained is quite high (guided modes as well as a discretization of radiated modes are obtained) and thus a mechanism to select certain propagation modes to be considered ``interesting'' has been put in place.
@@ -351,13 +416,23 @@ propagation Ex m 100e-9 50 50 propag.txt
 
 \end{itemize}
 
-
-\subsection{CARPET: Sweep some convergence problems under the carpet}
+\subsection{CARPET: Depreciated see ENSURECONV}
 \label{subsec_carpet}
-The \lstinline!carpet! command forces all modes to have a negative imaginary part for the effective index. It is useful when calculating the propagation of the fields, since a positive imaginary part would result in a field which can quickly reach very high value when propagating. This often result in a convergence issue. It should be noted that what it is done by the \lstinline!carpet! command is somewhat artificial and a rigorous mathematical justification is still missing\cite{hench2008rcwa}. It just seems to work.
-This command should be used before \lstinline!solve!.
+This command is depreciated for \afmm\ v. 1.5.3 and later and replaced by \lstinline!ensureconv!
 
     Usage: \lstinline!carpet!
+    
+\subsection{ENSURECONV: ensure proper propagation modes}
+\label{subsec_ensureconv}
+The \lstinline!ensureconv! command forces all modes to have a negative imaginary part for the effective index. It is useful when calculating the propagation of the fields, since a positive imaginary part would result in a field which can quickly reach very high value when propagating. This often result in a convergence issue. It should be noted that what it is done by the \lstinline!ensureconv! command is somewhat artificial and a rigorous mathematical justification is still missing\cite{hench2008rcwa}. It just seems to work.
+This command should be used before \lstinline!solve!.
+
+    Usage: \lstinline!ensureconv t/f!
+    
+    Parameter:
+    \begin{itemize}
+    \item\lstinline!t/f!: \lstinline!t! to activate ensure convergence, \lstinline!f! to desactivate. 
+    \end{itemize}
     
 \subsection{OUTDATA: Calculate additional output data during propagation}
  This command sets up for the calculation of additional output data during the propgation of the fields. This command should be used before the \lstinline!propagation! command.
@@ -397,7 +472,7 @@ This command should be used before \lstinline!solve!.
 			\item \lstinline!filename! is the name of the file on which Poynting vector will be saved.
     	\end{itemize}
 
-        
+
         \item if \lstinline!t=g!, it computes the 2D generation rate cylindrincally 
         interpolated from the 3D generation rate using:
 
@@ -577,7 +652,6 @@ rectangle 3.46 0.0 500e-9 200e-9 0 0
 \end{lstlisting}
 Define a $3.46$ refractive index (silicon) rectangular waveguide, $500\nm \times 200\nm$, centreed in the calculation window.
 
-
 \subsection{DRAW: draw the structure}
 \label{subsec_draw}
 
@@ -681,7 +755,7 @@ Notes:
 	This command usually results in more accurate results that using \lstinline!substrate! and \lstinline!rectangle! commands as it is automatically seting the normal vector field.
     This command should be used once the size of the calculation window (command \lstinline!size!)  and    the number of space harmonics to be taken in the calculations (command \lstinline!harmonics!)  have been defined.
     This command implicitly defines the maximum value of the effective index for a mode to be considered ``interesting'' when using the \lstinline!solve! command.
- 
+
 For example:
 \begin{lstlisting}
 draw 1 r 3.46 0.0 500e-9 200e-9 0 0 1 0
@@ -808,7 +882,6 @@ Notes:
 	number of harmonics taken is much less. No magic: it is just that the results
 	are interpolated.
 \end{itemize}
-
 \subsection{INPSTRUCT: Show the input structure}
 \label{subsec_inpstruct}
 Write on a file the permittivity or permeability chart of the input structure (stands for INPut STRUCTure). This may be useful to check if it has been 
@@ -1181,6 +1254,15 @@ For example:
 size 2e-6 200e-9 # this is a valid comment
 \end{lstlisting}
 
+\subsection{...: Continuing the command on the next line}
+You can cut one instruction line into several line if you add \lstinline!...! at the end of the cut line. Note that all text after the \lstinline!...! are considered as comments.
+
+For example:
+\begin{lstlisting}
+size 2e-6 ... All character after the ... are considered as comments
+	200e-9 
+\end{lstlisting}
+
 \subsection{HELP: List the supported commands}
     This command shows a very concise help, which may be useful in the 
     interactive mode.
@@ -1280,7 +1362,22 @@ In the code shown above, \lstinline!condition! is the exit condition. The cycle 
     This command make \afmm\ echo all the given parameters.
     
     Usage: \lstinline!print whatever you want!
+
+	Note: space between elements are set by \lstinline!addspace! command
+\subsection{SPRINT: Print a line to a string variable}
+    This command make \afmm\ echo all the given parameters in a given variable. 
+    This is very useful to create custom filenames for output files.
     
+    Usage: \lstinline!sprint variable whatever you want!
+    
+    Parameter:
+    \begin{itemize}
+    \item\lstinline!variable! the name of the variable where to store the 
+    printed text
+    \end{itemize}
+            
+    Note: space between elements are set by \lstinline!addspace! command
+     
 \subsection{FOPEN: Open a file}
     The \lstinline!fopen! command allows to open a file.
 
@@ -1339,6 +1436,7 @@ In the code shown above, \lstinline!condition! is the exit condition. The cycle 
     \item the rest of the line will be printed on the file.
     \end{itemize}
     
+    Note: space between elements are set by \lstinline!addspace! command
 \subsection{FSCAN read a number}
     This command reads from a file a numeric value and put it in the \lstinline!ans! variable.
 

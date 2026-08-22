@@ -42,7 +42,7 @@ using namespace std;
 #include <string.h>
 
 #define NBP 512	// multiple de 2
-#define NBPnf 257	// puissance de 2 +1*/
+#define NBPNF 257	// puissance de 2 +1*/
 
 #define PI 3.141592654
 #define NB_LAYERS_MAX 100
@@ -113,6 +113,10 @@ private:
 	double sizeY;
 	double sizeX ;
 	
+	// boolean stating if it is 1D --> no need to generate more than 1 point in that direction:
+	bool is1Dx ;
+	bool is1Dy ;	
+	
 	//orientation of the normal field along X, Y direction (toward inside the structure or toward a direction)
 	double OrientationX;
 	double OrientationY;
@@ -145,11 +149,17 @@ private:
 	db_matrix Nx;
 	db_matrix Ny ; 
 	
+	// normal field size:
+	int NBPnfx ;
+	int NBPnfy ;
+	
 	// matrix in which we write the complex refractive indices
 	db_matrix ind ;
 	
 	// Set to true when we only compute refractive index and not normal field
 	bool OnlyIndex ;
+	
+
 	
 protected:
 	//void init(structure &s);

@@ -38,8 +38,12 @@ draw::draw(void)
 {
 	sizeX = 1 ;
 	sizeY = 1 ;
+	is1Dx = false ;
+	is1Dy = false ;
 	OnlyIndex = false ;
 	strcpy(filename_ind, "filename.rid");
+	NBPnfx = NBPNF ;
+	NBPnfy = NBPNF ;
 }
 
 double abs2(double a)
@@ -127,8 +131,8 @@ int draw::interpolateNF (int centerx[NB_LAYERS_MAX], int centery[NB_LAYERS_MAX],
 	
 				if (CentreX != -1) {
 					// a vector pointing form the center to the first point of the shape
-					cx = Polygonex[o][l] + centerx[l] - (CentreX+0.5)*NBPnf ; 
-					cy = Polygoney[o][l] + centery[l] - (CentreY+0.5)*NBPnf ;
+					cx = Polygonex[o][l] + centerx[l] - (CentreX+0.5)*NBPnfx ; 
+					cy = Polygoney[o][l] + centery[l] - (CentreY+0.5)*NBPnfy ;
 					
 				} else {
 					// a vector pointing form the centre of the polygone to the 
@@ -223,7 +227,22 @@ void draw::normal_field_generation(void)
 	int xmin, xmax, ymin, ymax ;
 	FILE *foutx,*fouty ;
 
-	db_matrix O(NBPnf, NBPnf);
+	if  (is1Dx) {
+		// 1D structure with variation in x axis. Normal field being normal to
+		// the structure varying in x. It means that Nx=1, Ny=0:
+		db_matrix O(1, NBPnfx );
+		Nx = db_matrix::createOnesMatrix(1, NBPnfx) ;
+		Ny = O ;
+		return ;
+	} else if (is1Dy) {
+		// 1D structure with variation in y axis. Normal field being normal to
+		// the structure varying in y. It means that Ny=1, Nx=0:
+		db_matrix O(NBPnfy, 1);
+		Ny = db_matrix::createOnesMatrix(NBPnfy, 1) ;
+		Nx = O ;
+		return ;
+	}
+	db_matrix O(NBPnfy, NBPnfx);
 	Nx = O;
 	Ny = O ;
 	
@@ -231,20 +250,20 @@ void draw::normal_field_generation(void)
  	//create the field at the boundaries of the windows
 	// and adjust their direction accordingly to OrientationX and OrientationY:
 	int sign=1 ;
-    for (k=1; k<NBPnf ;k++)
+    for (k=1; k<NBPnfx ;k++)
 	{
 	    Nx(0,k)= 0.0;                       
         Ny(0,k)= -1.0*sign ; 
 		if (OrientationY*Ny(0,k).real() < 0)
 			Ny(0,k) *=-1*sign ;
 		
-        Nx(NBPnf-1,k)= 0.0 ;                       
-        Ny(NBPnf-1,k)= 1.0 ;
-		if (OrientationY*Ny(NBPnf-1,k).real() < 0)
-			Ny(NBPnf-1,k) *=-1 ;
+        Nx(NBPnfy-1,k)= 0.0 ;                       
+        Ny(NBPnfy-1,k)= 1.0 ;
+		if (OrientationY*Ny(NBPnfy-1,k).real() < 0)
+			Ny(NBPnfy-1,k) *=-1 ;
     }
 	sign=1 ;
-    for (k=1; k<NBPnf ;k++)
+    for (k=1; k<NBPnfy ;k++)
 	{
 
 	    Nx(k,0)= -1.0 ;                      
@@ -252,10 +271,10 @@ void draw::normal_field_generation(void)
 		if (OrientationX*Nx(k,0).real() < 0)
 			Nx(k,0) *=-1 ;
 		
-        Nx(k,NBPnf-1)= 1.0*sign;                       
-        Ny(k,NBPnf-1)= 0 ;
-		if (OrientationX*Nx(k,NBPnf-1).real() < 0)
-			Nx(k,NBPnf-1) *=-1*sign ;
+        Nx(k,NBPnfx-1)= 1.0*sign;                       
+        Ny(k,NBPnfx-1)= 0 ;
+		if (OrientationX*Nx(k,NBPnfx-1).real() < 0)
+			Nx(k,NBPnfx-1) *=-1*sign ;
     }
     Nx(0,0)= -1.0;                       
     Ny(0,0)= -1.0 ; 
@@ -264,46 +283,46 @@ void draw::normal_field_generation(void)
 		Ny(0,0) *= -1 ;
 	}
 
-    Nx(NBPnf-1,NBPnf-1)= 1.0 ;                       
-    Ny(NBPnf-1,NBPnf-1)= 1.0; 
-	if (OrientationX*Nx(NBPnf-1,NBPnf-1).real() + OrientationY*Ny(NBPnf-1,NBPnf-1).real()  < 0 ) {
-		Nx(NBPnf-1,NBPnf-1) *= -1 ;
-		Ny(NBPnf-1,NBPnf-1) *= -1 ;
+    Nx(NBPnfy-1,NBPnfx-1)= 1.0 ;                       
+    Ny(NBPnfy-1,NBPnfx-1)= 1.0; 
+	if (OrientationX*Nx(NBPnfy-1,NBPnfx-1).real() + OrientationY*Ny(NBPnfy-1,NBPnfx-1).real()  < 0 ) {
+		Nx(NBPnfy-1,NBPnfx-1) *= -1 ;
+		Ny(NBPnfy-1,NBPnfx-1) *= -1 ;
 	}
     
-    Nx(0,NBPnf-1)= 1.0 ;                       
-    Ny(0,NBPnf-1)= -1.0;
-	if (OrientationX*Nx(0,NBPnf-1).real() + OrientationY*Ny(0,NBPnf-1).real()  < 0 ) {
-		Nx(0,NBPnf-1) *= -1 ;
-		Ny(0,NBPnf-1) *= -1 ;
+    Nx(0,NBPnfx-1)= 1.0 ;                       
+    Ny(0,NBPnfx-1)= -1.0;
+	if (OrientationX*Nx(0,NBPnfx-1).real() + OrientationY*Ny(0,NBPnfx-1).real()  < 0 ) {
+		Nx(0,NBPnfx-1) *= -1 ;
+		Ny(0,NBPnfx-1) *= -1 ;
 	}
     
-    Nx(NBPnf-1,0)= -1.0 ;                       
-    Ny(NBPnf-1,0)= 1.0; 
-	if (OrientationX*Nx(NBPnf-1,0).real() + OrientationY*Ny(NBPnf-1,0).real()  < 0 ) {
-		Nx(NBPnf-1,0) *= -1 ;
-		Ny(NBPnf-1,0) *= -1 ;
+    Nx(NBPnfy-1,0)= -1.0 ;                       
+    Ny(NBPnfy-1,0)= 1.0; 
+	if (OrientationX*Nx(NBPnfy-1,0).real() + OrientationY*Ny(NBPnfy-1,0).real()  < 0 ) {
+		Nx(NBPnfy-1,0) *= -1 ;
+		Ny(NBPnfy-1,0) *= -1 ;
 	}
  
     // set the value at the middle of the windows
-    Nx(NBPnf/2,NBPnf/2)= OrientationX;                       
-    Ny(NBPnf/2,NBPnf/2)= OrientationY;
+    Nx(NBPnfy/2,NBPnfx/2)= OrientationX;                       
+    Ny(NBPnfy/2,NBPnfx/2)= OrientationY;
     
     // set the value of the radius and circle center in term of pixel:
 	for ( i = 0 ; i < nb_layers ; i++)
 	{
-		Cx[i] = origineX[i] * NBPnf + NBPnf/2 ;
-		Cy[i] = origineY[i] * NBPnf + NBPnf/2 ;
+		Cx[i] = origineX[i] * NBPnfx + NBPnfx/2 ;
+		Cy[i] = origineY[i] * NBPnfy + NBPnfy/2 ;
 		for (j=0 ; j < nb_edges[i] ; j++)
 		{
-			Polygonex[j][i] = (int)(x_poly[j][i]* (double)(NBPnf)) ;
-			Polygoney[j][i] = (int)(y_poly[j][i]* (double)(NBPnf)) ;
+			Polygonex[j][i] = (int)(x_poly[j][i]* (double)(NBPnfx)) ;
+			Polygoney[j][i] = (int)(y_poly[j][i]* (double)(NBPnfy)) ;
 
 		}
    	}
     //interpolate the field
-    dx = NBPnf/2 ;
-    dy = NBPnf/2 ;
+    dx = NBPnfx/2 ;
+    dy = NBPnfy/2 ;
 
     while (dx > 2 && dy > 2)
 	{
@@ -312,12 +331,12 @@ void draw::normal_field_generation(void)
         i=0;
         k = dx ;
         m = dx/2;
-        while ( k < NBPnf)
+        while ( k < NBPnfx)
 		{
             j = 0;
             l = dy ;
             n = dy/2 ;
-            while (l < NBPnf)
+            while (l < NBPnfy)
 			{
                 interpolateNF(Cx,Cy, Polygonex,Polygoney,
                 	i,j, i,l, k,j, k,l, m,n) ;
@@ -337,11 +356,11 @@ void draw::normal_field_generation(void)
         //initialize indexes
         i=0;
 		k = 0 ;
-        while ( i < NBPnf-2*dx)
+        while ( i < NBPnfx-2*dx)
 		{
             j = 0;
 			l = 0 ;
-            while (j < NBPnf-2*dy)
+            while (j < NBPnfy-2*dy)
 			{
                 
                 interpolateNF(Cx,Cy, Polygonex,Polygoney,
@@ -365,9 +384,9 @@ void draw::normal_field_generation(void)
 
     // for all remaining zero vectors comming from discretization,
     // interpolation is performed
-    for (i=1; i < NBPnf-1 ; i++)
+    for (i=1; i < NBPnfx-1 ; i++)
 	{
-		for (j=1; j < NBPnf-1 ; j++)
+		for (j=1; j < NBPnfy-1 ; j++)
 		{
 
             if (Nx(j,i).real() == 0 && Ny(j,i).real() == 0 )
@@ -389,9 +408,9 @@ void draw::normal_field_generation(void)
     } 
     
 	// norm the vectors and save
-    for (j=0; j < NBPnf ; j++)
+    for (j=0; j < NBPnfy ; j++)
 	{
-		for (i=0; i < NBPnf ; i++)
+		for (i=0; i < NBPnfx ; i++)
 		{
 
             norm = sqrt(Nx(j,i).real()*Nx(j,i).real() + 
@@ -417,13 +436,20 @@ void draw::polygone(void)
 	int flag;
 	double trianglex[3], triangley[3] ;
 
-	db_matrix O(NBP, NBP);
+	// in case of 1D structure, we don't need to generate a 2D matrix:
+	int nbpX = NBP ;
+	int nbpY = NBP ;
+	if (is1Dy) 
+		nbpX = 0 ;
+	if (is1Dx) 
+		nbpY = 0 ;
+	db_matrix O(nbpY+1, nbpX+1);
 	ind = O;
 	//return ;
 
-	for (j = -NBP/2 ; j < NBP/2 ; j++)
+	for (j = -nbpY/2 ; j <= nbpY/2 ; j++)
 	{
-		for (i = -NBP/2 ; i < NBP/2 ; i++)
+		for (i = -nbpX/2 ; i <= nbpX/2 ; i++)
 		{
 			flag = nb_layers ;
 			for (l=nb_layers-1 ; l >=0 ; l--)		// parcours les couches de la couche externe vers la couche interne
@@ -440,12 +466,13 @@ void draw::polygone(void)
 //				}
 			}
 			if (flag ==nb_layers){		// on n'est dans aucune des couches:
-				ind(NBP/2+j,NBP/2+i)=complex<double>(n_ext,k_ext) ;
+				ind(nbpY/2+j,nbpX/2+i)=complex<double>(n_ext,k_ext) ;
 			} else {			// apartient  au polygone
-				ind(NBP/2+j,NBP/2+i)=complex<double>(n_int[flag],k_int[flag]) ;
+				ind(nbpY/2+j,nbpX/2+i)=complex<double>(n_int[flag],k_int[flag]) ;
 			}
 		}
 	}
+
 }
 
 
@@ -1139,11 +1166,14 @@ int draw::parse_standalone(int argc,char *argv[])
 	// sizeX:
 	parse_input(argc,argv, readCount, interactive, skipOptional, 
 		"size of computation window in x", sizeX);
-
+	if (interactive and sizeX==0)
+		printf("1D structure with y variation considered\n");
+		
 	// sizeY:
 	parse_input(argc,argv, readCount, interactive, skipOptional,
 		"size of computation window in y", sizeY);
-	
+	if (interactive and sizeY==0)
+		printf("1D structure with x variation considered\n");
 	// parse the rest of the parameters
 	parse(argc-readCount+1,&argv[readCount-1], interactive);
 	
@@ -1200,6 +1230,15 @@ int draw::parse( int argc,char *argv[], bool interactive)
 	OnlyIndex = false;
 	bool orderPoints = false;
 	
+	// we can specify sizeX or sizeY to 0 to mean that this is a 1D structure
+	if (sizeX ==0) {
+		sizeX=1;
+		is1Dy = true ;
+	}
+	if (sizeY ==0) {
+		sizeY=1;
+		is1Dx = true ;
+	}
 
 	// first argument is nb_layer
 	parse_input(argc,argv, readCount, interactive, skipOptional,
@@ -1371,6 +1410,7 @@ int draw::parse( int argc,char *argv[], bool interactive)
 			for (k = 0 ; k < nb_edges[i] ; k++) {
 				x_poly[k][i] = x_poly[k][i] /sizeX ;
 				y_poly[k][i] = y_poly[k][i] /sizeY ;
+
 			}
 			treat_input_point(i, orderPoints) ;
 		}else {
@@ -1378,8 +1418,9 @@ int draw::parse( int argc,char *argv[], bool interactive)
 				,shape_type[i]);
 			throw parsefile_commandError(string);
 		}
+
 	}
-	
+
 
 	generate_command(string);
 	printf("Command executed: %s", string);
@@ -1548,6 +1589,8 @@ const char *helptext =
 "   [test.ind sizeX sizeY] parameters											\n"
 "N.B. N+1 layer is below the layer N. Layer 1, is therefore on top of all other	\n"	
 " 	layers.																		\n"
+"N.B. if sizeX (or sizeY) is set to 0, considering 1D structure along the y (x)	\n"
+"		axis																	\n"
 "																				\n"
 "USAGE IN LEGACY MODE															\n"
 "./draw --legacy 																\n"

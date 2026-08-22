@@ -102,6 +102,16 @@ cd 1D_test_angle
     fi
 cd ..
 
+cd angles
+    if ./test_angles.sh $executable
+    then
+        ok=1
+    else
+        test_fail=1
+    fi
+cd ..
+
+
 cd symtest
     if ./test_symmetry.sh $executable
     then
@@ -201,7 +211,14 @@ cd drawtest
         test_fail=1
      fi
 cd ..
-
+cd materialtest
+    if ./test_material.sh $executable
+    then
+        ok=1
+    else
+        test_fail=1
+     fi
+cd ..
 
 echo
 if test $test_fail != 0
