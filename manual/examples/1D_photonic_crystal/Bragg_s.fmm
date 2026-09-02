@@ -1,0 +1,46 @@
+# EXAMPLE: How to calculate a simple photonic band structure for a multilayer
+# film using AFMM
+#
+# See Joannopoulos, Johnson, Winn, Meade "Photonic crystals" second edition
+# page 64, fig. 2, GaAs/Air multilayer with equal thickness of each layer.
+#
+# OUTPUT: this AFMM script generates a file bande.dat.
+#
+# D. Bucci, June 24, 2026
+
+fopen "bande.dat" "w"
+let fout=ans
+
+# Total length of one period of the structure (z)
+let pz=1
+
+for :omega 0.0025 0.3 0.0025
+    harmonics 1 1
+    wavelength pz/omega
+    size 1 1
+
+    # The three sections
+    section 0.25*pz
+    substrate 1.0 0
+
+    section 0.5*pz
+    substrate sqr(13) 0
+
+    section 0.25*pz
+    substrate 1.0 0
+
+    wants propagation
+    solve
+    assemble
+    bloch
+
+    for :idx 0 size(ans) 2
+        let real=ans(idx)
+        let imag=ans(idx+1)
+
+        fprint fout omega idx/2 real imag
+    next
+    clear
+next
+
+fclose fout

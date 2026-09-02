@@ -833,6 +833,8 @@ void parsefile::read(string fileName, bool interactive)
         throw parsefile_commandError(errstr);
     }
     readFile(pFin,interactive);
+    if(!interactive)
+        fclose(pFin);
 }
 
 /**
@@ -1212,7 +1214,7 @@ void parsefile::readFile(FILE* pFin_r, bool interactive)
             currentPosition=ftell(pFin);
         }
     }
-    fclose(pFin);
+    //fclose(pFin);
 }
 
 // Insertion d'une commande

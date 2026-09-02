@@ -24,7 +24,7 @@
     You should have received a copy of the GNU General Public License along
     with cRCWA. If not, see <https://www.gnu.org/licenses/>. 
 
-    Davide Bucci, 2008-2025
+    Davide Bucci, 2008-2026
     Jérôme Michallon, 2012-2014
 */
 
@@ -76,8 +76,6 @@ void process(int argc, char * const argv[])
         cerr<<P.getMess()<<"\n";
         cerr.flush();
     }
-
-
 }
 static double sinc(double alpha) {return (alpha==0)?1.0:sin(alpha)/alpha;}
 	double tot_x = 1e-6 ;

@@ -64,6 +64,10 @@ draw: $(DRAWINGFILES) $(HEADERS)
 	$(LD) $(DRAWINGFILES) -L$(LIBLAPACKDIR) $(LIBLAPACK) -L$(LIBBLASDIR) $(LIBBLAS) -L$(LIBFFTW3DIR) -lfftw3 $(LIBTHREAD) -o draw$(EXE_EXT)
 	mv draw$(EXE_EXT) ../bin
 	
+	#$(CXX) -shared -L$(LIBLAPACKDIR) $(LIBLAPACK) -L$(LIBBLASDIR) $(LIBBLAS) -L$(LIBFFTW3DIR) -lfftw3 $(LIBTHREAD) $(PYTHONLIB) -o pycRCWA.so \
+	 #$(OFILES) -I$(PYTHONINCDIR) $(CFLAGS) afmm_python_module.cpp -fPIC
+	 #mv pycRCWA.so ../python
+
 slice: $(SLOFILES)
 	$(LD) $(SLOFILES) -o slice$(EXE_EXT)
 	mv slice$(EXE_EXT) ../bin

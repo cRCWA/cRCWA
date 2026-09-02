@@ -95,7 +95,7 @@
 // Unnamed semaphores are the simplest solutions on Linux, but they are not
 // available on MacOSX, so we must provide both named and unnamed semaphores.
 // TODO: check if this works as well in Linux
-// #define USE_UNNAMED
+#define USE_UNNAMED
 
 // During the configuration operation, the configure script will try to
 // determine if the BLAS and LAPACK libraries have been compiled with a
@@ -605,7 +605,6 @@ db_matrix &db_matrix::operator*=(const db_matrix &d)
             total_elements+=nrow*d.ncol;
             if(total_elements>max_elements) max_elements=total_elements;
     #endif
-
     zgemm(&TransA, &TransB, &M, &N, &K, &alpha, Ar, &LDA,
         Br, &LDB, &beta,  Cr, &LDC);
     delete[] A;
@@ -1642,7 +1641,7 @@ db_matrix db_matrix::fft_a(bool type)
     fftw_complex *in;
     fftw_complex *out;
     fftw_plan plan;
-
+    if(mutex_fftw==NULL) init_semaphore_FFTW();
     sem_wait (mutex_fftw);  /*- sync start -*/
     in = (fftw_complex *)fftw_malloc(sizeof(fftw_complex)*nx*ny);
     out = (fftw_complex *)fftw_malloc(sizeof(fftw_complex)*nx*ny);

@@ -1358,7 +1358,7 @@ int commands::c_order(parsefile *obj, int argc,char *argv[])
     ans will be an array of three elements:
     - ans[0] is the real part of the coefficient
     - ans[1] is the imaginary part of the coefficient
-    - ans[2] is the squared module of the coefficient
+    - ans[2] is the squared modulus of the coefficient
 
 */
 int commands::c_coefficient(parsefile *obj, int argc,char *argv[])
@@ -1410,7 +1410,7 @@ int commands::c_coefficient(parsefile *obj, int argc,char *argv[])
             "of the excitation. It must be {b|f}.\n");
     }
     cout << "mode coefficient: " << e << "\n";
-    cout << "Squared module: " << abs(e)*abs(e) << "\n";
+    cout << "Squared modulus: " << abs(e)*abs(e) << "\n";
 
     // Save the calculated data as an array in the output variable "ans".
     double *s =new double[3];
